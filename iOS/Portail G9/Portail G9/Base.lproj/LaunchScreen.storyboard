@@ -45,7 +45,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_cerise" translatesAutoresizingMaskIntoConstraints="NO" id="rjf-7H-Alg">
-                                <rect key="frame" x="167.5" y="612" width="40" height="35"/>
+                                <rect key="frame" x="167.5" y="622" width="40" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="2Il-2i-GGh"/>
                                     <constraint firstAttribute="width" constant="40" id="qJF-pB-YTg"/>
@@ -59,7 +59,7 @@
                             <constraint firstItem="8me-cA-9Ak" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Qow-Dz-3Ub"/>
                             <constraint firstItem="rjf-7H-Alg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iVo-fM-sks"/>
                             <constraint firstItem="8me-cA-9Ak" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jcc-sX-HF0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rjf-7H-Alg" secondAttribute="bottom" constant="20" id="uLj-2d-MhZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rjf-7H-Alg" secondAttribute="bottom" constant="10" id="uLj-2d-MhZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

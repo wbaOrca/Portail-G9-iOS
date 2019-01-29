@@ -14,5 +14,7 @@ import UIKit
 // ++++++++++++++++++++++++++++++++++++++++
 class Utils: NSObject {
     
-
+    public static let SHARED_PREFERENCE_USER_CONNECTED = "SHARED_PREFERENCE_USER_CONNECTED"
+    
+    
 }

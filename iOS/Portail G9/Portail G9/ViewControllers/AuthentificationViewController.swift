@@ -14,6 +14,9 @@ import UIKit
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class AuthentificationViewController: UIViewController {
 
+    @IBOutlet weak var textFieldLogin: UITextField?
+    @IBOutlet weak var textFieldPassword: UITextField?
+    @IBOutlet var labelVersion: UILabel!
     @IBOutlet weak var buttonConnexion: UIButton!
     
     // ***********************************
@@ -23,6 +26,33 @@ class AuthentificationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let appInfo = Bundle.main.infoDictionary! as Dictionary<String,AnyObject>
+        let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
+        let bundleVersion      = appInfo["CFBundleVersion"] as! String
+        let applicationVersion = shortVersionString + "." + bundleVersion
+        labelVersion.text =  Version.VERSION + " " + applicationVersion
+        
+        self.textFieldLogin?.placeholder = "Login"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+    }
+    
+    // ******************************
+    // *** viewWillAppear
+    // ******************************
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let preferences = UserDefaults.standard
+        if(preferences.bool(forKey: Utils.SHARED_PREFERENCE_USER_CONNECTED))
+        {
+            let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            navigationController?.pushViewController(homeVC, animated: true)
+        }else
+        {
+            textFieldPassword?.text = "";
+        }
+        
     }
     
 
@@ -34,6 +64,7 @@ class AuthentificationViewController: UIViewController {
         let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         navigationController?.pushViewController(homeVC, animated: true)
     
+        
     }
     /*
     // MARK: - Navigation

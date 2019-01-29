@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -24,8 +25,29 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         labelWelcome.text = NSLocalizedString("Hello", comment: "-")
+        
+        //let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        let menuButton = UIBarButtonItem(title: "Menu" , style: .plain, target: self, action: #selector(menuTapped))
+        navigationItem.leftBarButtonItems = [menuButton]
+        
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func menuTapped()
+    {
+        let leftMenuVC = self.storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! UISideMenuNavigationController
+        self.present(leftMenuVC, animated: true, completion: nil)
+    }
+    // *******************************************************************************
+    // ******
+    // ****** viewWillAppear
+    // ******
+    // *******************************************************************************
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
+    }
     
 
     /*

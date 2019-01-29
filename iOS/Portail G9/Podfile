@@ -19,7 +19,7 @@ target 'Portail G9' do
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
   
-
+  pod 'SideMenu'
 
   target 'Portail G9Tests' do
     inherit! :search_paths
