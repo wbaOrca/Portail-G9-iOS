@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +17,61 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8me-cA-9Ak">
+                                <rect key="frame" x="30" y="186" width="315" height="315"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_renault" translatesAutoresizingMaskIntoConstraints="NO" id="lLf-Dd-Wsn">
+                                        <rect key="frame" x="51" y="66" width="213" height="183"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="183" id="2np-WF-af9"/>
+                                            <constraint firstAttribute="width" constant="213" id="usr-bK-Og0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99915176630020142" green="0.80077916383743286" blue="0.19888043403625488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lLf-Dd-Wsn" firstAttribute="centerY" secondItem="8me-cA-9Ak" secondAttribute="centerY" id="RAK-Gd-i9S"/>
+                                    <constraint firstAttribute="height" constant="315" id="Xxc-zj-bCt"/>
+                                    <constraint firstItem="lLf-Dd-Wsn" firstAttribute="centerX" secondItem="8me-cA-9Ak" secondAttribute="centerX" id="aJQ-LK-jDk"/>
+                                    <constraint firstAttribute="width" constant="315" id="gnp-os-PbH"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_groupe_renault" translatesAutoresizingMaskIntoConstraints="NO" id="Ny0-ll-HBF">
+                                <rect key="frame" x="30" y="506" width="315" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="DAO-Og-lR8"/>
+                                    <constraint firstAttribute="width" constant="315" id="pc6-c4-N2W"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_cerise" translatesAutoresizingMaskIntoConstraints="NO" id="rjf-7H-Alg">
+                                <rect key="frame" x="167.5" y="612" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="2Il-2i-GGh"/>
+                                    <constraint firstAttribute="width" constant="40" id="qJF-pB-YTg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ny0-ll-HBF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8Zh-06-BEz"/>
+                            <constraint firstItem="Ny0-ll-HBF" firstAttribute="top" secondItem="8me-cA-9Ak" secondAttribute="bottom" constant="5" id="8w9-YH-jbT"/>
+                            <constraint firstItem="8me-cA-9Ak" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Qow-Dz-3Ub"/>
+                            <constraint firstItem="rjf-7H-Alg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iVo-fM-sks"/>
+                            <constraint firstItem="8me-cA-9Ak" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jcc-sX-HF0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rjf-7H-Alg" secondAttribute="bottom" constant="20" id="uLj-2d-MhZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_cerise" width="60" height="40"/>
+        <image name="logo_groupe_renault" width="315" height="48"/>
+        <image name="logo_renault" width="640" height="550"/>
+    </resources>
 </document>
