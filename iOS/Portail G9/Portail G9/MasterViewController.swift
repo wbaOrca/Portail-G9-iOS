@@ -9,12 +9,20 @@
 import UIKit
 import CoreData
 
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
 
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,13 +34,23 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     @objc
     func insertNewObject(_ sender: Any) {
         let context = self.fetchedResultsController.managedObjectContext
@@ -50,8 +68,15 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+        
+        
+        
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,29 +91,46 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let event = fetchedResultsController.object(at: indexPath)
         configureCell(cell, withEvent: event)
         return cell
     }
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let context = fetchedResultsController.managedObjectContext
@@ -104,13 +146,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             }
         }
     }
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func configureCell(_ cell: UITableViewCell, withEvent event: Event) {
         cell.textLabel!.text = event.timestamp!.description
     }
 
     // MARK: - Fetched results controller
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     var fetchedResultsController: NSFetchedResultsController<Event> {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
@@ -142,7 +190,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         return _fetchedResultsController!
-    }    
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     var _fetchedResultsController: NSFetchedResultsController<Event>? = nil
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

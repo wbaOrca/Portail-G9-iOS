@@ -6,7 +6,19 @@ target 'Portail G9' do
   use_frameworks!
 
   # Pods for Portail G9
+  pod 'IQKeyboardManagerSwift'
 
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Crashlytics'
+
+  pod 'SDWebImage'
+  pod 'ReachabilitySwift'
+  
+  pod 'NVActivityIndicatorView'
+  pod 'Alamofire'
+  pod 'AlamofireObjectMapper'
+  
 
 
   target 'Portail G9Tests' do
