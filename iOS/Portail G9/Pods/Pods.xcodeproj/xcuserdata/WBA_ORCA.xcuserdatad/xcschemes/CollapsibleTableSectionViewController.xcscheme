@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "801957CF813B00A7A32000ACFBBDA86D"
-               BlueprintName = "SDWebImage"
+               BlueprintIdentifier = "A55696F272FF688344C4A01C6393E2F7"
+               BlueprintName = "CollapsibleTableSectionViewController"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SDWebImage.framework">
+               BuildableName = "CollapsibleTableSectionViewController.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

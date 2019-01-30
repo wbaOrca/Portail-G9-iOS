@@ -21,6 +21,8 @@ target 'Portail G9' do
   
   pod 'SideMenu'
 
+  pod 'CollapsibleTableSectionViewController'
+  
   target 'Portail G9Tests' do
     inherit! :search_paths
     # Pods for testing
