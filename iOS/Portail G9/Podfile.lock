@@ -1,4 +1,5 @@
 PODS:
+  - AAInfographics (2.0.4)
   - Alamofire (4.7.3)
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
@@ -74,6 +75,7 @@ PODS:
   - SideMenu (4.0.0)
 
 DEPENDENCIES:
+  - AAInfographics
   - Alamofire
   - AlamofireObjectMapper
   - CollapsibleTableSectionViewController
@@ -88,6 +90,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AAInfographics
     - Alamofire
     - AlamofireObjectMapper
     - CollapsibleTableSectionViewController
@@ -110,6 +113,7 @@ SPEC REPOS:
     - SideMenu
 
 SPEC CHECKSUMS:
+  AAInfographics: 10f87e06fc007a0adbb05de020e4a2fe3119f8de
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   CollapsibleTableSectionViewController: c41694de812a1039c5f8581c934cf0fc38e4e871
@@ -131,6 +135,6 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
 
-PODFILE CHECKSUM: fcfcb4fab0f350bd8e178e1c166b78eeb13f3ff6
+PODFILE CHECKSUM: 751b723a69ab4b6c162957b1a8c1fdf77b254784
 
 COCOAPODS: 1.5.3

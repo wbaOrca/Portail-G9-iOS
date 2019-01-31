@@ -24,13 +24,25 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("Home", comment: "-")
         labelWelcome.text = NSLocalizedString("Hello", comment: "-")
         
-        //let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        let menuButton = UIBarButtonItem(title: "Menu" , style: .plain, target: self, action: #selector(menuTapped))
+        let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu_"), style: .plain, target: self, action: #selector(menuTapped))
         navigationItem.leftBarButtonItems = [menuButton]
         
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        
     }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        
+    }
+    
     // ***********************************
     // ***********************************
     // ***********************************

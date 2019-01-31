@@ -14,6 +14,7 @@ import UIKit
 class MenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var imageIcon: UIImageView!
     
     
     // *****************************

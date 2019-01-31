@@ -11,6 +11,9 @@ import Foundation
 //
 // MARK: - Section Data Structure
 //
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
 public struct Item {
     public var name: String
     public var detail: String
@@ -20,7 +23,9 @@ public struct Item {
         self.detail = detail
     }
 }
-
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
 public struct Section {
     public var name: String
     public var items: [Item]
@@ -30,14 +35,16 @@ public struct Section {
         self.items = items
     }
 }
-
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++
 public var sectionsData: [Section] = [
     Section(name: "Indicateurs", items: [
         
-        Item(name: "Vente", detail: ""),
-        Item(name: "Après ventes", detail: ""),
-        Item(name: "Clients", detail: ""),
-        Item(name: "Image de marque", detail: "")
+        Item(name: "Vente", detail: "1"),
+        Item(name: "Après ventes", detail: "2"),
+        Item(name: "Clients", detail: "3"),
+        Item(name: "Image de marque", detail: "4")
         
     ]),
     Section(name: "Process", items: [
@@ -70,6 +77,11 @@ public var sectionsData: [Section] = [
         ]),
     Section(name: "Reporting", items: [
         Item(name: "Connexions Stats.", detail: "")
+        
+        ]),
+    
+    Section(name: "Déconnexion", items: [
+        
         
         ])
 ]
