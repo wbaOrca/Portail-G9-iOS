@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A55522059534A75CE5A694C40018972C"
-               BlueprintName = "SDWebImage"
+               BlueprintIdentifier = "8BCB0C5504A9BD3D91928F675BF22A54"
+               BlueprintName = "RSSelectionMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SDWebImage.framework">
+               BuildableName = "RSSelectionMenu.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

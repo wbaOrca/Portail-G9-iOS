@@ -70,6 +70,7 @@ PODS:
   - ObjectMapper (3.3.0)
   - Protobuf (3.6.1)
   - ReachabilitySwift (4.2.1)
+  - RSSelectionMenu (5.2.2)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -87,6 +88,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
   - ReachabilitySwift
+  - RSSelectionMenu
   - SDWebImage
   - SideMenu
 
@@ -112,6 +114,7 @@ SPEC REPOS:
     - ObjectMapper
     - Protobuf
     - ReachabilitySwift
+    - RSSelectionMenu
     - SDWebImage
     - SideMenu
 
@@ -136,9 +139,10 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   ReachabilitySwift: 35720ffea59c1c76d15f885be77fd33e33985427
+  RSSelectionMenu: e146718c53e660fce0d26d3c316d4daf5ce58f00
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
 
-PODFILE CHECKSUM: ab7ac4e427b447203a09c3b0fd1ecfdfaee2e675
+PODFILE CHECKSUM: 6dbd59e5b83cc25f7873eac3a4b29d4077f26c78
 
 COCOAPODS: 1.5.3

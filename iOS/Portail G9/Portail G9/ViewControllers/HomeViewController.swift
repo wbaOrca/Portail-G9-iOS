@@ -17,6 +17,7 @@ import ABGaugeViewKit
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var filtreView : FiltreView!
     @IBOutlet weak var labelWelcome: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -71,6 +72,10 @@ class HomeViewController: UIViewController {
     // ***********************************
     @objc func filtreTapped()
     {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
         
     }
     
@@ -92,6 +97,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
     
+        
     }
     
 
@@ -105,4 +111,20 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension HomeViewController: FiltreMenuViewControllerDelegate {
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreMenuViewController() {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

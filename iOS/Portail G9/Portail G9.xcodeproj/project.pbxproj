@@ -18,6 +18,7 @@
 		FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */; };
 		FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8322005BE40043E345 /* HomeViewController.swift */; };
 		FB0E0F8922005DAD0043E345 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F8722005DAD0043E345 /* Localizable.strings */; };
+		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
 		FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */; };
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
 		FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC6A2201F006004B44DF /* ExampleData.swift */; };
@@ -73,6 +74,7 @@
 		FB0E0F8B22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		FB0E0F8C22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FB0E0F8D22005F670043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC6A2201F006004B44DF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */,
 				FB0E0F8322005BE40043E345 /* HomeViewController.swift */,
+				FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -443,6 +447,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSSelectionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -532,6 +537,7 @@
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
+				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,

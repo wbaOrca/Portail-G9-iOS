@@ -17,6 +17,7 @@ class FiltreView: UIView {
     @IBOutlet weak var filtreCollectionView: UICollectionView!
     var arrayFiltres : [String] = ["Français", "Suisse","Zone 1", "-" , "Affaire 1"];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
+    
     // ***********************************
     // ***********************************
     // ***********************************

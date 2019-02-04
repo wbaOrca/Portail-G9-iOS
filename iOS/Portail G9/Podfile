@@ -24,6 +24,7 @@ target 'Portail G9' do
   pod 'CollapsibleTableSectionViewController'
   pod 'AAInfographics'
   pod 'ABGaugeViewKit'
+  pod 'RSSelectionMenu'
   
   
   target 'Portail G9Tests' do
