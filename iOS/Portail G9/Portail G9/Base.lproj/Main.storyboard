@@ -162,17 +162,132 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-be-8Nl">
-                                <rect key="frame" x="20" y="84" width="335" height="21"/>
+                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-Jm-nde">
+                                <rect key="frame" x="0.0" y="114.5" width="375" height="552.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iwy-Ga-faO" customClass="ABGaugeView" customModule="ABGaugeViewKit">
+                                        <rect key="frame" x="27.5" y="10" width="320" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="320" id="3tP-cp-NkN"/>
+                                            <constraint firstAttribute="width" constant="320" id="Vx7-r5-e57"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
+                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcAngle">
+                                                <real key="value" value="1.8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyShadow" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9W5-h4-pmN" customClass="ABGaugeView" customModule="ABGaugeViewKit">
+                                        <rect key="frame" x="27.5" y="340" width="320" height="320"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="HTr-To-Dt1"/>
+                                            <constraint firstAttribute="height" constant="320" id="c82-sb-7Ye"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
+                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcAngle">
+                                                <real key="value" value="1.8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyShadow" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAa-lT-L2I" customClass="ABGaugeView" customModule="ABGaugeViewKit">
+                                        <rect key="frame" x="27.5" y="670" width="320" height="320"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="320" id="5rE-IF-I4R"/>
+                                            <constraint firstAttribute="width" constant="320" id="kz5-TY-vEa"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
+                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcAngle">
+                                                <real key="value" value="1.8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyShadow" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-RD-X2J" customClass="ABGaugeView" customModule="ABGaugeViewKit">
+                                        <rect key="frame" x="27.5" y="1000" width="320" height="320"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="Ugb-de-y4g"/>
+                                            <constraint firstAttribute="height" constant="320" id="kiF-dj-e4I"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
+                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcAngle">
+                                                <real key="value" value="1.8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyShadow" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="1yU-AA-pfR"/>
+                                    <constraint firstItem="Iwy-Ga-faO" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="45V-WA-hef"/>
+                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="9tM-v3-2ok"/>
+                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="H52-RX-8Ng"/>
+                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="top" secondItem="Iwy-Ga-faO" secondAttribute="bottom" constant="10" id="JFw-YD-8Ph"/>
+                                    <constraint firstItem="Iwy-Ga-faO" firstAttribute="top" secondItem="ZCQ-Jm-nde" secondAttribute="top" constant="10" id="MY0-xn-74a"/>
+                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="top" secondItem="9W5-h4-pmN" secondAttribute="bottom" constant="10" id="Usd-Ga-EPq"/>
+                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="top" secondItem="KAa-lT-L2I" secondAttribute="bottom" constant="10" id="sNc-fz-FQf"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="jDY-lV-o5b" firstAttribute="trailing" secondItem="ZCQ-Jm-nde" secondAttribute="trailing" id="AUI-hT-iE6"/>
+                            <constraint firstItem="ZCQ-Jm-nde" firstAttribute="top" secondItem="SO6-be-8Nl" secondAttribute="bottom" constant="10" id="HP3-0z-Sy2"/>
+                            <constraint firstItem="jDY-lV-o5b" firstAttribute="bottom" secondItem="ZCQ-Jm-nde" secondAttribute="bottom" id="Iy6-RP-k6X"/>
                             <constraint firstItem="SO6-be-8Nl" firstAttribute="top" secondItem="jDY-lV-o5b" secondAttribute="top" constant="20" id="Y7d-0G-dKR"/>
                             <constraint firstItem="SO6-be-8Nl" firstAttribute="leading" secondItem="jDY-lV-o5b" secondAttribute="leading" constant="20" id="nld-DR-eFo"/>
                             <constraint firstItem="jDY-lV-o5b" firstAttribute="trailing" secondItem="SO6-be-8Nl" secondAttribute="trailing" constant="20" id="ntH-CT-IhF"/>
+                            <constraint firstItem="ZCQ-Jm-nde" firstAttribute="leading" secondItem="jDY-lV-o5b" secondAttribute="leading" id="yTk-I4-vCU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jDY-lV-o5b"/>
                     </view>
@@ -180,7 +295,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="gaugeView1" destination="Iwy-Ga-faO" id="7cw-T5-rO3"/>
+                        <outlet property="gaugeView2" destination="9W5-h4-pmN" id="B2H-hl-5YL"/>
+                        <outlet property="gaugeView3" destination="KAa-lT-L2I" id="SMS-wg-kEk"/>
+                        <outlet property="gaugeView4" destination="HlV-RD-X2J" id="nVv-Uo-NxE"/>
                         <outlet property="labelWelcome" destination="SO6-be-8Nl" id="Ago-YU-wHs"/>
+                        <outlet property="scrollView" destination="ZCQ-Jm-nde" id="zlW-02-8gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGf-mw-rtt" userLabel="First Responder" sceneMemberID="firstResponder"/>
