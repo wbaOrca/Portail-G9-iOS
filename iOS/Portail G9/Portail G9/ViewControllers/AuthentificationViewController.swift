@@ -32,7 +32,7 @@ class AuthentificationViewController: UIViewController {
         let applicationVersion = shortVersionString + "." + bundleVersion
         labelVersion.text =  Version.VERSION + " " + applicationVersion
         
-        self.textFieldLogin?.placeholder = "Login"
+        self.textFieldLogin?.placeholder = "Identifient"
         self.textFieldPassword?.placeholder = "Mot de passe"
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
