@@ -10,6 +10,8 @@
 		015512B7743FA9C86DCA937F /* Pods_Portail_G9Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B963CBE50B6702C99AADCA /* Pods_Portail_G9Tests.framework */; };
 		791928EEF4006C1C5CF601E9 /* Pods_Portail_G9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87438E7C58B6365E0D815C37 /* Pods_Portail_G9.framework */; };
 		99E5A4A6CFCA132DA8055239 /* Pods_Portail_G9UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */; };
+		FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */; };
+		FB05221822084CAE000556E1 /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221722084CAE000556E1 /* FiltreView.swift */; };
 		FB0E0F7422003E3F0043E345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */; };
 		FB0E0F7D220047990043E345 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F7C220047990043E345 /* Utils.swift */; };
 		FB0E0F7F220047A90043E345 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F7E220047A90043E345 /* Version.swift */; };
@@ -56,6 +58,8 @@
 		BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Portail_G9UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBA8BF36EBDA599F1D5D83A /* Pods-Portail G9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A87BE6D272529D39052BAB /* Pods-Portail G9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.release.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.release.xcconfig"; sourceTree = "<group>"; };
+		FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB05221722084CAE000556E1 /* FiltreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
 		FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB0E0F7522003E680043E345 /* Portail G9.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Portail G9.entitlements"; sourceTree = "<group>"; };
 		FB0E0F7C220047990043E345 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				FBE2EC652201EFD9004B44DF /* LeftMenu */,
+				FB05221722084CAE000556E1 /* FiltreView.swift */,
+				FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,9 +531,11 @@
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
+				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
+				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,

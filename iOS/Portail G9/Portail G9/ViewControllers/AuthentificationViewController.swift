@@ -33,6 +33,7 @@ class AuthentificationViewController: UIViewController {
         labelVersion.text =  Version.VERSION + " " + applicationVersion
         
         self.textFieldLogin?.placeholder = "Login"
+        self.textFieldPassword?.placeholder = "Mot de passe"
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
