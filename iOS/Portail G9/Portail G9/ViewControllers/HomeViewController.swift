@@ -54,6 +54,17 @@ class HomeViewController: UIViewController {
         gaugeView1.colorCodes = "00b359,ccffe6,FFFFFF,FFFFFF,FFFFFF"
         gaugeView1.needleValue = 33;
         
+        let lbl = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        lbl.textAlignment = .center //For center alignment
+        lbl.text = "Titre " + String(33)
+        lbl.textColor = .black
+        lbl.backgroundColor = .white//If required
+        lbl.font = UIFont.systemFont(ofSize: 11)
+        lbl.numberOfLines = 0
+        lbl.lineBreakMode = .byWordWrapping
+        scrollView.addSubview(lbl)
+        scrollView.bringSubviewToFront(lbl)
+        
         gaugeView2.areas = "50,50,0,0,0"
         gaugeView2.colorCodes = "e67300,ffd9b3,FFFFFF,FFFFFF,FFFFFF"
         gaugeView2.needleValue = 45;

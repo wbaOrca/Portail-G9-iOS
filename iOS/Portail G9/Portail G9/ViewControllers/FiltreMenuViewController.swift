@@ -23,7 +23,7 @@ class FiltreMenuViewController: UIViewController {
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     
-    var arrayOfLangues : [String] = ["Français","Anglais","Polonais"];
+    var arrayOfLangues : [String] = ["Français","Anglais","Polonais","Allemand", "Italien"];
     
     // ***********************************
     // ***********************************

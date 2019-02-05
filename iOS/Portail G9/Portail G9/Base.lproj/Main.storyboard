@@ -371,7 +371,7 @@
                                                 <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
-                                                <real key="value" value="61"/>
+                                                <real key="value" value="42"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="NO"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
@@ -384,7 +384,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9W5-h4-pmN" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="27.5" y="340" width="320" height="320"/>
+                                        <rect key="frame" x="27.5" y="210" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="HTr-To-Dt1"/>
@@ -408,7 +408,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAa-lT-L2I" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="27.5" y="670" width="320" height="320"/>
+                                        <rect key="frame" x="27.5" y="410" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="5rE-IF-I4R"/>
@@ -432,7 +432,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-RD-X2J" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="27.5" y="1000" width="320" height="320"/>
+                                        <rect key="frame" x="27.5" y="610" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Ugb-de-y4g"/>
@@ -461,10 +461,10 @@
                                     <constraint firstItem="Iwy-Ga-faO" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="45V-WA-hef"/>
                                     <constraint firstItem="HlV-RD-X2J" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="9tM-v3-2ok"/>
                                     <constraint firstItem="KAa-lT-L2I" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="H52-RX-8Ng"/>
-                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="top" secondItem="Iwy-Ga-faO" secondAttribute="bottom" constant="10" id="JFw-YD-8Ph"/>
+                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="top" secondItem="Iwy-Ga-faO" secondAttribute="bottom" constant="-120" id="JFw-YD-8Ph"/>
                                     <constraint firstItem="Iwy-Ga-faO" firstAttribute="top" secondItem="ZCQ-Jm-nde" secondAttribute="top" constant="10" id="MY0-xn-74a"/>
-                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="top" secondItem="9W5-h4-pmN" secondAttribute="bottom" constant="10" id="Usd-Ga-EPq"/>
-                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="top" secondItem="KAa-lT-L2I" secondAttribute="bottom" constant="10" id="sNc-fz-FQf"/>
+                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="top" secondItem="9W5-h4-pmN" secondAttribute="bottom" constant="-120" id="Usd-Ga-EPq"/>
+                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="top" secondItem="KAa-lT-L2I" secondAttribute="bottom" constant="-120" id="sNc-fz-FQf"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
