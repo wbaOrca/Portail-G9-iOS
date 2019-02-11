@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 import NVActivityIndicatorView
-
+import RSSelectionMenu
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -22,6 +22,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
     @IBOutlet var labelVersion: UILabel!
     @IBOutlet weak var buttonConnexion: UIButton!
     
+    var arraySelectedProfiles : [String] = [String]()
     // ***********************************
     // ***********************************
     // ***********************************
@@ -165,9 +166,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
                 //  Save to disk
                 preferences.synchronize()
                 
-            
-                let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                navigationController?.pushViewController(homeVC, animated: true)
+                selectUserProfileRole(arrayRole: utilisateurResponse.dataUserResponseWSAuth.utilisateur.user_roles)
             
                 return;
             }else
@@ -193,6 +192,61 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         }
     }
     
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func selectUserProfileRole(arrayRole : [String]!)
+    {
+        if(arrayRole.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun Profil.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: arrayRole ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arraySelectedProfiles) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arraySelectedProfiles = selectedItems
+            
+            if(self.arraySelectedProfiles.count > 0)
+            {
+                
+                let preferences = UserDefaults.standard
+                preferences.set(self.arraySelectedProfiles[0], forKey: Utils.SHARED_PREFERENCE_USER_PROFIL)
+                preferences.synchronize()
+                
+                DispatchQueue.main.async {
+                    let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                    self.navigationController?.pushViewController(homeVC, animated: true)
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: "Profils", action: "Sélectionner", height: 400), from: self)
+        
+    }
     
     
     /*

@@ -105,8 +105,20 @@ class HomeViewController: UIViewController {
         lbl4.lineBreakMode = .byWordWrapping
         scrollView.addSubview(lbl4)
         scrollView.bringSubviewToFront(lbl4)
+        
+        
+        
+        //notifications from lef Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func disconnectUser_(notif: NSNotification) {
+        self.dismiss(animated: false, completion: nil)
+        Utils.disconnectUser(goBackAnimated: true);
+    }
     // ***********************************
     // ***********************************
     // ***********************************

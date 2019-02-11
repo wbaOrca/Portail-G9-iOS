@@ -88,7 +88,8 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
         
             if(indexPath.row == 0)
             {
-                Utils.disconnectUser(goBackAnimated: true);
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
+                
             }
             break;
             
