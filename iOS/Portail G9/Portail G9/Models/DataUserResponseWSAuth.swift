@@ -1,21 +1,18 @@
 //
-//  UtilisateurResponseWSAuth.swift
-//  Octroi Etude
+//  DataUserResponseWSAuth.swift
+//  Portail G9
 //
-//  Created by WBA_ORCA on 07/01/2019.
+//  Created by WBA_ORCA on 11/02/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class UtilisateurResponseWSAuth: NSObject  , Mappable {
+class DataUserResponseWSAuth: NSObject  , Mappable {
     
-    var code_erreur : Int = 0
-    var code : Int = 0
-    var description_ : String = ""
-   
-    var dataUserResponseWSAuth : DataUserResponseWSAuth! = nil
+    var token : String = ""
+    var utilisateur : Utilisateur! = nil
     
     //******
     //******
@@ -30,7 +27,7 @@ class UtilisateurResponseWSAuth: NSObject  , Mappable {
     override init() {
         super.init()
     }
-    
+
     // *****************************************
     // *****************************************
     // ****** mapping
@@ -39,12 +36,10 @@ class UtilisateurResponseWSAuth: NSObject  , Mappable {
     // Mappable
     func mapping(map: Map) {
         
-        code_erreur <- map["code_erreur"]
-        code <- map["code"]
-        description_ <- map["description"]
         
-        dataUserResponseWSAuth <- map["data"]
-       
+        token <- map["token"]
+        utilisateur <- map["user"]
         
     }
+    
 }

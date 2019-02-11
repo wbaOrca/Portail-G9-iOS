@@ -145,14 +145,42 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         DispatchQueue.main.async {
             self.stopAnimating()
         }
-        let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        navigationController?.pushViewController(homeVC, animated: true)
         
-        /*
         if(!error && utilisateurResponse != nil)
         {
-            let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            navigationController?.pushViewController(homeVC, animated: true)
+            if(utilisateurResponse.code == WSQueries.CODE_RETOUR_200 && utilisateurResponse.code_erreur == WSQueries.CODE_ERREUR_0)
+            {
+                
+                let preferences = UserDefaults.standard
+                let dataUser = NSKeyedArchiver.archivedData(withRootObject: utilisateurResponse.dataUserResponseWSAuth.utilisateur)
+                preferences.set(dataUser, forKey: Utils.SHARED_PREFERENCE_USER)
+                preferences.set(true, forKey: Utils.SHARED_PREFERENCE_USER_CONNECTED)
+                
+                let loginAsString = self.textFieldLogin?.text;
+                let password = self.textFieldPassword?.text;
+                preferences.set(loginAsString, forKey: Utils.SHARED_PREFERENCE_USER_LOGIN)
+                preferences.set(password, forKey: Utils.SHARED_PREFERENCE_USER_PASSWORD)
+                preferences.set(utilisateurResponse.dataUserResponseWSAuth.token , forKey: Utils.SHARED_PREFERENCE_USER_TOKEN)
+                
+                //  Save to disk
+                preferences.synchronize()
+                
+            
+                let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                navigationController?.pushViewController(homeVC, animated: true)
+            
+                return;
+            }else
+            {
+                DispatchQueue.main.async {
+                    let msgErreur = utilisateurResponse.description_ + "\n code = " + String(utilisateurResponse.code_erreur)
+                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    return;
+                }
+            }
         }else
         {
             DispatchQueue.main.async {
@@ -162,7 +190,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
                 
                 return;
             }
-        }*/
+        }
     }
     
     

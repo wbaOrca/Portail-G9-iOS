@@ -82,7 +82,9 @@ public var sectionsData: [Section] = [
     
     Section(name: "Déconnexion", items: [
         
+        Item(name: "Se déconnecter", detail: "")
         
+    
         ])
 ]
 

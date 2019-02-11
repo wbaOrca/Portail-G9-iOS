@@ -21,6 +21,7 @@
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
 		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
+		FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */; };
 		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
 		FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */; };
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
@@ -80,6 +81,7 @@
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
+		FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUserResponseWSAuth.swift; sourceTree = "<group>"; };
 		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				FB6469FC221188C200084D7F /* Utilisateur.swift */,
 				FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */,
+				FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
+				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
 				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,

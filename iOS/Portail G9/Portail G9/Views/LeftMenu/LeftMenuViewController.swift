@@ -61,6 +61,45 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
     // *****************************
     // *****************************
     // *****************************
+    func collapsibleTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            break;
+            
+        case 1:
+            break;
+            
+        case 2:
+            break;
+            
+        case 3:
+            break;
+        
+        case 4:
+            break;
+        
+        case 5:
+            break;
+        
+        case 6:
+            break;
+        
+        case 7: // deconnexion
+        
+            if(indexPath.row == 0)
+            {
+                Utils.disconnectUser(goBackAnimated: true);
+            }
+            break;
+            
+        default:
+            break;
+        }
+    }
+    
+    // *****************************
+    // *****************************
+    // *****************************
     func collapsibleTableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1.0
     }
@@ -82,6 +121,8 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
     func shouldCollapseOthers(_ tableView: UITableView) -> Bool {
         return true
     }
+    
+    
     
     
     

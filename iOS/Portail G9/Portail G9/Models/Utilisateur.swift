@@ -11,17 +11,16 @@ import ObjectMapper
 
 class Utilisateur: NSObject , Mappable , NSCoding{
 
-    var userId  : Int64 = 0
-    var ipn   : String = ""
-    var nom   : String = ""
-    var prenom   : String = ""
-    var email_user    : String = ""
+    var user_id  : Int64 = 0
+    var user_ipn   : String = ""
+    var user_nom   : String = ""
+    var user_prenom   : String = ""
+    var user_mail    : String = ""
+    var code_country    : String = ""
+    var preferred_lang    : String = ""
+    var user_roles : [String] = [String]()
     var active    : Bool = false
-    var pays    : String = ""
-    var apporteur    : String = ""
-    var apporteur_id  : Int64 = 0
-    var fonction : NSDictionary! = nil
-    var profil : NSDictionary! = nil
+    
    
     
     //******
@@ -46,19 +45,15 @@ class Utilisateur: NSObject , Mappable , NSCoding{
     // Mappable
     func mapping(map: Map) {
         
-        userId    <- map["userId"]
-        ipn    <- map["ipn"]
-        nom    <- map["nom"]
-        prenom    <- map["prenom"]
-        email_user    <- map["email_user"]
+        user_id <- map["user_id"]
+        user_ipn <- map["user_ipn"]
+        user_nom    <- map["user_nom"]
+        user_prenom    <- map["user_prenom"]
+        user_mail    <- map["user_mail"]
         active    <- map["active"]
-        pays    <- map["pays"]
-        apporteur    <- map["apporteur"]
-        apporteur_id    <- map["apporteur_id"]
-       
-        
-        fonction    <- map["fonction"]
-        profil    <- map["profil"]
+        code_country    <- map["code_country"]
+        preferred_lang    <- map["preferred_lang"]
+        user_roles    <- map["user_roles"]
        
         
     }
@@ -70,20 +65,17 @@ class Utilisateur: NSObject , Mappable , NSCoding{
     // *****************************************
     func encode(with aCoder: NSCoder)
     {
-       aCoder.encode(userId, forKey: "userId")
-        aCoder.encode(ipn, forKey: "ipn")
-       aCoder.encode(nom, forKey: "nom")
-       aCoder.encode(prenom, forKey: "prenom")
-       aCoder.encode(email_user, forKey: "email_user")
+       aCoder.encode(user_id, forKey: "user_id")
+        aCoder.encode(user_ipn, forKey: "user_ipn")
+       aCoder.encode(user_nom, forKey: "user_nom")
+       aCoder.encode(user_prenom, forKey: "user_prenom")
+       aCoder.encode(user_mail, forKey: "user_mail")
        aCoder.encode(active, forKey: "active")
-       aCoder.encode(pays, forKey: "pays")
-       aCoder.encode(apporteur, forKey: "apporteur")
-       aCoder.encode(apporteur_id, forKey: "apporteur_id")
+       aCoder.encode(code_country, forKey: "code_country")
+       aCoder.encode(preferred_lang, forKey: "preferred_lang")
+       aCoder.encode(user_roles, forKey: "user_roles")
         
         
-        aCoder.encode(fonction, forKey: "fonction")
-        aCoder.encode(profil, forKey: "profil")
-       
     }
     
     // *****************************************
@@ -93,19 +85,15 @@ class Utilisateur: NSObject , Mappable , NSCoding{
     // *****************************************
     required init(coder decoder: NSCoder) {
         
-        self.userId = decoder.decodeInt64(forKey: "userId")
-        self.ipn = decoder.decodeObject(forKey: "ipn") as? String ?? ""
-        self.nom = decoder.decodeObject(forKey: "nom") as? String ?? ""
-        self.prenom = decoder.decodeObject(forKey: "prenom") as? String ?? ""
-        self.email_user = decoder.decodeObject(forKey: "email_user") as? String ?? ""
+        self.user_id = decoder.decodeInt64(forKey: "user_id")
+        self.user_ipn = decoder.decodeObject(forKey: "user_ipn") as? String ?? ""
+        self.user_nom = decoder.decodeObject(forKey: "user_nom") as? String ?? ""
+        self.user_prenom = decoder.decodeObject(forKey: "user_prenom") as? String ?? ""
+        self.user_mail = decoder.decodeObject(forKey: "user_mail") as? String ?? ""
         self.active = decoder.decodeBool(forKey: "active")
-        self.pays = decoder.decodeObject(forKey: "pays") as? String ?? ""
-        
-        self.apporteur = decoder.decodeObject(forKey: "apporteur") as? String ?? ""
-        self.apporteur_id = decoder.decodeInt64(forKey: "apporteur_id")
-        
-        self.fonction = decoder.decodeObject(forKey: "fonction") as? NSDictionary ?? nil
-        self.profil = decoder.decodeObject(forKey: "profil") as? NSDictionary ?? nil
+        self.code_country = decoder.decodeObject(forKey: "code_country") as? String ?? ""
+        self.preferred_lang = decoder.decodeObject(forKey: "preferred_lang") as? String ?? ""
+        self.user_roles = decoder.decodeObject(forKey: "user_roles") as? [String] ?? [String]()
        
         
     }
