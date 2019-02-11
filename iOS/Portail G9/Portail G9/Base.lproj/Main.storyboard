@@ -90,14 +90,20 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="N0w-vr-rZe" id="LIi-yk-CwS"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Urs-3h-NBk">
                                         <rect key="frame" x="0.0" y="55" width="305" height="45"/>
                                         <color key="backgroundColor" red="0.9789469838142395" green="1" blue="0.74186974763870239" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="N0w-vr-rZe" id="fC7-p2-Csc"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -109,7 +115,7 @@
                                     <color key="titleColor" red="0.96532374620000005" green="0.70018678899999998" blue="0.1992127001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="connectAction" destination="N0w-vr-rZe" eventType="touchUpInside" id="Pvg-gf-cNU"/>
+                                    <action selector="loginAction:" destination="N0w-vr-rZe" eventType="touchUpInside" id="397-zF-oQM"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_drive_r_g9" translatesAutoresizingMaskIntoConstraints="NO" id="A5n-Ps-ldq">
@@ -144,6 +150,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="AZw-sl-Tf4"/>
                     <connections>
+                        <outlet property="buttonConnexion" destination="fVd-OB-8MI" id="x3C-tj-qsu"/>
                         <outlet property="labelVersion" destination="ucU-fJ-9JN" id="wV8-7a-6E1"/>
                         <outlet property="textFieldLogin" destination="WsC-0p-qXj" id="7v7-98-WYV"/>
                         <outlet property="textFieldPassword" destination="Urs-3h-NBk" id="ehh-ZQ-LeF"/>

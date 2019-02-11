@@ -18,6 +18,9 @@
 		FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */; };
 		FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8322005BE40043E345 /* HomeViewController.swift */; };
 		FB0E0F8922005DAD0043E345 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F8722005DAD0043E345 /* Localizable.strings */; };
+		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
+		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
+		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
 		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
 		FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */; };
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
@@ -74,6 +77,9 @@
 		FB0E0F8B22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		FB0E0F8C22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FB0E0F8D22005F670043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
+		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
+		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
 		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -181,18 +187,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FB0E0F7B2200477C0043E345 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		FB0E0F80220056DA0043E345 /* WSQueries */ = {
 			isa = PBXGroup;
 			children = (
+				FB646A00221189A100084D7F /* WSQueries.swift */,
 			);
 			path = WSQueries;
+			sourceTree = "<group>";
+		};
+		FB6469FB221188C200084D7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB6469FC221188C200084D7F /* Utilisateur.swift */,
+				FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FBE2EC652201EFD9004B44DF /* LeftMenu */ = {
@@ -232,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */,
-				FB0E0F7B2200477C0043E345 /* Entities */,
+				FB6469FB221188C200084D7F /* Models */,
 				FB0E0F7A2200477C0043E345 /* Resources */,
 				FB0E0F782200477B0043E345 /* Utils */,
 				FB0E0F792200477B0043E345 /* ViewControllers */,
@@ -534,14 +543,17 @@
 			files = (
 				FB0E0F7D220047990043E345 /* Utils.swift in Sources */,
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
+				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
+				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
+				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,
