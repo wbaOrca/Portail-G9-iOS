@@ -45,6 +45,7 @@ class Utils: NSObject {
         
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_TOKEN)
+        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_PROFIL)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_NOM)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_PRENOM)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_LOGIN)

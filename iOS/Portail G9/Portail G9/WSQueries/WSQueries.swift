@@ -20,10 +20,16 @@ protocol WSAuthentificationDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
-
+protocol WSGetDataUtilesDelegate {
+    
+    func didFinishWSGetDataUtiles(error: Bool , data : DataUtilesWSResponse!)
+}
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
-
+protocol WSGetDonneesRadarsDelegate {
+    
+    func didFinishWSGetDonneesRadars(error: Bool , data : DataRadarWSResponse!)
+}
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 
@@ -156,4 +162,166 @@ class WSQueries: NSObject {
     }
     
 
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getDonneesUtiles(delegate : WSGetDataUtilesDelegate)
+    {
+       
+        
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getDonneesUtiles"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getDonneesUtiles(delegate: delegate)
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataUtiles =  Mapper<DataUtilesWSResponse>().map(JSONObject:responseJson)
+                if(responseDataUtiles != nil)
+                {
+                    delegate.didFinishWSGetDataUtiles(error: false,data:responseDataUtiles )
+                    return
+                }
+                
+               delegate.didFinishWSGetDataUtiles(error: true , data: nil)
+                
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetDataUtiles(error: true , data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getRadarsData(delegate : WSGetDonneesRadarsDelegate , langue_code : String, pays_id : Int, zone_id : Int!, groupe_id : Int! , affaire_id : Int!)
+    {
+        
+        
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        var perimetre = "{\"langue\" : \"$LANGUE\", \"country\" : $COUNTRY_ID , \"zone\" : $ZONE_ID , \"group\" : $GROUPE_ID , \"dealer\" : $AFFAIRE_ID}"
+        perimetre = perimetre.replacingOccurrences(of: "$LANGUE", with: langue_code);
+        perimetre = perimetre.replacingOccurrences(of: "$COUNTRY_ID", with: String(pays_id));
+        if(zone_id == nil)
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$ZONE_ID", with: "null");
+        }else
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$ZONE_ID", with: String(zone_id));
+        }
+        if(groupe_id == nil)
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$GROUPE_ID", with: "null");
+        }else
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$GROUPE_ID", with: String(groupe_id));
+        }
+        if(affaire_id == nil)
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$AFFAIRE_ID", with: "null");
+        }else
+        {
+            perimetre = perimetre.replacingOccurrences(of: "$AFFAIRE_ID", with: String(affaire_id));
+        }
+        
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getDonneesRadarAccueil"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getRadarsData(delegate: delegate,langue_code: langue_code,pays_id: pays_id,zone_id: zone_id,groupe_id: groupe_id,affaire_id: affaire_id);
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataRadars =  Mapper<DataRadarWSResponse>().map(JSONObject:responseJson)
+                if(responseDataRadars != nil)
+                {
+                    delegate.didFinishWSGetDonneesRadars(error: false, data: responseDataRadars)
+                    return
+                }
+                
+                delegate.didFinishWSGetDonneesRadars(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetDonneesRadars(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
 }

@@ -27,6 +27,15 @@
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
 		FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC6A2201F006004B44DF /* ExampleData.swift */; };
 		FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC6C2201F064004B44DF /* CustomCell.swift */; };
+		FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E0B2212AA390027F6E2 /* Langue.swift */; };
+		FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E0D2212AC0D0027F6E2 /* Pays.swift */; };
+		FBE63E102212AC790027F6E2 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E0F2212AC790027F6E2 /* Zone.swift */; };
+		FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E112212AC840027F6E2 /* Groupe.swift */; };
+		FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E132212B08C0027F6E2 /* Dealer.swift */; };
+		FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E152212B3740027F6E2 /* DataUtilesWSResponse.swift */; };
+		FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E172212B5410027F6E2 /* DataUtiles.swift */; };
+		FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E192212C1C70027F6E2 /* DataRadarWSResponse.swift */; };
+		FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E1B2212C2060027F6E2 /* DataRadar.swift */; };
 		FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */; };
 		FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3721DFA8AB006A7341 /* Portail_G9.xcdatamodeld */; };
 		FBF15B4021DFA8AB006A7341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF15B3E21DFA8AB006A7341 /* Main.storyboard */; };
@@ -87,6 +96,15 @@
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC6A2201F006004B44DF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		FBE2EC6C2201F064004B44DF /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		FBE63E0B2212AA390027F6E2 /* Langue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Langue.swift; sourceTree = "<group>"; };
+		FBE63E0D2212AC0D0027F6E2 /* Pays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pays.swift; sourceTree = "<group>"; };
+		FBE63E0F2212AC790027F6E2 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		FBE63E112212AC840027F6E2 /* Groupe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groupe.swift; sourceTree = "<group>"; };
+		FBE63E132212B08C0027F6E2 /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		FBE63E152212B3740027F6E2 /* DataUtilesWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtilesWSResponse.swift; sourceTree = "<group>"; };
+		FBE63E172212B5410027F6E2 /* DataUtiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtiles.swift; sourceTree = "<group>"; };
+		FBE63E192212C1C70027F6E2 /* DataRadarWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRadarWSResponse.swift; sourceTree = "<group>"; };
+		FBE63E1B2212C2060027F6E2 /* DataRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRadar.swift; sourceTree = "<group>"; };
 		FBF15B3221DFA8AB006A7341 /* Portail G9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Portail G9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF15B3821DFA8AB006A7341 /* Portail_G9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Portail_G9.xcdatamodel; sourceTree = "<group>"; };
@@ -203,6 +221,15 @@
 				FB6469FC221188C200084D7F /* Utilisateur.swift */,
 				FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */,
 				FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */,
+				FBE63E152212B3740027F6E2 /* DataUtilesWSResponse.swift */,
+				FBE63E172212B5410027F6E2 /* DataUtiles.swift */,
+				FBE63E0B2212AA390027F6E2 /* Langue.swift */,
+				FBE63E0D2212AC0D0027F6E2 /* Pays.swift */,
+				FBE63E0F2212AC790027F6E2 /* Zone.swift */,
+				FBE63E112212AC840027F6E2 /* Groupe.swift */,
+				FBE63E132212B08C0027F6E2 /* Dealer.swift */,
+				FBE63E192212C1C70027F6E2 /* DataRadarWSResponse.swift */,
+				FBE63E1B2212C2060027F6E2 /* DataRadar.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -552,15 +579,24 @@
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
+				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
 				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
+				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
+				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
 				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
+				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
+				FBE63E102212AC790027F6E2 /* Zone.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,
+				FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */,
+				FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */,
+				FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */,
+				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
