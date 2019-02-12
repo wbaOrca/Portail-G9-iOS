@@ -170,7 +170,6 @@ class WSQueries: NSObject {
     {
        
         
-        
         // headers autorization
         var authorization_ = "Bearer "
         let preferences = UserDefaults.standard
@@ -181,9 +180,12 @@ class WSQueries: NSObject {
             "Authorization": authorization_
         ]
         
-        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let profil_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let langue_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE) as? String ?? "en-GB";
+        
         let post_params: Parameters = [
-            "profil": profil
+            "profil": profil_,
+            "code_langue" : langue_
         ]
         
         let url_ = Version.URL_WS_PORTAIL_G9 + "/getDonneesUtiles"
@@ -202,6 +204,10 @@ class WSQueries: NSObject {
                         if(code == WSQueries.CODE_RETOUR_200)
                         {
                             WSQueries.getDonneesUtiles(delegate: delegate)
+                        }else
+                        {
+                            delegate.didFinishWSGetDataUtiles(error: true , data: nil)
+                            return
                         }
                     })
                     
@@ -298,6 +304,10 @@ class WSQueries: NSObject {
                         if(code == WSQueries.CODE_RETOUR_200)
                         {
                             WSQueries.getRadarsData(delegate: delegate,langue_code: langue_code,pays_id: pays_id,zone_id: zone_id,groupe_id: groupe_id,affaire_id: affaire_id);
+                        }else
+                        {
+                            delegate.didFinishWSGetDonneesRadars(error: true, data: nil)
+                            return
                         }
                     })
                     

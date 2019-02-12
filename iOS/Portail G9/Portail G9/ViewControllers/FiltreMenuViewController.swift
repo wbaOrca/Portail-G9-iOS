@@ -19,7 +19,7 @@ class FiltreMenuViewController: UIViewController {
     var delegate : FiltreMenuViewControllerDelegate! = nil
     
     @IBOutlet weak var filtreCollectionView: UICollectionView!
-    var arrayFiltres : [String] = ["Français", "Suisse","Zone 1", "-" , "Affaire 1"];
+    var arrayFiltres : [String] = ["Langue", "Pays","Zone", "Groupe" , "Affaire"];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     

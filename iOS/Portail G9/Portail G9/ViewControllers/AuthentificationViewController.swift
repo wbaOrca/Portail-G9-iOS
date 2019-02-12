@@ -163,6 +163,9 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
                 preferences.set(password, forKey: Utils.SHARED_PREFERENCE_USER_PASSWORD)
                 preferences.set(utilisateurResponse.dataUserResponseWSAuth.token , forKey: Utils.SHARED_PREFERENCE_USER_TOKEN)
                 
+                let langue_preferee = utilisateurResponse.dataUserResponseWSAuth.utilisateur.preferred_lang
+                preferences.set(langue_preferee, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                
                 //  Save to disk
                 preferences.synchronize()
                 

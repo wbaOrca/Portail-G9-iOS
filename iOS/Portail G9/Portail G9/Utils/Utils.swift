@@ -28,7 +28,14 @@ class Utils: NSObject {
     public static let SHARED_PREFERENCE_USER_LOGIN = "SHARED_PREFERENCE_USER_LOGIN"
     public static let SHARED_PREFERENCE_USER_PASSWORD = "SHARED_PREFERENCE_USER_PASSWORD"
     
-    public static let SHARED_PREFERENCE_DATA_UTILS = "SHARED_PREFERENCE_DATA_UTILS"
+    public static let SHARED_PREFERENCE_DATA_PERIMETRE = "SHARED_PREFERENCE_DATA_PERIMETRE"
+    public static let SHARED_PREFERENCE_LANGUAGES = "SHARED_PREFERENCE_LANGUAGES"
+    
+    public static let SHARED_PREFERENCE_PERIMETRE_LANGUE = "SHARED_PREFERENCE_PERIMETRE_LANGUE"
+    public static let SHARED_PREFERENCE_PERIMETRE_PAYS = "SHARED_PREFERENCE_PERIMETRE_PAYS"
+    public static let SHARED_PREFERENCE_PERIMETRE_ZONE = "SHARED_PREFERENCE_PERIMETRE_ZONE"
+    public static let SHARED_PREFERENCE_PERIMETRE_GROUPE = "SHARED_PREFERENCE_PERIMETRE_GROUPE"
+    public static let SHARED_PREFERENCE_PERIMETRE_AFFAIRE = "SHARED_PREFERENCE_PERIMETRE_AFFAIRE"
     
     public static let NUMBER_DEMANDE_BY_PAGE = 100 ;
     
@@ -43,6 +50,8 @@ class Utils: NSObject {
     {
         let preferences = UserDefaults.standard
         
+        preferences.set(false, forKey: Utils.SHARED_PREFERENCE_USER_CONNECTED)
+        
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_TOKEN)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_PROFIL)
@@ -51,9 +60,15 @@ class Utils: NSObject {
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_LOGIN)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_USER_PASSWORD)
         
-        preferences.set(false, forKey: Utils.SHARED_PREFERENCE_USER_CONNECTED)
-        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_DATA_UTILS)
         
+        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
+        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
+        
+        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
+         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
+         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE)
         //  Save to disk
         preferences.synchronize()
         
@@ -119,6 +134,11 @@ class Utils: NSObject {
     // *****************************************
     public static func randomStringWithLength (len : Int) -> String
     {
+        
+        if(len < 1)
+        {
+            return "";
+        }
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         

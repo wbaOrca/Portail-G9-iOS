@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Reachability
+import NVActivityIndicatorView
 
 import SideMenu
 import ABGaugeViewKit
@@ -15,8 +17,11 @@ import ABGaugeViewKit
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController , NVActivityIndicatorViewable{
 
+    
+    var isSynchronisedData = false;
+    
     @IBOutlet weak var filtreView : FiltreView!
     @IBOutlet weak var labelWelcome: UILabel!
     
@@ -34,7 +39,18 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Home", comment: "-")
-        labelWelcome.text = NSLocalizedString("Hello", comment: "-")
+        
+        
+        let preferences = UserDefaults.standard
+        let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
+        if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
+            
+            let user = user_ as! Utilisateur
+            
+            let userAsString = user.user_prenom + " " + user.user_nom
+            
+            labelWelcome.text = NSLocalizedString("Hello", comment: "-") + " " + userAsString
+        }
         
         let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu_"), style: .plain, target: self, action: #selector(menuTapped))
         navigationItem.leftBarButtonItems = [menuButton]
@@ -106,11 +122,63 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(lbl4)
         scrollView.bringSubviewToFront(lbl4)
         
-        
+        // filtreView
+        filtreView.setupFiltreView()
         
         //notifications from lef Menu
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
     }
+    // *******************************************************************************
+    // ******
+    // ****** viewWillAppear
+    // ******
+    // *******************************************************************************
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
+        
+        
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(!isSynchronisedData)
+        {
+            self.syncroniseData()
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func syncroniseData()
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Récupération des données en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.getDonneesUtiles(delegate: self);
+        }
+    }
+    
+    
     
     // ***********************************
     // ***********************************
@@ -142,18 +210,7 @@ class HomeViewController: UIViewController {
     
     
     
-    // *******************************************************************************
-    // ******
-    // ****** viewWillAppear
-    // ******
-    // *******************************************************************************
-    override func viewWillAppear(_ animated: Bool) {
-       
-        super.viewWillAppear(animated)
-        self.navigationItem.hidesBackButton = true
     
-        
-    }
     
 
     
@@ -161,7 +218,95 @@ class HomeViewController: UIViewController {
     
 
 }
-
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension HomeViewController: WSGetDataUtilesDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSGetDataUtiles(error: Bool, data: DataUtilesWSResponse!) {
+        
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error && data != nil)
+        {
+            isSynchronisedData = true;
+            
+            if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
+            {
+                let preferences = UserDefaults.standard
+                
+                let dataLangue = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.langues)
+                preferences.set(dataLangue, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
+                
+                let dataPerimetre = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.perimetre)
+                preferences.set(dataPerimetre, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
+                
+                //mettre le 1er pays par défaut dans le perimetre/filtre
+                if(preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS) == nil)
+                {
+                    if(data.dataUtiles.perimetre.count > 0)
+                    {
+                        let pays_ = data.dataUtiles.perimetre[0];
+                        let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
+                        preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+                    }
+                }
+                //  Save to disk
+                preferences.synchronize()
+                
+                DispatchQueue.main.async {
+                    
+                    self.filtreView.setupFiltreView()
+                    
+                }
+            }else
+            {
+                DispatchQueue.main.async {
+                    let msgErreur = data.description_ + "\n code = " + String(data.code_erreur)
+                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    return;
+                }
+            }
+            
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
+    
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension HomeViewController: WSGetDonneesRadarsDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSGetDonneesRadars(error: Bool, data: DataRadarWSResponse!) {
+        
+    }
+    
+    
+}
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
