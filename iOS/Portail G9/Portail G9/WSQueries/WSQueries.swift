@@ -181,11 +181,22 @@ class WSQueries: NSObject {
         ]
         
         let profil_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
-        let langue_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE) as? String ?? "en-GB";
+        
+        // la langue
+        var langue_user = "en-GB";
+        let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+        if(langueData_ != nil){
+            if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                
+                let langue = langue_ as! Langue
+               langue_user = langue.libelle
+                
+            }
+        }
         
         let post_params: Parameters = [
             "profil": profil_,
-            "code_langue" : langue_
+            "code_langue" : langue_user
         ]
         
         let url_ = Version.URL_WS_PORTAIL_G9 + "/getDonneesUtiles"

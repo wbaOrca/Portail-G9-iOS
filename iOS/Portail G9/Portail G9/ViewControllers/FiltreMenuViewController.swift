@@ -23,7 +23,11 @@ class FiltreMenuViewController: UIViewController {
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     
-    var arrayOfLangues : [String] = ["Français","Anglais","Polonais","Allemand", "Italien"];
+    var arrayOfLangues : [Langue] = [Langue]();
+    var arrayOfSelectedLangue : [Langue] = [Langue]();
+    
+    var arrayOfPays : [Pays] = [Pays]();
+    var arrayOfSelectedPays : [Pays] = [Pays]();
     
     // ***********************************
     // ***********************************
@@ -31,7 +35,54 @@ class FiltreMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        // 1 langues
+        let preferences = UserDefaults.standard
+        let languesData = preferences.data(forKey: Utils.SHARED_PREFERENCE_LANGUAGES);
+        if(languesData != nil){
+            if let langue_array_ = NSKeyedUnarchiver.unarchiveObject(with: languesData!)  {
+                
+                let langue_array = langue_array_ as! [Langue]
+                self.arrayOfLangues = langue_array
+                
+            }
+        }
+        
+        // la langue
+        let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+        if(langueData_ != nil){
+            if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                
+                let langue = langue_ as! Langue
+                arrayOfSelectedLangue.append(langue)
+                arrayFiltres[0] = langue.libelle
+                
+            }
+        }
+        
+        // 1 pays
+        let dataPerimetre = preferences.data(forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE);
+        if(dataPerimetre != nil){
+            if let dataPerimetre_ = NSKeyedUnarchiver.unarchiveObject(with: dataPerimetre!)  {
+                
+                let pays_array = dataPerimetre_ as! [Pays]
+                self.arrayOfPays = pays_array
+                
+            }
+        }
+        
+        // la langue
+        let paysData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
+        if(paysData_ != nil){
+            if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData_!)  {
+                
+                let pays = pays_ as! Pays
+                arrayOfSelectedPays.append(pays)
+                arrayFiltres[1] = pays.countryLib
+                
+            }
+        }
+       
     }
     
     // ***********************************
@@ -39,6 +90,25 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     @IBAction func selectOk(_ sender: Any) {
         
+        let preferences = UserDefaults.standard
+        
+        if(arrayOfSelectedLangue.count > 0)
+        {
+            let langue = arrayOfSelectedLangue[0];
+            let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
+            preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+        }
+        
+        if(arrayOfSelectedPays.count > 0)
+        {
+            let pays = arrayOfSelectedPays[0];
+            let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays)
+            preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+        }
+        
+        //save
+        preferences.synchronize()
+        //dismiss
         dismissFiltre()
     }
     
@@ -46,8 +116,7 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     // ***********************************
     func dismissFiltre() {
-        super.viewDidLoad()
-       
+        
         self.delegate.dismissFiltreMenuViewController()
     }
     
@@ -75,6 +144,54 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     // ***********************************
     func selectPays() {
+        
+        if(arrayOfPays.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun Pays.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        // Show menu with datasource array - Default SelectionType = Single
+        // Here you'll get cell configuration where you can set any text based on condition
+        // Cell configuration following parameters.
+        // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: arrayOfPays ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object.countryLib
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedPays) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arrayOfSelectedPays =  selectedItems
+            
+            if(self.arrayOfSelectedPays.count > 0)
+            {
+                let pays_ = self.arrayOfSelectedPays[0]
+                self.arrayFiltres[1] = pays_.countryLib
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
+            }
+            
+        }
+        
+        selectionMenu.uniquePropertyName = "countryId"
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: "Pays", action: "Sélectionner", height: 400), from: self)
     }
     
     // ***********************************
@@ -99,7 +216,7 @@ class FiltreMenuViewController: UIViewController {
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
         
         let selectionMenu =  RSSelectionMenu(dataSource: arrayOfLangues ) { (cell, object, indexPath) in
-            cell.textLabel?.text = object
+            cell.textLabel?.text = object.libelle
             // Change tint color (if needed)
             cell.tintColor = .orange
         }
@@ -107,22 +224,24 @@ class FiltreMenuViewController: UIViewController {
         
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
-        /*
-        selectionMenu.setSelectedItems(items: arrayOfSelectedTypeDocument as! [DocumentType]) { (text, isSelected, selectedItems) in
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedLangue) { (text, isSelected, selectedItems) in
             
             // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
-            self.arrayOfSelectedTypeDocument = NSMutableArray(array: selectedItems)
+            self.arrayOfSelectedLangue =  selectedItems
             
-            if(self.arrayOfSelectedTypeDocument.count > 0)
+            if(self.arrayOfSelectedLangue.count > 0)
             {
-                let typeDoc = self.arrayOfSelectedTypeDocument[0] as! DocumentType
-                self.currentTypeDocument = typeDoc;
-                self.buttonTypeDocument.setTitle(typeDoc.libelle_court, for: .normal)
-                
+                let langue_ = self.arrayOfSelectedLangue[0]
+                self.arrayFiltres[0] = langue_.libelle
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
             }
+           
         }
-        */
-        selectionMenu.uniquePropertyName = "id"
+        
+        selectionMenu.uniquePropertyName = "languageId"
         
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
@@ -179,6 +298,7 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
             selectLangue()
             break;
         case 1:
+            selectPays()
             break;
         case 2:
             break;

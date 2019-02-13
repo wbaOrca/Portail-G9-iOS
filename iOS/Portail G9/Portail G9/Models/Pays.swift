@@ -8,14 +8,23 @@
 
 import UIKit
 import ObjectMapper
+import RSSelectionMenu
 
-class Pays: NSObject , Mappable , NSCoding  {
+class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
 
+    
     var countryId   : Int64 = -1
     var countryLib   : String = ""
     var countryZoneCode   : String = ""
     var zones   : [Zone] = [Zone]()
     var groupes   : [Groupe] = [Groupe]()
+    
+    //******
+    //******
+    //******
+    func uniquePropertyName() -> String {
+        return "countryId"
+    }
     
     //******
     //******

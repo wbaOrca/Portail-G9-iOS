@@ -8,8 +8,14 @@
 
 import UIKit
 import ObjectMapper
+import RSSelectionMenu
 
-class Langue: NSObject , Mappable , NSCoding {
+class Langue: NSObject , Mappable , NSCoding , UniqueProperty {
+    
+    func uniquePropertyName() -> String {
+        return "languageId"
+    }
+    
 
     var languageId   : Int = -1
     var libelle   : String = ""

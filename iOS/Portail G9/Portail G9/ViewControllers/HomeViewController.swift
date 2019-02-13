@@ -122,8 +122,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         scrollView.addSubview(lbl4)
         scrollView.bringSubviewToFront(lbl4)
         
-        // filtreView
-        filtreView.setupFiltreView()
+        
         
         //notifications from lef Menu
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
@@ -145,6 +144,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // filtreView
+        filtreView.setupFiltreView()
         
         if(!isSynchronisedData)
         {
@@ -244,6 +246,29 @@ extension HomeViewController: WSGetDataUtilesDelegate {
                 
                 let dataLangue = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.langues)
                 preferences.set(dataLangue, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
+                
+                //mettre la langue par défaut dans le perimetre/filtre
+                let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
+                if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
+                    
+                    let user = user_ as! Utilisateur
+                    let langue_preferee = user.preferred_lang
+                    
+                    for i in (0 ..< data.dataUtiles.langues.count)
+                    {
+                        let langue = data.dataUtiles.langues[i];
+                        if(langue_preferee.contains(langue.languageCode))
+                        {
+                            let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
+                            preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                            
+                            break;
+                        }
+                    }
+                    
+                }
+                
+                
                 
                 let dataPerimetre = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.perimetre)
                 preferences.set(dataPerimetre, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)

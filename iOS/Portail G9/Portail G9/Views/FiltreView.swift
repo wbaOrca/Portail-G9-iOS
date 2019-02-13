@@ -27,11 +27,17 @@ class FiltreView: UIView {
         let preferences = UserDefaults.standard
         
         //1  la langue
-        let langue_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE) as? String ?? "en-GB";
-        arrayFiltres[0] = langue_
+        let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+        if(langueData_ != nil){
+            if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                
+                let langue = langue_ as! Langue
+                arrayFiltres[0] = langue.libelle
+                
+            }
+        }
         
         //2 le pays
-        
         let paysData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
         if(paysData != nil){
             if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData!)  {
@@ -41,6 +47,9 @@ class FiltreView: UIView {
                 
             }
         }
+        
+        
+        self.filtreCollectionView.reloadData();
     }
     
     
