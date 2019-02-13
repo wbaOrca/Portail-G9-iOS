@@ -8,12 +8,20 @@
 
 import UIKit
 import ObjectMapper
+import RSSelectionMenu
 
-class Dealer: NSObject, Mappable , NSCoding {
+class Dealer: NSObject, Mappable , NSCoding, UniqueProperty {
 
     var id   : Int64 = -1
     var libelle   : String = ""
     var zoneIdClient   : String = ""
+    
+    //******
+    //******
+    //******
+    func uniquePropertyName() -> String {
+        return "id"
+    }
     
     //******
     //******

@@ -35,6 +35,9 @@ class FiltreView: UIView {
                 arrayFiltres[0] = langue.libelle
                 
             }
+        }else
+        {
+            arrayFiltres[0] = "Langue"
         }
         
         //2 le pays
@@ -46,6 +49,52 @@ class FiltreView: UIView {
                 arrayFiltres[1] = pays.countryLib
                 
             }
+        }
+        else
+        {
+            arrayFiltres[1] = "Pays"
+        }
+        
+        //3 zone
+        let zoneData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
+        if(zoneData != nil){
+            if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData!)  {
+                
+                let zone = zone_ as! Zone
+                arrayFiltres[2] = zone.libelle
+                
+            }
+        }else
+        {
+            arrayFiltres[2] = "Zone"
+        }
+        
+        //4 Groupe
+        let groupeData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
+        if(groupeData != nil){
+            if let groupe_ = NSKeyedUnarchiver.unarchiveObject(with: groupeData!)  {
+                
+                let grp = groupe_ as! Groupe
+                arrayFiltres[3] = grp.libelle
+                
+            }
+        }else
+        {
+            arrayFiltres[3] = "Groupe"
+        }
+        
+        //5 Affaire
+        let dealerData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+        if(dealerData != nil){
+            if let dealer_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData!)  {
+                
+                let affaire = dealer_ as! Dealer
+                arrayFiltres[4] = affaire.libelle
+                
+            }
+        }else
+        {
+            arrayFiltres[0] = "Affaire"
         }
         
         

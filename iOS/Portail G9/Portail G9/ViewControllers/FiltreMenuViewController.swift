@@ -29,6 +29,10 @@ class FiltreMenuViewController: UIViewController {
     var arrayOfPays : [Pays] = [Pays]();
     var arrayOfSelectedPays : [Pays] = [Pays]();
     
+    var arrayOfSelectedZone : [Zone] = [Zone]();
+    var arrayOfSelectedGroupe : [Groupe] = [Groupe]();
+    var arrayOfSelectedAffaire : [Dealer] = [Dealer]();
+    
     // ***********************************
     // ***********************************
     // ***********************************
@@ -36,7 +40,7 @@ class FiltreMenuViewController: UIViewController {
         super.viewDidLoad()
 
         
-        // 1 langues
+        // 1 liste des langues
         let preferences = UserDefaults.standard
         let languesData = preferences.data(forKey: Utils.SHARED_PREFERENCE_LANGUAGES);
         if(languesData != nil){
@@ -48,7 +52,7 @@ class FiltreMenuViewController: UIViewController {
             }
         }
         
-        // la langue
+        // la langue par défaut
         let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
         if(langueData_ != nil){
             if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
@@ -60,7 +64,7 @@ class FiltreMenuViewController: UIViewController {
             }
         }
         
-        // 1 pays
+        // 1 liste des pays
         let dataPerimetre = preferences.data(forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE);
         if(dataPerimetre != nil){
             if let dataPerimetre_ = NSKeyedUnarchiver.unarchiveObject(with: dataPerimetre!)  {
@@ -71,7 +75,7 @@ class FiltreMenuViewController: UIViewController {
             }
         }
         
-        // la langue
+        // Pays par défaut
         let paysData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
         if(paysData_ != nil){
             if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData_!)  {
@@ -79,6 +83,42 @@ class FiltreMenuViewController: UIViewController {
                 let pays = pays_ as! Pays
                 arrayOfSelectedPays.append(pays)
                 arrayFiltres[1] = pays.countryLib
+                
+            }
+        }
+        
+        // Zone par défaut
+        let zoneData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
+        if(zoneData_ != nil){
+            if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData_!)  {
+                
+                let zone = zone_ as! Zone
+                arrayOfSelectedZone.append(zone)
+                arrayFiltres[2] = zone.libelle
+                
+            }
+        }
+        
+        // Groupe par défaut
+        let grpData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
+        if(grpData_ != nil){
+            if let grp_ = NSKeyedUnarchiver.unarchiveObject(with: grpData_!)  {
+                
+                let group = grp_ as! Groupe
+                arrayOfSelectedGroupe.append(group)
+                arrayFiltres[3] = group.libelle
+                
+            }
+        }
+        
+        // Affaire par défaut
+        let dealerData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+        if(dealerData_ != nil){
+            if let affaire_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData_!)  {
+                
+                let dealer = affaire_ as! Dealer
+                arrayOfSelectedAffaire.append(dealer)
+                arrayFiltres[4] = dealer.libelle
                 
             }
         }
@@ -97,6 +137,9 @@ class FiltreMenuViewController: UIViewController {
             let langue = arrayOfSelectedLangue[0];
             let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
             preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+        }else
+        {
+            preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
         }
         
         if(arrayOfSelectedPays.count > 0)
@@ -104,6 +147,39 @@ class FiltreMenuViewController: UIViewController {
             let pays = arrayOfSelectedPays[0];
             let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays)
             preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+        }else
+        {
+             preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+        }
+        
+        if(arrayOfSelectedZone.count > 0)
+        {
+            let zone = arrayOfSelectedZone[0];
+            let dataZoneParDefaut = NSKeyedArchiver.archivedData(withRootObject: zone)
+            preferences.set(dataZoneParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
+        }else
+        {
+            preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
+        }
+        
+        if(arrayOfSelectedGroupe.count > 0)
+        {
+            let groupe = arrayOfSelectedGroupe[0];
+            let dataGroupeParDefaut = NSKeyedArchiver.archivedData(withRootObject: groupe)
+            preferences.set(dataGroupeParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
+        }else
+        {
+            preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
+        }
+        
+        if(arrayOfSelectedAffaire.count > 0)
+        {
+            let affaire = arrayOfSelectedAffaire[0];
+            let dataAffaireParDefaut = NSKeyedArchiver.archivedData(withRootObject: affaire)
+            preferences.set(dataAffaireParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE)
+        }else
+        {
+            preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE)
         }
         
         //save
@@ -120,24 +196,221 @@ class FiltreMenuViewController: UIViewController {
         self.delegate.dismissFiltreMenuViewController()
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func selectAffaire() {
+        
+        if(self.arrayOfSelectedZone.count == 0 && self.arrayOfSelectedGroupe.count == 0 )
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une zone ou un groupe", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        var arrayAffaire : [Dealer] = [Dealer]()
+        if(self.arrayOfSelectedZone.count > 0 && self.arrayOfSelectedGroupe.count == 0 )
+        {
+            let zone_selected = self.arrayOfSelectedZone[0]
+            arrayAffaire = zone_selected.dealers
+        }else  if(self.arrayOfSelectedZone.count == 0 && self.arrayOfSelectedGroupe.count > 0 )
+        {
+            let groupe_selected = self.arrayOfSelectedGroupe[0]
+            arrayAffaire = groupe_selected.dealers
+        }
+        
+        
+        if(arrayAffaire.count == 0 )
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune affaire.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        // Show menu with datasource array - Default SelectionType = Single
+        // Here you'll get cell configuration where you can set any text based on condition
+        // Cell configuration following parameters.
+        // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: arrayAffaire ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object.libelle
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedAffaire) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arrayOfSelectedAffaire =  selectedItems
+            
+            
+            if(self.arrayOfSelectedAffaire.count > 0)
+            {
+                let dealer_ = self.arrayOfSelectedAffaire[0]
+                self.arrayFiltres[4] = dealer_.libelle
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
+            }
+            
+        }
+        
+        selectionMenu.uniquePropertyName = "id"
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: "Affaire", action: "Sélectionner", height: 400), from: self)
+    }
     
     
     // ***********************************
     // ***********************************
     // ***********************************
     func selectGroupe() {
+        
+        if(arrayOfSelectedPays.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        let selectedPays = arrayOfSelectedPays[0];
+        if(selectedPays.groupes.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        // Show menu with datasource array - Default SelectionType = Single
+        // Here you'll get cell configuration where you can set any text based on condition
+        // Cell configuration following parameters.
+        // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.groupes ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object.libelle
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedGroupe) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arrayOfSelectedGroupe =  selectedItems
+            //reset zone + affaire
+            self.arrayOfSelectedZone.removeAll()
+            self.arrayFiltres[2] = "Zone"
+            self.arrayOfSelectedAffaire.removeAll()
+            self.arrayFiltres[4] = "Affaire"
+            
+            if(self.arrayOfSelectedGroupe.count > 0)
+            {
+                let groupe_ = self.arrayOfSelectedGroupe[0]
+                self.arrayFiltres[3] = groupe_.libelle
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
+            }
+            
+        }
+        
+        selectionMenu.uniquePropertyName = "id"
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: "Groupe", action: "Sélectionner", height: 400), from: self)
     }
     
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func selectAffaire() {
-    }
     
     // ***********************************
     // ***********************************
     // ***********************************
     func selectZone() {
+        
+        if(arrayOfSelectedPays.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        let selectedPays = arrayOfSelectedPays[0];
+        if(selectedPays.zones.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun zone.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        // Show menu with datasource array - Default SelectionType = Single
+        // Here you'll get cell configuration where you can set any text based on condition
+        // Cell configuration following parameters.
+        // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.zones ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object.libelle
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedZone) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arrayOfSelectedZone =  selectedItems
+            
+            //reset groupe + affaire
+            self.arrayOfSelectedGroupe.removeAll()
+            self.arrayFiltres[3] = "Groupe"
+            self.arrayOfSelectedAffaire.removeAll()
+            self.arrayFiltres[4] = "Affaire"
+            
+            if(self.arrayOfSelectedZone.count > 0)
+            {
+                let zone_ = self.arrayOfSelectedZone[0]
+                self.arrayFiltres[2] = zone_.libelle
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
+            }
+            
+        }
+        
+        selectionMenu.uniquePropertyName = "id"
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: "Zone", action: "Sélectionner", height: 400), from: self)
     }
     
     // ***********************************
@@ -147,7 +420,7 @@ class FiltreMenuViewController: UIViewController {
         
         if(arrayOfPays.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun Pays.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -202,7 +475,7 @@ class FiltreMenuViewController: UIViewController {
         
         if(arrayOfLangues.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune Langue.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune langue.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -301,10 +574,13 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
             selectPays()
             break;
         case 2:
+            selectZone()
             break;
         case 3:
+            selectGroupe()
             break;
         case 4:
+            selectAffaire()
             break;
             
         default:
