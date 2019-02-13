@@ -94,7 +94,7 @@ class FiltreView: UIView {
             }
         }else
         {
-            arrayFiltres[0] = "Affaire"
+            arrayFiltres[4] = "Affaire"
         }
         
         

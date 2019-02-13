@@ -31,6 +31,11 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     @IBOutlet weak var gaugeView3: ABGaugeView!
     @IBOutlet weak var gaugeView4: ABGaugeView!
     
+    var labelRadar1: UILabel!
+    var labelRadar2: UILabel!
+    var labelRadar3: UILabel!
+    var labelRadar4: UILabel!
+    
     // ***********************************
     // ***********************************
     // ***********************************
@@ -66,61 +71,61 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         scrollView.contentSize = contentRect.size
         
         //solid gauge
-        gaugeView1.areas = "60,40,0,0,0"
-        gaugeView1.colorCodes = "00b359,ccffe6,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView1.needleValue = 33;
-        let lbl1 = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
-        lbl1.textAlignment = .center //For center alignment
-        lbl1.text = "Titre " + String(33)
-        lbl1.textColor = .black
-        lbl1.backgroundColor = .white//If required
-        lbl1.font = UIFont.systemFont(ofSize: 11)
-        lbl1.numberOfLines = 0
-        lbl1.lineBreakMode = .byWordWrapping
-        scrollView.addSubview(lbl1)
-        scrollView.bringSubviewToFront(lbl1)
+        gaugeView1.areas = "100,0,0,0,0"
+        gaugeView1.colorCodes = "00b359,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView1.needleValue = 100;
+        labelRadar1 = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar1.textAlignment = .center //For center alignment
+        labelRadar1.text = ""
+        labelRadar1.textColor = .black
+        labelRadar1.backgroundColor = .white//If required
+        labelRadar1.font = UIFont.systemFont(ofSize: 11)
+        labelRadar1.numberOfLines = 0
+        labelRadar1.lineBreakMode = .byWordWrapping
+        scrollView.addSubview(labelRadar1)
+        scrollView.bringSubviewToFront(labelRadar1)
         
-        gaugeView2.areas = "50,50,0,0,0"
-        gaugeView2.colorCodes = "e67300,ffd9b3,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView2.needleValue = 45;
-        let lbl2 = UILabel(frame: CGRect(x: 0, y: ( gaugeView2.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
-        lbl2.textAlignment = .center //For center alignment
-        lbl2.text = "Titre " + String(33)
-        lbl2.textColor = .black
-        lbl2.backgroundColor = .white//If required
-        lbl2.font = UIFont.systemFont(ofSize: 11)
-        lbl2.numberOfLines = 0
-        lbl2.lineBreakMode = .byWordWrapping
-        scrollView.addSubview(lbl2)
-        scrollView.bringSubviewToFront(lbl2)
+        gaugeView2.areas = "100,0,0,0,0"
+        gaugeView2.colorCodes = "e67300,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView2.needleValue = 100;
+        labelRadar2 = UILabel(frame: CGRect(x: 0, y: ( gaugeView2.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar2.textAlignment = .center //For center alignment
+        labelRadar2.text = ""
+        labelRadar2.textColor = .black
+        labelRadar2.backgroundColor = .white//If required
+        labelRadar2.font = UIFont.systemFont(ofSize: 11)
+        labelRadar2.numberOfLines = 0
+        labelRadar2.lineBreakMode = .byWordWrapping
+        scrollView.addSubview(labelRadar2)
+        scrollView.bringSubviewToFront(labelRadar2)
         
-        gaugeView3.areas = "40,60,0,0,0"
-        gaugeView3.colorCodes = "ff6666,e6b3b3,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView3.needleValue = 73;
-        let lbl3 = UILabel(frame: CGRect(x: 0, y: ( gaugeView3.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
-        lbl3.textAlignment = .center //For center alignment
-        lbl3.text = "Titre " + String(33)
-        lbl3.textColor = .black
-        lbl3.backgroundColor = .white//If required
-        lbl3.font = UIFont.systemFont(ofSize: 11)
-        lbl3.numberOfLines = 0
-        lbl3.lineBreakMode = .byWordWrapping
-        scrollView.addSubview(lbl3)
-        scrollView.bringSubviewToFront(lbl3)
+        gaugeView3.areas = "100,0,0,0,0"
+        gaugeView3.colorCodes = "ff6666,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView3.needleValue = 100;
+        labelRadar3 = UILabel(frame: CGRect(x: 0, y: ( gaugeView3.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar3.textAlignment = .center //For center alignment
+        labelRadar3.text = ""
+        labelRadar3.textColor = .black
+        labelRadar3.backgroundColor = .white//If required
+        labelRadar3.font = UIFont.systemFont(ofSize: 11)
+        labelRadar3.numberOfLines = 0
+        labelRadar3.lineBreakMode = .byWordWrapping
+        scrollView.addSubview(labelRadar3)
+        scrollView.bringSubviewToFront(labelRadar3)
         
-        gaugeView4.areas = "70,30,0,0,0"
-        gaugeView4.colorCodes = "003cb3,ccddff,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView4.needleValue = 90;
-        let lbl4 = UILabel(frame: CGRect(x: 0, y: ( gaugeView4.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
-        lbl4.textAlignment = .center //For center alignment
-        lbl4.text = "Titre " + String(33)
-        lbl4.textColor = .black
-        lbl4.backgroundColor = .white//If required
-        lbl4.font = UIFont.systemFont(ofSize: 11)
-        lbl4.numberOfLines = 0
-        lbl4.lineBreakMode = .byWordWrapping
-        scrollView.addSubview(lbl4)
-        scrollView.bringSubviewToFront(lbl4)
+        gaugeView4.areas = "100,0,0,0,0"
+        gaugeView4.colorCodes = "003cb3,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView4.needleValue = 0;
+        labelRadar4 = UILabel(frame: CGRect(x: 0, y: ( gaugeView4.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar4.textAlignment = .center //For center alignment
+        labelRadar4.text = ""
+        labelRadar4.textColor = .black
+        labelRadar4.backgroundColor = .white//If required
+        labelRadar4.font = UIFont.systemFont(ofSize: 11)
+        labelRadar4.numberOfLines = 0
+        labelRadar4.lineBreakMode = .byWordWrapping
+        scrollView.addSubview(labelRadar4)
+        scrollView.bringSubviewToFront(labelRadar4)
         
         
         
@@ -180,6 +185,32 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         }
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func getStatistiqueData()
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Récupération des données en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            
+            WSQueries.getRadarsData(delegate: self);
+        }
+    }
     
     
     // ***********************************
@@ -213,7 +244,39 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     
     
     
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupRadar(radars : DataRadar!)
+    {
+        if(radars != nil)
+        {
+            gaugeView1.needleValue = CGFloat(radars.orderRenaultData);
+            let delimeterAbs1 = Int(abs(radars.orderRenaultDelimiter))
+            let CenntAbs1 = 100 - delimeterAbs1
+            gaugeView1.areas = String(delimeterAbs1) + "," + String(CenntAbs1) + ",0,0,0"
+            labelRadar1.text = radars.orderRenaultLibelle + "\n" + String(round(radars.orderRenaultData)) + "%"
+            
+            
+            gaugeView2.needleValue = CGFloat(radars.orderDaciaData);
+            let delimeterAbs2 = Int(abs(radars.orderDaciaDelimiter))
+            let CenntAbs2 = 100 - delimeterAbs2
+            gaugeView2.areas = String(delimeterAbs2) + "," + String(CenntAbs2) + ",0,0,0"
+            labelRadar2.text = radars.orderDaciaLibelle + "\n" + String(round(radars.orderDaciaData)) + "%"
+            
+            gaugeView3.needleValue = CGFloat(radars.workshopPEData);
+            let delimeterAbs3 = Int(abs(radars.workshopPEDelimiter))
+            let CenntAbs3 = 100 - delimeterAbs3
+            gaugeView3.areas = String(delimeterAbs3) + "," + String(CenntAbs3) + ",0,0,0"
+            labelRadar3.text = radars.workshopPELibelle + "\n" + String(round(radars.workshopPEData)) + "%"
+            
+            gaugeView4.needleValue = CGFloat(radars.spSellInData);
+            let delimeterAbs4 = Int(abs(radars.spSellInEDelimiter))
+            let CenntAbs4 = 100 - delimeterAbs4
+            gaugeView4.areas = String(delimeterAbs4) + "," + String(CenntAbs4) + ",0,0,0"
+            labelRadar4.text = radars.spSellInLibelle + "\n" + String(round(radars.spSellInData)) + "%"
+        }
+    }
 
     
     
@@ -244,32 +307,37 @@ extension HomeViewController: WSGetDataUtilesDelegate {
             {
                 let preferences = UserDefaults.standard
                 
+                // liste des langues
                 let dataLangue = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.langues)
                 preferences.set(dataLangue, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
                 
+                
                 //mettre la langue par défaut dans le perimetre/filtre
-                let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
-                if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
-                    
-                    let user = user_ as! Utilisateur
-                    let langue_preferee = user.preferred_lang
-                    
-                    for i in (0 ..< data.dataUtiles.langues.count)
-                    {
-                        let langue = data.dataUtiles.langues[i];
-                        if(langue_preferee.contains(langue.languageCode))
+                if(preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE) == nil)
+                {
+                    //mettre la langue par défaut dans le perimetre/filtre
+                    let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
+                    if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
+                        
+                        let user = user_ as! Utilisateur
+                        let langue_preferee = user.preferred_lang
+                        
+                        for i in (0 ..< data.dataUtiles.langues.count)
                         {
-                            let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
-                            preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
-                            
-                            break;
+                            let langue = data.dataUtiles.langues[i];
+                            if(langue_preferee.contains(langue.languageCode))
+                            {
+                                let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
+                                preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                                
+                                break;
+                            }
                         }
+                        
                     }
-                    
                 }
                 
-                
-                
+                //liste des pays perimetre
                 let dataPerimetre = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.perimetre)
                 preferences.set(dataPerimetre, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
                 
@@ -287,10 +355,10 @@ extension HomeViewController: WSGetDataUtilesDelegate {
                 preferences.synchronize()
                 
                 DispatchQueue.main.async {
-                    
                     self.filtreView.setupFiltreView()
-                    
+                    self.getStatistiqueData()
                 }
+                
             }else
             {
                 DispatchQueue.main.async {
@@ -328,6 +396,20 @@ extension HomeViewController: WSGetDonneesRadarsDelegate {
     // ***********************************
     func didFinishWSGetDonneesRadars(error: Bool, data: DataRadarWSResponse!) {
         
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error && data != nil)
+        {
+           
+            if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
+            {
+                DispatchQueue.main.async {
+                    self.setupRadar(radars: data.dataRadar)
+                }
+            }
+        }
     }
     
     
@@ -337,12 +419,14 @@ extension HomeViewController: WSGetDonneesRadarsDelegate {
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 extension HomeViewController: FiltreMenuViewControllerDelegate {
+    
     // ***********************************
     // ***********************************
     // ***********************************
     func dismissFiltreMenuViewController() {
         
         self.dismiss(animated: true, completion: nil)
+        self.getStatistiqueData()
     }
     
     

@@ -247,11 +247,94 @@ class WSQueries: NSObject {
         }
     }
     
-    
     // ***********************************
     // ***********************************
     // ***********************************
-    static func getRadarsData(delegate : WSGetDonneesRadarsDelegate , langue_code : String, pays_id : Int, zone_id : Int!, groupe_id : Int! , affaire_id : Int!)
+    static func preparePerimetre() -> String
+    {
+        var perimetreAsString = "{\"langue\" : \"$LANGUE\", \"country\" : $COUNTRY_ID , \"zone\" : $ZONE_ID , \"group\" : $GROUPE_ID , \"dealer\" : $AFFAIRE_ID}"
+        
+        
+         let preferences = UserDefaults.standard
+       
+        
+        //1  la langue
+        let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+        if(langueData_ != nil){
+            if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                
+                let langue = langue_ as! Langue
+                perimetreAsString = perimetreAsString.replacingOccurrences(of: "$LANGUE", with: langue.languageCode);
+                
+            }
+        }else
+        {
+            perimetreAsString = perimetreAsString.replacingOccurrences(of: "$LANGUE", with: "en");
+        }
+        
+        //2 le pays
+        let paysData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
+        if(paysData != nil){
+            if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData!)  {
+                
+                let pays = pays_ as! Pays
+                perimetreAsString = perimetreAsString.replacingOccurrences(of: "$COUNTRY_ID", with: String(pays.countryId));
+                
+            }
+        }
+        else
+        {
+            perimetreAsString = perimetreAsString.replacingOccurrences(of: "$COUNTRY_ID", with: "null");
+        }
+        
+        //3 zone
+        let zoneData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
+        if(zoneData != nil){
+            if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData!)  {
+                
+                let zone = zone_ as! Zone
+                 perimetreAsString = perimetreAsString.replacingOccurrences(of: "$ZONE_ID", with: String(zone.id));
+                
+            }
+        }else
+        {
+             perimetreAsString = perimetreAsString.replacingOccurrences(of: "$ZONE_ID", with: "null");
+        }
+        
+        //4 Groupe
+        let groupeData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
+        if(groupeData != nil){
+            if let groupe_ = NSKeyedUnarchiver.unarchiveObject(with: groupeData!)  {
+                
+                let grp = groupe_ as! Groupe
+                perimetreAsString = perimetreAsString.replacingOccurrences(of: "$GROUPE_ID", with: String(grp.id));
+                
+            }
+        }else
+        {
+            perimetreAsString = perimetreAsString.replacingOccurrences(of: "$GROUPE_ID", with: "null");
+        }
+        
+        //5 Affaire
+        let dealerData = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+        if(dealerData != nil){
+            if let dealer_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData!)  {
+                
+                let affaire = dealer_ as! Dealer
+                perimetreAsString = perimetreAsString.replacingOccurrences(of: "$AFFAIRE_ID", with: String(affaire.id));
+                
+            }
+        }else
+        {
+           perimetreAsString = perimetreAsString.replacingOccurrences(of: "$AFFAIRE_ID", with: "null");
+        }
+        
+        return perimetreAsString
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getRadarsData(delegate : WSGetDonneesRadarsDelegate )
     {
         
         
@@ -268,31 +351,8 @@ class WSQueries: NSObject {
         
         
         //post params
-        var perimetre = "{\"langue\" : \"$LANGUE\", \"country\" : $COUNTRY_ID , \"zone\" : $ZONE_ID , \"group\" : $GROUPE_ID , \"dealer\" : $AFFAIRE_ID}"
-        perimetre = perimetre.replacingOccurrences(of: "$LANGUE", with: langue_code);
-        perimetre = perimetre.replacingOccurrences(of: "$COUNTRY_ID", with: String(pays_id));
-        if(zone_id == nil)
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$ZONE_ID", with: "null");
-        }else
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$ZONE_ID", with: String(zone_id));
-        }
-        if(groupe_id == nil)
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$GROUPE_ID", with: "null");
-        }else
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$GROUPE_ID", with: String(groupe_id));
-        }
-        if(affaire_id == nil)
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$AFFAIRE_ID", with: "null");
-        }else
-        {
-            perimetre = perimetre.replacingOccurrences(of: "$AFFAIRE_ID", with: String(affaire_id));
-        }
         
+        let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
         let post_params: Parameters = [
             "profil": profil,
@@ -314,7 +374,7 @@ class WSQueries: NSObject {
                     WSQueries.refreshToken(completion: { (code) in
                         if(code == WSQueries.CODE_RETOUR_200)
                         {
-                            WSQueries.getRadarsData(delegate: delegate,langue_code: langue_code,pays_id: pays_id,zone_id: zone_id,groupe_id: groupe_id,affaire_id: affaire_id);
+                            WSQueries.getRadarsData(delegate: delegate);
                         }else
                         {
                             delegate.didFinishWSGetDonneesRadars(error: true, data: nil)
