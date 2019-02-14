@@ -63,7 +63,11 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
     // *****************************
     func collapsibleTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
+        case 0:// KPI indicateurs Lot 1
+           
+            let famille_id = Int(indexPath.row + 1)
+           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#voirCategorieFamille"), object: famille_id)
+           
             break;
             
         case 1:

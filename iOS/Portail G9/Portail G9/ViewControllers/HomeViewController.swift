@@ -73,7 +73,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         //solid gauge
         gaugeView1.areas = "100,0,0,0,0"
         gaugeView1.colorCodes = "00b359,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView1.needleValue = 100;
+        gaugeView1.needleValue = 0;
         labelRadar1 = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
         labelRadar1.textAlignment = .center //For center alignment
         labelRadar1.text = ""
@@ -87,7 +87,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         
         gaugeView2.areas = "100,0,0,0,0"
         gaugeView2.colorCodes = "e67300,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView2.needleValue = 100;
+        gaugeView2.needleValue = 0;
         labelRadar2 = UILabel(frame: CGRect(x: 0, y: ( gaugeView2.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
         labelRadar2.textAlignment = .center //For center alignment
         labelRadar2.text = ""
@@ -101,7 +101,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         
         gaugeView3.areas = "100,0,0,0,0"
         gaugeView3.colorCodes = "ff6666,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
-        gaugeView3.needleValue = 100;
+        gaugeView3.needleValue = 0;
         labelRadar3 = UILabel(frame: CGRect(x: 0, y: ( gaugeView3.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
         labelRadar3.textAlignment = .center //For center alignment
         labelRadar3.text = ""
@@ -130,6 +130,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         
         
         //notifications from lef Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(self.voirCategorieFamille_), name: NSNotification.Name(rawValue: "#voirCategorieFamille"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
     }
     // *******************************************************************************
@@ -157,6 +159,51 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         {
             self.syncroniseData()
         }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func voirCategorieFamille_(notif: NSNotification) {
+        
+        self.dismiss(animated: false, completion: nil)
+        
+        if let familleId = notif.object as? Int {
+          
+            let listeCategoriesVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeCategoriesViewController") as? ListeCategoriesViewController
+            listeCategoriesVC?.familleId = familleId
+            self.navigationController?.pushViewController(listeCategoriesVC!, animated: true);
+            
+        }
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func disconnectUser_(notif: NSNotification) {
+        self.dismiss(animated: false, completion: nil)
+        Utils.disconnectUser(goBackAnimated: true);
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func menuTapped()
+    {
+        let leftMenuVC = self.storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! UISideMenuNavigationController
+        self.present(leftMenuVC, animated: true, completion: nil)
     }
     
     // ***********************************
@@ -213,33 +260,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     }
     
     
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    @objc func disconnectUser_(notif: NSNotification) {
-        self.dismiss(animated: false, completion: nil)
-        Utils.disconnectUser(goBackAnimated: true);
-    }
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    @objc func filtreTapped()
-    {
-        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
-        filtreVC?.delegate = self
-        self.present(filtreVC!, animated: true, completion: nil)
-        
-        
-    }
     
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    @objc func menuTapped()
-    {
-        let leftMenuVC = self.storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! UISideMenuNavigationController
-        self.present(leftMenuVC, animated: true, completion: nil)
-    }
     
     
     
@@ -251,26 +272,48 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     {
         if(radars != nil)
         {
-            gaugeView1.needleValue = CGFloat(radars.orderRenaultData);
+           //radar 1
+            if(radars.orderRenaultData < 0){
+                gaugeView1.needleValue = 0
+            }else{
+                 gaugeView1.needleValue = CGFloat(radars.orderRenaultData);
+            }
             let delimeterAbs1 = Int(abs(radars.orderRenaultDelimiter))
             let CenntAbs1 = 100 - delimeterAbs1
             gaugeView1.areas = String(delimeterAbs1) + "," + String(CenntAbs1) + ",0,0,0"
-            labelRadar1.text = radars.orderRenaultLibelle + "\n" + String(round(radars.orderRenaultData)) + "%"
+            labelRadar1.text = radars.orderRenaultLibelle + "\n" + String(radars.orderRenaultData) + "%"
             
-            
-            gaugeView2.needleValue = CGFloat(radars.orderDaciaData);
+            //radar 2
+            if(radars.orderDaciaData < 0){
+                gaugeView2.needleValue = 0;
+            }
+            else{
+                gaugeView2.needleValue = CGFloat(radars.orderDaciaData);
+            }
             let delimeterAbs2 = Int(abs(radars.orderDaciaDelimiter))
             let CenntAbs2 = 100 - delimeterAbs2
             gaugeView2.areas = String(delimeterAbs2) + "," + String(CenntAbs2) + ",0,0,0"
             labelRadar2.text = radars.orderDaciaLibelle + "\n" + String(round(radars.orderDaciaData)) + "%"
             
-            gaugeView3.needleValue = CGFloat(radars.workshopPEData);
+            //radar 3
+            if(radars.workshopPEData < 0){
+                gaugeView3.needleValue = 0;
+            }
+            else{
+                gaugeView3.needleValue = CGFloat(radars.workshopPEData);
+            }
             let delimeterAbs3 = Int(abs(radars.workshopPEDelimiter))
             let CenntAbs3 = 100 - delimeterAbs3
             gaugeView3.areas = String(delimeterAbs3) + "," + String(CenntAbs3) + ",0,0,0"
             labelRadar3.text = radars.workshopPELibelle + "\n" + String(round(radars.workshopPEData)) + "%"
             
-            gaugeView4.needleValue = CGFloat(radars.spSellInData);
+            //radar 4
+            if(radars.spSellInData < 0){
+                gaugeView4.needleValue = 0;
+            }
+            else{
+               gaugeView4.needleValue = CGFloat(radars.spSellInData);
+            }
             let delimeterAbs4 = Int(abs(radars.spSellInEDelimiter))
             let CenntAbs4 = 100 - delimeterAbs4
             gaugeView4.areas = String(delimeterAbs4) + "," + String(CenntAbs4) + ",0,0,0"
@@ -408,6 +451,15 @@ extension HomeViewController: WSGetDonneesRadarsDelegate {
                 DispatchQueue.main.async {
                     self.setupRadar(radars: data.dataRadar)
                 }
+            }
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
             }
         }
     }

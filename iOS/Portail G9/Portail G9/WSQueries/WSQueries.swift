@@ -32,6 +32,20 @@ protocol WSGetDonneesRadarsDelegate {
 }
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetCategoriesDelegate {
+    
+    func didFinishWSGetCategories(error: Bool , data : DataCategoriesWSResponse!)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetGroupesKPIDelegate {
+    
+    func didFinishWSGetGroupesKPI(error: Bool , data : DataGroupeKPIWSResponse!)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -337,8 +351,6 @@ class WSQueries: NSObject {
     static func getRadarsData(delegate : WSGetDonneesRadarsDelegate )
     {
         
-        
-        
         // headers autorization
         var authorization_ = "Bearer "
         let preferences = UserDefaults.standard
@@ -399,6 +411,152 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSGetDonneesRadars(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getCategoriesData(delegate : WSGetCategoriesDelegate , famille_id : Int)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "id_famille" : famille_id
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getListeCategories"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getCategoriesData(delegate: delegate, famille_id: famille_id);
+                        }else
+                        {
+                            delegate.didFinishWSGetCategories(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataCategories =  Mapper<DataCategoriesWSResponse>().map(JSONObject:responseJson)
+                if(responseDataCategories != nil)
+                {
+                    delegate.didFinishWSGetCategories(error: false, data: responseDataCategories)
+                    return
+                }
+                
+               delegate.didFinishWSGetCategories(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetCategories(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getGroupesKPIData(delegate : WSGetGroupesKPIDelegate , categorie_id : Int)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "id_category" : categorie_id
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getListeGroupes"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getGroupesKPIData(delegate: delegate, categorie_id: categorie_id);
+                        }else
+                        {
+                            delegate.didFinishWSGetGroupesKPI(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataCategories =  Mapper<DataGroupeKPIWSResponse>().map(JSONObject:responseJson)
+                if(responseDataCategories != nil)
+                {
+                    delegate.didFinishWSGetGroupesKPI(error: false, data: responseDataCategories)
+                    return
+                }
+                
+                delegate.didFinishWSGetGroupesKPI(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetGroupesKPI(error: true, data: nil)
                 break
                 
             }

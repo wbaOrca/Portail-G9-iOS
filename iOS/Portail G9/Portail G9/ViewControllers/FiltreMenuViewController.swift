@@ -452,6 +452,16 @@ class FiltreMenuViewController: UIViewController {
             {
                 let pays_ = self.arrayOfSelectedPays[0]
                 self.arrayFiltres[1] = pays_.countryLib
+                
+                //reset zone + groupe + affaire
+                self.arrayOfSelectedZone.removeAll()
+                self.arrayFiltres[2] = "Zone"
+                self.arrayOfSelectedGroupe.removeAll()
+                self.arrayFiltres[3] = "Groupe"
+                self.arrayOfSelectedAffaire.removeAll()
+                self.arrayFiltres[4] = "Affaire"
+                
+                
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }
