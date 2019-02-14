@@ -32,7 +32,7 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Groupes", comment: "-")
-        
+        filtreView.delegate = self
     }
     
     // ***********************************
@@ -149,6 +149,49 @@ extension ListeGroupesViewController : UITableViewDelegate , UITableViewDataSour
     // ***********************************
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    
+}
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension ListeGroupesViewController: FiltreViewDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func showFiltreMenuViewController() {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreView() {
+        
+    }
+    
+    
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension ListeGroupesViewController: FiltreMenuViewControllerDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreMenuViewController() {
+        
+        self.dismiss(animated: true, completion: nil)
+        self.getListeGroupeData()
     }
     
     

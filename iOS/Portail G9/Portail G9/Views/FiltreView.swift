@@ -8,12 +8,25 @@
 
 import UIKit
 
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+protocol FiltreViewDelegate {
+    
+    func showFiltreMenuViewController()
+    func dismissFiltreView()
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class FiltreView: UIView {
 
+    var delegate : FiltreViewDelegate! = nil
+    
     @IBOutlet weak var filtreCollectionView: UICollectionView!
     var arrayFiltres : [String] = ["Langue", "Pays","Zone", "Groupe" , "Affaire"];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
@@ -147,5 +160,15 @@ extension FiltreView: UICollectionViewDelegate , UICollectionViewDataSource
         
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(delegate != nil)
+        {
+            delegate.showFiltreMenuViewController()
+        }
+    }
     
 }

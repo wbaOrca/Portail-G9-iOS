@@ -32,7 +32,7 @@ class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewa
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Categories", comment: "-")
-        
+        filtreView.delegate = self
     }
     
     // ***********************************
@@ -113,6 +113,8 @@ extension ListeCategoriesViewController : WSGetCategoriesDelegate {
     
     
 }
+
+
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -155,6 +157,47 @@ extension ListeCategoriesViewController : UITableViewDelegate , UITableViewDataS
         listeGroupesVC?.categorieId = carteg.categoryId
         self.navigationController?.pushViewController(listeGroupesVC!, animated: true);
         
+    }
+    
+    
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension ListeCategoriesViewController: FiltreViewDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func showFiltreMenuViewController() {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreView() {
+        
+    }
+    
+    
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension ListeCategoriesViewController: FiltreMenuViewControllerDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreMenuViewController() {
+        
+        self.dismiss(animated: true, completion: nil)
+        self.getListeCatagoriesData()
     }
     
     

@@ -45,6 +45,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Home", comment: "-")
         
+        filtreView.delegate = self
         
         let preferences = UserDefaults.standard
         let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
@@ -479,6 +480,30 @@ extension HomeViewController: FiltreMenuViewControllerDelegate {
         
         self.dismiss(animated: true, completion: nil)
         self.getStatistiqueData()
+    }
+    
+    
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension HomeViewController: FiltreViewDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func showFiltreMenuViewController() {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dismissFiltreView() {
+        
     }
     
     
