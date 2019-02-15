@@ -1,19 +1,18 @@
 //
-//  Categorie.swift
+//  StyleKPILigne.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 14/02/2019.
+//  Created by WBA_ORCA on 15/02/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class Categorie: NSObject, Mappable {
+class StyleKPILigne: NSObject ,Mappable{
 
-    var categoryId   : Int64 = -1
-    var categoryLibelle   : String = ""
-    var categoryIcone   : String = ""
+    var bold : Bool = false
+    var underline : Bool = false
     
     //******
     //******
@@ -37,9 +36,8 @@ class Categorie: NSObject, Mappable {
     // Mappable
     func mapping(map: Map) {
         
-        categoryId <- map["categoryId"]
-        categoryLibelle <- map["categoryLibelle"]
-        categoryIcone <- map["categoryIcone"]
+        bold <- map["bold"]
+        underline <- map["underline"]
         
     }
 }

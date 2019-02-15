@@ -61,8 +61,10 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu_"), style: .plain, target: self, action: #selector(menuTapped))
         navigationItem.leftBarButtonItems = [menuButton]
         
+        /*
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
         navigationItem.rightBarButtonItems = [filtreButton]
+        */
         
         //scroll view content
         var contentRect = CGRect.zero

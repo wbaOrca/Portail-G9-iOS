@@ -51,6 +51,12 @@
 		FBF26C8822156EC600D271AC /* DataGroupeKPIWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF26C8622156EC500D271AC /* DataGroupeKPIWSResponse.swift */; };
 		FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF26C8722156EC600D271AC /* GroupeKPI.swift */; };
 		FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */; };
+		FBFDC0F02216A20300A67042 /* KPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0EF2216A20300A67042 /* KPI.swift */; };
+		FBFDC0F22216A23800A67042 /* DataKPIsWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0F12216A23800A67042 /* DataKPIsWSResponse.swift */; };
+		FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0F32216A39900A67042 /* KPILigne.swift */; };
+		FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */; };
+		FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */; };
+		FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +140,12 @@
 		FBF26C8622156EC500D271AC /* DataGroupeKPIWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGroupeKPIWSResponse.swift; sourceTree = "<group>"; };
 		FBF26C8722156EC600D271AC /* GroupeKPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeKPI.swift; sourceTree = "<group>"; };
 		FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeGroupesTableViewCell.swift; sourceTree = "<group>"; };
+		FBFDC0EF2216A20300A67042 /* KPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPI.swift; sourceTree = "<group>"; };
+		FBFDC0F12216A23800A67042 /* DataKPIsWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKPIsWSResponse.swift; sourceTree = "<group>"; };
+		FBFDC0F32216A39900A67042 /* KPILigne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPILigne.swift; sourceTree = "<group>"; };
+		FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKPILigne.swift; sourceTree = "<group>"; };
+		FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIIndicatorsViewController.swift; sourceTree = "<group>"; };
+		FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPICollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +207,7 @@
 				FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */,
 				FBF26C822215604300D271AC /* ListeCategoriesTableViewCell.swift */,
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
+				FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +229,7 @@
 				FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */,
 				FBF26C8022155D2B00D271AC /* ListeCategoriesViewController.swift */,
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
+				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +268,10 @@
 				FBF26C7E221556C000D271AC /* DataCategoriesWSResponse.swift */,
 				FBF26C8622156EC500D271AC /* DataGroupeKPIWSResponse.swift */,
 				FBF26C8722156EC600D271AC /* GroupeKPI.swift */,
+				FBFDC0F12216A23800A67042 /* DataKPIsWSResponse.swift */,
+				FBFDC0EF2216A20300A67042 /* KPI.swift */,
+				FBFDC0F32216A39900A67042 /* KPILigne.swift */,
+				FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -602,20 +620,25 @@
 				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
+				FBFDC0F02216A20300A67042 /* KPI.swift in Sources */,
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
 				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
+				FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */,
 				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
 				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
+				FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */,
+				FBFDC0F22216A23800A67042 /* DataKPIsWSResponse.swift in Sources */,
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
 				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
+				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
 				FBF26C7D221555FB00D271AC /* Categorie.swift in Sources */,
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
@@ -627,6 +650,7 @@
 				FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */,
 				FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */,
 				FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */,
+				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 				FBF26C832215604300D271AC /* ListeCategoriesTableViewCell.swift in Sources */,
 			);

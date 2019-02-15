@@ -1,19 +1,19 @@
 //
-//  Categorie.swift
+//  KPIColonne.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 14/02/2019.
+//  Created by WBA_ORCA on 15/02/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class Categorie: NSObject, Mappable {
+class KPI: NSObject ,Mappable{
 
-    var categoryId   : Int64 = -1
-    var categoryLibelle   : String = ""
-    var categoryIcone   : String = ""
+    var colonne : String = ""
+    var code_couleur : String = ""
+    var lignes : [KPILigne] = [KPILigne]()
     
     //******
     //******
@@ -37,9 +37,10 @@ class Categorie: NSObject, Mappable {
     // Mappable
     func mapping(map: Map) {
         
-        categoryId <- map["categoryId"]
-        categoryLibelle <- map["categoryLibelle"]
-        categoryIcone <- map["categoryIcone"]
+        colonne <- map["colonne"]
+        code_couleur <- map["code_couleur"]
+        lignes <- map["lignes"]
+        
         
     }
 }

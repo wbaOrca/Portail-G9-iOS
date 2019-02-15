@@ -11,7 +11,7 @@ import ObjectMapper
 
 class GroupeKPI: NSObject, Mappable {
 
-    var groupId   : Int = -1
+    var groupId   : Int64 = -1
     var groupLibelle   : String = ""
     var groupIcon   : String = ""
     

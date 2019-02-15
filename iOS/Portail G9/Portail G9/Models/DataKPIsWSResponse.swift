@@ -1,19 +1,21 @@
 //
-//  Categorie.swift
+//  DataKPIsWSResponse.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 14/02/2019.
+//  Created by WBA_ORCA on 15/02/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class Categorie: NSObject, Mappable {
+class DataKPIsWSResponse: NSObject ,Mappable {
 
-    var categoryId   : Int64 = -1
-    var categoryLibelle   : String = ""
-    var categoryIcone   : String = ""
+    var code_erreur : Int = 0
+    var code : Int = 0
+    var description_ : String = ""
+    
+    var kpiArray : [KPI]! = nil
     
     //******
     //******
@@ -37,9 +39,11 @@ class Categorie: NSObject, Mappable {
     // Mappable
     func mapping(map: Map) {
         
-        categoryId <- map["categoryId"]
-        categoryLibelle <- map["categoryLibelle"]
-        categoryIcone <- map["categoryIcone"]
+        code_erreur <- map["code_erreur"]
+        code <- map["code"]
+        description_ <- map["description"]
+        kpiArray <- map["data"]
         
     }
+    
 }

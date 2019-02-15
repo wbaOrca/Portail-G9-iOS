@@ -43,6 +43,12 @@ protocol WSGetGroupesKPIDelegate {
     
     func didFinishWSGetGroupesKPI(error: Bool , data : DataGroupeKPIWSResponse!)
 }
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetIndicateursKPIsDelegate {
+    
+    func didFinishWSGetIndicateursKPIs(error: Bool , data : DataKPIsWSResponse!)
+}
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
@@ -495,7 +501,7 @@ class WSQueries: NSObject {
     // ***********************************
     // ***********************************
     // ***********************************
-    static func getGroupesKPIData(delegate : WSGetGroupesKPIDelegate , categorie_id : Int)
+    static func getGroupesKPIData(delegate : WSGetGroupesKPIDelegate , categorie_id : Int64)
     {
         
         // headers autorization
@@ -557,6 +563,85 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSGetGroupesKPI(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getIndicateurKPIsData(delegate : WSGetIndicateursKPIsDelegate , groupe_id : Int64 , date : Date)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateAsString = dateFormatter.string(from: date)
+        
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "id_groupe" : groupe_id,
+            "date" : dateAsString
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getKPIs"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getIndicateurKPIsData(delegate: delegate, groupe_id: groupe_id, date: date);
+                        }else
+                        {
+                            delegate.didFinishWSGetIndicateursKPIs(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataKpis =  Mapper<DataKPIsWSResponse>().map(JSONObject:responseJson)
+                if(responseDataKpis != nil)
+                {
+                    delegate.didFinishWSGetIndicateursKPIs(error: false, data: responseDataKpis)
+                    return
+                }
+                
+                delegate.didFinishWSGetIndicateursKPIs(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetIndicateursKPIs(error: true, data: nil)
                 break
                 
             }

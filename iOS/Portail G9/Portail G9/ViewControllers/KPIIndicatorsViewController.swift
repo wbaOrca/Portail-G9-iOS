@@ -1,8 +1,8 @@
 //
-//  ListeCategoriesViewController.swift
+//  KPIIndicatorsViewController.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 14/02/2019.
+//  Created by WBA_ORCA on 15/02/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
@@ -14,24 +14,23 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable{
-
-    @IBOutlet weak var filtreView : FiltreView!
-    @IBOutlet weak var tableViewGroupes: UITableView!
+class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewable{
     
-    var categorieId : Int64 = 0;
-    var isSynchronisedData = false;
-    var arrayGroupes : [GroupeKPI] = [GroupeKPI]();
+    @IBOutlet weak var filtreView : FiltreView!
+    @IBOutlet weak var collectioViewKPI: UICollectionView!
+    
+    var groupeId : Int64 = 0;
+    var arrayKPIs : [KPI] = [KPI]();
     
     // ***********************************
     // ***********************************
     // ***********************************
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Groupes", comment: "-")
+        self.title = NSLocalizedString("KPI", comment: "-")
         filtreView.delegate = self
     }
     
@@ -43,17 +42,14 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         
         // filtreView
         filtreView.setupFiltreView()
-        
-        if(!isSynchronisedData)
-        {
-            self.getListeGroupeData()
-        }
+       self.getIndicateursKpisData()
+       
     }
-
+    
     // ***********************************
     // ***********************************
     // ***********************************
-    func getListeGroupeData()
+    func getIndicateursKpisData()
     {
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
@@ -68,11 +64,11 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des groupes en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: "Récupération des indicateurs KPI en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
-            WSQueries.getGroupesKPIData(delegate: self, categorie_id: self.categorieId);
+            WSQueries.getIndicateurKPIsData(delegate: self, groupe_id:self.groupeId, date: Date());
         }
     }
 }
@@ -80,9 +76,9 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-extension ListeGroupesViewController : WSGetGroupesKPIDelegate {
+extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
     
-    func didFinishWSGetGroupesKPI(error: Bool, data: DataGroupeKPIWSResponse!) {
+    func didFinishWSGetIndicateursKPIs(error: Bool, data: DataKPIsWSResponse!) {
         
         DispatchQueue.main.async {
             self.stopAnimating()
@@ -93,16 +89,16 @@ extension ListeGroupesViewController : WSGetGroupesKPIDelegate {
             
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
-                arrayGroupes = data.groupes;
+                arrayKPIs = data.kpiArray;
                 
                 DispatchQueue.main.async {
-                    self.tableViewGroupes.reloadData()
+                    self.collectioViewKPI.reloadData()
                 }
             }
         }else
         {
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des groupes.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des indicateurs KPI.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -117,54 +113,71 @@ extension ListeGroupesViewController : WSGetGroupesKPIDelegate {
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-extension ListeGroupesViewController : UITableViewDelegate , UITableViewDataSource {
-    
+extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionViewDataSource {
+   
     // ***********************************
     // ***********************************
     // ***********************************
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return arrayGroupes.count
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        let numberSection = arrayKPIs.count;
+        return numberSection
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        let kpiColonne = arrayKPIs[section]
+        let numberLigne = kpiColonne.lignes.count
+        return numberLigne
     }
     
     // ***********************************
     // ***********************************
     // ***********************************
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListeGroupesTableViewCell", for: indexPath) as! ListeGroupesTableViewCell
+        let kpi = arrayKPIs[indexPath.section];
+        let kpiColonne = kpi.lignes[indexPath.row];
         
-        let row = indexPath.row
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KPICollectionViewCell", for: indexPath) as! KPICollectionViewCell
+        cell.setupKPICollectionViewCell(kpi: kpiColonne);
+        return cell
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if(row < arrayGroupes.count)
-        {
-            let grp = arrayGroupes[row] ;
-            cell.setupGroupeCell(groupe: grp);
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader{
+            
+            let kpi = arrayKPIs[indexPath.section];
+            
+            sectionHeader.sectionHeaderlabel.text = kpi.colonne
+            return sectionHeader
         }
-        
-        return cell;
+        return UICollectionReusableView()
     }
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let grp = self.arrayGroupes[indexPath.row] ;
-        
-        let kpiVC = self.storyboard?.instantiateViewController(withIdentifier: "KPIIndicatorsViewController") as? KPIIndicatorsViewController
-        kpiVC?.groupeId = grp.groupId
-        self.navigationController?.pushViewController(kpiVC!, animated: true);
-    }
+    
+    
+    
     
     
 }
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+class SectionHeader: UICollectionReusableView {
+    @IBOutlet weak var sectionHeaderlabel: UILabel!
+}
 
-
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-extension ListeGroupesViewController: FiltreViewDelegate {
+extension KPIIndicatorsViewController: FiltreViewDelegate {
     
     // ***********************************
     // ***********************************
@@ -188,7 +201,7 @@ extension ListeGroupesViewController: FiltreViewDelegate {
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-extension ListeGroupesViewController: FiltreMenuViewControllerDelegate {
+extension KPIIndicatorsViewController: FiltreMenuViewControllerDelegate {
     
     // ***********************************
     // ***********************************
@@ -196,7 +209,7 @@ extension ListeGroupesViewController: FiltreMenuViewControllerDelegate {
     func dismissFiltreMenuViewController() {
         
         self.dismiss(animated: true, completion: nil)
-        self.getListeGroupeData()
+        self.getIndicateursKpisData()
     }
     
     
