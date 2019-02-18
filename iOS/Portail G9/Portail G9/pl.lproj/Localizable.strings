@@ -11,3 +11,34 @@
 "Categories" = "Categories";
 "Groupes" = "Groups" ;
 "KPI" = "KPI";
+
+"Select" = "Wybierz";
+
+"Langue" = "Język" ;
+"Pays" = "Kraj";
+"Zone" = "Strefa" ;
+"Groupe" = "Grupa" ;
+"Affaire" = "Point of Sale";
+
+
+"Indicateurs" = "Wskaźniki";
+"Vente" = "Sprzedaż";
+"Après ventes" = "Sprzedaż po";
+"Clients" = "Klienci";
+"Image de marque" = "Branding" ;
+"Process" = "Proces" ;
+"Radars" = "Radary";
+"Piliers" = "Filary" ;
+"Plan d'action" = "Plan działania";
+"Plan d'action zone" = "Plan działania strefy";
+"Synthèse plan d'actions" = "Podsumowanie planów działań" ;
+"Actions commerciales" = "Akcje komercyjne";
+"Forces Terrains" = "Siły lądowe";
+"Agenda" = "Agenda";
+"Todo list" = "Lista rzeczy do zrobienia";
+"Relevé de décisions" = "Zapis decyzji";
+"Escalation Process" = "Proces eskalacji";
+"Reporting" = "Raportowanie";
+"Connexions Stats." = "Połączenia statystyczne";
+"Déconnexion" = "Rozłącz";
+"Se déconnecter" = "Rozłącz";

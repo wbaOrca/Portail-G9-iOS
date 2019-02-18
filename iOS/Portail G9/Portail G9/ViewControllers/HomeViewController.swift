@@ -75,9 +75,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         
         //solid gauge
         gaugeView1.areas = "100,0,0,0,0"
-        gaugeView1.colorCodes = "00b359,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView1.colorCodes = "f2f2f2,00b359,FFFFFF,FFFFFF,FFFFFF"
         gaugeView1.needleValue = 0;
-        labelRadar1 = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar1 = UILabel(frame: CGRect(x: 0, y: ( gaugeView1.frame.origin.y + 160 ), width: view.frame.size.width, height: 40))
         labelRadar1.textAlignment = .center //For center alignment
         labelRadar1.text = ""
         labelRadar1.textColor = .black
@@ -89,9 +89,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         scrollView.bringSubviewToFront(labelRadar1)
         
         gaugeView2.areas = "100,0,0,0,0"
-        gaugeView2.colorCodes = "e67300,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView2.colorCodes = "f2f2f2,e67300,FFFFFF,FFFFFF,FFFFFF"
         gaugeView2.needleValue = 0;
-        labelRadar2 = UILabel(frame: CGRect(x: 0, y: ( gaugeView2.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar2 = UILabel(frame: CGRect(x: 0, y: ( gaugeView2.frame.origin.y + 160 ), width: view.frame.size.width, height: 40))
         labelRadar2.textAlignment = .center //For center alignment
         labelRadar2.text = ""
         labelRadar2.textColor = .black
@@ -103,9 +103,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         scrollView.bringSubviewToFront(labelRadar2)
         
         gaugeView3.areas = "100,0,0,0,0"
-        gaugeView3.colorCodes = "ff6666,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView3.colorCodes = "f2f2f2,ff6666,FFFFFF,FFFFFF,FFFFFF"
         gaugeView3.needleValue = 0;
-        labelRadar3 = UILabel(frame: CGRect(x: 0, y: ( gaugeView3.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar3 = UILabel(frame: CGRect(x: 0, y: ( gaugeView3.frame.origin.y + 160 ), width: view.frame.size.width, height: 40))
         labelRadar3.textAlignment = .center //For center alignment
         labelRadar3.text = ""
         labelRadar3.textColor = .black
@@ -117,9 +117,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         scrollView.bringSubviewToFront(labelRadar3)
         
         gaugeView4.areas = "100,0,0,0,0"
-        gaugeView4.colorCodes = "003cb3,f2f2f2,FFFFFF,FFFFFF,FFFFFF"
+        gaugeView4.colorCodes = "f2f2f2,003cb3,FFFFFF,FFFFFF,FFFFFF"
         gaugeView4.needleValue = 0;
-        labelRadar4 = UILabel(frame: CGRect(x: 0, y: ( gaugeView4.frame.origin.y + 160 ), width: scrollView.frame.size.width, height: 40))
+        labelRadar4 = UILabel(frame: CGRect(x: 0, y: ( gaugeView4.frame.origin.y + 160 ), width: view.frame.size.width, height: 40))
         labelRadar4.textAlignment = .center //For center alignment
         labelRadar4.text = ""
         labelRadar4.textColor = .black
@@ -296,7 +296,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             let delimeterAbs2 = Int(abs(radars.orderDaciaDelimiter))
             let CenntAbs2 = 100 - delimeterAbs2
             gaugeView2.areas = String(delimeterAbs2) + "," + String(CenntAbs2) + ",0,0,0"
-            labelRadar2.text = radars.orderDaciaLibelle + "\n" + String(round(radars.orderDaciaData)) + "%"
+            labelRadar2.text = radars.orderDaciaLibelle + "\n" + String(radars.orderDaciaData) + "%"
             
             //radar 3
             if(radars.workshopPEData < 0){
@@ -308,7 +308,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             let delimeterAbs3 = Int(abs(radars.workshopPEDelimiter))
             let CenntAbs3 = 100 - delimeterAbs3
             gaugeView3.areas = String(delimeterAbs3) + "," + String(CenntAbs3) + ",0,0,0"
-            labelRadar3.text = radars.workshopPELibelle + "\n" + String(round(radars.workshopPEData)) + "%"
+            labelRadar3.text = radars.workshopPELibelle + "\n" + String(radars.workshopPEData) + "%"
             
             //radar 4
             if(radars.spSellInData < 0){
@@ -320,7 +320,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             let delimeterAbs4 = Int(abs(radars.spSellInEDelimiter))
             let CenntAbs4 = 100 - delimeterAbs4
             gaugeView4.areas = String(delimeterAbs4) + "," + String(CenntAbs4) + ",0,0,0"
-            labelRadar4.text = radars.spSellInLibelle + "\n" + String(round(radars.spSellInData)) + "%"
+            labelRadar4.text = radars.spSellInLibelle + "\n" + String(radars.spSellInData) + "%"
         }
     }
 

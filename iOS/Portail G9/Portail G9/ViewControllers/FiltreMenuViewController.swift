@@ -19,7 +19,7 @@ class FiltreMenuViewController: UIViewController {
     var delegate : FiltreMenuViewControllerDelegate! = nil
     
     @IBOutlet weak var filtreCollectionView: UICollectionView!
-    var arrayFiltres : [String] = ["Langue", "Pays","Zone", "Groupe" , "Affaire"];
+    var arrayFiltres : [String] =  [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     
@@ -244,9 +244,12 @@ class FiltreMenuViewController: UIViewController {
         }
         
         
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Affaire", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Dealer]) in
+            return arrayAffaire.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+        }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
-        
         selectionMenu.setSelectedItems(items: arrayOfSelectedAffaire) { (text, isSelected, selectedItems) in
             
             // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
@@ -269,7 +272,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Affaire", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Affaire", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     
@@ -310,6 +313,10 @@ class FiltreMenuViewController: UIViewController {
         }
         
         
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Groupe", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Groupe]) in
+            return selectedPays.groupes.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+        }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
         
@@ -319,9 +326,9 @@ class FiltreMenuViewController: UIViewController {
             self.arrayOfSelectedGroupe =  selectedItems
             //reset zone + affaire
             self.arrayOfSelectedZone.removeAll()
-            self.arrayFiltres[2] = "Zone"
+            self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
             self.arrayOfSelectedAffaire.removeAll()
-            self.arrayFiltres[4] = "Affaire"
+            self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
             
             if(self.arrayOfSelectedGroupe.count > 0)
             {
@@ -339,7 +346,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Groupe", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Groupe", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     
@@ -380,6 +387,10 @@ class FiltreMenuViewController: UIViewController {
         }
         
         
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Zone", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Zone]) in
+            return selectedPays.zones.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+        }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
         
@@ -390,9 +401,9 @@ class FiltreMenuViewController: UIViewController {
             
             //reset groupe + affaire
             self.arrayOfSelectedGroupe.removeAll()
-            self.arrayFiltres[3] = "Groupe"
+            self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
             self.arrayOfSelectedAffaire.removeAll()
-            self.arrayFiltres[4] = "Affaire"
+            self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
             
             if(self.arrayOfSelectedZone.count > 0)
             {
@@ -410,7 +421,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Zone", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     // ***********************************
@@ -440,6 +451,10 @@ class FiltreMenuViewController: UIViewController {
         }
         
         
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Pays", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Pays]) in
+            return self.arrayOfPays.filter({ $0.countryLib.lowercased().contains(searchtext.lowercased()) })
+        }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
         
@@ -455,11 +470,11 @@ class FiltreMenuViewController: UIViewController {
                 
                 //reset zone + groupe + affaire
                 self.arrayOfSelectedZone.removeAll()
-                self.arrayFiltres[2] = "Zone"
+                self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
                 self.arrayOfSelectedGroupe.removeAll()
-                self.arrayFiltres[3] = "Groupe"
+                self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[4] = "Affaire"
+                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
                 
                 
                 DispatchQueue.main.async {
@@ -474,7 +489,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Pays", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Pays", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     // ***********************************
@@ -505,8 +520,10 @@ class FiltreMenuViewController: UIViewController {
         }
         
         
-        // set default selected items when menu present on screen.
-        // Here you'll get onDidSelectRow
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Langue", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Langue]) in
+            return self.arrayOfLangues.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+        }
         
         selectionMenu.setSelectedItems(items: arrayOfSelectedLangue) { (text, isSelected, selectedItems) in
             
@@ -529,7 +546,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Langue", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Langue", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
         
     }
 

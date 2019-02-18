@@ -28,7 +28,7 @@ class FiltreView: UIView {
     var delegate : FiltreViewDelegate! = nil
     
     @IBOutlet weak var filtreCollectionView: UICollectionView!
-    var arrayFiltres : [String] = ["Langue", "Pays","Zone", "Groupe" , "Affaire"];
+    var arrayFiltres : [String] = [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     // ***********************************
@@ -50,7 +50,7 @@ class FiltreView: UIView {
             }
         }else
         {
-            arrayFiltres[0] = "Langue"
+            arrayFiltres[0] = NSLocalizedString("Langue", comment: "-")
         }
         
         //2 le pays
@@ -65,7 +65,7 @@ class FiltreView: UIView {
         }
         else
         {
-            arrayFiltres[1] = "Pays"
+            arrayFiltres[1] = NSLocalizedString("Pays", comment: "-")
         }
         
         //3 zone
@@ -79,7 +79,7 @@ class FiltreView: UIView {
             }
         }else
         {
-            arrayFiltres[2] = "Zone"
+            arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
         }
         
         //4 Groupe
@@ -93,7 +93,7 @@ class FiltreView: UIView {
             }
         }else
         {
-            arrayFiltres[3] = "Groupe"
+            arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
         }
         
         //5 Affaire
@@ -107,7 +107,7 @@ class FiltreView: UIView {
             }
         }else
         {
-            arrayFiltres[4] = "Affaire"
+            arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
         }
         
         

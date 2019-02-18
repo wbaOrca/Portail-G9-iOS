@@ -39,50 +39,49 @@ public struct Section {
 // +++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++
 public var sectionsData: [Section] = [
-    Section(name: "Indicateurs", items: [
+    Section(name: NSLocalizedString("Indicateurs", comment: ""), items: [
         
-        Item(name: "Vente", detail: "1"),
-        Item(name: "Après ventes", detail: "2"),
-        Item(name: "Clients", detail: "3"),
-        Item(name: "Image de marque", detail: "4")
+        Item(name: NSLocalizedString("Vente", comment: ""), detail: "1"),
+        Item(name: NSLocalizedString("Après ventes", comment: ""), detail: "2"),
+        Item(name: NSLocalizedString("Clients", comment: ""), detail: "3"),
+        Item(name: NSLocalizedString("Image de marque", comment: ""), detail: "4")
         
     ]),
-    Section(name: "Process", items: [
+    Section(name: NSLocalizedString("Process", comment: ""), items: [
         
-        Item(name: "Radars", detail: ""),
-        Item(name: "Piliers", detail: "")
+        Item(name: NSLocalizedString("Radars", comment: ""), detail: ""),
+        Item(name: NSLocalizedString("Piliers", comment: ""), detail: "")
     ]),
-    Section(name: "Plan d'action", items: [
+    Section(name: NSLocalizedString("Plan d'action", comment: ""), items: [
        
-        Item(name: "Plan d'action zone", detail: ""),
-        Item(name: "Synthèse plan d'actions", detail: "")
+        Item(name: NSLocalizedString("Plan d'action zone", comment: ""), detail: ""),
+        Item(name: NSLocalizedString("Synthèse plan d'actions", comment: ""), detail: "")
         
     ]),
     
-    Section(name: "Actions commerciales", items: [
-        
-        
-        ]),
-    
-    Section(name: "Forces Terrains", items: [
-        
-        Item(name: "Agenda", detail: ""),
-        Item(name: "Todo list", detail: ""),
-        Item(name: "Relevé de décisions", detail: "")
-        ]),
-    
-    Section(name: "Escalation Process", items: [
-        
-        
-        ]),
-    Section(name: "Reporting", items: [
-        Item(name: "Connexions Stats.", detail: "")
+    Section(name: NSLocalizedString("Actions commerciales", comment: ""), items: [
         
         ]),
     
-    Section(name: "Déconnexion", items: [
+    Section(name: NSLocalizedString("Forces Terrains", comment: ""), items: [
         
-        Item(name: "Se déconnecter", detail: "")
+        Item(name: NSLocalizedString("Agenda", comment: ""), detail: ""),
+        Item(name: NSLocalizedString("Todo list", comment: ""), detail: ""),
+        Item(name: NSLocalizedString("Relevé de décisions", comment: ""), detail: "")
+        ]),
+    
+    Section(name: NSLocalizedString("Escalation Process", comment: ""), items: [
+        
+        
+        ]),
+    Section(name: NSLocalizedString("Reporting", comment: ""), items: [
+        Item(name: NSLocalizedString("Connexions Stats.", comment: ""), detail: "")
+        
+        ]),
+    
+    Section(name: NSLocalizedString("Déconnexion", comment: ""), items: [
+        
+        Item(name: NSLocalizedString("Se déconnecter", comment: ""), detail: "")
         
     
         ])

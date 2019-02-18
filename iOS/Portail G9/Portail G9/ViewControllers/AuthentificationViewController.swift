@@ -245,7 +245,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Profils", action: "Sélectionner", height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: "Profils", action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
         
     }
     

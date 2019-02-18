@@ -11,3 +11,37 @@
 "Categories" = "Catégories";
 "Groupes" = "Groupes" ;
 "KPI" = "KPI";
+
+"Select" = "Sélectionner";
+
+"Langue" = "Langue" ;
+"Pays" = "Pays";
+"Zone" = "Zone" ;
+"Groupe" = "Groupe" ;
+"Affaire" = "Affaire";
+
+
+"Indicateurs" = "Indicateurs";
+"Vente" = "Vente";
+"Après ventes" = "Après ventes";
+"Clients" = "Clients";
+"Image de marque" = "Image de marque";
+"Process" = "Process";
+"Radars" = "Radars";
+"Piliers" = "Piliers";
+"Plan d'action" = "Plan d'action";
+"Plan d'action zone" = "Plan d'action zone";
+"Synthèse plan d'actions" = "Synthèse plan d'actions";
+"Actions commerciales" = "Actions commerciales";
+"Forces Terrains" = "Forces Terrains";
+"Agenda" = "Agenda";
+"Todo list" = "Todo list";
+"Relevé de décisions" = "Relevé de décisions";
+"Escalation Process" = "Escalation Process";
+"Reporting" = "Reporting";
+"Connexions Stats." = "Connexions Stats.";
+"Déconnexion" = "Déconnexion";
+"Se déconnecter" = "Se déconnecter";
+
+
+])
