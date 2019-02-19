@@ -379,7 +379,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
-                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.25217604637145996" green="0.53731739521026611" blue="0.78522408008575439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
                                                 <real key="value" value="42"/>
@@ -395,7 +395,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9W5-h4-pmN" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="224" y="210" width="320" height="320"/>
+                                        <rect key="frame" x="224" y="213" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="HTr-To-Dt1"/>
@@ -403,7 +403,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
-                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.25217604640000002" green="0.53731739519999999" blue="0.7852240801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
                                                 <real key="value" value="60"/>
@@ -419,7 +419,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAa-lT-L2I" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="224" y="410" width="320" height="320"/>
+                                        <rect key="frame" x="224" y="416" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="5rE-IF-I4R"/>
@@ -427,7 +427,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
-                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.25217604640000002" green="0.53731739519999999" blue="0.7852240801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
                                                 <real key="value" value="60"/>
@@ -443,7 +443,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-RD-X2J" customClass="ABGaugeView" customModule="ABGaugeViewKit">
-                                        <rect key="frame" x="224" y="610" width="320" height="320"/>
+                                        <rect key="frame" x="224" y="619" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Ugb-de-y4g"/>
@@ -451,7 +451,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="needleColor">
-                                                <color key="value" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.25217604640000002" green="0.53731739519999999" blue="0.7852240801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
                                                 <real key="value" value="60"/>
@@ -473,10 +473,10 @@
                                     <constraint firstItem="Iwy-Ga-faO" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="45V-WA-hef"/>
                                     <constraint firstItem="HlV-RD-X2J" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="9tM-v3-2ok"/>
                                     <constraint firstItem="KAa-lT-L2I" firstAttribute="centerX" secondItem="ZCQ-Jm-nde" secondAttribute="centerX" id="H52-RX-8Ng"/>
-                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="top" secondItem="Iwy-Ga-faO" secondAttribute="bottom" constant="-120" id="JFw-YD-8Ph"/>
+                                    <constraint firstItem="9W5-h4-pmN" firstAttribute="top" secondItem="Iwy-Ga-faO" secondAttribute="bottom" constant="-117" id="JFw-YD-8Ph"/>
                                     <constraint firstItem="Iwy-Ga-faO" firstAttribute="top" secondItem="ZCQ-Jm-nde" secondAttribute="top" constant="10" id="MY0-xn-74a"/>
-                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="top" secondItem="9W5-h4-pmN" secondAttribute="bottom" constant="-120" id="Usd-Ga-EPq"/>
-                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="top" secondItem="KAa-lT-L2I" secondAttribute="bottom" constant="-120" id="sNc-fz-FQf"/>
+                                    <constraint firstItem="KAa-lT-L2I" firstAttribute="top" secondItem="9W5-h4-pmN" secondAttribute="bottom" constant="-117" id="Usd-Ga-EPq"/>
+                                    <constraint firstItem="HlV-RD-X2J" firstAttribute="top" secondItem="KAa-lT-L2I" secondAttribute="bottom" constant="-117" id="sNc-fz-FQf"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -611,7 +611,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-rX-TC1">
-                                                    <rect key="frame" x="80" y="20" width="275" height="19.5"/>
+                                                    <rect key="frame" x="80" y="20" width="668" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -766,7 +766,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efo-Y4-HCw">
-                                                    <rect key="frame" x="80" y="20" width="275" height="19.5"/>
+                                                    <rect key="frame" x="80" y="20" width="668" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -965,7 +965,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcs-Eu-3GF">
-                                            <rect key="frame" x="2" y="2" width="371" height="46"/>
+                                            <rect key="frame" x="2" y="2" width="764" height="46"/>
                                             <color key="backgroundColor" red="0.098799489439999999" green="0.28562927249999998" blue="0.39956784249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                             <color key="textColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
