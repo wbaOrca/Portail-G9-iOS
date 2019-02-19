@@ -186,7 +186,7 @@ class WSQueries: NSObject {
     // ***********************************
     // ***********************************
     // ***********************************
-    static func getDonneesUtiles(delegate : WSGetDataUtilesDelegate)
+    static func getDonneesUtiles(delegate : WSGetDataUtilesDelegate, langue : String!)
     {
        
         
@@ -202,16 +202,21 @@ class WSQueries: NSObject {
         
         let profil_ = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
         
+        
         // la langue
         var langue_user = "en-GB";
+        if(langue == nil){
         let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
         if(langueData_ != nil){
             if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
                 
                 let langue = langue_ as! Langue
-               langue_user = langue.libelle
+               langue_user = langue.languageCode
                 
             }
+            }
+        }else {
+            langue_user = langue
         }
         
         let post_params: Parameters = [
@@ -234,7 +239,7 @@ class WSQueries: NSObject {
                     WSQueries.refreshToken(completion: { (code) in
                         if(code == WSQueries.CODE_RETOUR_200)
                         {
-                            WSQueries.getDonneesUtiles(delegate: delegate)
+                            WSQueries.getDonneesUtiles(delegate: delegate,langue: langue)
                         }else
                         {
                             delegate.didFinishWSGetDataUtiles(error: true , data: nil)

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Reachability
+import NVActivityIndicatorView
 import RSSelectionMenu
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -39,6 +40,23 @@ class FiltreMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupDataFiltre();
+       
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupDataFiltre()
+    {
+        
+        self.arrayOfLangues.removeAll()
+        self.arrayOfSelectedLangue.removeAll()
+        self.arrayOfPays.removeAll()
+        self.arrayOfSelectedPays.removeAll()
+        arrayOfSelectedZone.removeAll()
+        arrayOfSelectedGroupe.removeAll()
+        arrayOfSelectedAffaire.removeAll()
         
         // 1 liste des langues
         let preferences = UserDefaults.standard
@@ -48,7 +66,6 @@ class FiltreMenuViewController: UIViewController {
                 
                 let langue_array = langue_array_ as! [Langue]
                 self.arrayOfLangues = langue_array
-                
             }
         }
         
@@ -122,9 +139,9 @@ class FiltreMenuViewController: UIViewController {
                 
             }
         }
-       
+        
+        self.filtreCollectionView.reloadData();
     }
-    
     // ***********************************
     // ***********************************
     // ***********************************
@@ -466,6 +483,14 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedPays.count > 0)
             {
                 let pays_ = self.arrayOfSelectedPays[0]
+                
+                let preferences = UserDefaults.standard
+                let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
+                preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+                preferences.synchronize()
+                
+                
+                
                 self.arrayFiltres[1] = pays_.countryLib
                 
                 //reset zone + groupe + affaire
@@ -533,9 +558,15 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedLangue.count > 0)
             {
                 let langue_ = self.arrayOfSelectedLangue[0]
+                let preferences = UserDefaults.standard
+                let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue_)
+                preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                preferences.synchronize()
+                
                 self.arrayFiltres[0] = langue_.libelle
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
+                    self.syncroniseData(langue: langue_.languageCode)
                 }
             }
            
@@ -550,6 +581,151 @@ class FiltreMenuViewController: UIViewController {
         
     }
 
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicatorViewable{
+   
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func syncroniseData(langue : String)
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Récupération des données en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.getDonneesUtiles(delegate: self,langue: langue);
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSGetDataUtiles(error: Bool, data: DataUtilesWSResponse!) {
+        
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error && data != nil)
+        {
+            
+            
+            if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
+            {
+                let preferences = UserDefaults.standard
+                
+                // liste des langues
+                let dataLangue = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.langues)
+                preferences.set(dataLangue, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
+                
+                var langue_par_defaut : Langue! = nil
+                // la langue par défaut
+                let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+                if(langueData_ != nil){
+                    if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                        
+                        let langue = langue_ as! Langue
+                        langue_par_defaut = langue
+                    }
+                }
+                
+              
+                var pays_par_defaut : Pays! = nil
+                // Pays par défaut
+                let paysData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
+                if(paysData_ != nil){
+                    if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData_!)  {
+                        
+                        let pays = pays_ as! Pays
+                        pays_par_defaut = pays
+                    }
+                }
+                
+                 //mettre la langue par défaut dans le perimetre/filtre
+                if(langue_par_defaut != nil){
+                    for i in (0 ..< data.dataUtiles.langues.count)
+                    {
+                        let langue = data.dataUtiles.langues[i];
+                        if(langue_par_defaut.languageId == langue.languageId)
+                        {
+                            let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
+                            preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                            
+                            break;
+                        }
+                    }
+                }
+                
+                
+                
+                //liste des pays perimetre
+                let dataPerimetre = NSKeyedArchiver.archivedData(withRootObject: data.dataUtiles.perimetre)
+                preferences.set(dataPerimetre, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
+                
+                
+                //mettre à jour pays par défaut dans le perimetre/filtre
+                if(pays_par_defaut != nil){
+                        for i in (0 ..< data.dataUtiles.perimetre.count)
+                        {
+                            let pays_ = data.dataUtiles.perimetre[i];
+                            if(pays_.countryId == pays_par_defaut.countryId)
+                            {
+                                let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
+                                preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+                                break;
+                            }
+                        }
+                    
+                }
+                //  Save to disk
+                preferences.synchronize()
+                
+                DispatchQueue.main.async {
+                    self.setupDataFiltre()
+                }
+                
+            }else
+            {
+                DispatchQueue.main.async {
+                    let msgErreur = data.description_ + "\n code = " + String(data.code_erreur)
+                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    return;
+                }
+            }
+            
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
 }
 
 

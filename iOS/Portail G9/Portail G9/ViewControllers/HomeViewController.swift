@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 import NVActivityIndicatorView
-
+import SDWebImage
 import SideMenu
 import ABGaugeViewKit
 
@@ -35,6 +35,9 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     var labelRadar2: UILabel!
     var labelRadar3: UILabel!
     var labelRadar4: UILabel!
+    
+    var imageViewRadar1: UIImageView!
+    var imageViewRadar2: UIImageView!
     
     // ***********************************
     // ***********************************
@@ -86,6 +89,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         labelRadar1.numberOfLines = 0
         labelRadar1.lineBreakMode = .byWordWrapping
         scrollView.addSubview(labelRadar1)
+        imageViewRadar1 = UIImageView(frame: CGRect(x: labelRadar1.frame.width - 70 , y: 0, width: 35, height: 35))
+        labelRadar1.addSubview(imageViewRadar1)
         scrollView.bringSubviewToFront(labelRadar1)
         
         gaugeView2.areas = "100,0,0,0,0"
@@ -100,6 +105,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         labelRadar2.numberOfLines = 0
         labelRadar2.lineBreakMode = .byWordWrapping
         scrollView.addSubview(labelRadar2)
+        imageViewRadar2 = UIImageView(frame: CGRect(x: labelRadar2.frame.width - 70 , y: 0, width: 35, height: 35))
+        labelRadar2.addSubview(imageViewRadar2)
         scrollView.bringSubviewToFront(labelRadar2)
         
         gaugeView3.areas = "100,0,0,0,0"
@@ -231,7 +238,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         }
         
         DispatchQueue.main.async{
-            WSQueries.getDonneesUtiles(delegate: self);
+            WSQueries.getDonneesUtiles(delegate: self,langue: nil);
         }
     }
     
@@ -278,45 +285,58 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
            //radar 1
             if(radars.orderRenaultData < 0){
                 gaugeView1.needleValue = 0
-            }else{
+            }else if(radars.orderRenaultData > 100){
+                gaugeView1.needleValue = 100
+            } else{
                  gaugeView1.needleValue = CGFloat(radars.orderRenaultData);
             }
             let delimeterAbs1 = Int(abs(radars.orderRenaultDelimiter))
             let CenntAbs1 = 100 - delimeterAbs1
             gaugeView1.areas = String(delimeterAbs1) + "," + String(CenntAbs1) + ",0,0,0"
-            labelRadar1.text = radars.orderRenaultLibelle + "\n" + String(radars.orderRenaultData) + "%"
+            let title_ = radars.orderRenaultLibelle + "\n" + String(radars.orderRenaultData) + "%"
+            labelRadar1.text = title_;
+            let url = URL(string: radars.orderRenaultIcone)
+            imageViewRadar1.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+            
+            
             
             //radar 2
             if(radars.orderDaciaData < 0){
                 gaugeView2.needleValue = 0;
-            }
-            else{
+            }else if(radars.orderDaciaData > 100){
+                gaugeView2.needleValue = 100;
+            }else{
                 gaugeView2.needleValue = CGFloat(radars.orderDaciaData);
             }
             let delimeterAbs2 = Int(abs(radars.orderDaciaDelimiter))
             let CenntAbs2 = 100 - delimeterAbs2
             gaugeView2.areas = String(delimeterAbs2) + "," + String(CenntAbs2) + ",0,0,0"
             labelRadar2.text = radars.orderDaciaLibelle + "\n" + String(radars.orderDaciaData) + "%"
+            let url_2 = URL(string: radars.orderDaciaIcone)
+            imageViewRadar2.sd_setImage(with: url_2, placeholderImage: UIImage(named: "placeholder.png"))
             
             //radar 3
             if(radars.workshopPEData < 0){
                 gaugeView3.needleValue = 0;
-            }
-            else{
+            }else if(radars.workshopPEData > 100){
+                gaugeView3.needleValue = 100;
+            }else{
                 gaugeView3.needleValue = CGFloat(radars.workshopPEData);
             }
             let delimeterAbs3 = Int(abs(radars.workshopPEDelimiter))
             let CenntAbs3 = 100 - delimeterAbs3
             gaugeView3.areas = String(delimeterAbs3) + "," + String(CenntAbs3) + ",0,0,0"
-            labelRadar3.text = radars.workshopPELibelle + "\n" + String(radars.workshopPEData) + "%"
+            labelRadar3.text = radars.workshoptLibelle + "\n" + String(radars.workshopPEData) + "%"
             
             //radar 4
             if(radars.spSellInData < 0){
                 gaugeView4.needleValue = 0;
-            }
-            else{
+            }else if(radars.spSellInData > 100){
+                gaugeView4.needleValue = 100;
+            }else{
                gaugeView4.needleValue = CGFloat(radars.spSellInData);
             }
+            
             let delimeterAbs4 = Int(abs(radars.spSellInEDelimiter))
             let CenntAbs4 = 100 - delimeterAbs4
             gaugeView4.areas = String(delimeterAbs4) + "," + String(CenntAbs4) + ",0,0,0"
