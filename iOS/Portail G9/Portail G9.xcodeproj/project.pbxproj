@@ -18,10 +18,14 @@
 		FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */; };
 		FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8322005BE40043E345 /* HomeViewController.swift */; };
 		FB0E0F8922005DAD0043E345 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F8722005DAD0043E345 /* Localizable.strings */; };
+		FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */; };
+		FB4A6A3822267746001AC448 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3722267746001AC448 /* Board.swift */; };
+		FB4A6A3A22267758001AC448 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */; };
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
 		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
 		FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */; };
+		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
 		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
 		FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */; };
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
@@ -101,10 +105,14 @@
 		FB0E0F8B22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		FB0E0F8C22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FB0E0F8D22005F670043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewController.swift; sourceTree = "<group>"; };
+		FB4A6A3722267746001AC448 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
 		FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUserResponseWSAuth.swift; sourceTree = "<group>"; };
+		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
 		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				FBF26C822215604300D271AC /* ListeCategoriesTableViewCell.swift */,
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
 				FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */,
+				FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 				FBF26C8022155D2B00D271AC /* ListeCategoriesViewController.swift */,
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
 				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
+				FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -272,6 +282,8 @@
 				FBFDC0EF2216A20300A67042 /* KPI.swift */,
 				FBFDC0F32216A39900A67042 /* KPILigne.swift */,
 				FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */,
+				FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */,
+				FB4A6A3722267746001AC448 /* Board.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -617,6 +629,7 @@
 				FBF26C8822156EC600D271AC /* DataGroupeKPIWSResponse.swift in Sources */,
 				FBF26C8122155D2B00D271AC /* ListeCategoriesViewController.swift in Sources */,
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
+				FB4A6A3822267746001AC448 /* Board.swift in Sources */,
 				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
@@ -633,6 +646,7 @@
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */,
 				FBFDC0F22216A23800A67042 /* DataKPIsWSResponse.swift in Sources */,
+				FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */,
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
@@ -645,10 +659,12 @@
 				FBF26C8522156E5800D271AC /* ListeGroupesViewController.swift in Sources */,
 				FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */,
 				FBE63E102212AC790027F6E2 /* Zone.swift in Sources */,
+				FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,
 				FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */,
 				FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */,
+				FB4A6A3A22267758001AC448 /* BoardCollectionViewCell.swift in Sources */,
 				FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */,
 				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
@@ -757,6 +773,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -819,6 +836,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -847,6 +865,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Portail G9/Portail G9.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66HQ2XYQ7D;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Portail G9/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -868,6 +887,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Portail G9/Portail G9.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66HQ2XYQ7D;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Portail G9/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -20,7 +20,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     @IBOutlet weak var collectioViewKPI: UICollectionView!
     
     var groupeId : Int64 = 0;
-    var arrayKPIs : [KPI] = [KPI]();
+    var arrayKPIs : [IndicateurKPISection] = [IndicateurKPISection]();
     
     // ***********************************
     // ***********************************
@@ -86,10 +86,11 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
         
         if(!error && data != nil)
         {
-            
+           
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
-                arrayKPIs = data.kpiArray;
+                 let array_ = KPI.translateKPIColonneToLigne(arrayKPI: data.kpiArray);
+                arrayKPIs = array_;
                 
                 DispatchQueue.main.async {
                     self.collectioViewKPI.reloadData()
@@ -128,7 +129,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let kpiColonne = arrayKPIs[section]
-        let numberLigne = kpiColonne.lignes.count
+        let numberLigne = kpiColonne.elementsSection.count
         return numberLigne
     }
     
@@ -138,7 +139,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let kpi = arrayKPIs[indexPath.section];
-        let kpiColonne = kpi.lignes[indexPath.row];
+        let kpiColonne = kpi.elementsSection[indexPath.row];
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KPICollectionViewCell", for: indexPath) as! KPICollectionViewCell
         cell.setupKPICollectionViewCell(kpi: kpiColonne);
@@ -154,7 +155,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
             
             let kpi = arrayKPIs[indexPath.section];
             
-            sectionHeader.sectionHeaderlabel.text = kpi.colonne
+            sectionHeader.sectionHeaderlabel.text = kpi.titreSection
             return sectionHeader
         }
         return UICollectionReusableView()

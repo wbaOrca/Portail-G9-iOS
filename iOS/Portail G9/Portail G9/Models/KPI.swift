@@ -43,4 +43,59 @@ class KPI: NSObject ,Mappable{
         
         
     }
+    
+    
+    // *****************************************
+    // *****************************************
+    // ****** mapping
+    // *****************************************
+    // *****************************************
+    // Mappable
+    static func translateKPIColonneToLigne (arrayKPI : [KPI]) -> [IndicateurKPISection]
+    {
+        var new_array = [IndicateurKPISection]()
+        
+        // 1 - récupérer toute les sections
+        if(arrayKPI.count > 0)
+        {
+            let kpi_ = arrayKPI[0]
+            for j in (0 ..< kpi_.lignes.count)
+            {
+                let ligne_ = kpi_.lignes[j]
+                
+                let section = IndicateurKPISection()
+                if(ligne_.numero > 0)
+                {
+                    section.titreSection = String(ligne_.numero) + " - " + ligne_.libelle
+                }else
+                {
+                    section.titreSection = ligne_.libelle
+                }
+                new_array.append(section);
+            }
+        }
+        let nombre_section = new_array.count
+        
+        // 2 - récupérer toute les sections
+        
+        for compteur in (0 ..< nombre_section)
+        {
+            let section = new_array[compteur]
+            for i in (0 ..< arrayKPI.count)
+            {
+                let kpi_ = arrayKPI[i]
+                if (compteur < kpi_.lignes.count)
+                {
+                    let ligne_ = kpi_.lignes[compteur]
+                    ligne_.libelle = kpi_.colonne
+                    section.elementsSection.append(ligne_)
+                }
+            }
+        }
+        
+        return new_array
+    }
+    
+    
+    
 }

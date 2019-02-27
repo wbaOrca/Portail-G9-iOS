@@ -140,7 +140,13 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         
         
         //notifications from lef Menu
+        //notifications from lef Menu
         NotificationCenter.default.addObserver(self, selector: #selector(self.voirCategorieFamille_), name: NSNotification.Name(rawValue: "#voirCategorieFamille"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.voirProcess), name: NSNotification.Name(rawValue: "#voirProcess"), object: nil)
+        
+        //notifications from lef Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(self.voirPlanAction), name: NSNotification.Name(rawValue: "#voirPlanAction"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
     }
@@ -184,6 +190,48 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             listeCategoriesVC?.familleId = familleId
             self.navigationController?.pushViewController(listeCategoriesVC!, animated: true);
             
+        }
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func voirProcess(notif: NSNotification) {
+        
+        self.dismiss(animated: false, completion: nil)
+        
+        if let processId = notif.object as? Int {
+            if(processId == 1)//radar
+            {
+                
+            }else //Piliers
+            {
+                
+            }
+            
+        }
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func voirPlanAction(notif: NSNotification) {
+        
+        self.dismiss(animated: false, completion: nil)
+        
+        if let planAActionId = notif.object as? Int {
+            
+            if(planAActionId == 1)//Plan d'action Zone
+            {
+                
+            }
+            else if(planAActionId == 2) //Synthese Plan d'actions
+            {
+                let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
+                self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
+            }
         }
         
     }

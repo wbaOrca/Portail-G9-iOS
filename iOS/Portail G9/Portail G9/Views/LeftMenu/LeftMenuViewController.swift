@@ -70,22 +70,28 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
            
             break;
             
-        case 1:
+        case 1://Process
+            
+            let process_id = Int(indexPath.row + 1)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#voirProcess"), object: process_id)
             break;
             
-        case 2:
+        case 2://Plan d'action
+            
+            let plan_action_id = Int(indexPath.row + 1)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#voirPlanAction"), object: plan_action_id)
             break;
             
-        case 3:
+        case 3://Action commerciale
             break;
         
-        case 4:
+        case 4://Force Terrains
             break;
         
-        case 5:
+        case 5://Escalation process
             break;
         
-        case 6:
+        case 6://Reporting
             break;
         
         case 7: // deconnexion
