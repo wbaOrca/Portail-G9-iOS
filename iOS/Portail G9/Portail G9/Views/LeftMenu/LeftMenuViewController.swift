@@ -92,6 +92,11 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
             break;
         
         case 6://Reporting
+            let reporting_id = Int(indexPath.row + 1)
+            if(indexPath.row == 0)
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#Reporting"), object: reporting_id)
+            }
             break;
         
         case 7: // deconnexion

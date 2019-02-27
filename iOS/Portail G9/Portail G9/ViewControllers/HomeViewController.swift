@@ -148,6 +148,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         //notifications from lef Menu
         NotificationCenter.default.addObserver(self, selector: #selector(self.voirPlanAction), name: NSNotification.Name(rawValue: "#voirPlanAction"), object: nil)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(self.reporting), name: NSNotification.Name(rawValue: "#Reporting"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
     }
     // *******************************************************************************
@@ -204,7 +206,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
         if let processId = notif.object as? Int {
             if(processId == 1)//radar
             {
-                
+                let processRadarVC = self.storyboard?.instantiateViewController(withIdentifier: "ProcessRadarViewController") as? ProcessRadarViewController
+                self.navigationController?.pushViewController(processRadarVC!, animated: true);
             }else //Piliers
             {
                 
@@ -232,6 +235,22 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
                 let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
                 self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
             }
+        }
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func reporting(notif: NSNotification) {
+        
+        self.dismiss(animated: false, completion: nil)
+        
+        if let reportingId = notif.object as? Int {
+            
+            let reportingVC = self.storyboard?.instantiateViewController(withIdentifier: "ReportingViewController") as? ReportingViewController
+            self.navigationController?.pushViewController(reportingVC!, animated: true);
+            
         }
         
     }
