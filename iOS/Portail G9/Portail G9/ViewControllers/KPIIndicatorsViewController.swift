@@ -162,10 +162,8 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     }
     
     
-    
-    
-    
 }
+
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++

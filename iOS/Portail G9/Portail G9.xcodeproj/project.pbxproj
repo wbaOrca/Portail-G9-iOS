@@ -49,6 +49,12 @@
 		FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E172212B5410027F6E2 /* DataUtiles.swift */; };
 		FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E192212C1C70027F6E2 /* DataRadarWSResponse.swift */; };
 		FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E1B2212C2060027F6E2 /* DataRadar.swift */; };
+		FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */; };
+		FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */; };
+		FBE9EC42222E5DF200D4F6A0 /* Controle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC41222E5DF200D4F6A0 /* Controle.swift */; };
+		FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */; };
+		FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */; };
+		FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */; };
 		FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */; };
 		FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3721DFA8AB006A7341 /* Portail_G9.xcdatamodeld */; };
 		FBF15B4021DFA8AB006A7341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF15B3E21DFA8AB006A7341 /* Main.storyboard */; };
@@ -145,6 +151,12 @@
 		FBE63E172212B5410027F6E2 /* DataUtiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtiles.swift; sourceTree = "<group>"; };
 		FBE63E192212C1C70027F6E2 /* DataRadarWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRadarWSResponse.swift; sourceTree = "<group>"; };
 		FBE63E1B2212C2060027F6E2 /* DataRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRadar.swift; sourceTree = "<group>"; };
+		FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tache.swift; sourceTree = "<group>"; };
+		FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTacheViewController.swift; sourceTree = "<group>"; };
+		FBE9EC41222E5DF200D4F6A0 /* Controle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controle.swift; sourceTree = "<group>"; };
+		FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleTableViewCell.swift; sourceTree = "<group>"; };
+		FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichierTableViewCell.swift; sourceTree = "<group>"; };
+		FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaireTableViewCell.swift; sourceTree = "<group>"; };
 		FBF15B3221DFA8AB006A7341 /* Portail G9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Portail G9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF15B3821DFA8AB006A7341 /* Portail_G9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Portail_G9.xcdatamodel; sourceTree = "<group>"; };
@@ -236,6 +248,9 @@
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
 				FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */,
 				FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */,
+				FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */,
+				FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */,
+				FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +274,7 @@
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
 				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
 				FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */,
+				FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */,
 				FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */,
 				FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */,
 			);
@@ -335,6 +351,8 @@
 				FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */,
 				FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */,
 				FB4A6A3722267746001AC448 /* Board.swift */,
+				FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */,
+				FBE9EC41222E5DF200D4F6A0 /* Controle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -691,13 +709,18 @@
 				FBFDC0F02216A20300A67042 /* KPI.swift in Sources */,
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
+				FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
 				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
+				FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
 				FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */,
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
+				FBE9EC42222E5DF200D4F6A0 /* Controle.swift in Sources */,
+				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
 				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
+				FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */,
 				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */,
@@ -728,6 +751,7 @@
 				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 				FBF26C832215604300D271AC /* ListeCategoriesTableViewCell.swift in Sources */,
+				FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */,
 				FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

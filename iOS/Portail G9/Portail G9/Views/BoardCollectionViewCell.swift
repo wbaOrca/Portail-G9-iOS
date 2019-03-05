@@ -18,6 +18,9 @@ class BoardCollectionViewCell: UICollectionViewCell {
     var board: Board?
     weak var parentVC: BoardCollectionViewController?
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -32,11 +35,17 @@ class BoardCollectionViewCell: UICollectionViewCell {
         tableView.dropDelegate = self
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func setup(with board: Board) {
         self.board = board
         tableView.reloadData()
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     @IBAction func addTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Item", message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
@@ -66,22 +75,34 @@ class BoardCollectionViewCell: UICollectionViewCell {
 // ++++++++++++++++
 extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return board?.items.count ?? 0
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return board?.title
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(board!.items[indexPath.row])"
         return cell
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let detailsTacheVC = parentVC!.storyboard?.instantiateViewController(withIdentifier: "DetailsTacheViewController") as? DetailsTacheViewController
+        parentVC!.navigationController?.pushViewController(detailsTacheVC!, animated: true);
     }
     
 }
@@ -92,7 +113,9 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
 // ++++++++++++++++++++
 
 extension BoardCollectionViewCell: UITableViewDragDelegate {
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         guard let board = board, let stringData = board.items[indexPath.row].data(using: .utf8)
             else {
@@ -112,7 +135,9 @@ extension BoardCollectionViewCell: UITableViewDragDelegate {
 // ++++++++++++++++++++
 // ++++++++++++++++++++
 extension BoardCollectionViewCell: UITableViewDropDelegate {
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         if coordinator.session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) {
             coordinator.session.loadObjects(ofClass: NSString.self) { (items) in
@@ -162,6 +187,9 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
         }
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func removeSourceTableData(localContext: Any?) {
         if let (dataSource, sourceIndexPath, tableView) = localContext as? (Board, IndexPath, UITableView) {
             tableView.beginUpdates()
@@ -171,6 +199,9 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
         }
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
