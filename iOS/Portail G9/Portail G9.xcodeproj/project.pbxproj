@@ -36,6 +36,10 @@
 		FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */; };
 		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
 		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
+		FBD2AFE72231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */; };
+		FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFE8223150FE00D9D517 /* CheckList.swift */; };
+		FBD2AFEB2231513900D9D517 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFEA2231513900D9D517 /* Comment.swift */; };
+		FBD2AFED2231539C00D9D517 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFEC2231539C00D9D517 /* File.swift */; };
 		FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */; };
 		FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */; };
 		FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2EC6A2201F006004B44DF /* ExampleData.swift */; };
@@ -51,7 +55,6 @@
 		FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE63E1B2212C2060027F6E2 /* DataRadar.swift */; };
 		FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */; };
 		FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */; };
-		FBE9EC42222E5DF200D4F6A0 /* Controle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC41222E5DF200D4F6A0 /* Controle.swift */; };
 		FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */; };
 		FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */; };
 		FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */; };
@@ -138,6 +141,10 @@
 		FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUserResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
 		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
+		FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataForceTerrainToDoListWSResponse.swift; sourceTree = "<group>"; };
+		FBD2AFE8223150FE00D9D517 /* CheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
+		FBD2AFEA2231513900D9D517 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		FBD2AFEC2231539C00D9D517 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		FBE2EC662201EFD9004B44DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		FBE2EC672201EFD9004B44DF /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		FBE2EC6A2201F006004B44DF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
@@ -153,7 +160,6 @@
 		FBE63E1B2212C2060027F6E2 /* DataRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRadar.swift; sourceTree = "<group>"; };
 		FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tache.swift; sourceTree = "<group>"; };
 		FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTacheViewController.swift; sourceTree = "<group>"; };
-		FBE9EC41222E5DF200D4F6A0 /* Controle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controle.swift; sourceTree = "<group>"; };
 		FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleTableViewCell.swift; sourceTree = "<group>"; };
 		FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichierTableViewCell.swift; sourceTree = "<group>"; };
 		FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaireTableViewCell.swift; sourceTree = "<group>"; };
@@ -350,9 +356,12 @@
 				FBFDC0F32216A39900A67042 /* KPILigne.swift */,
 				FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */,
 				FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */,
+				FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */,
 				FB4A6A3722267746001AC448 /* Board.swift */,
 				FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */,
-				FBE9EC41222E5DF200D4F6A0 /* Controle.swift */,
+				FBD2AFE8223150FE00D9D517 /* CheckList.swift */,
+				FBD2AFEA2231513900D9D517 /* Comment.swift */,
+				FBD2AFEC2231539C00D9D517 /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -714,14 +723,15 @@
 				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
 				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
 				FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */,
+				FBD2AFEB2231513900D9D517 /* Comment.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
 				FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */,
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
-				FBE9EC42222E5DF200D4F6A0 /* Controle.swift in Sources */,
 				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
 				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
 				FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */,
 				FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */,
+				FBD2AFE72231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */,
 				FBFDC0F22216A23800A67042 /* DataKPIsWSResponse.swift in Sources */,
@@ -734,6 +744,7 @@
 				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
 				FBF26C7D221555FB00D271AC /* Categorie.swift in Sources */,
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,
+				FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
 				FBF26C8522156E5800D271AC /* ListeGroupesViewController.swift in Sources */,
 				FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */,
@@ -751,6 +762,7 @@
 				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 				FBF26C832215604300D271AC /* ListeCategoriesTableViewCell.swift in Sources */,
+				FBD2AFED2231539C00D9D517 /* File.swift in Sources */,
 				FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */,
 				FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */,
 			);

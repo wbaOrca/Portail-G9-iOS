@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Reachability
+import NVActivityIndicatorView
 
-class BoardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+class BoardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable {
     
-    var boards = [
-        Board(title: "Todo", items: ["Database Migration", "Schema Design", "Storage Management", "Model Abstraction"]),
-        Board(title: "In Progress", items: ["Push Notification", "Analytics", "Machine Learning"]),
-        Board(title: "Done", items: ["System Architecture", "Alert & Debugging"])
-    ]
+    var boards  : [Board]! = [Board]()
     
     // *******************
     // *******************
@@ -24,6 +25,44 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         setupAddButtonItem()
         updateCollectionViewItem(with: view.bounds.size)
     }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.getBoardsData()
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func getBoardsData()
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Récupération des tableaux en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.getBoardForcesTerrains(delegate: self);
+        }
+    }
+
+    
     // *******************
     // *******************
     // *******************
@@ -69,11 +108,15 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
-    
+    // *******************
+    // *******************
+    // *******************
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return boards.count
     }
-    
+    // *******************
+    // *******************
+    // *******************
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BoardCollectionViewCell
         
@@ -81,5 +124,43 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         cell.parentVC = self
         return cell
     }
+    
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
+{
+    func didFinishWSGetBoardsForcesTerrains(error: Bool, data: DataForceTerrainToDoListWSResponse!) {
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error && data != nil)
+        {
+            
+            if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
+            {
+                boards = data.toDoList;
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    
+                }
+            }
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des tableaux.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
     
 }

@@ -52,6 +52,12 @@ protocol WSGetIndicateursKPIsDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetBoardsForcesTerrainsDelegate {
+    
+    func didFinishWSGetBoardsForcesTerrains(error: Bool , data : DataForceTerrainToDoListWSResponse!)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -429,6 +435,79 @@ class WSQueries: NSObject {
         }
     }
     
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getBoardForcesTerrains(delegate : WSGetBoardsForcesTerrainsDelegate )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getBoardsForcesTerrains"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getBoardForcesTerrains(delegate: delegate);
+                        }else
+                        {
+                            delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseForceTerrainBoards =  Mapper<DataForceTerrainToDoListWSResponse>().map(JSONObject:responseJson)
+                if(responseForceTerrainBoards != nil)
+                {
+                    delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
+                    return
+                }
+                
+                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
     
     // ***********************************
     // ***********************************

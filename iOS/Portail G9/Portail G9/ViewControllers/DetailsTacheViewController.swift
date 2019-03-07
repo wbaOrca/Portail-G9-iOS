@@ -37,7 +37,7 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
     // ***********************************
     func setupDetailsTache()
     {
-        labelTache.text = tache.titre
+        labelTache.text = tache.taskTitle
         
         controlesTableView.reloadData()
         fichiersTableView.reloadData()
@@ -78,15 +78,15 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
         if(tableView == controlesTableView)
         {
             return 2
-            return tache.controles.count
+            return tache.checkLists.count
         }
         else if(tableView == fichiersTableView)
         {
-            return tache.fichiers.count
+            return tache.files.count
         }
         else if(tableView == commentairesTableView)
         {
-            return tache.commentaires.count
+            return tache.comments.count
         }
         
         return 0

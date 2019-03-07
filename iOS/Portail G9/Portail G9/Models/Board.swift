@@ -7,14 +7,56 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Board: Codable {
+class Board: NSObject , Mappable  {
     
-    var title: String
-    var items: [String]
+    var boardId: Int64 = 0
+    var boardType: String = ""
+    var boardTitle: String = ""
+    var boardColor: String = ""
+    var tasks: [Tache]! = nil
     
+    //******
+    //******
+    //******
+    override init() {
+        super.init()
+    }
+    
+    //******
+    //******
+    //******
+    required init?(map: Map) {
+        
+    }
+    
+    
+    
+    // *****************************************
+    // *****************************************
+    // ****** mapping
+    // *****************************************
+    // *****************************************
+    // Mappable
+    func mapping(map: Map) {
+        
+        boardId <- map["boardId"]
+        boardType <- map["boardType"]
+        boardTitle <- map["boardTitle"]
+        boardColor <- map["boardColor"]
+        
+        tasks <- map["tasks"]
+        
+        
+    }
+    
+    //******
+  //******
+ //******
     init(title: String, items: [String]) {
-        self.title = title
-        self.items = items
+        
+        self.boardTitle = title
+        
     }
 }
