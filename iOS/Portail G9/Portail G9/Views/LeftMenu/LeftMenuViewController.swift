@@ -86,6 +86,10 @@ extension LeftMenuViewController: CollapsibleTableSectionDelegate {
             break;
         
         case 4://Force Terrains
+            
+            let forceTerrain_action_id = Int(indexPath.row + 1)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "#voirForceTerrainAction"), object: forceTerrain_action_id)
+            
             break;
         
         case 5://Escalation process

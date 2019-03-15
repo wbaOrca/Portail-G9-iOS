@@ -151,6 +151,10 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
          NotificationCenter.default.addObserver(self, selector: #selector(self.reporting), name: NSNotification.Name(rawValue: "#Reporting"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.disconnectUser_), name: NSNotification.Name(rawValue: "#DisconnectUser"), object: nil)
+        
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(self.voirForceTerrainAction), name: NSNotification.Name(rawValue: "#voirForceTerrainAction"), object: nil)
+        
     }
     // *******************************************************************************
     // ******
@@ -232,13 +236,41 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             }
             else if(planAActionId == 2) //Synthese Plan d'actions
             {
+                /*
                 let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
                 self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
+                 */
             }
         }
         
     }
     
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func voirForceTerrainAction(notif: NSNotification) {
+        
+        self.dismiss(animated: false, completion: nil)
+        
+        if let planAActionId = notif.object as? Int {
+            
+            if(planAActionId == 1)//Agenda
+            {
+                
+            }
+            else if(planAActionId == 2) //ToDO List
+            {
+                let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
+                self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
+            }
+            else if(planAActionId == 3) //Relevé de décisions
+            {
+                
+            }
+        }
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************
@@ -507,6 +539,7 @@ extension HomeViewController: WSGetDataUtilesDelegate {
         }else
         {
             DispatchQueue.main.async {
+                
                 let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

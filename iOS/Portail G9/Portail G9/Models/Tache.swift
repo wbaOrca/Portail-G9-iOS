@@ -15,6 +15,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     var taskId: Int64 = -1
     var taskTitle: String = ""
     var taskStatut: String = ""
+    var taskZoneId: Int64! = nil
     
     var checkLists: [CheckList] = [CheckList]()
     var comments: [Comment] = [Comment]()
@@ -50,6 +51,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         comments <- map["comments"]
         files <- map["files"]
         
+        taskZoneId <- map["taskZoneId"]
     }
     
     
@@ -114,6 +116,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         aCoder.encode(checkLists, forKey: "checkLists")
         aCoder.encode(comments, forKey: "comments")
         aCoder.encode(files, forKey: "files")
+        aCoder.encode(taskZoneId, forKey: "taskZoneId")
     }
     
     // *************************
@@ -124,7 +127,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         taskId = decoder.decodeInt64(forKey: "taskId")
         taskTitle = decoder.decodeObject(forKey: "taskTitle") as? String ?? ""
         taskStatut = decoder.decodeObject(forKey: "taskStatut") as? String ?? ""
-        
+        taskZoneId = decoder.decodeInt64(forKey: "taskZoneId")
         checkLists = decoder.decodeObject(forKey: "checkLists") as? [CheckList] ??  [CheckList]()
         comments = decoder.decodeObject(forKey: "comments") as? [Comment] ?? [Comment]()
         files = decoder.decodeObject(forKey: "files") as? [File] ?? [File]()
@@ -142,6 +145,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         case checkLists
         case comments
         case files
+        case taskZoneId
     }
     
     
@@ -154,6 +158,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         checkLists = try values.decode([CheckList].self, forKey: .checkLists)
         comments = try values.decode([Comment].self, forKey: .comments)
         files = try values.decode([File].self, forKey: .files)
+        taskZoneId = try values.decode(Int64.self, forKey: .taskZoneId)
         
     }
     
@@ -168,6 +173,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
          try container.encode(checkLists, forKey: .checkLists)
          try container.encode(comments, forKey: .comments)
          try container.encode(files, forKey: .files)
+        
+         try container.encode(taskZoneId, forKey: .taskZoneId)
     }
 }
 

@@ -13,6 +13,31 @@ import UIKit
 // ++++++++++++++++
 class ControleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelTarget: UILabel!
+    @IBOutlet weak var labelDateDebut: UILabel!
+    @IBOutlet weak var labelDateFin: UILabel!
+    @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelComteRendu: UILabel!
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupCell(checkList : CheckList)
+    {
+        labelName.text = checkList.checkListPrenom + " " + checkList.checkListNom
+        labelTarget.text = checkList.checkListTarget
+        
+        labelComteRendu.text = checkList.checkListReport
+        labelStatus.text = checkList.checkListStatut
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd-MM-yyyy"
+        
+        labelDateDebut.text = dateFormatterGet.string(from: checkList.checkListStart)
+        labelDateFin.text = dateFormatterGet.string(from: checkList.checkListEnd)
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************

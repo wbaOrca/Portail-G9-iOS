@@ -17,6 +17,13 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
     
     var boards  : [Board]! = [Board]()
     
+    var newBoard : Board = Board();
+    var selectedcolor = UIColor.white {
+        didSet {
+            newBoard.boardColor = "#" + selectedcolor.toHex()! + "FF"
+            }
+    }
+    
     // *******************
     // *******************
     // *******************
@@ -24,6 +31,7 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
         setupAddButtonItem()
         updateCollectionViewItem(with: view.bounds.size)
+        
     }
     
     // ***********************************
@@ -62,7 +70,31 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
 
-    
+    // *******************
+    // *******************
+    // *******************
+    func addBoardQuery()
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Ajout de tableau en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.addBoardForcesTerrains(delegate: self, boardName: self.newBoard.boardTitle, code_couleur: self.newBoard.boardColor);
+        }
+    }
     // *******************
     // *******************
     // *******************
@@ -90,22 +122,32 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
     // *******************
     // *******************
     @objc func addListTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Add List", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Ajouter un tableau", message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Ajouter", style: .default, handler: { (_) in
             guard let text = alertController.textFields?.first?.text, !text.isEmpty else {
                 return
             }
             
-            self.boards.append(Board(title: text, items: []))
+            // *** addBoard
+            self.newBoard = Board(title: text)
             
-            let addedIndexPath = IndexPath(item: self.boards.count - 1, section: 0)
+            //*** select Color of the board
+            guard let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "ColorEditorViewController") as? ColorEditorViewController else { fatalError() }
+            editorVC.delegate = self
+            editorVC.selectedColor = self.selectedcolor
+            editorVC.modalPresentationStyle = .overCurrentContext
+            editorVC.modalTransitionStyle = .crossDissolve
+            self.present(editorVC, animated: true)
+            // ***
             
-            self.collectionView.insertItems(at: [addedIndexPath])
-            self.collectionView.scrollToItem(at: addedIndexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+            //self.boards.append(self.newBoard)
+            //let addedIndexPath = IndexPath(item: self.boards.count - 1, section: 0)
+            //self.collectionView.insertItems(at: [addedIndexPath])
+            //self.collectionView.scrollToItem(at: addedIndexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
     // *******************
@@ -147,7 +189,15 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    self.updateCollectionViewItem(with: self.view.bounds.size)
+                   
+                    if(self.boards.count > 0){
                     
+                    let addedIndexPath = IndexPath(item: self.boards.count - 1, section: 0)
+                    //self.collectionView.insertItems(at: [addedIndexPath])
+                    self.collectionView.scrollToItem(at: addedIndexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+
+                    }
                 }
             }
         }else
@@ -163,4 +213,58 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
     }
     
     
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+extension BoardCollectionViewController : WSAddBoardForcesTerrainsDelegate
+{
+    
+    func didFinishWSAddBoardForcesTerrains(error: Bool, code_erreur: Int, description: String) {
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            self.getBoardsData();
+        }else
+        {
+            let msg = "Une erreur est survenue lors de l'ajout de votre nouveau tableau.\n" + description + "\ncode = " + String(code_erreur)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
+    
+    
+}
+
+// +++++++++++++++++++++++++
+// +++++++++++++++++++++++++
+// +++++++++++++++++++++++++
+extension BoardCollectionViewController: ColorEditorViewControllerDelegate {
+    
+    func viewController(didEdit color: UIColor) {
+        selectedcolor = color
+        
+        let bgColor = "#" + selectedcolor.toHex()! + "FF"
+        self.newBoard.boardColor =  bgColor
+        
+        DispatchQueue.main.async {
+            
+            self.addBoardQuery()
+            
+           
+        }
+    }
+    
+    
+   
 }

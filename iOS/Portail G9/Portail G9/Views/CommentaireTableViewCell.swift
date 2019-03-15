@@ -13,6 +13,17 @@ import UIKit
 // ++++++++++++++++
 class CommentaireTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var labelMessage: UILabel!
+    @IBOutlet weak var labelRecepient: UILabel!
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupCell(comment : Comment)
+    {
+        labelMessage.text = comment.message
+        labelRecepient.text = comment.recipient
+    }
     
     // ***********************************
     // ***********************************

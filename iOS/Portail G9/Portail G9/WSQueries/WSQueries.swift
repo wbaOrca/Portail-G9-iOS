@@ -58,6 +58,20 @@ protocol WSGetBoardsForcesTerrainsDelegate {
 }
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSAddBoardForcesTerrainsDelegate {
+    
+    func didFinishWSAddBoardForcesTerrains(error: Bool , code_erreur : Int, description : String)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSAddTaskToBoardForcesTerrainsDelegate {
+    
+    func didFinishWSAddTaskToBoard(error: Bool , code_erreur : Int, description : String)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -436,78 +450,7 @@ class WSQueries: NSObject {
     }
     
     
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    static func getBoardForcesTerrains(delegate : WSGetBoardsForcesTerrainsDelegate )
-    {
-        
-        // headers autorization
-        var authorization_ = "Bearer "
-        let preferences = UserDefaults.standard
-        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
-        authorization_ = authorization_ + token
-        
-        let headers_params = [
-            "Authorization": authorization_
-        ]
-        
-        
-        //post params
-        
-        let perimetre = WSQueries.preparePerimetre();
-        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
-        let post_params: Parameters = [
-            "profil": profil,
-            "perimetre" : perimetre
-        ]
-        
-        let url_ = Version.URL_WS_PORTAIL_G9 + "/getBoardsForcesTerrains"
-        
-        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
-            
-            
-            switch(response.result) {
-            case .success(_):
-                
-                let responseJson = response.result.value as? NSDictionary ?? nil
-                let code = responseJson!["code"] as? Int ?? -1
-                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
-                {
-                    WSQueries.refreshToken(completion: { (code) in
-                        if(code == WSQueries.CODE_RETOUR_200)
-                        {
-                            WSQueries.getBoardForcesTerrains(delegate: delegate);
-                        }else
-                        {
-                            delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
-                            return
-                        }
-                    })
-                    
-                    return;
-                }
-                
-                let responseForceTerrainBoards =  Mapper<DataForceTerrainToDoListWSResponse>().map(JSONObject:responseJson)
-                if(responseForceTerrainBoards != nil)
-                {
-                    delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
-                    return
-                }
-                
-                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
-                
-                break
-                
-            case .failure(_):
-                // print(response.result.error?.localizedDescription)
-                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
-                break
-                
-            }
-            
-        }
-    }
+    
     
     // ***********************************
     // ***********************************
@@ -726,6 +669,245 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSGetIndicateursKPIs(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getBoardForcesTerrains(delegate : WSGetBoardsForcesTerrainsDelegate )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getBoardsForcesTerrains"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getBoardForcesTerrains(delegate: delegate);
+                        }else
+                        {
+                            delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseForceTerrainBoards =  Mapper<DataForceTerrainToDoListWSResponse>().map(JSONObject:responseJson)
+                if(responseForceTerrainBoards != nil)
+                {
+                    
+                    responseForceTerrainBoards?.toDoList =  responseForceTerrainBoards?.toDoList.sorted(by: { $0.boardId > $1.boardId })
+                    delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
+                    
+                    return
+                }
+                
+                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetBoardsForcesTerrains(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func addBoardForcesTerrains(delegate : WSAddBoardForcesTerrainsDelegate, boardName : String , code_couleur : String )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        let indexEndOfColor = code_couleur.index(code_couleur.endIndex, offsetBy: -2)
+        let code_couleur_sans_alpha = code_couleur[..<indexEndOfColor]
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "title": boardName,
+            "color": code_couleur_sans_alpha
+            //"perimetre" : perimetre
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addBoard"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.addBoardForcesTerrains(delegate: delegate, boardName: boardName, code_couleur: code_couleur);
+                        }else
+                        {
+                            delegate.didFinishWSAddBoardForcesTerrains(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSAddBoardForcesTerrains(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSAddBoardForcesTerrains(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSAddBoardForcesTerrains(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func addTaskToBoardForcesTerrains(delegate : WSAddTaskToBoardForcesTerrainsDelegate, boardId : Int64, task : Tache )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateAsString = dateFormatter.string(from: Date())
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "board": boardId,
+            "task_title": task.taskTitle,
+            "check_list_title": "",
+            "check_list_lastname": "",
+            "check_list_firstname": "",
+            "check_list_target": "",
+            "check_list_start": dateAsString,
+            "check_list_end": dateAsString,
+            "check_list_statut": "InProgress",
+            "check_list_report": "",
+            "task_zone": task.taskZoneId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addTache"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.addTaskToBoardForcesTerrains(delegate: delegate, boardId: boardId, task: task);
+                        }else
+                        {
+                            delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSAddTaskToBoard(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+               delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1,description: "NA Unknown")
                 break
                 
             }

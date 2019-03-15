@@ -10,6 +10,14 @@
 		015512B7743FA9C86DCA937F /* Pods_Portail_G9Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B963CBE50B6702C99AADCA /* Pods_Portail_G9Tests.framework */; };
 		791928EEF4006C1C5CF601E9 /* Pods_Portail_G9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87438E7C58B6365E0D815C37 /* Pods_Portail_G9.framework */; };
 		99E5A4A6CFCA132DA8055239 /* Pods_Portail_G9UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */; };
+		FB02ACF12236993600843B66 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEA2236993600843B66 /* UIColorExtension.swift */; };
+		FB02ACF22236993600843B66 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEB2236993600843B66 /* ColorPickerView.swift */; };
+		FB02ACF32236993600843B66 /* ColorSpaceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEC2236993600843B66 /* ColorSpaceConverter.swift */; };
+		FB02ACF42236993600843B66 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACED2236993600843B66 /* RGB.swift */; };
+		FB02ACF52236993600843B66 /* ColorPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEE2236993600843B66 /* ColorPickerViewDelegate.swift */; };
+		FB02ACF62236993600843B66 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB02ACEF2236993600843B66 /* Info.plist */; };
+		FB02ACF72236993600843B66 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACF02236993600843B66 /* HSB.swift */; };
+		FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */; };
 		FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */; };
 		FB05221822084CAE000556E1 /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221722084CAE000556E1 /* FiltreView.swift */; };
 		FB0E0F7422003E3F0043E345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */; };
@@ -30,6 +38,7 @@
 		FB4A6A4B22267DCB001AC448 /* AAJSFiles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB4A6A4422267DCB001AC448 /* AAJSFiles.bundle */; };
 		FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */; };
 		FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */; };
+		FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB503B13223666EF006C4D90 /* DocumentViewController.swift */; };
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
 		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
@@ -58,6 +67,11 @@
 		FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */; };
 		FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */; };
 		FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */; };
+		FBF02012223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF02011223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift */; };
+		FBF02014223BA3710076E9E6 /* AddCommentaireTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF02013223BA3710076E9E6 /* AddCommentaireTacheViewController.swift */; };
+		FBF02016223BA9A30076E9E6 /* AddCheckListTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF02015223BA9A30076E9E6 /* AddCheckListTacheViewController.swift */; };
+		FBF02019223BE1BF0076E9E6 /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF02017223BE1BF0076E9E6 /* DateSelectionView.swift */; };
+		FBF0201A223BE1BF0076E9E6 /* DateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */; };
 		FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */; };
 		FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBF15B3721DFA8AB006A7341 /* Portail_G9.xcdatamodeld */; };
 		FBF15B4021DFA8AB006A7341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF15B3E21DFA8AB006A7341 /* Main.storyboard */; };
@@ -108,6 +122,15 @@
 		BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Portail_G9UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBA8BF36EBDA599F1D5D83A /* Pods-Portail G9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A87BE6D272529D39052BAB /* Pods-Portail G9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.release.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.release.xcconfig"; sourceTree = "<group>"; };
+		FB02ACE92236993600843B66 /* ColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker.h; sourceTree = "<group>"; };
+		FB02ACEA2236993600843B66 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FB02ACEB2236993600843B66 /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		FB02ACEC2236993600843B66 /* ColorSpaceConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSpaceConverter.swift; sourceTree = "<group>"; };
+		FB02ACED2236993600843B66 /* RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
+		FB02ACEE2236993600843B66 /* ColorPickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewDelegate.swift; sourceTree = "<group>"; };
+		FB02ACEF2236993600843B66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB02ACF02236993600843B66 /* HSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
+		FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
 		FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB05221722084CAE000556E1 /* FiltreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
 		FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -135,6 +158,7 @@
 		FB4A6A4422267DCB001AC448 /* AAJSFiles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAJSFiles.bundle; sourceTree = "<group>"; };
 		FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessRadarViewController.swift; sourceTree = "<group>"; };
 		FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
+		FB503B13223666EF006C4D90 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
@@ -163,6 +187,11 @@
 		FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleTableViewCell.swift; sourceTree = "<group>"; };
 		FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichierTableViewCell.swift; sourceTree = "<group>"; };
 		FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaireTableViewCell.swift; sourceTree = "<group>"; };
+		FBF02011223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		FBF02013223BA3710076E9E6 /* AddCommentaireTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentaireTacheViewController.swift; sourceTree = "<group>"; };
+		FBF02015223BA9A30076E9E6 /* AddCheckListTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCheckListTacheViewController.swift; sourceTree = "<group>"; };
+		FBF02017223BE1BF0076E9E6 /* DateSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
+		FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectionView.xib; sourceTree = "<group>"; };
 		FBF15B3221DFA8AB006A7341 /* Portail G9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Portail G9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF15B3521DFA8AB006A7341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF15B3821DFA8AB006A7341 /* Portail_G9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Portail_G9.xcdatamodel; sourceTree = "<group>"; };
@@ -243,9 +272,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FB02ACE82236993600843B66 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */,
+				FB02ACE92236993600843B66 /* ColorPicker.h */,
+				FB02ACEA2236993600843B66 /* UIColorExtension.swift */,
+				FB02ACEB2236993600843B66 /* ColorPickerView.swift */,
+				FB02ACEC2236993600843B66 /* ColorSpaceConverter.swift */,
+				FB02ACED2236993600843B66 /* RGB.swift */,
+				FB02ACEE2236993600843B66 /* ColorPickerViewDelegate.swift */,
+				FB02ACEF2236993600843B66 /* Info.plist */,
+				FB02ACF02236993600843B66 /* HSB.swift */,
+			);
+			path = ColorPicker;
+			sourceTree = "<group>";
+		};
 		FB0E0F772200477B0043E345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FB02ACE82236993600843B66 /* ColorPicker */,
 				FB4A6A3B22267DCB001AC448 /* AAInfographics */,
 				FBE2EC652201EFD9004B44DF /* LeftMenu */,
 				FB05221722084CAE000556E1 /* FiltreView.swift */,
@@ -257,6 +303,9 @@
 				FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */,
 				FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */,
 				FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */,
+				FBF02011223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift */,
+				FBF02017223BE1BF0076E9E6 /* DateSelectionView.swift */,
+				FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,8 +330,11 @@
 				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
 				FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */,
 				FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */,
+				FBF02015223BA9A30076E9E6 /* AddCheckListTacheViewController.swift */,
+				FBF02013223BA3710076E9E6 /* AddCommentaireTacheViewController.swift */,
 				FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */,
 				FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */,
+				FB503B13223666EF006C4D90 /* DocumentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -560,8 +612,10 @@
 			files = (
 				FB4A6A4522267DCB001AC448 /* LICENSE in Resources */,
 				FB0E0F8922005DAD0043E345 /* Localizable.strings in Resources */,
+				FB02ACF62236993600843B66 /* Info.plist in Resources */,
 				FB4A6A4B22267DCB001AC448 /* AAJSFiles.bundle in Resources */,
 				FBF15B4521DFA8AC006A7341 /* LaunchScreen.storyboard in Resources */,
+				FBF0201A223BE1BF0076E9E6 /* DateSelectionView.xib in Resources */,
 				FB4A6A4622267DCB001AC448 /* README.md in Resources */,
 				FB0E0F7422003E3F0043E345 /* GoogleService-Info.plist in Resources */,
 				FBF15B4221DFA8AC006A7341 /* Assets.xcassets in Resources */,
@@ -709,15 +763,19 @@
 				FB0E0F7D220047990043E345 /* Utils.swift in Sources */,
 				FBF26C8822156EC600D271AC /* DataGroupeKPIWSResponse.swift in Sources */,
 				FBF26C8122155D2B00D271AC /* ListeCategoriesViewController.swift in Sources */,
+				FB02ACF12236993600843B66 /* UIColorExtension.swift in Sources */,
 				FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */,
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
 				FB4A6A3822267746001AC448 /* Board.swift in Sources */,
+				FB02ACF52236993600843B66 /* ColorPickerViewDelegate.swift in Sources */,
 				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
 				FBE2EC682201EFD9004B44DF /* MenuTableViewCell.swift in Sources */,
 				FBFDC0F02216A20300A67042 /* KPI.swift in Sources */,
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
+				FB02ACF22236993600843B66 /* ColorPickerView.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
+				FB02ACF72236993600843B66 /* HSB.swift in Sources */,
 				FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
@@ -726,7 +784,9 @@
 				FBD2AFEB2231513900D9D517 /* Comment.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
 				FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */,
+				FB02ACF32236993600843B66 /* ColorSpaceConverter.swift in Sources */,
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
+				FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */,
 				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
 				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
 				FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */,
@@ -734,6 +794,7 @@
 				FBD2AFE72231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift in Sources */,
 				FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */,
 				FBFDC0F82216A8C000A67042 /* KPIIndicatorsViewController.swift in Sources */,
+				FBF02019223BE1BF0076E9E6 /* DateSelectionView.swift in Sources */,
 				FBFDC0F22216A23800A67042 /* DataKPIsWSResponse.swift in Sources */,
 				FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */,
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
@@ -749,11 +810,15 @@
 				FBF26C8522156E5800D271AC /* ListeGroupesViewController.swift in Sources */,
 				FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */,
 				FBE63E102212AC790027F6E2 /* Zone.swift in Sources */,
+				FBF02014223BA3710076E9E6 /* AddCommentaireTacheViewController.swift in Sources */,
 				FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */,
+				FBF02012223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
+				FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,
 				FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */,
 				FB4A6A4A22267DCB001AC448 /* AASeriesElement.swift in Sources */,
+				FBF02016223BA9A30076E9E6 /* AddCheckListTacheViewController.swift in Sources */,
 				FB4A6A4722267DCB001AC448 /* AAChartView.swift in Sources */,
 				FBE63E1A2212C1C70027F6E2 /* DataRadarWSResponse.swift in Sources */,
 				FB4A6A4822267DCB001AC448 /* AAChartModel.swift in Sources */,
@@ -765,6 +830,7 @@
 				FBD2AFED2231539C00D9D517 /* File.swift in Sources */,
 				FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */,
 				FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */,
+				FB02ACF42236993600843B66 /* RGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

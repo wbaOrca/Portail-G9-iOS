@@ -15,7 +15,7 @@ class Board: NSObject , Mappable  {
     var boardType: String = ""
     var boardTitle: String = ""
     var boardColor: String = ""
-    var tasks: [Tache]! = nil
+    var tasks: [Tache]! = [Tache]()
     
     //******
     //******
@@ -45,6 +45,7 @@ class Board: NSObject , Mappable  {
         boardType <- map["boardType"]
         boardTitle <- map["boardTitle"]
         boardColor <- map["boardColor"]
+        boardColor = boardColor + "FF"
         
         tasks <- map["tasks"]
         
@@ -54,7 +55,7 @@ class Board: NSObject , Mappable  {
     //******
   //******
  //******
-    init(title: String, items: [String]) {
+    init(title: String) {
         
         self.boardTitle = title
         

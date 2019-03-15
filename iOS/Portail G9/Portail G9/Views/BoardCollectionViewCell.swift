@@ -8,7 +8,8 @@
 
 import UIKit
 import MobileCoreServices
-
+import Reachability
+import NVActivityIndicatorView
 // +++++++++++++++
 // ++++++++++++++++
 // ++++++++++++++++
@@ -39,17 +40,23 @@ class BoardCollectionViewCell: UICollectionViewCell {
     // ***********************************
     // ***********************************
     func setup(with board: Board) {
+        
         self.board = board
+        self.tableView.backgroundView?.backgroundColor = UIColor.init(hexString: board.boardColor)
+        self.tableView.backgroundColor =  UIColor.init(hexString: board.boardColor)
+        
         tableView.reloadData()
+        
     }
     
     // ***********************************
     // ***********************************
     // ***********************************
     @IBAction func addTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Add Item", message: nil, preferredStyle: .alert)
+        
+        let alertController = UIAlertController(title: "Ajouter une tache", message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Ajouter", style: .default, handler: { (_) in
             guard let text = alertController.textFields?.first?.text, !text.isEmpty else {
                 return
             }
@@ -60,18 +67,80 @@ class BoardCollectionViewCell: UICollectionViewCell {
             
             let newTask = Tache()
             newTask.taskTitle = text
+            
+            self.addTacheToBoardQuery(tache: newTask)
+            /*
             data.tasks.append(newTask)
             let addedIndexPath = IndexPath(item: data.tasks.count - 1, section: 0)
             
             self.tableView.insertRows(at: [addedIndexPath], with: .automatic)
             self.tableView.scrollToRow(at: addedIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+             */
+            
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
         parentVC?.present(alertController, animated: true, completion: nil)
     }
 }
 
+// +++++++++++++++
+// ++++++++++++++++
+// ++++++++++++++++
+extension BoardCollectionViewCell: WSAddTaskToBoardForcesTerrainsDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func addTacheToBoardQuery(tache : Tache)
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.parentVC!.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.parentVC!.startAnimating(size, message: "Ajout de la tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.addTaskToBoardForcesTerrains(delegate: self, boardId: (self.board?.boardId)!, task: tache);
+        }
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSAddTaskToBoard(error: Bool, code_erreur: Int, description: String) {
+        
+        DispatchQueue.main.async {
+            self.parentVC!.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            self.parentVC!.getBoardsData();
+        }else
+        {
+            let msg = "Une erreur est survenue lors de l'ajout de votre tache au tableau.\n" + description + "\ncode = " + String(code_erreur)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.parentVC!.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
+
+}
 // +++++++++++++++
 // ++++++++++++++++
 // ++++++++++++++++
@@ -86,6 +155,20 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        
+        let header = view as! UITableViewHeaderFooterView
+        
+        if let textlabel = header.textLabel {
+            textlabel.textColor = UIColor.black
+            
+        }
+        header.backgroundColor = UIColor.init(hex: (self.board?.boardColor)!)
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return board?.boardTitle
     }
@@ -95,6 +178,11 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(board!.tasks[indexPath.row].taskTitle)"
+        
+        let couleur_string = board!.boardColor
+        cell.backgroundColor =  UIColor.init(hexString: couleur_string)
+        //cell.backgroundView?.backgroundColor =  UIColor.init(hexString: couleur_string)
+        
         return cell
     }
     // ***********************************
@@ -104,6 +192,7 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let detailsTacheVC = parentVC!.storyboard?.instantiateViewController(withIdentifier: "DetailsTacheViewController") as? DetailsTacheViewController
+        detailsTacheVC?.tache = (board?.tasks[indexPath.row])!
         parentVC!.navigationController?.pushViewController(detailsTacheVC!, animated: true);
     }
     
@@ -211,7 +300,14 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
     // ***********************************
     // ***********************************
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
     
 }
+
+
+
+
+
+

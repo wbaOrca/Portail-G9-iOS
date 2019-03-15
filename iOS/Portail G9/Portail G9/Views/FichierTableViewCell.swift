@@ -12,6 +12,21 @@ import UIKit
 // ++++++++++++++++
 // ++++++++++++++++
 class FichierTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var labelFichier: UILabel!
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupCell(file : File)
+    {
+        let urlPathFile = file.fileName;
+        let url_ = URL(fileURLWithPath: urlPathFile);
+        labelFichier.text = url_.lastPathComponent
+        
+    }
+    
     // ***********************************
     // ***********************************
     // ***********************************
