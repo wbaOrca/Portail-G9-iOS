@@ -863,7 +863,7 @@ class WSQueries: NSObject {
             "check_list_target": "",
             "check_list_start": dateAsString,
             "check_list_end": dateAsString,
-            "check_list_statut": "InProgress",
+            "check_list_statut": "InProgress", //Completed
             "check_list_report": "",
             "task_zone": task.taskZoneId
         ]

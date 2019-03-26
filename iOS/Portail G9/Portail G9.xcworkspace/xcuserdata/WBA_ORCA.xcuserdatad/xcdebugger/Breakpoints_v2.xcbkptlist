@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "574340456.411786"
+            timestampString = "575286244.608512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "574340456.411844"
+            timestampString = "575286244.610333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -58,7 +58,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "574350911.563827"
+                  timestampString = "575303156.751016"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -73,7 +73,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "574350911.566404"
+                  timestampString = "575303156.753068"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
@@ -89,24 +89,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Portail G9/Views/BoardCollectionViewCell.swift"
-            timestampString = "574263938.6082571"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "addTacheToBoardQuery(tache:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "574340456.411907"
+            timestampString = "575286244.6107121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "873"
@@ -122,7 +106,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "574350911.577523"
+                  timestampString = "575303156.757984"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "873"
@@ -137,7 +121,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "574350911.579852"
+                  timestampString = "575303156.759805"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "835"
@@ -154,12 +138,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/Views/BoardCollectionViewCell.swift"
-            timestampString = "574263938.608745"
+            timestampString = "575303156.570232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "didFinishWSAddTaskToBoard(error:code_erreur:description:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575286244.611073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "898"
+            endingLineNumber = "898"
+            landmarkName = "addTaskToBoardForcesTerrains(delegate:boardId:task:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
