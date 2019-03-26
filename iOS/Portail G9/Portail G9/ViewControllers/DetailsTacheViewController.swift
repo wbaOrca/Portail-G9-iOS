@@ -212,6 +212,9 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
     // *******************************
     @IBAction func addFileAction (_ sender: UIButton!) {
         
+        let addFileTacheVC = self.storyboard?.instantiateViewController(withIdentifier: "AddFileTacheViewController") as? AddFileTacheViewController
+        addFileTacheVC?.tache = self.tache
+        self.navigationController?.pushViewController(addFileTacheVC!, animated: true);
     }
 
     // *******************************

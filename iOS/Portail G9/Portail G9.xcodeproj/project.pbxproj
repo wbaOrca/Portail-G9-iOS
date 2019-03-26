@@ -39,6 +39,7 @@
 		FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */; };
 		FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */; };
 		FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB503B13223666EF006C4D90 /* DocumentViewController.swift */; };
+		FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */; };
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
 		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
@@ -159,6 +160,7 @@
 		FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessRadarViewController.swift; sourceTree = "<group>"; };
 		FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
 		FB503B13223666EF006C4D90 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFileTacheViewController.swift; sourceTree = "<group>"; };
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */,
 				FBF02015223BA9A30076E9E6 /* AddCheckListTacheViewController.swift */,
 				FBF02013223BA3710076E9E6 /* AddCommentaireTacheViewController.swift */,
+				FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */,
 				FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */,
 				FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */,
 				FB503B13223666EF006C4D90 /* DocumentViewController.swift */,
@@ -800,6 +803,7 @@
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
+				FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */,
 				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
 				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
