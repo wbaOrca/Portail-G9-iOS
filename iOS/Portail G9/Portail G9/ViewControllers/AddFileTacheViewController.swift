@@ -10,9 +10,21 @@ import UIKit
 import WeScan
 import CropViewController
 
-class AddFileTacheViewController: UIViewController, CropViewControllerDelegate , ImageScannerControllerDelegate {
+import Reachability
+import NVActivityIndicatorView
 
+// +++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++
+class AddFileTacheViewController: UIViewController, CropViewControllerDelegate , ImageScannerControllerDelegate ,NVActivityIndicatorViewable {
+
+    var isFromCommentaire : Bool = false;
+    var screenCommentaire : AddCommentaireTacheViewController! = nil
+    
     var tache : Tache = Tache();
+    var mFile : File = File();
     
     @IBOutlet weak var imageViewDocument: UIImageView!
     var imageDocumentToSend : UIImage! = nil;
@@ -127,6 +139,9 @@ class AddFileTacheViewController: UIViewController, CropViewControllerDelegate ,
     // ***********************************
     @IBAction func AttacherDocument(_ sender: Any) {
         
+        
+        
+        
         if(self.imageDocumentToSend != nil)
         {
             
@@ -142,7 +157,39 @@ class AddFileTacheViewController: UIViewController, CropViewControllerDelegate ,
             preferences.set(path_image, forKey: Utils.SHARED_PREFERENCE_LAST_DOCUMENT)
             preferences.synchronize()
             
+            mFile = File()
+            mFile.fileName = path_image;
             
+            // cas 1
+            if(isFromCommentaire && screenCommentaire != nil)
+            {
+                screenCommentaire.mFichier = mFile;
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+            
+            //cas 2
+            let reachability = Reachability()!
+            if (reachability.connection == .none ) //si pas de connexion internet
+            {
+                let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+            
+            
+            
+            // All Correct OK
+            DispatchQueue.main.async {
+                let size = CGSize(width: 150, height: 50)
+                self.startAnimating(size, message: "Attachement du document en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            }
+            
+            DispatchQueue.main.async{
+                WSQueries.addFileToTaskForcesTerrains(delegate: self, taskId: self.tache.taskId, fichier: self.mFile);
+            }
             
         }else
         {
@@ -169,7 +216,47 @@ class AddFileTacheViewController: UIViewController, CropViewControllerDelegate ,
 
 }
 
-
+// +++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++
+extension AddFileTacheViewController : WSAddFileToTaskForcesTerrainsDelegate
+{
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSAddFileToTask(error: Bool, code_erreur: Int, description: String) {
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Succès", message: "Votre document est attaché avec succès.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (_) in
+                    
+                    self.tache.files.append(self.mFile)
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            return;
+            
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: (description + "\ncode erreur : " + String(code_erreur)), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+}
 
 
 

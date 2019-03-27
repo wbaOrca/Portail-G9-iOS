@@ -963,6 +963,7 @@ class WSQueries: NSObject {
             let image = UIImage(contentsOfFile: fileURLasString.path);
             let imageData = image?.jpegData(compressionQuality: 1.0);
             image64 = imageData?.base64EncodedString();
+            image64 = "data:image/jpg;base64," + image64
         }
         //let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
@@ -1046,8 +1047,8 @@ class WSQueries: NSObject {
         let fileURLasString = path.appendingPathComponent(filePath)
         let image = UIImage(contentsOfFile: fileURLasString.path);
         let imageData = image?.jpegData(compressionQuality: 1.0);
-        image64 = imageData?.base64EncodedString();
-        
+        image64 = imageData?.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0));
+        image64 = "data:image/jpg;base64," + image64
         //let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
         let post_params: Parameters = [
@@ -1180,7 +1181,7 @@ class WSQueries: NSObject {
                 break
                 
             case .failure(_):
-                // print(response.result.error?.localizedDescription)
+                 print(response.result.error?.localizedDescription)
                 delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: -1,description: "NA Unknown")
                 break
                 

@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/Views/BoardCollectionViewCell.swift"
-            timestampString = "575303156.570232"
+            timestampString = "575373203.181373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "575370685.1199321"
+            timestampString = "575394256.007665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "918"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "575370685.12"
+            timestampString = "575394256.008099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "893"
@@ -74,7 +74,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "575370685.421633"
+                  timestampString = "575394256.323483"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "893"
@@ -89,7 +89,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "575370685.423345"
+                  timestampString = "575394256.325438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "855"
@@ -97,6 +97,230 @@
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.008399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1063"
+            endingLineNumber = "1063"
+            landmarkName = "addFileToTaskForcesTerrains(delegate:taskId:fichier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Portail_G9.WSQueries.addFileToTaskForcesTerrains(delegate: Portail_G9.WSAddFileToTaskForcesTerrainsDelegate, taskId: Swift.Int64, fichier: Portail_G9.File) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "575394256.330595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1063"
+                  endingLineNumber = "1063"
+                  offsetFromSymbolStart = "3620">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static Portail_G9.WSQueries.addFileToTaskForcesTerrains(delegate: Portail_G9.WSAddFileToTaskForcesTerrainsDelegate, taskId: Swift.Int64, fichier: Portail_G9.File) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "575394256.332561"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1029"
+                  endingLineNumber = "1029"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/ViewControllers/AddCommentaireTacheViewController.swift"
+            timestampString = "575394256.008697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "saveCommentaire(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.008755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1148"
+            endingLineNumber = "1148"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Portail_G9.WSQueries.addCheckListToTaskForcesTerrains(delegate: Portail_G9.WSAddCheckListToTaskForcesTerrainsDelegate, taskId: Swift.Int64, checkList: Portail_G9.CheckList) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "575394256.3415509"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1148"
+                  endingLineNumber = "1148"
+                  offsetFromSymbolStart = "3596">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static Portail_G9.WSQueries.addCheckListToTaskForcesTerrains(delegate: Portail_G9.WSAddCheckListToTaskForcesTerrainsDelegate, taskId: Swift.Int64, checkList: Portail_G9.CheckList) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "575394256.3433681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1111"
+                  endingLineNumber = "1111"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.009025"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1173"
+            endingLineNumber = "1173"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.009292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1163"
+            endingLineNumber = "1163"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.0095561"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.0098211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1176"
+            endingLineNumber = "1176"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.010083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1179"
+            endingLineNumber = "1179"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.010354"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1186"
+            endingLineNumber = "1186"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "575394256.010618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1155"
+            endingLineNumber = "1155"
+            landmarkName = "addCheckListToTaskForcesTerrains(delegate:taskId:checkList:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

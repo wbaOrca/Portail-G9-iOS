@@ -8,7 +8,7 @@
 
 import UIKit
 
-// +++++++++++++++
+// ++++++++++++++++
 // ++++++++++++++++
 // ++++++++++++++++
 class ControleTableViewCell: UITableViewCell {
@@ -38,6 +38,7 @@ class ControleTableViewCell: UITableViewCell {
         labelDateFin.text = dateFormatterGet.string(from: checkList.checkListEnd)
         
     }
+    
     // ***********************************
     // ***********************************
     // ***********************************

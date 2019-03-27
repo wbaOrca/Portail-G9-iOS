@@ -16,11 +16,11 @@ class CheckList: NSObject,Mappable , Codable {
     var checkListNom: String = ""
     var checkListPrenom: String = ""
     var checkListTarget: String = ""
-    var checkListStart: Date! = nil
-    var checkListEnd: Date! = nil
+    var checkListStart: Date! = Date()
+    var checkListEnd: Date! = Date()
     var checkListStartAsString: String! = nil
     var checkListEndAsString: String! = nil
-    var checkListStatut: String = ""
+    var checkListStatut: String = "InProgress" // "Completed"
     var checkListReport: String = ""
     
     
@@ -42,6 +42,9 @@ class CheckList: NSObject,Mappable , Codable {
         case checkListReport
     }
     
+    // *************************
+    // *************************
+    // *************************
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         checkListId = try values.decode(Int64.self, forKey: .checkListId)
@@ -57,7 +60,9 @@ class CheckList: NSObject,Mappable , Codable {
         checkListReport = try values.decode(String.self, forKey: .checkListReport)
     }
     
-    
+    // *************************
+    // *************************
+    // *************************
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
