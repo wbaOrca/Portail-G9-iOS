@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8BCB0C5504A9BD3D91928F675BF22A54"
+               BlueprintIdentifier = "BACDE4CF18FDF9ECA329C0CE66AF77D5"
                BlueprintName = "RSSelectionMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "RSSelectionMenu.framework">

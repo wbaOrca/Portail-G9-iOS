@@ -39,7 +39,7 @@ class Utils: NSObject {
     
     public static let NUMBER_DEMANDE_BY_PAGE = 100 ;
     
-    
+    public static let SHARED_PREFERENCE_LAST_DOCUMENT = "SHARED_PREFERENCE_LAST_DOCUMENT"
     
     // *****************************************
     // *****************************************
@@ -154,6 +154,132 @@ class Utils: NSObject {
         return String(randomString);
     }
     
+    
+    // *****************************************
+    // *****************************************
+    // ****** getDocumentsDirectory
+    // *****************************************
+    // *****************************************
+    public static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    // *****************************************
+    // *****************************************
+    // ****** readFile
+    // *****************************************
+    // *****************************************
+    public static func readFile(path: String) -> Data {
+        
+        do {
+            
+            let fileManager = FileManager()
+            if fileManager.fileExists(atPath: path){
+                //print("fileExists " + path)
+                
+            }
+            
+            let contents:String = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+            let data = contents.data(using: .utf8)
+            
+            return data!;
+        }
+        catch let error as NSError {
+            print("Failed reading from URL: \(path), Error: " + error.localizedDescription)
+            return Data()
+        }
+        
+    }
+    // *****************************************
+    // *****************************************
+    // ****** deleteFile
+    // *****************************************
+    // *****************************************
+    public static func deleteFile(fileName: String)  {
+        
+        let filePath = "documents_img/" + fileName;
+        
+        let path = Utils.getDocumentsDirectory();
+        let fileURLasString = path.appendingPathComponent(filePath)
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: fileURLasString.path){
+            try! fileManager.removeItem(atPath: fileURLasString.path)
+            
+            print("document supprimé")
+        }else{
+            print("pas de document à supprimer")
+        }
+        
+        
+    }
+    
+    // *****************************************
+    // *****************************************
+    // ****** saveImageToDocuments
+    // *****************************************
+    // *****************************************
+    public static func saveImageToDocuments(imageToSave : UIImage) -> String
+    {
+        // *** load image  *** //
+        let imageData = imageToSave.jpegData(compressionQuality: 0.8)
+        
+        let fileName = "documents_img/" + Utils.randomString(length:15);
+        
+        let path = Utils.getDocumentsDirectory();
+        let fileURL = path.appendingPathComponent(fileName).appendingPathExtension("jpg")
+        
+        Utils.createDocumentsDirectory();
+        
+        do{
+            // *** Write video file data to path *** //
+            try imageData?.write(to: fileURL, options: .atomic)
+            
+            return fileURL.lastPathComponent;
+        } catch {
+            print(error)
+            return "";
+        }
+    }
+    // *****************************************
+    // *****************************************
+    // ****** createDocumentsDirectory
+    // *****************************************
+    // *****************************************
+    public static func createDocumentsDirectory()
+    {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let dataPath = documentsDirectory.appendingPathComponent("documents_img")
+        
+        do {
+            try FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print("Error creating directory: \(error.localizedDescription)")
+        }
+    }
+    // *****************************************
+    // *****************************************
+    // ****** randomString
+    // *****************************************
+    // *****************************************
+    public static func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
 }
 
 

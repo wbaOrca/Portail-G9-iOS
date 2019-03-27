@@ -26,6 +26,8 @@ target 'Portail G9' do
   pod 'ABGaugeViewKit'
   pod 'RSSelectionMenu'
   
+  pod 'WeScan'
+  pod 'CropViewController'
   
   
   target 'Portail G9Tests' do

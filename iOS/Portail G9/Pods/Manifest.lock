@@ -8,6 +8,7 @@ PODS:
   - CollapsibleTableSectionViewController (1.0.1)
   - Crashlytics (3.10.7):
     - Fabric (~> 1.7.11)
+  - CropViewController (2.3.8)
   - Fabric (1.7.11)
   - Firebase/Core (5.8.1):
     - Firebase/CoreOnly
@@ -75,6 +76,7 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SideMenu (4.0.0)
+  - WeScan (0.9.1)
 
 DEPENDENCIES:
   - AAInfographics
@@ -83,6 +85,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - CollapsibleTableSectionViewController
   - Crashlytics
+  - CropViewController
   - Firebase/Core
   - Firebase/Messaging
   - IQKeyboardManagerSwift
@@ -91,6 +94,7 @@ DEPENDENCIES:
   - RSSelectionMenu
   - SDWebImage
   - SideMenu
+  - WeScan
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -100,6 +104,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - CollapsibleTableSectionViewController
     - Crashlytics
+    - CropViewController
     - Fabric
     - Firebase
     - FirebaseAnalytics
@@ -117,6 +122,7 @@ SPEC REPOS:
     - RSSelectionMenu
     - SDWebImage
     - SideMenu
+    - WeScan
 
 SPEC CHECKSUMS:
   AAInfographics: 10f87e06fc007a0adbb05de020e4a2fe3119f8de
@@ -125,6 +131,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   CollapsibleTableSectionViewController: c41694de812a1039c5f8581c934cf0fc38e4e871
   Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  CropViewController: 7be882b7d3fb3faef48a41924e80f689e9df2514
   Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
   Firebase: a870ed114d769b424021a0c8ddb0c86c3250a0c5
   FirebaseAnalytics: 361594968a84a04d9598ef0f2e769d3735cd03de
@@ -142,7 +149,8 @@ SPEC CHECKSUMS:
   RSSelectionMenu: e146718c53e660fce0d26d3c316d4daf5ce58f00
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
+  WeScan: 85518097ab11d38be3b3a6e0ae244d59bc8071b4
 
-PODFILE CHECKSUM: 477c3bce990581c8ba49b109cda2a2736dbb8c41
+PODFILE CHECKSUM: c7e40b178c7bfd261cde5599a01d65c5380a5379
 
 COCOAPODS: 1.5.3

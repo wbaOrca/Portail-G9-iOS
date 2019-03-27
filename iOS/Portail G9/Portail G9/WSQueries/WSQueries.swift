@@ -72,6 +72,26 @@ protocol WSAddTaskToBoardForcesTerrainsDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSAddCommentToTaskForcesTerrainsDelegate {
+    
+    func didFinishWSAddCommentToTask(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSAddFileToTaskForcesTerrainsDelegate {
+    
+    func didFinishWSAddFileToTask(error: Bool , code_erreur : Int, description : String)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSAddCheckListToTaskForcesTerrainsDelegate {
+    
+    func didFinishWSAddCheckListToTask(error: Bool , code_erreur : Int, description : String)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -857,10 +877,10 @@ class WSQueries: NSObject {
             "profil": profil,
             "board": boardId,
             "task_title": task.taskTitle,
-            "check_list_title": "",
-            "check_list_lastname": "",
-            "check_list_firstname": "",
-            "check_list_target": "",
+            "check_list_title": "Temp",
+            "check_list_lastname": "XXX",
+            "check_list_firstname": "YYY",
+            "check_list_target": "ZZZ",
             "check_list_start": dateAsString,
             "check_list_end": dateAsString,
             "check_list_statut": "InProgress", //Completed
@@ -908,6 +928,260 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func addCommentToTaskForcesTerrains(delegate : WSAddCommentToTaskForcesTerrainsDelegate, taskId : Int64, commentaire : Comment )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        var image64 : String! = ""
+        
+        if(commentaire.files.count > 0)
+        {
+            let filePath = "documents_img/" + commentaire.files[0].fileName;
+            let path = Utils.getDocumentsDirectory();
+            let fileURLasString = path.appendingPathComponent(filePath)
+            let image = UIImage(contentsOfFile: fileURLasString.path);
+            let imageData = image?.jpegData(compressionQuality: 1.0);
+            image64 = imageData?.base64EncodedString();
+        }
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "task": taskId,
+            "message": commentaire.message,
+            "recipient": commentaire.recipient,
+            "file": image64
+            
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addCommentaire"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.addCommentToTaskForcesTerrains(delegate: delegate, taskId: taskId, commentaire: commentaire);
+                        }else
+                        {
+                            delegate.didFinishWSAddCommentToTask(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSAddCommentToTask(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSAddCommentToTask(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSAddCommentToTask(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func addFileToTaskForcesTerrains(delegate : WSAddFileToTaskForcesTerrainsDelegate, taskId : Int64, fichier : File )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        var image64 : String! = ""
+        let filePath = "documents_img/" + fichier.fileName;
+        let path = Utils.getDocumentsDirectory();
+        let fileURLasString = path.appendingPathComponent(filePath)
+        let image = UIImage(contentsOfFile: fileURLasString.path);
+        let imageData = image?.jpegData(compressionQuality: 1.0);
+        image64 = imageData?.base64EncodedString();
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "task": taskId,
+            "file": image64
+            
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addFile"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.addFileToTaskForcesTerrains(delegate: delegate, taskId: taskId, fichier: fichier);
+                        }else
+                        {
+                            delegate.didFinishWSAddFileToTask(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSAddFileToTask(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSAddFileToTask(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSAddFileToTask(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func addCheckListToTaskForcesTerrains(delegate : WSAddCheckListToTaskForcesTerrainsDelegate, taskId : Int64, checkList : CheckList )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "task": taskId,
+            "check_list_title": checkList.checkListLibelle,
+            "check_list_lastname": checkList.checkListNom,
+            "check_list_firstname": checkList.checkListPrenom,
+            "check_list_target": checkList.checkListTarget,
+            "check_list_start": dateFormatter.string(from: checkList.checkListStart),
+            "check_list_end": dateFormatter.string(from: checkList.checkListEnd),
+            "check_list_statut": checkList.checkListStatut, //"InProgress", //Completed
+            "check_list_report": checkList.checkListReport
+            
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addCheckList"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.addCheckListToTaskForcesTerrains(delegate: delegate, taskId: taskId, checkList: checkList);
+                        }else
+                        {
+                            delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSAddCheckListToTask(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: -1,description: "NA Unknown")
                 break
                 
             }
