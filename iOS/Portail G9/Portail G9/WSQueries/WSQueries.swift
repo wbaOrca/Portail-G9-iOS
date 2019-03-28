@@ -869,7 +869,12 @@ class WSQueries: NSObject {
         //post params
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateAsString = dateFormatter.string(from: Date())
+        
+        var checkList = CheckList()
+        if(task.checkLists.count > 0)
+        {
+            checkList = task.checkLists[0]
+        }
         
         //let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
@@ -877,14 +882,15 @@ class WSQueries: NSObject {
             "profil": profil,
             "board": boardId,
             "task_title": task.taskTitle,
-            "check_list_title": "Temp",
-            "check_list_lastname": "XXX",
-            "check_list_firstname": "YYY",
-            "check_list_target": "ZZZ",
-            "check_list_start": dateAsString,
-            "check_list_end": dateAsString,
-            "check_list_statut": "InProgress", //Completed
-            "check_list_report": "",
+            
+            "check_list_title": checkList.checkListLibelle,
+            "check_list_lastname": checkList.checkListNom,
+            "check_list_firstname": checkList.checkListPrenom,
+            "check_list_target": checkList.checkListTarget,
+            "check_list_start": dateFormatter.string(from: checkList.checkListStart),
+            "check_list_end": dateFormatter.string(from: checkList.checkListEnd),
+            "check_list_statut": checkList.checkListStatut,
+            "check_list_report": checkList.checkListReport,
             "task_zone": task.taskZoneId
         ]
         
@@ -1181,7 +1187,7 @@ class WSQueries: NSObject {
                 break
                 
             case .failure(_):
-                 print(response.result.error?.localizedDescription)
+                 //print(response.result.error?.localizedDescription)
                 delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: -1,description: "NA Unknown")
                 break
                 

@@ -21,6 +21,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     var comments: [Comment] = [Comment]()
     var files: [File] = [File]()
     
+    var boardId: Int64 = -1
     
     //******
     //******
@@ -117,6 +118,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         aCoder.encode(comments, forKey: "comments")
         aCoder.encode(files, forKey: "files")
         aCoder.encode(taskZoneId, forKey: "taskZoneId")
+        
+        aCoder.encode(boardId, forKey: "boardId")
     }
     
     // *************************
@@ -132,6 +135,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         comments = decoder.decodeObject(forKey: "comments") as? [Comment] ?? [Comment]()
         files = decoder.decodeObject(forKey: "files") as? [File] ?? [File]()
         
+        boardId = decoder.decodeInt64(forKey: "boardId")
+        
     }
     
     // *************************
@@ -146,10 +151,14 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         case comments
         case files
         case taskZoneId
+        
+        case boardId
     }
     
     
-   
+    // *************************
+    // *************************
+    // *************************
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         taskId = try values.decode(Int64.self, forKey: .taskId)
@@ -160,9 +169,12 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         files = try values.decode([File].self, forKey: .files)
         taskZoneId = try values.decode(Int64.self, forKey: .taskZoneId)
         
+        boardId = try values.decode(Int64.self, forKey: .boardId)
     }
     
-    
+    // *************************
+    // *************************
+    // *************************
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -175,6 +187,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
          try container.encode(files, forKey: .files)
         
          try container.encode(taskZoneId, forKey: .taskZoneId)
+        
+        try container.encode(boardId, forKey: .boardId)
     }
 }
 

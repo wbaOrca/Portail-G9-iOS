@@ -16,6 +16,8 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
     var tache : Tache = Tache();
     var checkList : CheckList = CheckList();
     
+    var isFromAddTache : Bool = false;
+    
     let mArrayStatut : [String] = ["InProgress","Completed"]
     var mArraySelectedStatut : [String] = [String]()
     
@@ -165,7 +167,23 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
         checkList.checkListReport = compteRenduTextView.text
         checkList.checkListStatut = statutButton.title(for: .normal)!
         
-        // All Correct OK
+        self.tache.checkLists.append(checkList);
+        
+        //1er cas ajout de task avec checklist to board
+        if(isFromAddTache)
+        {
+            DispatchQueue.main.async {
+                let size = CGSize(width: 150, height: 50)
+                self.startAnimating(size, message: "Sauvegarde de la nouvelle tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            }
+            
+            DispatchQueue.main.async{
+                self.addTacheToBoardQuery(tache: self.tache);
+            }
+            return
+        }
+        
+        //2er cas ajout de  checklist à une tache
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
             self.startAnimating(size, message: "Envoi du checkList en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
@@ -267,4 +285,65 @@ extension AddCheckListTacheViewController : WSAddCheckListToTaskForcesTerrainsDe
             }
         }
     }
+}
+
+
+// +++++++++++++++
+// ++++++++++++++++
+// ++++++++++++++++
+extension AddCheckListTacheViewController: WSAddTaskToBoardForcesTerrainsDelegate {
+    
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func addTacheToBoardQuery(tache : Tache)
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Ajout de la tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.addTaskToBoardForcesTerrains(delegate: self, boardId: tache.boardId, task: tache);
+        }
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSAddTaskToBoard(error: Bool, code_erreur: Int, description: String) {
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            self.navigationController?.popViewController(animated: true);
+        }else
+        {
+            let msg = "Une erreur est survenue lors de l'ajout de votre tache au tableau.\n" + description + "\ncode = " + String(code_erreur)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
+    
 }

@@ -67,8 +67,10 @@ class BoardCollectionViewCell: UICollectionViewCell {
             
             let newTask = Tache()
             newTask.taskTitle = text
+            newTask.boardId = (self.board?.boardId)!
             
-            self.addTacheToBoardQuery(tache: newTask)
+            self.parentVC?.addChecklistToTache(tache: newTask);
+           
             /*
             data.tasks.append(newTask)
             let addedIndexPath = IndexPath(item: data.tasks.count - 1, section: 0)
@@ -84,63 +86,7 @@ class BoardCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// +++++++++++++++
-// ++++++++++++++++
-// ++++++++++++++++
-extension BoardCollectionViewCell: WSAddTaskToBoardForcesTerrainsDelegate {
-    
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func addTacheToBoardQuery(tache : Tache)
-    {
-        let reachability = Reachability()!
-        if (reachability.connection == .none ) //si pas de connexion internet
-        {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-            self.parentVC!.present(alert, animated: true, completion: nil)
-            
-            return;
-        }
-        
-        // All Correct OK
-        DispatchQueue.main.async {
-            let size = CGSize(width: 150, height: 50)
-            self.parentVC!.startAnimating(size, message: "Ajout de la tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
-        }
-        
-        DispatchQueue.main.async{
-            WSQueries.addTaskToBoardForcesTerrains(delegate: self, boardId: (self.board?.boardId)!, task: tache);
-        }
-    }
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func didFinishWSAddTaskToBoard(error: Bool, code_erreur: Int, description: String) {
-        
-        DispatchQueue.main.async {
-            self.parentVC!.stopAnimating()
-        }
-        
-        if(!error)
-        {
-            self.parentVC!.getBoardsData();
-        }else
-        {
-            let msg = "Une erreur est survenue lors de l'ajout de votre tache au tableau.\n" + description + "\ncode = " + String(code_erreur)
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.parentVC!.present(alert, animated: true, completion: nil)
-                
-                return;
-            }
-        }
-    }
-    
 
-}
 // +++++++++++++++
 // ++++++++++++++++
 // ++++++++++++++++

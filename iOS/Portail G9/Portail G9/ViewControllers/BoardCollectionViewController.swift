@@ -167,6 +167,18 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         return cell
     }
     
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func addChecklistToTache(tache : Tache){
+        
+        let addCheckListTacheVC = self.storyboard?.instantiateViewController(withIdentifier: "AddCheckListTacheViewController") as? AddCheckListTacheViewController
+        addCheckListTacheVC?.tache = tache
+        addCheckListTacheVC?.isFromAddTache = true
+        self.navigationController?.pushViewController(addCheckListTacheVC!, animated: true);
+    }
 }
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -268,3 +280,6 @@ extension BoardCollectionViewController: ColorEditorViewControllerDelegate {
     
    
 }
+
+
+

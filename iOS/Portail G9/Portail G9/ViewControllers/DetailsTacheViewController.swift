@@ -230,6 +230,7 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
         
         let addCheckListTacheVC = self.storyboard?.instantiateViewController(withIdentifier: "AddCheckListTacheViewController") as? AddCheckListTacheViewController
         addCheckListTacheVC?.tache = self.tache
+        addCheckListTacheVC?.isFromAddTache = false
         self.navigationController?.pushViewController(addCheckListTacheVC!, animated: true);
     }
 }
