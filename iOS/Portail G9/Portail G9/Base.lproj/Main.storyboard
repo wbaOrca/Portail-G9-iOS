@@ -1121,6 +1121,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sou-Ld-Y9x">
+                                <rect key="frame" x="290" y="68" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.79192823170000004" green="0.12778863309999999" blue="0.075573705140000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="OeX-pf-IhF"/>
+                                    <constraint firstAttribute="height" constant="30" id="nto-mM-zck"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Supprimer"/>
+                                <connections>
+                                    <action selector="deleteThisTask:" destination="sao-ec-gjx" eventType="touchUpInside" id="M2Z-ue-ytV"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-5e-3v8">
                                 <rect key="frame" x="20" y="111" width="335" height="362.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1457,7 +1470,9 @@
                             <constraint firstItem="Xxd-5e-3v8" firstAttribute="leading" secondItem="RN5-ND-FOn" secondAttribute="leading" constant="20" id="743-Im-dAN"/>
                             <constraint firstItem="Cwu-GJ-Yd9" firstAttribute="leading" secondItem="RN5-ND-FOn" secondAttribute="leading" constant="20" id="8YW-Xd-E3Z"/>
                             <constraint firstItem="ydx-t9-mha" firstAttribute="top" secondItem="RN5-ND-FOn" secondAttribute="top" constant="2" id="AEa-iq-eQc"/>
+                            <constraint firstItem="RN5-ND-FOn" firstAttribute="trailing" secondItem="sou-Ld-Y9x" secondAttribute="trailing" constant="5" id="I7h-1x-HGE"/>
                             <constraint firstItem="ydx-t9-mha" firstAttribute="leading" secondItem="RN5-ND-FOn" secondAttribute="leading" constant="2" id="J7x-Q8-NLq"/>
+                            <constraint firstItem="sou-Ld-Y9x" firstAttribute="top" secondItem="RN5-ND-FOn" secondAttribute="top" constant="4" id="TW2-TM-RiF"/>
                             <constraint firstItem="H0h-yl-pz3" firstAttribute="height" secondItem="Xxd-5e-3v8" secondAttribute="height" multiplier="0.25" id="fPt-v9-CTd"/>
                             <constraint firstItem="RN5-ND-FOn" firstAttribute="trailing" secondItem="H0h-yl-pz3" secondAttribute="trailing" constant="20" id="fdY-e5-uG6"/>
                             <constraint firstItem="Cwu-GJ-Yd9" firstAttribute="top" secondItem="Xxd-5e-3v8" secondAttribute="bottom" constant="5" id="kkx-wi-X8F"/>
@@ -1473,6 +1488,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="buttonSupprimer" destination="sou-Ld-Y9x" id="vQc-33-d2G"/>
                         <outlet property="commentairesTableView" destination="H0h-yl-pz3" id="SSY-fF-uXK"/>
                         <outlet property="controlesTableView" destination="Xxd-5e-3v8" id="j3h-b2-nyc"/>
                         <outlet property="fichiersTableView" destination="Cwu-GJ-Yd9" id="3GG-0W-2hQ"/>
@@ -1481,7 +1497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbd-eb-EYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2147.826086956522" y="775.27173913043487"/>
+            <point key="canvasLocation" x="2146.4000000000001" y="774.96251874062978"/>
         </scene>
         <!--Add Commentaire Tache View Controller-->
         <scene sceneID="IGe-CO-6oL">

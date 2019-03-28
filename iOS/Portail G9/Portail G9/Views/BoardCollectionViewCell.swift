@@ -142,6 +142,9 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
         parentVC!.navigationController?.pushViewController(detailsTacheVC!, animated: true);
     }
     
+    
+    
+    
 }
 
 

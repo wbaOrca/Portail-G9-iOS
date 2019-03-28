@@ -179,6 +179,8 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
         addCheckListTacheVC?.isFromAddTache = true
         self.navigationController?.pushViewController(addCheckListTacheVC!, animated: true);
     }
+    
+    
 }
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -280,6 +282,7 @@ extension BoardCollectionViewController: ColorEditorViewControllerDelegate {
     
    
 }
+
 
 
 
