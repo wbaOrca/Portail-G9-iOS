@@ -92,6 +92,36 @@ protocol WSAddCheckListToTaskForcesTerrainsDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSDeleteTaskForcesTerrainsDelegate {
+    
+    func didFinishWSDeleteTask(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSDeleteFileForcesTerrainsDelegate {
+    
+    func didFinishWSDeleteFile(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSDeleteBoardForcesTerrainsDelegate {
+    
+    func didFinishWSDeleteBoard(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSDeleteCheckListForcesTerrainsDelegate {
+    
+    func didFinishWSDeleteCheckList(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSDeleteCommentaireForcesTerrainsDelegate {
+    
+    func didFinishWSDeleteCommentaire(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 // ++++++++++++++++++++++++++++++++++++++++
@@ -959,7 +989,7 @@ class WSQueries: NSObject {
         
         
         //post params
-        var image64 : String! = ""
+        var image64 : String = ""
         
         if(commentaire.files.count > 0)
         {
@@ -968,7 +998,7 @@ class WSQueries: NSObject {
             let fileURLasString = path.appendingPathComponent(filePath)
             let image = UIImage(contentsOfFile: fileURLasString.path);
             let imageData = image?.jpegData(compressionQuality: 1.0);
-            image64 = imageData?.base64EncodedString();
+            image64 = (imageData?.base64EncodedString())!;
             image64 = "data:image/jpg;base64," + image64
         }
         //let perimetre = WSQueries.preparePerimetre();
@@ -1047,13 +1077,13 @@ class WSQueries: NSObject {
         
         
         //post params
-        var image64 : String! = ""
+        var image64 : String = ""
         let filePath = "documents_img/" + fichier.fileName;
         let path = Utils.getDocumentsDirectory();
         let fileURLasString = path.appendingPathComponent(filePath)
         let image = UIImage(contentsOfFile: fileURLasString.path);
         let imageData = image?.jpegData(compressionQuality: 1.0);
-        image64 = imageData?.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0));
+        image64 = (imageData?.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0)))!;
         image64 = "data:image/jpg;base64," + image64
         //let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
@@ -1149,7 +1179,7 @@ class WSQueries: NSObject {
             
         ]
         
-        let url_ = Version.URL_WS_PORTAIL_G9 + "/addCheckList"
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/addChecklist"
         
         Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
             
@@ -1189,6 +1219,367 @@ class WSQueries: NSObject {
             case .failure(_):
                  //print(response.result.error?.localizedDescription)
                 delegate.didFinishWSAddCheckListToTask(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func deleteTaskForcesTerrains(delegate : WSDeleteTaskForcesTerrainsDelegate,task : Tache )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "task": task.taskId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/deleteTache"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.deleteTaskForcesTerrains(delegate: delegate, task: task);
+                        }else
+                        {
+                            delegate.didFinishWSDeleteTask(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSDeleteTask(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSDeleteTask(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                //print(response.result.error?.localizedDescription)
+                delegate.didFinishWSDeleteTask(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func deleteFileForcesTerrains(delegate : WSDeleteFileForcesTerrainsDelegate,file : File )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "file": file.fileId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/deleteFile"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.deleteFileForcesTerrains(delegate: delegate, file: file);
+                        }else
+                        {
+                            delegate.didFinishWSDeleteFile(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSDeleteFile(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSDeleteFile(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                //print(response.result.error?.localizedDescription)
+                delegate.didFinishWSDeleteFile(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func deleteBoardForcesTerrains(delegate : WSDeleteBoardForcesTerrainsDelegate,board : Board )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "board": board.boardId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/deleteBoard"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.deleteBoardForcesTerrains(delegate: delegate, board: board);
+                        }else
+                        {
+                            delegate.didFinishWSDeleteBoard(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSDeleteBoard(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSDeleteBoard(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                //print(response.result.error?.localizedDescription)
+                delegate.didFinishWSDeleteBoard(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func deleteCheckListForcesTerrains(delegate : WSDeleteCheckListForcesTerrainsDelegate,checkList : CheckList )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "checklist": checkList.checkListId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/deleteChecklist"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.deleteCheckListForcesTerrains(delegate: delegate, checkList: checkList);
+                        }else
+                        {
+                            delegate.didFinishWSDeleteCheckList(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSDeleteCheckList(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSDeleteCheckList(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                //print(response.result.error?.localizedDescription)
+                delegate.didFinishWSDeleteCheckList(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func deleteCommentaireForcesTerrains(delegate : WSDeleteCommentaireForcesTerrainsDelegate,commentaire : Comment )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "comment": commentaire.commentId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/deleteCommentaire"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.deleteCommentaireForcesTerrains(delegate: delegate, commentaire: commentaire);
+                        }else
+                        {
+                            delegate.didFinishWSDeleteCommentaire(error: true, code_erreur: -1,description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSDeleteCommentaire(error: false, code_erreur: code_erreur,description: desc_erreur)
+                    return
+                }
+                
+                delegate.didFinishWSDeleteCommentaire(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                //print(response.result.error?.localizedDescription)
+                delegate.didFinishWSDeleteCommentaire(error: true, code_erreur: -1,description: "NA Unknown")
                 break
                 
             }

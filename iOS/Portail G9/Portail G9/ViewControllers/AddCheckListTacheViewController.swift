@@ -167,11 +167,13 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
         checkList.checkListReport = compteRenduTextView.text
         checkList.checkListStatut = statutButton.title(for: .normal)!
         
-        self.tache.checkLists.append(checkList);
+        
         
         //1er cas ajout de task avec checklist to board
         if(isFromAddTache)
         {
+            
+            self.tache.checkLists.append(checkList);
             DispatchQueue.main.async {
                 let size = CGSize(width: 150, height: 50)
                 self.startAnimating(size, message: "Sauvegarde de la nouvelle tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
@@ -255,7 +257,7 @@ extension AddCheckListTacheViewController : WSAddCheckListToTaskForcesTerrainsDe
         {
             
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Succès", message: "Votre document est attaché avec succès.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Succès", message: "Votre checkList est ajouté avec succès.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (_) in
                     
                     self.tache.checkLists.append(self.checkList)
