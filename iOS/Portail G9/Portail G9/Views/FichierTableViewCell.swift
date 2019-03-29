@@ -21,9 +21,9 @@ class FichierTableViewCell: UITableViewCell {
     // ***********************************
     func setupCell(file : File)
     {
-        let urlPathFile = file.fileName;
-        let url_ = URL(fileURLWithPath: urlPathFile);
-        labelFichier.text = url_.lastPathComponent
+        //let urlPathFile = file.fileName;
+        //let url_ = URL(fileURLWithPath: urlPathFile);
+        labelFichier.text = file.fileName
         
     }
     
