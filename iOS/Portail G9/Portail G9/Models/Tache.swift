@@ -15,7 +15,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     var taskId: Int64 = -1
     var taskTitle: String = ""
     var taskStatut: String = ""
-    var taskZoneId: Int64! = nil
+    var taskZone: Int64! = nil
+    var taskOrder: Int = -1
     
     var checkLists: [CheckList] = [CheckList]()
     var comments: [Comment] = [Comment]()
@@ -52,7 +53,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         comments <- map["comments"]
         files <- map["files"]
         
-        taskZoneId <- map["taskZoneId"]
+        taskZone <- map["taskZone"]
+        taskOrder <- map["taskOrder"]
     }
     
     
@@ -110,6 +112,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     // *************************
     // *************************
     func encode(with aCoder: NSCoder) {
+        
         aCoder.encode(taskId, forKey: "taskId")
         aCoder.encode(taskTitle, forKey: "taskTitle")
         aCoder.encode(taskStatut, forKey: "taskStatut")
@@ -117,9 +120,11 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         aCoder.encode(checkLists, forKey: "checkLists")
         aCoder.encode(comments, forKey: "comments")
         aCoder.encode(files, forKey: "files")
-        aCoder.encode(taskZoneId, forKey: "taskZoneId")
+        aCoder.encode(taskZone, forKey: "taskZone")
         
         aCoder.encode(boardId, forKey: "boardId")
+        aCoder.encode(taskOrder, forKey: "taskOrder")
+        
     }
     
     // *************************
@@ -130,7 +135,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         taskId = decoder.decodeInt64(forKey: "taskId")
         taskTitle = decoder.decodeObject(forKey: "taskTitle") as? String ?? ""
         taskStatut = decoder.decodeObject(forKey: "taskStatut") as? String ?? ""
-        taskZoneId = decoder.decodeInt64(forKey: "taskZoneId")
+        taskZone = decoder.decodeInt64(forKey: "taskZone")
+        taskOrder = decoder.decodeInteger(forKey: "taskOrder")
         checkLists = decoder.decodeObject(forKey: "checkLists") as? [CheckList] ??  [CheckList]()
         comments = decoder.decodeObject(forKey: "comments") as? [Comment] ?? [Comment]()
         files = decoder.decodeObject(forKey: "files") as? [File] ?? [File]()
@@ -146,12 +152,11 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         case taskId
         case taskTitle
         case taskStatut
-        
         case checkLists
         case comments
         case files
-        case taskZoneId
-        
+        case taskZone
+        case taskOrder
         case boardId
     }
     
@@ -160,6 +165,7 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     // *************************
     // *************************
     required init(from decoder: Decoder) throws {
+        
         let values = try decoder.container(keyedBy: CodingKeys.self)
         taskId = try values.decode(Int64.self, forKey: .taskId)
         taskTitle = try values.decode(String.self, forKey: .taskTitle)
@@ -167,7 +173,8 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
         checkLists = try values.decode([CheckList].self, forKey: .checkLists)
         comments = try values.decode([Comment].self, forKey: .comments)
         files = try values.decode([File].self, forKey: .files)
-        taskZoneId = try values.decode(Int64.self, forKey: .taskZoneId)
+        taskZone = try values.decode(Int64.self, forKey: .taskZone)
+        taskOrder = try values.decode(Int.self, forKey: .taskOrder)
         
         boardId = try values.decode(Int64.self, forKey: .boardId)
     }
@@ -176,18 +183,19 @@ final class Tache: NSObject ,Mappable, NSItemProviderWriting, NSItemProviderRead
     // *************************
     // *************************
     public func encode(to encoder: Encoder) throws {
+        
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         try container.encode(taskTitle, forKey: .taskTitle)
-         try container.encode(taskId, forKey: .taskId)
-         try container.encode(taskStatut, forKey: .taskStatut)
+        try container.encode(taskId, forKey: .taskId)
+        try container.encode(taskStatut, forKey: .taskStatut)
         
-         try container.encode(checkLists, forKey: .checkLists)
-         try container.encode(comments, forKey: .comments)
-         try container.encode(files, forKey: .files)
+        try container.encode(checkLists, forKey: .checkLists)
+        try container.encode(comments, forKey: .comments)
+        try container.encode(files, forKey: .files)
         
-         try container.encode(taskZoneId, forKey: .taskZoneId)
-        
+        try container.encode(taskZone, forKey: .taskZone)
+        try container.encode(taskOrder, forKey: .taskOrder)
         try container.encode(boardId, forKey: .boardId)
     }
 }

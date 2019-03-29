@@ -25,6 +25,7 @@ class ControleTableViewCell: UITableViewCell {
     // ***********************************
     func setupCell(checkList : CheckList)
     {
+        
         labelName.text = checkList.checkListPrenom + " " + checkList.checkListNom
         labelTarget.text = checkList.checkListTarget
         
@@ -45,6 +46,9 @@ class ControleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        labelStatus.layer.cornerRadius = 5
+        labelStatus.clipsToBounds = true
     }
     // ***********************************
     // ***********************************

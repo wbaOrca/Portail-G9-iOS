@@ -16,6 +16,7 @@ class Board: NSObject , Mappable  {
     var boardTitle: String = ""
     var boardColor: String = ""
     var tasks: [Tache]! = [Tache]()
+    var order: Int = -1
     
     //******
     //******
@@ -46,6 +47,8 @@ class Board: NSObject , Mappable  {
         boardTitle <- map["boardTitle"]
         boardColor <- map["boardColor"]
         boardColor = boardColor + "FF"
+        
+        order <- map["order"]
         
         tasks <- map["tasks"]
         

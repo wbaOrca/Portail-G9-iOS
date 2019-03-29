@@ -35,7 +35,8 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        buttonSupprimer.layer.cornerRadius = 5
+        buttonSupprimer.clipsToBounds = true
     }
     // ***********************************
     // ***********************************
@@ -43,7 +44,10 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
     override func viewDidAppear(_ animated: Bool) {
         
         setupDetailsTache()
+        
+        self.refreshTaskQuery()
     }
+    
     
     // *******************************
     // ****
@@ -575,4 +579,70 @@ extension DetailsTacheViewController: WSDeleteTaskForcesTerrainsDelegate {
         }
     }
     
+}
+
+// +++++++++++++++++++++++++
+// +++++++++++++++++++++++++
+// +++++++++++++++++++++++++
+extension DetailsTacheViewController: WSGetTaskForcesTerrainsDelegate {
+
+    
+    // *******************************
+    // ****
+    // *******************************
+    func refreshTaskQuery()
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            self.indexItemToDelete = 999;
+            
+            return;
+        }
+        
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Récupération des détails de la tâche en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            
+            WSQueries.getTacheForcesTerrains(delegate: self, taskId: self.tache.taskId);
+        }
+        return
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSGetTacheForcesTerrains(error: Bool, data: TacheForceTerrainWSResponse!) {
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            DispatchQueue.main.async {
+                
+                self.tache = data.data.task;
+                self.setupDetailsTache();
+            }
+            return;
+            
+        }else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: (data.description_ + "\ncode erreur : " + String(data.code_erreur)), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
 }

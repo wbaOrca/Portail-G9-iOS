@@ -56,6 +56,14 @@ protocol WSGetBoardsForcesTerrainsDelegate {
     
     func didFinishWSGetBoardsForcesTerrains(error: Bool , data : DataForceTerrainToDoListWSResponse!)
 }
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetTaskForcesTerrainsDelegate {
+    
+    func didFinishWSGetTacheForcesTerrains(error: Bool , data : TacheForceTerrainWSResponse!)
+}
+
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 protocol WSAddBoardForcesTerrainsDelegate {
@@ -782,7 +790,7 @@ class WSQueries: NSObject {
                 if(responseForceTerrainBoards != nil)
                 {
                     
-                    responseForceTerrainBoards?.toDoList =  responseForceTerrainBoards?.toDoList.sorted(by: { $0.boardId > $1.boardId })
+                    responseForceTerrainBoards?.toDoList =  responseForceTerrainBoards?.toDoList.sorted(by: { $0.order < $1.order })
                     delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
                     
                     return
@@ -802,6 +810,79 @@ class WSQueries: NSObject {
         }
     }
     
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getTacheForcesTerrains(delegate : WSGetTaskForcesTerrainsDelegate, taskId : Int64 )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        //let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "task" : taskId
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getTache"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getTacheForcesTerrains(delegate: delegate, taskId: taskId);
+                        }else
+                        {
+                            delegate.didFinishWSGetTacheForcesTerrains(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseForceTerrainTache =  Mapper<TacheForceTerrainWSResponse>().map(JSONObject:responseJson)
+                if(responseForceTerrainTache != nil)
+                {
+                    
+                    delegate.didFinishWSGetTacheForcesTerrains(error: false, data: responseForceTerrainTache)
+                    
+                    return
+                }
+                
+                delegate.didFinishWSGetTacheForcesTerrains(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetTacheForcesTerrains(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
     
     // ***********************************
     // ***********************************
@@ -921,7 +1002,7 @@ class WSQueries: NSObject {
             "check_list_end": dateFormatter.string(from: checkList.checkListEnd),
             "check_list_statut": checkList.checkListStatut,
             "check_list_report": checkList.checkListReport,
-            "task_zone": task.taskZoneId
+            "task_zone": task.taskZone
         ]
         
         let url_ = Version.URL_WS_PORTAIL_G9 + "/addTache"
