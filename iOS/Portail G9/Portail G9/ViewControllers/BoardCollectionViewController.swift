@@ -188,6 +188,9 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
 // ++++++++++++++++++++++++++++++++++++++++
 extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
 {
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func didFinishWSGetBoardsForcesTerrains(error: Bool, data: DataForceTerrainToDoListWSResponse!) {
         
         DispatchQueue.main.async {
@@ -234,7 +237,9 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
 // ++++++++++++++++++++++++++++++++++++++++
 extension BoardCollectionViewController : WSAddBoardForcesTerrainsDelegate
 {
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func didFinishWSAddBoardForcesTerrains(error: Bool, code_erreur: Int, description: String) {
         DispatchQueue.main.async {
             self.stopAnimating()
@@ -258,13 +263,74 @@ extension BoardCollectionViewController : WSAddBoardForcesTerrainsDelegate
     
     
     
+    
 }
 
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+extension BoardCollectionViewController : WSDragTaskForcesTerrainsDelegate
+{
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSDragTaskForcesTerrains(error: Bool, code_erreur: Int, description: String) {
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error)
+        {
+            self.getBoardsData();
+        }else
+        {
+            let msg = "Une erreur est survenue lors du déplacment de la tache.\n" + description + "\ncode = " + String(code_erreur)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func dragAndDropTask(task : Tache) {
+        
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Déplacement de la tache en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.dragTaskForcesTerrains(delegate: self, task: task);
+        }
+    }
+    
+}
 // +++++++++++++++++++++++++
 // +++++++++++++++++++++++++
 // +++++++++++++++++++++++++
 extension BoardCollectionViewController: ColorEditorViewControllerDelegate {
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func viewController(didEdit color: UIColor) {
         selectedcolor = color
         

@@ -164,6 +164,12 @@ extension BoardCollectionViewCell: UITableViewDragDelegate {
             return []
         }
         */
+        
+        if(board?.boardType == "Fixed")
+        {
+            return []
+        }
+        
         let task = board!.tasks[indexPath.row]
         let itemProvider = NSItemProvider(object: task)
        let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -190,6 +196,12 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                 guard let task = items.first as? Tache else {
                     return
                 }
+                
+                if(self.board?.boardType == "Fixed")
+                {
+                    return 
+                }
+                
                 var updatedIndexPaths = [IndexPath]()
                 
                 switch (coordinator.items.first?.sourceIndexPath, coordinator.destinationIndexPath) {
@@ -202,7 +214,10 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     }
                     self.tableView.beginUpdates()
                     self.board?.tasks.remove(at: sourceIndexPath.row)
-                    task.taskOrder = destinationIndexPath.row
+                    
+                    task.boardId = (self.board?.boardId)!
+                    task.taskOrder = destinationIndexPath.row + 1
+                    
                     self.board?.tasks.insert(task, at: destinationIndexPath.row)
                     self.tableView.reloadRows(at: updatedIndexPaths, with: .automatic)
                     self.tableView.endUpdates()
@@ -213,7 +228,10 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     self.removeSourceTableData(localContext: coordinator.session.localDragSession?.localContext)
                     self.tableView.beginUpdates()
                     self.board?.tasks.insert(task, at: destinationIndexPath.row)
-                    task.taskOrder = destinationIndexPath.row
+                    
+                    task.boardId = (self.board?.boardId)!
+                    task.taskOrder = destinationIndexPath.row + 1
+                    
                     self.tableView.insertRows(at: [destinationIndexPath], with: .automatic)
                     self.tableView.endUpdates()
                     break
@@ -223,7 +241,11 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     // Insert data from a table to another table
                     self.removeSourceTableData(localContext: coordinator.session.localDragSession?.localContext)
                     self.tableView.beginUpdates()
+                    
                     self.board?.tasks.append(task)
+                    task.boardId = (self.board?.boardId)!
+                    task.taskOrder = self.board!.tasks.count
+                    
                     self.tableView.insertRows(at: [IndexPath(row: self.board!.tasks.count - 1 , section: 0)], with: .automatic)
                     self.tableView.endUpdates()
                     break
@@ -231,6 +253,8 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                 default: break
                     
                 }
+                
+                self.parentVC?.dragAndDropTask(task: task);
             }
         
     }

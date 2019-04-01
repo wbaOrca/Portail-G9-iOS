@@ -207,7 +207,10 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
             let fichier = tache.files[indexPath.row];
             
             let documentVC = self.storyboard?.instantiateViewController(withIdentifier: "DocumentViewController") as? DocumentViewController
-            documentVC?.url_document_string = fichier.path;
+            
+            var url_asString = fichier.path
+            url_asString = url_asString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            documentVC?.url_document_string = url_asString;
             self.navigationController?.pushViewController(documentVC!, animated: true);
             
         }
