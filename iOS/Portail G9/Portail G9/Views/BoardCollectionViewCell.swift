@@ -202,6 +202,7 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     }
                     self.tableView.beginUpdates()
                     self.board?.tasks.remove(at: sourceIndexPath.row)
+                    task.taskOrder = destinationIndexPath.row
                     self.board?.tasks.insert(task, at: destinationIndexPath.row)
                     self.tableView.reloadRows(at: updatedIndexPaths, with: .automatic)
                     self.tableView.endUpdates()
@@ -212,6 +213,7 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     self.removeSourceTableData(localContext: coordinator.session.localDragSession?.localContext)
                     self.tableView.beginUpdates()
                     self.board?.tasks.insert(task, at: destinationIndexPath.row)
+                    task.taskOrder = destinationIndexPath.row
                     self.tableView.insertRows(at: [destinationIndexPath], with: .automatic)
                     self.tableView.endUpdates()
                     break

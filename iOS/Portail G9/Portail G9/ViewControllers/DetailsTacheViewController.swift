@@ -216,11 +216,83 @@ class DetailsTacheViewController: UIViewController , UITableViewDelegate, UITabl
             let commentaire = tache.comments[indexPath.row];
             
             DispatchQueue.main.async {
-            
-                let alert = UIAlertController(title: commentaire.recipient, message: commentaire.message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+                /*
+                 let alert = UIAlertController(title: commentaire.recipient, message: commentaire.message, preferredStyle: UIAlertController.Style.alert)
+                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                 
+                 
+                 let imgView = UIImageView(frame: CGRect(x: 10, y: 10, width: 120, height: 80))
+                 let url = URL(string: commentaire.files[0].path)
+                 imgView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+                 alert.view.addSubview(imgView)
+                 }
+                 
+                 self.present(alert, animated: true, completion: nil)*/
+                //***
+                let uiAlertControl = UIAlertController(title: commentaire.recipient, message: commentaire.message, preferredStyle: .alert)
+                
+                if(commentaire.files.count > 0)
+                {
+                    
+                    
+                    var url_asString = commentaire.files[0].path
+                    url_asString = url_asString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                    let url = URL(string:url_asString)
+                    //let data = try? Data(contentsOf: url!)
+                    //let image: UIImage = UIImage(data: data!)!
+                    
+                    let session = URLSession(configuration: .default)
+                    //creating a dataTask
+                    let getImageFromUrl = session.dataTask(with: url!) { (data, response, error) in
+                        
+                        //if there is any error
+                        if let e = error {
+                            //displaying the message
+                            print("Error Occurred: \(e)")
+                            
+                        } else {
+                            //in case of now error, checking wheather the response is nil or not
+                            if (response as? HTTPURLResponse) != nil {
+                                
+                                //checking if the response contains an image
+                                if let imageData = data {
+                                    
+                                    //getting the image
+                                    let image = UIImage(data: imageData)
+                                    if(image != nil){
+                                    //displaying the image
+                                        let scaleSze = CGSize(width: 245, height: 245/image!.size.width*image!.size.height)
+                                        let reSizedImage = image!.resizeImage(targetSize: scaleSze)
+                                    
+                                        let uiImageAlertAction = UIAlertAction(title: "", style: .default, handler: nil)
+                                        uiImageAlertAction.setValue(reSizedImage.withRenderingMode(.alwaysOriginal), forKey: "image")
+                                        uiAlertControl.addAction(uiImageAlertAction)
+                                    }
+                                    uiAlertControl.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                                    self.present(uiAlertControl, animated: true, completion: nil)
+                                    
+                                } else {
+                                    print("Image file is currupted")
+                                }
+                            } else {
+                                print("No response from server")
+                            }
+                        }
+                    }
+                    
+                    //starting the download task
+                    getImageFromUrl.resume()
+                    
+                    
+                    
+                }else
+                {
+                    uiAlertControl.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(uiAlertControl, animated: true, completion: nil)
+                }
+               
+                //***
+                
             }
             return;
         }

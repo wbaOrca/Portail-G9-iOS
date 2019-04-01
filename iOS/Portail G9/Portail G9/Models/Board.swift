@@ -15,7 +15,7 @@ class Board: NSObject , Mappable  {
     var boardType: String = ""
     var boardTitle: String = ""
     var boardColor: String = ""
-    var tasks: [Tache]! = [Tache]()
+    var tasks: [Tache] = [Tache]()
     var order: Int = -1
     
     //******

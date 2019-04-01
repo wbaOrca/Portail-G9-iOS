@@ -47,6 +47,7 @@ class CheckList: NSObject,Mappable , Codable {
     // *************************
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        
         checkListId = try values.decode(Int64.self, forKey: .checkListId)
         checkListLibelle = try values.decode(String.self, forKey: .checkListLibelle)
         checkListNom = try values.decode(String.self, forKey: .checkListNom)

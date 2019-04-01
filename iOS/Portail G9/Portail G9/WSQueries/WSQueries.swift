@@ -790,7 +790,13 @@ class WSQueries: NSObject {
                 if(responseForceTerrainBoards != nil)
                 {
                     
-                    responseForceTerrainBoards?.toDoList =  responseForceTerrainBoards?.toDoList.sorted(by: { $0.order < $1.order })
+                    responseForceTerrainBoards?.toDoList =  (responseForceTerrainBoards?.toDoList.sorted(by: { $0.order < $1.order }))!
+                    
+                    for  board in (responseForceTerrainBoards?.toDoList)!
+                    {
+                        board.tasks = board.tasks.sorted(by: { $0.taskOrder < $1.taskOrder })
+                    }
+ 
                     delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
                     
                     return

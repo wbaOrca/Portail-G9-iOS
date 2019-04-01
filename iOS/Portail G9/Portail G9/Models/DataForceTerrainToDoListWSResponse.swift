@@ -15,7 +15,7 @@ class DataForceTerrainToDoListWSResponse: NSObject , Mappable {
     var code : Int = 0
     var description_ : String = ""
     
-    var toDoList : [Board]! = nil
+    var toDoList : [Board] = [Board]()
     
     //******
     //******

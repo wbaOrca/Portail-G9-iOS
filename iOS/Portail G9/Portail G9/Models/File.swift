@@ -27,7 +27,9 @@ class File: NSObject ,Mappable , Codable {
         case path
         
     }
-    
+    //******
+    //******
+    //******
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         fileId = try values.decode(Int64.self, forKey: .fileId)
@@ -37,7 +39,9 @@ class File: NSObject ,Mappable , Codable {
         
     }
     
-    
+    //******
+    //******
+    //******
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
