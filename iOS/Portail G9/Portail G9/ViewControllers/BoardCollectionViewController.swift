@@ -208,6 +208,7 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
                     self.collectionView.reloadData()
                     self.updateCollectionViewItem(with: self.view.bounds.size)
                    
+                    /*
                     if(self.boards.count > 0){
                     
                     let addedIndexPath = IndexPath(item: self.boards.count - 1, section: 0)
@@ -215,6 +216,7 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
                     self.collectionView.scrollToItem(at: addedIndexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
 
                     }
+                     */
                 }
             }
         }else
@@ -299,7 +301,7 @@ extension BoardCollectionViewController : WSDragTaskForcesTerrainsDelegate
     // ***********************************
     // ***********************************
     // ***********************************
-    func dragAndDropTask(task : Tache) {
+    func dragAndDropTask(board : Board , task : Tache) {
         
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
@@ -318,7 +320,7 @@ extension BoardCollectionViewController : WSDragTaskForcesTerrainsDelegate
         }
         
         DispatchQueue.main.async{
-            WSQueries.dragTaskForcesTerrains(delegate: self, task: task);
+            WSQueries.dragTaskForcesTerrains(delegate: self, board: board,task: task);
         }
     }
     

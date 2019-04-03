@@ -219,6 +219,9 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     task.taskOrder = destinationIndexPath.row + 1
                     
                     self.board?.tasks.insert(task, at: destinationIndexPath.row)
+                    
+                    self.reorderTask(task: task)
+                    
                     self.tableView.reloadRows(at: updatedIndexPaths, with: .automatic)
                     self.tableView.endUpdates()
                     break
@@ -231,6 +234,7 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     
                     task.boardId = (self.board?.boardId)!
                     task.taskOrder = destinationIndexPath.row + 1
+                    self.reorderTask(task: task)
                     
                     self.tableView.insertRows(at: [destinationIndexPath], with: .automatic)
                     self.tableView.endUpdates()
@@ -245,6 +249,7 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     self.board?.tasks.append(task)
                     task.boardId = (self.board?.boardId)!
                     task.taskOrder = self.board!.tasks.count
+                    self.reorderTask(task: task)
                     
                     self.tableView.insertRows(at: [IndexPath(row: self.board!.tasks.count - 1 , section: 0)], with: .automatic)
                     self.tableView.endUpdates()
@@ -254,11 +259,27 @@ extension BoardCollectionViewCell: UITableViewDropDelegate {
                     
                 }
                 
-                self.parentVC?.dragAndDropTask(task: task);
+                self.parentVC?.dragAndDropTask(board: self.board! , task: task);
+                
             }
         
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func reorderTask(task : Tache)
+    {
+        for i in (0 ..< (self.board?.tasks.count)!)
+        {
+            let taskA = self.board?.tasks[i]
+            /*
+            if(task.taskId != taskA!.taskId && taskA!.taskOrder >= task.taskOrder)
+            {
+                taskA!.taskOrder = taskA!.taskOrder + 1
+            }*/
+            taskA!.taskOrder = i + 1
+        }
+    }
     // ***********************************
     // ***********************************
     // ***********************************

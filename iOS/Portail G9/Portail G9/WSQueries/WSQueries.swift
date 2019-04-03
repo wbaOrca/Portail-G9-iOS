@@ -802,6 +802,12 @@ class WSQueries: NSObject {
                     for  board in (responseForceTerrainBoards?.toDoList)!
                     {
                         board.tasks = board.tasks.sorted(by: { $0.taskOrder < $1.taskOrder })
+                        
+                        for i in (0 ..< board.tasks.count)
+                        {
+                            let taskA = board.tasks[i]
+                            taskA.taskOrder = i + 1
+                        }
                     }
  
                     delegate.didFinishWSGetBoardsForcesTerrains(error: false, data: responseForceTerrainBoards)
@@ -1687,7 +1693,7 @@ class WSQueries: NSObject {
     // ***********************************
     // ***********************************
     // ***********************************
-    static func dragTaskForcesTerrains(delegate : WSDragTaskForcesTerrainsDelegate, task : Tache )
+    static func dragTaskForcesTerrains(delegate : WSDragTaskForcesTerrainsDelegate, board : Board ,task : Tache )
     {
         
         // headers autorization
@@ -1700,15 +1706,29 @@ class WSQueries: NSObject {
             "Authorization": authorization_
         ]
         
+        var taskOrderString : String  = "["
+        for i in (0 ..< board.tasks.count)
+        {
+            let task = board.tasks[i]
+            if(i > 0)
+            {
+                taskOrderString.append(" , ")
+            }
+            taskOrderString.append("{")
+            taskOrderString.append(" \"taskId\" : " + String(task.taskId) + ",")
+            taskOrderString.append(" \"taskOrder\" : " + String(task.taskOrder) + "")
+            taskOrderString.append("}")
+        }
+        taskOrderString.append("]")
         
         //post params
         //let perimetre = WSQueries.preparePerimetre();
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
         let post_params: Parameters = [
             "profil": profil,
+            "board": board.boardId,
             "task": task.taskId,
-            "task_order" : task.taskOrder,
-            "board": task.boardId
+            "task_order" : taskOrderString
         ]
         
         let url_ = Version.URL_WS_PORTAIL_G9 + "/dragTask"
@@ -1725,7 +1745,7 @@ class WSQueries: NSObject {
                     WSQueries.refreshToken(completion: { (code) in
                         if(code == WSQueries.CODE_RETOUR_200)
                         {
-                            WSQueries.dragTaskForcesTerrains(delegate: delegate, task: task);
+                            WSQueries.dragTaskForcesTerrains(delegate: delegate, board: board, task : task);
                         }else
                         {
                             delegate.didFinishWSDragTaskForcesTerrains(error: true, code_erreur: -1,description: "NA")
