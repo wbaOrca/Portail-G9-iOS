@@ -26,6 +26,15 @@
 		FB0E0F8222005BCF0043E345 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */; };
 		FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F8322005BE40043E345 /* HomeViewController.swift */; };
 		FB0E0F8922005DAD0043E345 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F8722005DAD0043E345 /* Localizable.strings */; };
+		FB0FA023225B845100B2B2A9 /* ListePiliersWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA022225B845100B2B2A9 /* ListePiliersWSResponse.swift */; };
+		FB0FA027225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */; };
+		FB0FA029225B915C00B2B2A9 /* QuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */; };
+		FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */; };
+		FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */; };
+		FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF92255FF5700C98638 /* Pilier.swift */; };
+		FB44EEFC225601FC00C98638 /* ListePilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */; };
+		FB44EEFE225602FB00C98638 /* ItemQuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */; };
+		FB44EF002256061100C98638 /* ListeQuestionPilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */; };
 		FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */; };
 		FB4A6A3822267746001AC448 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3722267746001AC448 /* Board.swift */; };
 		FB4A6A3A22267758001AC448 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */; };
@@ -47,6 +56,7 @@
 		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
 		FBB9318B224E2FE500E28751 /* TacheForceTerrainWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */; };
 		FBB9318D224E34E700E28751 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318C224E34E700E28751 /* DataTask.swift */; };
+		FBC68560225BA0E900A60E1A /* QuestionPilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */; };
 		FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */; };
 		FBD2AFE72231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */; };
 		FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD2AFE8223150FE00D9D517 /* CheckList.swift */; };
@@ -149,6 +159,15 @@
 		FB0E0F8B22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		FB0E0F8C22005F660043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FB0E0F8D22005F670043E345 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB0FA022225B845100B2B2A9 /* ListePiliersWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListePiliersWSResponse.swift; sourceTree = "<group>"; };
+		FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPiliersWSResponse.swift; sourceTree = "<group>"; };
+		FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPilier.swift; sourceTree = "<group>"; };
+		FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiliersProcessViewController.swift; sourceTree = "<group>"; };
+		FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeQuestionPilierViewController.swift; sourceTree = "<group>"; };
+		FB44EEF92255FF5700C98638 /* Pilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pilier.swift; sourceTree = "<group>"; };
+		FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListePilierTableViewCell.swift; sourceTree = "<group>"; };
+		FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuestionPilier.swift; sourceTree = "<group>"; };
+		FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeQuestionPilierTableViewCell.swift; sourceTree = "<group>"; };
 		FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewController.swift; sourceTree = "<group>"; };
 		FB4A6A3722267746001AC448 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +189,7 @@
 		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
 		FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacheForceTerrainWSResponse.swift; sourceTree = "<group>"; };
 		FBB9318C224E34E700E28751 /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
+		FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPilierTableViewCell.swift; sourceTree = "<group>"; };
 		FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreMenuViewController.swift; sourceTree = "<group>"; };
 		FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataForceTerrainToDoListWSResponse.swift; sourceTree = "<group>"; };
 		FBD2AFE8223150FE00D9D517 /* CheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
@@ -304,6 +324,9 @@
 				FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */,
 				FBF26C822215604300D271AC /* ListeCategoriesTableViewCell.swift */,
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
+				FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */,
+				FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */,
+				FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */,
 				FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */,
 				FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */,
 				FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */,
@@ -342,6 +365,8 @@
 				FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */,
 				FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */,
 				FB503B13223666EF006C4D90 /* DocumentViewController.swift */,
+				FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */,
+				FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -423,6 +448,11 @@
 				FBD2AFEC2231539C00D9D517 /* File.swift */,
 				FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */,
 				FBB9318C224E34E700E28751 /* DataTask.swift */,
+				FB0FA022225B845100B2B2A9 /* ListePiliersWSResponse.swift */,
+				FB44EEF92255FF5700C98638 /* Pilier.swift */,
+				FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */,
+				FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */,
+				FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -780,6 +810,7 @@
 				FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */,
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
 				FB4A6A3822267746001AC448 /* Board.swift in Sources */,
+				FB0FA027225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift in Sources */,
 				FB02ACF52236993600843B66 /* ColorPickerViewDelegate.swift in Sources */,
 				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,
 				FBE2EC6D2201F064004B44DF /* CustomCell.swift in Sources */,
@@ -800,8 +831,10 @@
 				FB02ACF32236993600843B66 /* ColorSpaceConverter.swift in Sources */,
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
 				FBB9318D224E34E700E28751 /* DataTask.swift in Sources */,
+				FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */,
 				FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */,
 				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
+				FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */,
 				FBE63E182212B5410027F6E2 /* DataUtiles.swift in Sources */,
 				FBB9318B224E2FE500E28751 /* TacheForceTerrainWSResponse.swift in Sources */,
 				FBE9EC44222E72D000D4F6A0 /* ControleTableViewCell.swift in Sources */,
@@ -815,19 +848,24 @@
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
 				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
+				FB0FA023225B845100B2B2A9 /* ListePiliersWSResponse.swift in Sources */,
 				FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */,
 				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
 				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
 				FBF26C7D221555FB00D271AC /* Categorie.swift in Sources */,
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,
+				FB44EF002256061100C98638 /* ListeQuestionPilierTableViewCell.swift in Sources */,
 				FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
 				FBF26C8522156E5800D271AC /* ListeGroupesViewController.swift in Sources */,
 				FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */,
+				FB44EEFC225601FC00C98638 /* ListePilierTableViewCell.swift in Sources */,
+				FB0FA029225B915C00B2B2A9 /* QuestionPilier.swift in Sources */,
 				FBE63E102212AC790027F6E2 /* Zone.swift in Sources */,
 				FBF02014223BA3710076E9E6 /* AddCommentaireTacheViewController.swift in Sources */,
 				FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */,
+				FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */,
 				FBF02012223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */,
@@ -843,7 +881,9 @@
 				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 				FBF26C832215604300D271AC /* ListeCategoriesTableViewCell.swift in Sources */,
+				FB44EEFE225602FB00C98638 /* ItemQuestionPilier.swift in Sources */,
 				FBD2AFED2231539C00D9D517 /* File.swift in Sources */,
+				FBC68560225BA0E900A60E1A /* QuestionPilierTableViewCell.swift in Sources */,
 				FBE9EC40222E5C4D00D4F6A0 /* DetailsTacheViewController.swift in Sources */,
 				FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */,
 				FB02ACF42236993600843B66 /* RGB.swift in Sources */,

@@ -214,7 +214,8 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
                 self.navigationController?.pushViewController(processRadarVC!, animated: true);
             }else //Piliers
             {
-                
+                let piliersProcessVC = self.storyboard?.instantiateViewController(withIdentifier: "PiliersProcessViewController") as? PiliersProcessViewController
+                self.navigationController?.pushViewController(piliersProcessVC!, animated: true);
             }
             
         }

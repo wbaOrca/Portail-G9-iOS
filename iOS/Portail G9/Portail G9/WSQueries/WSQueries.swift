@@ -134,9 +134,21 @@ protocol WSDeleteCommentaireForcesTerrainsDelegate {
     
     func didFinishWSDeleteCommentaire(error: Bool , code_erreur : Int, description : String)
 }
-// ++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++
 
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetListePiliersDelegate {
+    
+    func didFinishWSGetListePiliers(error: Bool , data : ListePiliersWSResponse!)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetQuestionPiliersDelegate {
+    
+    func didFinishWSQuestionPiliers(error: Bool , data : QuestionPiliersWSResponse!)
+}
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
@@ -1771,6 +1783,157 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSDragTaskForcesTerrains(error: true, code_erreur: -1,description: "NA Unknown")
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getListePiliers(delegate : WSGetListePiliersDelegate )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getListePiliers"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getListePiliers(delegate: delegate);
+                        }else
+                        {
+                            delegate.didFinishWSGetListePiliers(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataListePiliers =  Mapper<ListePiliersWSResponse>().map(JSONObject:responseJson)
+                if(responseDataListePiliers != nil)
+                {
+                    delegate.didFinishWSGetListePiliers(error: false, data: responseDataListePiliers)
+                    return
+                }
+                
+                delegate.didFinishWSGetListePiliers(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetListePiliers(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getQuestionsPilier(delegate : WSGetQuestionPiliersDelegate , idPilier : Int64)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "pilier" : idPilier
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/getQuestionsPilier"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getQuestionsPilier(delegate: delegate, idPilier: idPilier);
+                        }else
+                        {
+                            delegate.didFinishWSQuestionPiliers(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataListePiliers =  Mapper<QuestionPiliersWSResponse>().map(JSONObject:responseJson)
+                if(responseDataListePiliers != nil)
+                {
+                    delegate.didFinishWSQuestionPiliers(error: false, data: responseDataListePiliers)
+                    return
+                }
+                
+                delegate.didFinishWSQuestionPiliers(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSQuestionPiliers(error: true, data: nil)
                 break
                 
             }
