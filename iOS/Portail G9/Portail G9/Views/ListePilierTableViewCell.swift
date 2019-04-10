@@ -24,7 +24,8 @@ class ListePilierTableViewCell: UITableViewCell {
     {
         titleLabel.text = pilier.pilierLibelle
         
-        let color = UIColor.init(name: pilier.pilierStatut)
+        //let color = UIColor.init(name: pilier.pilierStatut)
+        let color = UIColor.init(hex: pilier.pilierStatutCodeCouleur)
         iconImage.layer.borderWidth = 3
         iconImage.layer.borderColor = color!.cgColor
         

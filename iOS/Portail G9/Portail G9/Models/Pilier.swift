@@ -16,6 +16,7 @@ class Pilier: NSObject, Mappable , NSCoding, UniqueProperty {
     var pilierLibelle : String = ""
     var pilierIcone : String = ""
     var pilierStatut : String = ""
+    var pilierStatutCodeCouleur : String = ""
     
     //******
     //******
@@ -50,6 +51,10 @@ class Pilier: NSObject, Mappable , NSCoding, UniqueProperty {
         pilierLibelle <- map["pilierLibelle"]
         pilierIcone <- map["pilierIcone"]
         pilierStatut <- map["pilierStatut"]
+        pilierStatutCodeCouleur <- map["pilierStatutCodeCouleur"]
+        
+        pilierStatutCodeCouleur = pilierStatutCodeCouleur + "FF"
+        
     }
     
     // *****************************************
@@ -63,6 +68,7 @@ class Pilier: NSObject, Mappable , NSCoding, UniqueProperty {
         aCoder.encode(pilierLibelle, forKey: "pilierLibelle")
         aCoder.encode(pilierIcone, forKey: "pilierIcone")
         aCoder.encode(pilierStatut, forKey: "pilierStatut")
+        aCoder.encode(pilierStatutCodeCouleur, forKey: "pilierStatutCodeCouleur")
         
     }
     
@@ -77,5 +83,7 @@ class Pilier: NSObject, Mappable , NSCoding, UniqueProperty {
         self.pilierLibelle = decoder.decodeObject(forKey: "pilierLibelle") as? String ?? ""
         self.pilierIcone = decoder.decodeObject(forKey: "pilierIcone") as? String ?? ""
         self.pilierStatut = decoder.decodeObject(forKey: "pilierStatut") as? String ?? ""
+        self.pilierStatutCodeCouleur = decoder.decodeObject(forKey: "pilierStatutCodeCouleur") as? String ?? ""
+        
     }
 }
