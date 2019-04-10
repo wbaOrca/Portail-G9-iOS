@@ -47,5 +47,6 @@ class QuestionPilier: NSObject , Mappable {
         commentaire <- map["commentaire"]
         derniereMAJ <- map["derniereMAJ"]
         values <- map["values"]
+        
     }
 }
