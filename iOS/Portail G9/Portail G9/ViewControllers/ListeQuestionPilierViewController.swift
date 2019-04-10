@@ -93,9 +93,45 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
     // ***********************************
     // ***********************************
     // ***********************************
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return arrayQuestionPiliers.count
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35;
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return arrayQuestionPiliers[section].questions.count
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderListeQuestionPilierTableViewCell") as! ListeQuestionPilierTableViewCell
+        if(section < arrayQuestionPiliers.count)
+        {
+            let qpilier = arrayQuestionPiliers[section] ;
+            cell.setupHeaderQuestionPilierCell(question_pilier: qpilier)
+        }
+        
+        return cell;
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return arrayQuestionPiliers[section].category
     }
     
     // ***********************************
@@ -103,6 +139,19 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
     // ***********************************
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionPilierTableViewCell", for: indexPath) as! QuestionPilierTableViewCell
+        
+        let row = indexPath.row
+        let section = indexPath.section
+        
+        let qpilier = arrayQuestionPiliers[section].questions[row] ;
+        cell.setupQuestionPilierCell(question_pilier: qpilier);
+        
+        
+        return cell;
+        
+        /*
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListeQuestionPilierTableViewCell", for: indexPath) as! ListeQuestionPilierTableViewCell
         
         let row = indexPath.row
@@ -115,6 +164,7 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
         }
         
         return cell;
+         */
     }
     // ***********************************
     // ***********************************

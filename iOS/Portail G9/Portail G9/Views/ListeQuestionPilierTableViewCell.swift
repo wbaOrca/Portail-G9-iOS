@@ -16,7 +16,6 @@ class ListeQuestionPilierTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableViewQuestions: UITableView!
     
     var mItem : ItemQuestionPilier = ItemQuestionPilier()
     
@@ -27,10 +26,19 @@ class ListeQuestionPilierTableViewCell: UITableViewCell {
     {
         titleLabel.text = question_pilier.category
         mItem = question_pilier
-        tableViewQuestions.reloadData()
+        
         
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupHeaderQuestionPilierCell(question_pilier : ItemQuestionPilier)
+    {
+        titleLabel.text = question_pilier.category
+        
+        
+    }
     
     
     override func awakeFromNib() {
@@ -47,44 +55,3 @@ class ListeQuestionPilierTableViewCell: UITableViewCell {
 }
 
 
-// ++++++++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++++++++
-extension ListeQuestionPilierTableViewCell: UITableViewDataSource , UITableViewDelegate {
-    
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return mItem.questions.count
-    }
-    
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionPilierTableViewCell", for: indexPath) as! QuestionPilierTableViewCell
-        
-        let row = indexPath.row
-        
-        
-        if(row < mItem.questions.count)
-        {
-            let qpilier = mItem.questions[row] ;
-            cell.setupQuestionPilierCell(question_pilier: qpilier);
-        }
-        
-        return cell;
-    }
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // let qpilier = self.arrayQuestionPiliers[indexPath.row] ;
-        
-    }
-}

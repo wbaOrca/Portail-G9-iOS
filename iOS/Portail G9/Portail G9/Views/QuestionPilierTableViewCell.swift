@@ -40,9 +40,16 @@ class QuestionPilierTableViewCell: UITableViewCell {
     // ***********************************
     func setupQuestionPilierCell(question_pilier : QuestionPilier)
     {
-        titleLabel.text = question_pilier.libelle
         
         self.qp = question_pilier ;
+        
+        titleLabel.text = question_pilier.libelle
+        frequenceLabel.text = question_pilier.frequence
+        majLabel.text = question_pilier.derniereMAJ
+        commentaireLabel.text = question_pilier.commentaire
+        
+        
+        
         
     }
     
