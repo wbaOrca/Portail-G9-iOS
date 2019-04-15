@@ -44,7 +44,7 @@ class QuestionPilierTableViewCell: UITableViewCell {
             $0.removeFromSuperview()
         }
         
-        for monthString in question_pilier.values.allKeys as! [String]
+        for monthQP in question_pilier.values
         {
             
         
@@ -54,16 +54,12 @@ class QuestionPilierTableViewCell: UITableViewCell {
             labelMonth.textColor = .white
             labelMonth.font = UIFont(name: "Helvetica", size: 10)
             labelMonth.textAlignment = .center
-            labelMonth.text = String(monthString.prefix(3))
+            labelMonth.text = String(monthQP.month.prefix(3))
             
-            
-            let monthDictionary = question_pilier.values[monthString] as! NSDictionary
-            let value = monthDictionary["value"] as? Bool ?? nil
-            
-            if(value == nil)
+            if(monthQP.value == nil)
             {
                 labelMonth.backgroundColor = .orange
-            }else if(value == true)
+            }else if(monthQP.value == true)
             {
                 labelMonth.backgroundColor = .green
             }else

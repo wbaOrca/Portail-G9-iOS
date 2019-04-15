@@ -48,6 +48,7 @@
 		FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */; };
 		FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */; };
 		FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB503B13223666EF006C4D90 /* DocumentViewController.swift */; };
+		FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */; };
 		FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */; };
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
@@ -181,6 +182,7 @@
 		FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessRadarViewController.swift; sourceTree = "<group>"; };
 		FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
 		FB503B13223666EF006C4D90 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthQuestionPilier.swift; sourceTree = "<group>"; };
 		FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFileTacheViewController.swift; sourceTree = "<group>"; };
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */,
 				FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */,
 				FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */,
+				FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */,
 				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
+				FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */,
 				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
 				FBF26C7D221555FB00D271AC /* Categorie.swift in Sources */,
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,

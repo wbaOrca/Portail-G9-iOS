@@ -17,7 +17,7 @@ class QuestionPilier: NSObject , Mappable {
     var frequence : String = ""
     var commentaire : String = ""
     var derniereMAJ : String = ""
-    var values : NSDictionary = NSDictionary()
+    var values : [MonthQuestionPilier] = [MonthQuestionPilier]()
     
     //******
     //******
@@ -48,5 +48,6 @@ class QuestionPilier: NSObject , Mappable {
         derniereMAJ <- map["derniereMAJ"]
         values <- map["values"]
         
+        values =  values.sorted(by: { $0.order < $1.order })
     }
 }
