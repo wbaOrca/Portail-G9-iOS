@@ -152,6 +152,13 @@ protocol WSGetQuestionPiliersDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSTargetQuestionDelegate {
+    
+    func didFinishWSTargetQuestion(error: Bool , code_erreur : Int, description : String)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 class WSQueries: NSObject {
@@ -1934,6 +1941,81 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSQuestionPiliers(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func targetQuestionsPilier(delegate : WSTargetQuestionDelegate , idQuestionPilier : Int64)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "question" : idQuestionPilier
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/targetQuestion"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.targetQuestionsPilier(delegate: delegate, idQuestionPilier: idQuestionPilier);
+                        }else
+                        {
+                            delegate.didFinishWSTargetQuestion(error: true, code_erreur: -1, description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSTargetQuestion(error: false, code_erreur: code_erreur, description: "")
+                    return
+                }
+                
+                delegate.didFinishWSTargetQuestion(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSTargetQuestion(error: true, code_erreur: -1, description: (response.result.error?.localizedDescription)!)
                 break
                 
             }

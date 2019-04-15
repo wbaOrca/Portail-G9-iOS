@@ -12,6 +12,7 @@ import ObjectMapper
 class QuestionPilier: NSObject , Mappable {
 
     
+    var idQuestion : Int64 = -1
     var libelle : String = ""
     var description_ : String! = ""
     var frequence : String = ""
@@ -41,6 +42,7 @@ class QuestionPilier: NSObject , Mappable {
     // Mappable
     func mapping(map: Map) {
         
+        idQuestion <- map["id"]
         libelle <- map["libelle"]
         description_ <- map["description"]
         frequence <- map["frequence"]

@@ -80,6 +80,31 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
     }
 
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func planActionQuestionPilier (idQuestion : Int64)
+    {
+        let reachability = Reachability()!
+        if (reachability.connection == .none ) //si pas de connexion internet
+        {
+            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return;
+        }
+        
+        // All Correct OK
+        DispatchQueue.main.async {
+            let size = CGSize(width: 150, height: 50)
+            self.startAnimating(size, message: "Plan d'action en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+        }
+        
+        DispatchQueue.main.async{
+            WSQueries.targetQuestionsPilier(delegate: self, idQuestionPilier: idQuestion);
+        }
+    }
 }
 
 
@@ -151,20 +176,7 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
         
         return cell;
         
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListeQuestionPilierTableViewCell", for: indexPath) as! ListeQuestionPilierTableViewCell
         
-        let row = indexPath.row
-        
-        
-        if(row < arrayQuestionPiliers.count)
-        {
-            let qpilier = arrayQuestionPiliers[row] ;
-            cell.setupQuestionPilierCell(question_pilier: qpilier);
-        }
-        
-        return cell;
-         */
     }
     // ***********************************
     // ***********************************
@@ -175,6 +187,67 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
         
     }
     
+    
+   
+    // *******************************
+    // ****  editingStyleForRowAt 
+    // *******************************
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        //Plan action
+        let paAction = UITableViewRowAction(style: .normal, title: "PA") { (rowAction, indexPath) in
+            
+            // Affaire par défaut
+            let preferences = UserDefaults.standard
+            let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+            if(affaireData_ == nil){
+                
+                let alert = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+                
+            }
+            
+             let row = indexPath.row
+             let section = indexPath.section
+             let qpilier = self.arrayQuestionPiliers[section].questions[row] ;
+            
+            var isLastMonthOk : Bool! = nil
+            if(qpilier.values.count > 0)
+            {
+                isLastMonthOk = qpilier.values.last?.value
+            }
+            if(isLastMonthOk == true)
+            {
+                return
+            }else{
+                
+                self.planActionQuestionPilier(idQuestion : qpilier.idQuestion )
+            }
+        }
+        paAction.backgroundColor = #colorLiteral(red: 0.9653237462, green: 0.700186789, blue: 0.1992127001, alpha: 1)
+        
+        //modifier
+        let modifierAction = UITableViewRowAction(style: .normal, title: "Modifier") { (rowAction, indexPath) in
+            
+            // Affaire par défaut
+            let preferences = UserDefaults.standard
+            let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+            if(affaireData_ == nil){
+                
+                let alert = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+        modifierAction.backgroundColor = #colorLiteral(red: 0.2521760464, green: 0.5373173952, blue: 0.7852240801, alpha: 1)
+        
+        return [paAction,modifierAction]
+    }
     
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -273,4 +346,54 @@ extension ListeQuestionPilierViewController: WSGetQuestionPiliersDelegate {
     }
     
     
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension ListeQuestionPilierViewController: WSTargetQuestionDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSTargetQuestion(error: Bool, code_erreur: Int, description: String) {
+        
+        DispatchQueue.main.async {
+            self.stopAnimating()
+        }
+        
+        if(!error && code_erreur == 0)
+        {
+            
+        }
+        else if(error)
+        {
+            DispatchQueue.main.async {
+                
+                let msg = description + "\nCode erreur = " + String(code_erreur)
+                let alert = UIAlertController(title: "Erreur", message: msg, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+            
+        }
+        else
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de PA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+        
+    }
+    
+
+
+
 }
