@@ -42,7 +42,7 @@ class QuestionPilier: NSObject , Mappable {
     // Mappable
     func mapping(map: Map) {
         
-        idQuestion <- map["id"]
+        idQuestion <- map["questionId"]
         libelle <- map["libelle"]
         description_ <- map["description"]
         frequence <- map["frequence"]

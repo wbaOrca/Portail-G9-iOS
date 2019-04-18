@@ -19,6 +19,7 @@ class QuestionPilierTableViewCell: UITableViewCell {
     @IBOutlet weak var commentaireLabel: UILabel!
     @IBOutlet weak var majLabel: UILabel!
     @IBOutlet weak var frequenceLabel: UILabel!
+    @IBOutlet weak var cibleLabel: UILabel!
     
     @IBOutlet weak var stackViewMonth: UIStackView!
     
@@ -43,7 +44,15 @@ class QuestionPilierTableViewCell: UITableViewCell {
         stackViewMonth.subviews.forEach {
             $0.removeFromSuperview()
         }
-        
+        cibleLabel.isHidden = true
+        if(question_pilier.values.count > 0)
+        {
+            let monthQP = question_pilier.values.last
+            if(monthQP?.isTargeted == true && monthQP!.value != true)
+            {
+                cibleLabel.isHidden = false
+            }
+        }
         for monthQP in question_pilier.values
         {
             
@@ -80,7 +89,10 @@ class QuestionPilierTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        
+        if(cibleLabel != nil){
+            cibleLabel.layer.cornerRadius = 5
+            cibleLabel.clipsToBounds = true
+        }
     }
 
     

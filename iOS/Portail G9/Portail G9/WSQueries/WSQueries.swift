@@ -159,6 +159,12 @@ protocol WSTargetQuestionDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSUpdateQuestionDelegate {
+    
+    func didFinishWSUpdateQuestion(error: Bool , code_erreur : Int, description : String)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 class WSQueries: NSObject {
@@ -2016,6 +2022,84 @@ class WSQueries: NSObject {
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
                 delegate.didFinishWSTargetQuestion(error: true, code_erreur: -1, description: (response.result.error?.localizedDescription)!)
+                break
+                
+            }
+            
+        }
+    }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func updateQuestionsPilier(delegate : WSUpdateQuestionDelegate , questionPilier : QuestionPilier, statut : Bool, commentaire : String)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        
+        //post params
+        
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "question" : questionPilier.idQuestion,
+            "statut" : statut,
+            "commentaire" : commentaire
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/updateQuestion"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.updateQuestionsPilier(delegate: delegate, questionPilier: questionPilier, statut: statut, commentaire: commentaire);
+                        }else
+                        {
+                            delegate.didFinishWSUpdateQuestion(error: true, code_erreur: -1, description: "NA")
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                if(code_erreur == 0)
+                {
+                    delegate.didFinishWSUpdateQuestion(error: false, code_erreur: code_erreur, description: "")
+                    return
+                }
+                
+                delegate.didFinishWSUpdateQuestion(error: true, code_erreur: code_erreur, description: desc_erreur)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSUpdateQuestion(error: true, code_erreur: -1, description: (response.result.error?.localizedDescription)!)
                 break
                 
             }

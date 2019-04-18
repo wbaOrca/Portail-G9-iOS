@@ -47,7 +47,7 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         // filtreView
         filtreView.setupFiltreView()
         
-        if(!isSynchronisedData)
+        if(!isSynchronisedData || true)
         {
             self.getListeQuestionPiliers()
         }
@@ -215,12 +215,19 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
              let qpilier = self.arrayQuestionPiliers[section].questions[row] ;
             
             var isLastMonthOk : Bool! = nil
+            var isLastTargeted : Bool! = nil
             if(qpilier.values.count > 0)
             {
                 isLastMonthOk = qpilier.values.last?.value
+                isLastTargeted = qpilier.values.last?.isTargeted
             }
-            if(isLastMonthOk == true)
+            if(isLastMonthOk == true || isLastTargeted == true)
             {
+                let alert = UIAlertController(title: "Erreur", message: "Pas nécessaire de mettre un plan d'action", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
                 return
             }else{
                 
@@ -243,6 +250,15 @@ extension ListeQuestionPilierViewController : UITableViewDelegate , UITableViewD
                 
                 return;
             }
+            
+            
+            let row = indexPath.row
+            let section = indexPath.section
+            let qpilier = self.arrayQuestionPiliers[section].questions[row] ;
+            let updateQuestionPilierVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdateQuestionPilierViewController") as? UpdateQuestionPilierViewController
+            updateQuestionPilierVC?.mQuestionPilier = qpilier
+            self.navigationController?.pushViewController(updateQuestionPilierVC!, animated: true);
+            
         }
         modifierAction.backgroundColor = #colorLiteral(red: 0.2521760464, green: 0.5373173952, blue: 0.7852240801, alpha: 1)
         
@@ -365,7 +381,8 @@ extension ListeQuestionPilierViewController: WSTargetQuestionDelegate {
         
         if(!error && code_erreur == 0)
         {
-            
+            self.getListeQuestionPiliers()
+            return;
         }
         else if(error)
         {

@@ -49,6 +49,7 @@
 		FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */; };
 		FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB503B13223666EF006C4D90 /* DocumentViewController.swift */; };
 		FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */; };
+		FB5B331722686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */; };
 		FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */; };
 		FB6469FE221188C200084D7F /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FC221188C200084D7F /* Utilisateur.swift */; };
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
@@ -183,6 +184,7 @@
 		FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
 		FB503B13223666EF006C4D90 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthQuestionPilier.swift; sourceTree = "<group>"; };
+		FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateQuestionPilierViewController.swift; sourceTree = "<group>"; };
 		FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFileTacheViewController.swift; sourceTree = "<group>"; };
 		FB6469FC221188C200084D7F /* Utilisateur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				FB503B13223666EF006C4D90 /* DocumentViewController.swift */,
 				FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */,
 				FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */,
+				FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB5B331722686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift in Sources */,
 				FB0E0F7D220047990043E345 /* Utils.swift in Sources */,
 				FBF26C8822156EC600D271AC /* DataGroupeKPIWSResponse.swift in Sources */,
 				FBF26C8122155D2B00D271AC /* ListeCategoriesViewController.swift in Sources */,
