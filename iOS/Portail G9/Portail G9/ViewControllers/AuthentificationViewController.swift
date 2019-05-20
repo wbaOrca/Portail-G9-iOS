@@ -51,7 +51,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let preferences = UserDefaults.standard
         if(preferences.bool(forKey: Utils.SHARED_PREFERENCE_USER_CONNECTED))
         {
-            let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "AccueilViewController") as! AccueilViewController
             navigationController?.pushViewController(homeVC, animated: false)
         }else
         {
@@ -232,7 +232,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
                 preferences.synchronize()
                 
                 DispatchQueue.main.async {
-                    let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                    let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "AccueilViewController") as! AccueilViewController
                     self.navigationController?.pushViewController(homeVC, animated: true)
                 }
             }

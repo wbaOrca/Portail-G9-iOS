@@ -55,6 +55,10 @@
 		FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */; };
 		FB646A01221189A100084D7F /* WSQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB646A00221189A100084D7F /* WSQueries.swift */; };
 		FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */; };
+		FB70A4952292AC670041E090 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A4942292AC670041E090 /* AccueilViewController.swift */; };
+		FB70A4972292B5410041E090 /* MenuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A4962292B5410041E090 /* MenuLayout.swift */; };
+		FB70A4992292B54C0041E090 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */; };
+		FB70A49B2292CFEF0041E090 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A49A2292CFEF0041E090 /* AccountViewController.swift */; };
 		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
 		FBB9318B224E2FE500E28751 /* TacheForceTerrainWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */; };
 		FBB9318D224E34E700E28751 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318C224E34E700E28751 /* DataTask.swift */; };
@@ -190,6 +194,10 @@
 		FB6469FD221188C200084D7F /* UtilisateurResponseWSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilisateurResponseWSAuth.swift; sourceTree = "<group>"; };
 		FB646A00221189A100084D7F /* WSQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSQueries.swift; sourceTree = "<group>"; };
 		FB682DBC2211ADF3001DE572 /* DataUserResponseWSAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUserResponseWSAuth.swift; sourceTree = "<group>"; };
+		FB70A4942292AC670041E090 /* AccueilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
+		FB70A4962292B5410041E090 /* MenuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLayout.swift; sourceTree = "<group>"; };
+		FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB70A49A2292CFEF0041E090 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
 		FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacheForceTerrainWSResponse.swift; sourceTree = "<group>"; };
 		FBB9318C224E34E700E28751 /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
@@ -338,6 +346,8 @@
 				FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */,
 				FBF02011223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift */,
 				FBF02017223BE1BF0076E9E6 /* DateSelectionView.swift */,
+				FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */,
+				FB70A4962292B5410041E090 /* MenuLayout.swift */,
 				FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */,
 			);
 			path = Views;
@@ -356,7 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				FB0E0F8122005BCF0043E345 /* AuthentificationViewController.swift */,
+				FB70A4942292AC670041E090 /* AccueilViewController.swift */,
 				FB0E0F8322005BE40043E345 /* HomeViewController.swift */,
+				FB70A49A2292CFEF0041E090 /* AccountViewController.swift */,
 				FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */,
 				FBF26C8022155D2B00D271AC /* ListeCategoriesViewController.swift */,
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
@@ -826,6 +838,7 @@
 				FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */,
 				FB02ACF22236993600843B66 /* ColorPickerView.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
+				FB70A4952292AC670041E090 /* AccueilViewController.swift in Sources */,
 				FB02ACF72236993600843B66 /* HSB.swift in Sources */,
 				FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
@@ -834,6 +847,7 @@
 				FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */,
 				FBD2AFEB2231513900D9D517 /* Comment.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
+				FB70A49B2292CFEF0041E090 /* AccountViewController.swift in Sources */,
 				FBFDC0F62216A4E600A67042 /* StyleKPILigne.swift in Sources */,
 				FB02ACF32236993600843B66 /* ColorSpaceConverter.swift in Sources */,
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
@@ -862,6 +876,7 @@
 				FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */,
 				FBFDC0FA2216AF8400A67042 /* KPICollectionViewCell.swift in Sources */,
 				FBF26C7D221555FB00D271AC /* Categorie.swift in Sources */,
+				FB70A4992292B54C0041E090 /* HomeCollectionViewCell.swift in Sources */,
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,
 				FB44EF002256061100C98638 /* ListeQuestionPilierTableViewCell.swift in Sources */,
 				FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */,
@@ -886,6 +901,7 @@
 				FB4A6A4822267DCB001AC448 /* AAChartModel.swift in Sources */,
 				FB4A6A3A22267758001AC448 /* BoardCollectionViewCell.swift in Sources */,
 				FBE63E1C2212C2060027F6E2 /* DataRadar.swift in Sources */,
+				FB70A4972292B5410041E090 /* MenuLayout.swift in Sources */,
 				FBFDC0F42216A39900A67042 /* KPILigne.swift in Sources */,
 				FBE63E122212AC840027F6E2 /* Groupe.swift in Sources */,
 				FBF26C832215604300D271AC /* ListeCategoriesTableViewCell.swift in Sources */,
