@@ -14,13 +14,18 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewable{
+class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewable , DateSelectionViewDelegate{
+    
+    
     
     @IBOutlet weak var filtreView : FiltreView!
     @IBOutlet weak var collectioViewKPI: UICollectionView!
     
     var groupeId : Int64 = 0;
     var arrayKPIs : [IndicateurKPISection] = [IndicateurKPISection]();
+    
+    var mSelectedDate : Date = Date();
+    @IBOutlet weak var dateButton: UIButton!
     
     // ***********************************
     // ***********************************
@@ -32,6 +37,10 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("KPI", comment: "-")
         filtreView.delegate = self
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        dateButton.setTitle(formatter.string(from: mSelectedDate), for: .normal)
     }
     
     // ***********************************
@@ -68,9 +77,48 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         }
         
         DispatchQueue.main.async{
-            WSQueries.getIndicateurKPIsData(delegate: self, groupe_id:self.groupeId, date: Date());
+            WSQueries.getIndicateurKPIsData(delegate: self, groupe_id:self.groupeId, date: self.mSelectedDate);
         }
     }
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func selectDate(_ sender: Any) {
+        
+        
+        DispatchQueue.main.async {
+           self.showDatePicker()
+        }
+    }
+    // *******************************
+    // ****
+    // *******************************
+    func showDatePicker(){
+        //Formate Date
+        
+        let dateSelectionView = DateSelectionView.instanceFromNib();
+        dateSelectionView.setupDateSelectionView(delegateS: self, type: DateSelectionView.PICKER_DATE_DAY);
+        dateSelectionView.setPickerDate(date: Date());
+        self.view.addSubview(dateSelectionView);
+        dateSelectionView.center = CGPoint(x:self.view.bounds.size.width/2, y:self.view.bounds.size.height/2);
+        dateSelectionView.showView();
+        
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didSelectDate(date: Date, dateAsString: String) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        dateButton.setTitle(formatter.string(from: date), for: .normal)
+        mSelectedDate = date
+        
+        self.getIndicateursKpisData()
+    }
+    
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++

@@ -25,4 +25,16 @@ class KPICollectionViewCell: UICollectionViewCell {
         valueLabel.backgroundColor = UIColor(hexString: kpi.bg_color);
         
     }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    override func awakeFromNib() {
+        
+        titleLabel.layer.cornerRadius = 5
+        titleLabel.clipsToBounds = true
+        
+        valueLabel.layer.cornerRadius = 5
+        valueLabel.clipsToBounds = true
+    }
 }
