@@ -19,7 +19,9 @@ class FiltreMenuViewController: UIViewController {
     
     var delegate : FiltreMenuViewControllerDelegate! = nil
     
+    @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var filtreCollectionView: UICollectionView!
+    
     var arrayFiltres : [String] =  [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
@@ -41,7 +43,8 @@ class FiltreMenuViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupDataFiltre();
-       
+        okButton.layer.cornerRadius = 5.0;
+        okButton.clipsToBounds = true;
     }
     
     // ***********************************

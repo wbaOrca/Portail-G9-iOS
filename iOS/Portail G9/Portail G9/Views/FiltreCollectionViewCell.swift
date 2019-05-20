@@ -20,4 +20,9 @@ class FiltreCollectionViewCell: UICollectionViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
+    
+    override func awakeFromNib() {
+        self.layer.borderColor = #colorLiteral(red: 0.9653237462, green: 0.700186789, blue: 0.1992127001, alpha: 1);
+        self.layer.borderWidth = 1.0; //make border 1px thick
+    }
 }
