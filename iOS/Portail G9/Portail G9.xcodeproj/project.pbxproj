@@ -60,6 +60,8 @@
 		FB70A4992292B54C0041E090 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */; };
 		FB70A49B2292CFEF0041E090 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A49A2292CFEF0041E090 /* AccountViewController.swift */; };
 		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
+		FB74033F2293D7A000438F7B /* ListeIndicateurTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */; };
+		FB8831D12293D5AD0021D03D /* ListeIndicateursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8831D02293D5AD0021D03D /* ListeIndicateursViewController.swift */; };
 		FBB9318B224E2FE500E28751 /* TacheForceTerrainWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */; };
 		FBB9318D224E34E700E28751 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318C224E34E700E28751 /* DataTask.swift */; };
 		FBC68560225BA0E900A60E1A /* QuestionPilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */; };
@@ -199,6 +201,8 @@
 		FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB70A49A2292CFEF0041E090 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
+		FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIndicateurTableViewCell.swift; sourceTree = "<group>"; };
+		FB8831D02293D5AD0021D03D /* ListeIndicateursViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIndicateursViewController.swift; sourceTree = "<group>"; };
 		FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacheForceTerrainWSResponse.swift; sourceTree = "<group>"; };
 		FBB9318C224E34E700E28751 /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
 		FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPilierTableViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				FBE2EC652201EFD9004B44DF /* LeftMenu */,
 				FB05221722084CAE000556E1 /* FiltreView.swift */,
 				FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */,
+				FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */,
 				FBF26C822215604300D271AC /* ListeCategoriesTableViewCell.swift */,
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
 				FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */,
@@ -370,6 +375,7 @@
 				FB0E0F8322005BE40043E345 /* HomeViewController.swift */,
 				FB70A49A2292CFEF0041E090 /* AccountViewController.swift */,
 				FBCDF9DB22086FE200BDA0F8 /* FiltreMenuViewController.swift */,
+				FB8831D02293D5AD0021D03D /* ListeIndicateursViewController.swift */,
 				FBF26C8022155D2B00D271AC /* ListeCategoriesViewController.swift */,
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
 				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
@@ -826,9 +832,11 @@
 				FBF26C8822156EC600D271AC /* DataGroupeKPIWSResponse.swift in Sources */,
 				FBF26C8122155D2B00D271AC /* ListeCategoriesViewController.swift in Sources */,
 				FB02ACF12236993600843B66 /* UIColorExtension.swift in Sources */,
+				FB74033F2293D7A000438F7B /* ListeIndicateurTableViewCell.swift in Sources */,
 				FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */,
 				FBF15B3621DFA8AB006A7341 /* AppDelegate.swift in Sources */,
 				FB4A6A3822267746001AC448 /* Board.swift in Sources */,
+				FB8831D12293D5AD0021D03D /* ListeIndicateursViewController.swift in Sources */,
 				FB0FA027225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift in Sources */,
 				FB02ACF52236993600843B66 /* ColorPickerViewDelegate.swift in Sources */,
 				FB646A01221189A100084D7F /* WSQueries.swift in Sources */,

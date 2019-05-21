@@ -16,9 +16,10 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewable{
 
-    @IBOutlet weak var filtreView : FiltreView!
+    @IBOutlet weak var labelIndicateur: UILabel!
     @IBOutlet weak var tableViewCategoris: UITableView!
     
+    var familleLibelle = "";
     var familleId = 0;
     var isSynchronisedData = false;
     var arrayCategories : [Categorie] = [Categorie]();
@@ -30,21 +31,33 @@ class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Categories", comment: "-")
-        filtreView.delegate = self
+        labelIndicateur.text = familleLibelle
+        
+        // **
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        //**
+        
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // filtreView
-        filtreView.setupFiltreView()
-        
-        if(!isSynchronisedData)
+         if(!isSynchronisedData)
         {
             self.getListeCatagoriesData()
         }
@@ -154,7 +167,8 @@ extension ListeCategoriesViewController : UITableViewDelegate , UITableViewDataS
         let carteg = self.arrayCategories[indexPath.row] ;
         
         let listeGroupesVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeGroupesViewController") as? ListeGroupesViewController
-        listeGroupesVC?.categorieId = carteg.categoryId
+        listeGroupesVC?.familleLibelle = self.familleLibelle
+        listeGroupesVC?.categorie = carteg
         self.navigationController?.pushViewController(listeGroupesVC!, animated: true);
         
     }

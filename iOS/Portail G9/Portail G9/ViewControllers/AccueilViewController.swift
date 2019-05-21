@@ -132,14 +132,9 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     // ***********************************
     func voirCategorieFamille(familleId: Int ) {
-       
         
-        
-        let listeCategoriesVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeCategoriesViewController") as? ListeCategoriesViewController
-        listeCategoriesVC?.familleId = familleId
-        self.navigationController?.pushViewController(listeCategoriesVC!, animated: true);
-            
-        
+        let listIndicateurVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeIndicateursViewController") as? ListeIndicateursViewController
+        self.navigationController?.pushViewController(listIndicateurVC!, animated: true);
         
     }
     

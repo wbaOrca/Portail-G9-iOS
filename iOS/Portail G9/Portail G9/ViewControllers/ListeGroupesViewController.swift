@@ -16,10 +16,12 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable{
 
-    @IBOutlet weak var filtreView : FiltreView!
+    @IBOutlet weak var labelIndicateur: UILabel!
+    var familleLibelle = "";
+    
     @IBOutlet weak var tableViewGroupes: UITableView!
     
-    var categorieId : Int64 = 0;
+    var categorie : Categorie = Categorie();
     var isSynchronisedData = false;
     var arrayGroupes : [GroupeKPI] = [GroupeKPI]();
     
@@ -32,18 +34,32 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Groupes", comment: "-")
-        filtreView.delegate = self
+        labelIndicateur.text = familleLibelle
+        
+        // **
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        //**
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // filtreView
-        filtreView.setupFiltreView()
-        
+       
         if(!isSynchronisedData)
         {
             self.getListeGroupeData()
@@ -72,7 +88,7 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         }
         
         DispatchQueue.main.async{
-            WSQueries.getGroupesKPIData(delegate: self, categorie_id: self.categorieId);
+            WSQueries.getGroupesKPIData(delegate: self, categorie_id: self.categorie.categoryId);
         }
     }
 }
@@ -156,6 +172,16 @@ extension ListeGroupesViewController : UITableViewDelegate , UITableViewDataSour
         self.navigationController?.pushViewController(kpiVC!, animated: true);
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderListeGroupesTableViewCell") as! ListeGroupesTableViewCell
+        
+        cell.setupHeaderCell(title: self.categorie.categoryLibelle)
+        return cell
+    }
     
 }
 

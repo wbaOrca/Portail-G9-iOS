@@ -16,9 +16,6 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewable , DateSelectionViewDelegate{
     
-    
-    
-    @IBOutlet weak var filtreView : FiltreView!
     @IBOutlet weak var collectioViewKPI: UICollectionView!
     
     var groupeId : Int64 = 0;
@@ -36,7 +33,11 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("KPI", comment: "-")
-        filtreView.delegate = self
+        
+        // **
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        //**
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
@@ -46,11 +47,21 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     // ***********************************
     // ***********************************
     // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // filtreView
-        filtreView.setupFiltreView()
+       
        self.getIndicateursKpisData()
        
     }

@@ -1,8 +1,8 @@
 //
-//  ListeCategoriesTableViewCell.swift
+//  ListeIndicateurTableViewCell.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 14/02/2019.
+//  Created by WBA_ORCA on 21/05/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import UIKit
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
-class ListeGroupesTableViewCell: UITableViewCell {
+class ListeIndicateurTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,20 +20,14 @@ class ListeGroupesTableViewCell: UITableViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupGroupeCell(groupe : GroupeKPI)
+    func setupIndicateurCell(indictauer : String)
     {
-        titleLabel.text = groupe.groupLibelle
+        titleLabel.text = indictauer
     }
     
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupHeaderCell(title : String)
-    {
-        titleLabel.text = title
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
