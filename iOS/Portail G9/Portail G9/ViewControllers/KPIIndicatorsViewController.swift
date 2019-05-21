@@ -16,9 +16,21 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewable , DateSelectionViewDelegate{
     
+    var familleLibelle = "";
+    var categorie : Categorie = Categorie();
+    var groupe : GroupeKPI = GroupeKPI();
+    
     @IBOutlet weak var collectioViewKPI: UICollectionView!
     
-    var groupeId : Int64 = 0;
+    @IBOutlet weak var labelIndicateur: UILabel!
+    
+    @IBOutlet weak var labelcategorie: UILabel!
+    @IBOutlet weak var iconCategorie: UIImageView!
+    
+    @IBOutlet weak var labelGroupe: UILabel!
+    @IBOutlet weak var iconGroupe: UIImageView!
+   
+    
     var arrayKPIs : [IndicateurKPISection] = [IndicateurKPISection]();
     
     var mSelectedDate : Date = Date();
@@ -42,6 +54,17 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         dateButton.setTitle(formatter.string(from: mSelectedDate), for: .normal)
+        
+        setupData()
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupData()
+    {
+        labelIndicateur.text = familleLibelle
+        labelcategorie.text = categorie.categoryLibelle
+        labelGroupe.text = groupe.groupLibelle
     }
     
     // ***********************************
@@ -88,7 +111,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         }
         
         DispatchQueue.main.async{
-            WSQueries.getIndicateurKPIsData(delegate: self, groupe_id:self.groupeId, date: self.mSelectedDate);
+            WSQueries.getIndicateurKPIsData(delegate: self, groupe_id:self.groupe.groupId, date: self.mSelectedDate);
         }
     }
     

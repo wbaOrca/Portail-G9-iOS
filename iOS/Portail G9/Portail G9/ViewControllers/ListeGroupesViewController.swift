@@ -168,7 +168,9 @@ extension ListeGroupesViewController : UITableViewDelegate , UITableViewDataSour
         let grp = self.arrayGroupes[indexPath.row] ;
         
         let kpiVC = self.storyboard?.instantiateViewController(withIdentifier: "KPIIndicatorsViewController") as? KPIIndicatorsViewController
-        kpiVC?.groupeId = grp.groupId
+        kpiVC?.groupe = grp
+        kpiVC?.categorie = self.categorie
+        kpiVC?.familleLibelle = self.familleLibelle 
         self.navigationController?.pushViewController(kpiVC!, animated: true);
     }
     
