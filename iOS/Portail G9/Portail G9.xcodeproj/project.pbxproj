@@ -61,6 +61,7 @@
 		FB70A49B2292CFEF0041E090 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70A49A2292CFEF0041E090 /* AccountViewController.swift */; };
 		FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */; };
 		FB74033F2293D7A000438F7B /* ListeIndicateurTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */; };
+		FB7FFB3F2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7FFB3E2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift */; };
 		FB8831D12293D5AD0021D03D /* ListeIndicateursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8831D02293D5AD0021D03D /* ListeIndicateursViewController.swift */; };
 		FBB9318B224E2FE500E28751 /* TacheForceTerrainWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */; };
 		FBB9318D224E34E700E28751 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9318C224E34E700E28751 /* DataTask.swift */; };
@@ -202,6 +203,7 @@
 		FB70A49A2292CFEF0041E090 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPISection.swift; sourceTree = "<group>"; };
 		FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIndicateurTableViewCell.swift; sourceTree = "<group>"; };
+		FB7FFB3E2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		FB8831D02293D5AD0021D03D /* ListeIndicateursViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIndicateursViewController.swift; sourceTree = "<group>"; };
 		FBB9318A224E2FE500E28751 /* TacheForceTerrainWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacheForceTerrainWSResponse.swift; sourceTree = "<group>"; };
 		FBB9318C224E34E700E28751 /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */,
 				FBC6855F225BA0E900A60E1A /* QuestionPilierTableViewCell.swift */,
 				FBFDC0F92216AF8400A67042 /* KPICollectionViewCell.swift */,
+				FB7FFB3E2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift */,
 				FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */,
 				FBE9EC43222E72D000D4F6A0 /* ControleTableViewCell.swift */,
 				FBE9EC45222E72E200D4F6A0 /* FichierTableViewCell.swift */,
@@ -897,6 +900,7 @@
 				FBF02014223BA3710076E9E6 /* AddCommentaireTacheViewController.swift in Sources */,
 				FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */,
 				FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */,
+				FB7FFB3F2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift in Sources */,
 				FBF02012223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift in Sources */,
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */,

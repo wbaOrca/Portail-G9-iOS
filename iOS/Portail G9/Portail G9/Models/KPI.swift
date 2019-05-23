@@ -97,5 +97,44 @@ class KPI: NSObject ,Mappable{
     }
     
     
+    // *****************************************
+    // *****************************************
+    // ****** translateIndicateurKPISectionToArrayString
+    // *****************************************
+    // *****************************************
+    // Mappable
+    static func translateIndicateurKPISectionToArrayString (arrayKPI : [IndicateurKPISection]) ->  [[String]]
+    {
+        var array = [[String]]()
+        
+        //recuperer les entetes : noms des variables kpi
+        if(arrayKPI.count > 0)
+        {
+            let kpi = arrayKPI[0];
+             var arrayHeader = [String]()
+            arrayHeader.append("")
+            for j in (0 ..< kpi.elementsSection.count)
+            {
+                let kpiColonne = kpi.elementsSection[j];
+                arrayHeader.append(kpiColonne.libelle)
+            }
+            array.append(arrayHeader)
+        }
+        //recuperer les valeurs ligne
+        for i in (0 ..< arrayKPI.count)
+        {
+            var arrayHeader = [String]()
+            let kpi = arrayKPI[i];
+            arrayHeader.append(kpi.titreSection)
+            for j in (0 ..< kpi.elementsSection.count)
+            {
+                let kpiColonne = kpi.elementsSection[j];
+                arrayHeader.append(kpiColonne.valeur)
+            }
+            
+            array.append(arrayHeader)
+        }
+        return array;
+    }
     
 }

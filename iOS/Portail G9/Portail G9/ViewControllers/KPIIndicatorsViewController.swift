@@ -21,6 +21,12 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     var groupe : GroupeKPI = GroupeKPI();
     
     @IBOutlet weak var collectioViewKPI: UICollectionView!
+    @IBOutlet weak var gridLayout: StickyGridCollectionViewLayout! {
+        didSet {
+            gridLayout.stickyRowsCount = 1
+            gridLayout.stickyColumnsCount = 1
+        }
+    }
     
     @IBOutlet weak var labelIndicateur: UILabel!
     
@@ -32,6 +38,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
    
     
     var arrayKPIs : [IndicateurKPISection] = [IndicateurKPISection]();
+    var arrayValuesOfCollection : [[String]] = [[String]]();
     
     var mSelectedDate : Date = Date();
     @IBOutlet weak var dateButton: UIButton!
@@ -54,6 +61,11 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         dateButton.setTitle(formatter.string(from: mSelectedDate), for: .normal)
+        
+        dateButton.layer.borderColor = #colorLiteral(red: 0.9653237462, green: 0.700186789, blue: 0.1992127001, alpha: 1) ;
+        dateButton.layer.borderWidth = 1.5;
+        dateButton.layer.cornerRadius = 5.0;
+        dateButton.clipsToBounds = true;
         
         setupData()
     }
@@ -172,7 +184,9 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
                  let array_ = KPI.translateKPIColonneToLigne(arrayKPI: data.kpiArray);
+                
                 arrayKPIs = array_;
+                self.arrayValuesOfCollection = KPI.translateIndicateurKPISectionToArrayString(arrayKPI: array_)
                 
                 DispatchQueue.main.async {
                     self.collectioViewKPI.reloadData()
@@ -202,7 +216,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     // ***********************************
     // ***********************************
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let numberSection = arrayKPIs.count;
+        let numberSection = self.arrayValuesOfCollection.count //arrayKPIs.count;
         return numberSection
     }
     // ***********************************
@@ -210,8 +224,8 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let kpiColonne = arrayKPIs[section]
-        let numberLigne = kpiColonne.elementsSection.count
+        let kpiColonne = self.arrayValuesOfCollection[section] //arrayKPIs[section]
+        let numberLigne = kpiColonne.count
         return numberLigne
     }
     
@@ -220,13 +234,18 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let kpi = arrayKPIs[indexPath.section];
-        let kpiColonne = kpi.elementsSection[indexPath.row];
+        //let kpi = arrayKPIs[indexPath.section];
+        //let kpiColonne = kpi.elementsSection[indexPath.row];
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KPICollectionViewCell", for: indexPath) as! KPICollectionViewCell
-        cell.setupKPICollectionViewCell(kpi: kpiColonne);
+        //cell.setupKPICollectionViewCell(kpi: kpiColonne);
+        
+        cell.setupKPICollectionViewCell(titre: self.arrayValuesOfCollection[indexPath.section][indexPath.row])
+        
+        
         return cell
     }
+    
     
     // ***********************************
     // ***********************************
@@ -245,7 +264,16 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
     
     
 }
-
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension KPIIndicatorsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 110, height: 80)
+    }
+}
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
