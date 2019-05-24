@@ -137,4 +137,62 @@ class KPI: NSObject ,Mappable{
         return array;
     }
     
+    
+    // *****************************************
+    // *****************************************
+    // ****** translateIndicateurKPISectionToArrayGrid
+    // *****************************************
+    // *****************************************
+    // Mappable
+    static func translateIndicateurKPISectionToArrayGrid (arrayKPI : [IndicateurKPISection]) ->  [[IndicateurKPIGrid]]
+    {
+        var array = [[IndicateurKPIGrid]]()
+        
+        //recuperer les entetes : noms des variables kpi
+        if(arrayKPI.count > 0)
+        {
+            let kpi = arrayKPI[0];
+            var arrayHeader = [IndicateurKPIGrid]()
+            let indicateurHeader = IndicateurKPIGrid()
+            indicateurHeader.isHeaderLigne = true
+            indicateurHeader.indicateurKPI.valeur = ""
+            arrayHeader.append(indicateurHeader)
+            for j in (0 ..< kpi.elementsSection.count)
+            {
+                let kpiColonne = kpi.elementsSection[j];
+                let indicateurHeader = IndicateurKPIGrid()
+                indicateurHeader.isHeaderLigne = true
+                indicateurHeader.indicateurKPI.valeur = kpiColonne.libelle
+                arrayHeader.append(indicateurHeader)
+                
+            }
+            array.append(arrayHeader)
+        }
+        //recuperer les valeurs ligne
+        for i in (0 ..< arrayKPI.count)
+        {
+            var arrayHeader = [IndicateurKPIGrid]()
+            let kpi = arrayKPI[i];
+            
+           
+            let indicateurHeader = IndicateurKPIGrid()
+            indicateurHeader.isColonneLigne = true
+            indicateurHeader.indicateurKPI.valeur = kpi.titreSection
+            arrayHeader.append(indicateurHeader)
+            
+            for j in (0 ..< kpi.elementsSection.count)
+            {
+                let kpiColonne = kpi.elementsSection[j];
+                let indicateurHeader = IndicateurKPIGrid()
+                indicateurHeader.indicateurKPI = kpiColonne
+                indicateurHeader.indicateurKPI.valeur = kpiColonne.valeur
+                arrayHeader.append(indicateurHeader)
+                
+            }
+            
+            array.append(arrayHeader)
+        }
+        return array;
+    }
+    
 }

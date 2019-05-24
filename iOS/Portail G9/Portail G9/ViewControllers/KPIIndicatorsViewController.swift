@@ -38,7 +38,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
    
     
     var arrayKPIs : [IndicateurKPISection] = [IndicateurKPISection]();
-    var arrayValuesOfCollection : [[String]] = [[String]]();
+    var arrayValuesOfCollection : [[IndicateurKPIGrid]] = [[IndicateurKPIGrid]]();
     
     var mSelectedDate : Date = Date();
     @IBOutlet weak var dateButton: UIButton!
@@ -186,7 +186,7 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
                  let array_ = KPI.translateKPIColonneToLigne(arrayKPI: data.kpiArray);
                 
                 arrayKPIs = array_;
-                self.arrayValuesOfCollection = KPI.translateIndicateurKPISectionToArrayString(arrayKPI: array_)
+                self.arrayValuesOfCollection = KPI.translateIndicateurKPISectionToArrayGrid(arrayKPI: array_)
                 
                 DispatchQueue.main.async {
                     self.collectioViewKPI.reloadData()
@@ -240,7 +240,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KPICollectionViewCell", for: indexPath) as! KPICollectionViewCell
         //cell.setupKPICollectionViewCell(kpi: kpiColonne);
         
-        cell.setupKPICollectionViewCell(titre: self.arrayValuesOfCollection[indexPath.section][indexPath.row])
+        cell.setupKPICollectionViewCellGrid(indicateur: self.arrayValuesOfCollection[indexPath.section][indexPath.row])
         
         
         return cell

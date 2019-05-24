@@ -16,7 +16,7 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorViewable {
 
-    @IBOutlet weak var filtreView : FiltreView!
+    
     @IBOutlet weak var tableViewQuestionsPilier: UITableView!
     @IBOutlet weak var labelPilier: UILabel?
     
@@ -33,7 +33,10 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         super.viewDidLoad()
 
         self.title = NSLocalizedString("Piliers", comment: "-")
-        filtreView.delegate = self
+        //**
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        //**
         
         labelPilier?.text = mPilier.pilierLibelle
     }
@@ -45,14 +48,22 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         super.viewDidAppear(animated)
         
         // filtreView
-        filtreView.setupFiltreView()
-        
         if(!isSynchronisedData || true)
         {
             self.getListeQuestionPiliers()
         }
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************

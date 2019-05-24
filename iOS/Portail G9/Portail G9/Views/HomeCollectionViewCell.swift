@@ -32,7 +32,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = self.backgroundCellView.bounds
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: self.backgroundCellView.frame.width + 25, height: self.backgroundCellView.frame.height + 20)
+       // print(self.contentView.frame)
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: screenWidth / 2.0, height: self.contentView.frame.height + 20)
         self.backgroundCellView.layer.insertSublayer(gradientLayer, at: 0)
         
         if(isHeaderVisible){
@@ -71,5 +75,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
         labelAlerteBadge.clipsToBounds = true
         labelAlerteBadge.textColor = .white
         labelAlerteBadge.backgroundColor = #colorLiteral(red: 0.9994991422, green: 0.3059307337, blue: 0.2897390127, alpha: 1)
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        print("")
     }
 }

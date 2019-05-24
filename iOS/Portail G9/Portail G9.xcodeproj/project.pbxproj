@@ -10,6 +10,7 @@
 		015512B7743FA9C86DCA937F /* Pods_Portail_G9Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B963CBE50B6702C99AADCA /* Pods_Portail_G9Tests.framework */; };
 		791928EEF4006C1C5CF601E9 /* Pods_Portail_G9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87438E7C58B6365E0D815C37 /* Pods_Portail_G9.framework */; };
 		99E5A4A6CFCA132DA8055239 /* Pods_Portail_G9UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */; };
+		FB0268C62297C9B90065DB0F /* IndicateurKPIGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0268C52297C9B90065DB0F /* IndicateurKPIGrid.swift */; };
 		FB02ACF12236993600843B66 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEA2236993600843B66 /* UIColorExtension.swift */; };
 		FB02ACF22236993600843B66 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEB2236993600843B66 /* ColorPickerView.swift */; };
 		FB02ACF32236993600843B66 /* ColorSpaceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACEC2236993600843B66 /* ColorSpaceConverter.swift */; };
@@ -144,6 +145,7 @@
 		BC1A6C8736F3DAAF1750CFDD /* Pods_Portail_G9UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Portail_G9UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBA8BF36EBDA599F1D5D83A /* Pods-Portail G9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A87BE6D272529D39052BAB /* Pods-Portail G9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portail G9.release.xcconfig"; path = "Pods/Target Support Files/Pods-Portail G9/Pods-Portail G9.release.xcconfig"; sourceTree = "<group>"; };
+		FB0268C52297C9B90065DB0F /* IndicateurKPIGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateurKPIGrid.swift; sourceTree = "<group>"; };
 		FB02ACE92236993600843B66 /* ColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker.h; sourceTree = "<group>"; };
 		FB02ACEA2236993600843B66 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FB02ACEB2236993600843B66 /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				FBFDC0F32216A39900A67042 /* KPILigne.swift */,
 				FBFDC0F52216A4E600A67042 /* StyleKPILigne.swift */,
 				FB720EE72223F2A100D0920F /* IndicateurKPISection.swift */,
+				FB0268C52297C9B90065DB0F /* IndicateurKPIGrid.swift */,
 				FBD2AFE62231132700D9D517 /* DataForceTerrainToDoListWSResponse.swift */,
 				FB4A6A3722267746001AC448 /* Board.swift */,
 				FBE9EC3D222E5BB900D4F6A0 /* Tache.swift */,
@@ -864,6 +867,7 @@
 				FB4A6A4922267DCB001AC448 /* AASerializable.swift in Sources */,
 				FBB9318D224E34E700E28751 /* DataTask.swift in Sources */,
 				FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */,
+				FB0268C62297C9B90065DB0F /* IndicateurKPIGrid.swift in Sources */,
 				FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */,
 				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
 				FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */,

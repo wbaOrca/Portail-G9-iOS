@@ -17,7 +17,7 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class PiliersProcessViewController: UIViewController , NVActivityIndicatorViewable{
 
-    @IBOutlet weak var filtreView : FiltreView!
+    
     @IBOutlet weak var tableViewPilier: UITableView!
     
     var isSynchronisedData = false;
@@ -33,7 +33,12 @@ class PiliersProcessViewController: UIViewController , NVActivityIndicatorViewab
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Piliers", comment: "-")
-        filtreView.delegate = self
+        
+        
+        //**
+        let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
+        navigationItem.rightBarButtonItems = [filtreButton]
+        //**
     }
     
     // ***********************************
@@ -42,15 +47,22 @@ class PiliersProcessViewController: UIViewController , NVActivityIndicatorViewab
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // filtreView
-        filtreView.setupFiltreView()
-        
         if(!isSynchronisedData)
         {
             self.getListePiliersData()
         }
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @objc func filtreTapped()
+    {
+        let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
+        filtreVC?.delegate = self
+        self.present(filtreVC!, animated: true, completion: nil)
+        
+        
+    }
     // ***********************************
     // ***********************************
     // ***********************************

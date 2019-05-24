@@ -29,10 +29,22 @@ class KPICollectionViewCell: UICollectionViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupKPICollectionViewCell(titre : String)
+    func setupKPICollectionViewCellGrid(indicateur : IndicateurKPIGrid)
     {
-        titleLabel.text = titre
-        //valueLabel.text = kpi.valeur
+        
+        titleLabel.text = indicateur.indicateurKPI.valeur
+        titleLabel.backgroundColor = .clear
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        if(indicateur.isHeaderLigne)
+        {
+            self.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        }else if(indicateur.isColonneLigne)
+        {
+            self.backgroundColor = #colorLiteral(red: 0.8376570344, green: 0.8434004188, blue: 1, alpha: 1)
+        }else
+        {
+            titleLabel.backgroundColor = UIColor(hexString: indicateur.indicateurKPI.bg_color);
+        }
        
         
     }

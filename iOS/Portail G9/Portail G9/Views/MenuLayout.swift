@@ -41,7 +41,8 @@ class MenuLayout: UICollectionViewLayout {
             return 0
         }
         let insets = collectionView.contentInset
-        return collectionView.bounds.width - (insets.left + insets.right)
+        let width_ = collectionView.bounds.width - (insets.left + insets.right)
+        return width_
     }
     
     // 5
