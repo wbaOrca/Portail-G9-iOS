@@ -476,7 +476,7 @@ extension AccueilViewController: MenuLayoutDelegate {
             if UIDevice().userInterfaceIdiom == .phone {
                 switch UIScreen.main.nativeBounds.height {
                 case 1136:
-                    return 220.0
+                    return 170.0
                 case 1334:
                     //"iPhone 6/6S/7/8"
                     return 240;
@@ -506,7 +506,7 @@ extension AccueilViewController: MenuLayoutDelegate {
             if UIDevice().userInterfaceIdiom == .phone {
                 switch UIScreen.main.nativeBounds.height {
                 case 1136:
-                    return 190.0
+                    return 140.0
                 case 1334:
                     //"iPhone 6/6S/7/8"
                     return 210;
