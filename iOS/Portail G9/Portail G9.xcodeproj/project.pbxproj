@@ -21,6 +21,7 @@
 		FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */; };
 		FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */; };
 		FB05221822084CAE000556E1 /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221722084CAE000556E1 /* FiltreView.swift */; };
+		FB0BC51A22B39EF2002B6C0D /* Famille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BC51922B39EF2002B6C0D /* Famille.swift */; };
 		FB0E0F7422003E3F0043E345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */; };
 		FB0E0F7D220047990043E345 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F7C220047990043E345 /* Utils.swift */; };
 		FB0E0F7F220047A90043E345 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F7E220047A90043E345 /* Version.swift */; };
@@ -157,6 +158,7 @@
 		FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
 		FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB05221722084CAE000556E1 /* FiltreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
+		FB0BC51922B39EF2002B6C0D /* Famille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Famille.swift; sourceTree = "<group>"; };
 		FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB0E0F7522003E680043E345 /* Portail G9.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Portail G9.entitlements"; sourceTree = "<group>"; };
 		FB0E0F7C220047990043E345 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */,
 				FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */,
 				FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */,
+				FB0BC51922B39EF2002B6C0D /* Famille.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				FB0E0F8422005BE40043E345 /* HomeViewController.swift in Sources */,
 				FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */,
 				FBE2EC6B2201F006004B44DF /* ExampleData.swift in Sources */,
+				FB0BC51A22B39EF2002B6C0D /* Famille.swift in Sources */,
 				FBE63E142212B08C0027F6E2 /* Dealer.swift in Sources */,
 				FB4A6A4A22267DCB001AC448 /* AASeriesElement.swift in Sources */,
 				FBF02016223BA9A30076E9E6 /* AddCheckListTacheViewController.swift in Sources */,

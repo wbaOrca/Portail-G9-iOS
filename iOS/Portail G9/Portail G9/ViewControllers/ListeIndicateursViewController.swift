@@ -15,7 +15,7 @@ import UIKit
 class ListeIndicateursViewController: UIViewController {
 
     @IBOutlet weak var tableViewIndicateurs: UITableView!
-    var arrayIndicateurs : [String] = [String]();
+    var arrayIndicateurs : [Famille] = [Famille]();
     
     // ***********************************
     // ***********************************
@@ -31,6 +31,20 @@ class ListeIndicateursViewController: UIViewController {
         //**
     }
     
+    // *******************************
+    // **** selectFamille
+    // *******************************
+    @IBAction func selectFamille (_ sender: UIButton!) {
+        
+        let tag = sender.tag
+        let famille = self.arrayIndicateurs[tag] ;
+        
+        let listeCategoriesVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeCategoriesViewController") as? ListeCategoriesViewController
+        listeCategoriesVC?.familleLibelle = famille.libelle ;
+        listeCategoriesVC?.familleId = famille.id ;
+        self.navigationController?.pushViewController(listeCategoriesVC!, animated: true);
+    }
+    
     // ***********************************
     // ***********************************
     // ***********************************
@@ -38,10 +52,7 @@ class ListeIndicateursViewController: UIViewController {
         
         self.title = NSLocalizedString("Indicateurs", comment: "")
         
-       arrayIndicateurs = [ NSLocalizedString("Vente", comment: ""),
-          NSLocalizedString("Après ventes", comment: ""),
-          NSLocalizedString("Clients", comment: ""),
-          NSLocalizedString("Image de marque", comment: "")] ;
+       arrayIndicateurs = Famille.initStaticTable();
         
         tableViewIndicateurs.reloadData()
     }
@@ -69,9 +80,16 @@ extension ListeIndicateursViewController : UITableViewDelegate , UITableViewData
     // ***********************************
     // ***********************************
     // ***********************************
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return arrayIndicateurs.count
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return arrayIndicateurs[section].indicateurs.count
     }
     
     // ***********************************
@@ -81,27 +99,33 @@ extension ListeIndicateursViewController : UITableViewDelegate , UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListeIndicateurTableViewCell", for: indexPath) as! ListeIndicateurTableViewCell
         
-        let row = indexPath.row
+        let famille = arrayIndicateurs[indexPath.section] ;
+        let indicateur = famille.indicateurs[indexPath.row]
         
-        if(row < arrayIndicateurs.count)
-        {
-            let indicateur = arrayIndicateurs[row] ;
-            cell.setupIndicateurCell(indictauer: indicateur);
-        }
+        cell.setupIndicateurCell(indictauer: indicateur);
+        
         
         return cell;
     }
     // ***********************************
     // ***********************************
     // ***********************************
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListeIndicateurTableViewCellHeader") as! ListeIndicateurTableViewCell
+        
+        let famille = arrayIndicateurs[section] ;
+        cell.setupIndicateurCellHeader(famille: famille)
+        
+        return cell
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let indicateur = self.arrayIndicateurs[indexPath.row] ;
         
-        let listeCategoriesVC = self.storyboard?.instantiateViewController(withIdentifier: "ListeCategoriesViewController") as? ListeCategoriesViewController
-        listeCategoriesVC?.familleLibelle = indicateur ;
-        listeCategoriesVC?.familleId = indexPath.row + 1 ;
-        self.navigationController?.pushViewController(listeCategoriesVC!, animated: true);
         
         
         

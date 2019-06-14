@@ -16,13 +16,29 @@ class ListeIndicateurTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var headerButton: UIButton!
     
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupIndicateurCell(indictauer : String)
+    func setupIndicateurCell(indictauer : KPILigne)
     {
-        titleLabel.text = indictauer
+        titleLabel.text = indictauer.libelle
+        if(indictauer.isCoched)
+        {
+            iconImage.backgroundColor = #colorLiteral(red: 0.7919282317, green: 0.1277886331, blue: 0.07557370514, alpha: 1)
+        }else
+        {
+            iconImage.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        }
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupIndicateurCellHeader(famille : Famille)
+    {
+        titleLabel.text = famille.libelle
+        headerButton.tag = famille.id - 1
     }
     
     // ***********************************
@@ -31,6 +47,11 @@ class ListeIndicateurTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        if(iconImage != nil)
+        {
+            iconImage.layer.cornerRadius = 10
+            iconImage.clipsToBounds = true
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

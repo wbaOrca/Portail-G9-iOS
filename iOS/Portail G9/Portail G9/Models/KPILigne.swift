@@ -17,6 +17,7 @@ class KPILigne: NSObject ,Mappable{
     var valeur : String = ""
     var numero : Int = 0
     var style : StyleKPILigne! = StyleKPILigne()
+    var isCoched : Bool = false
     //******
     //******
     //******
