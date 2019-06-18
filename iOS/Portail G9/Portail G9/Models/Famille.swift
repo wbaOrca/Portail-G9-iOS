@@ -11,9 +11,12 @@ import ObjectMapper
 
 class Famille: NSObject ,Mappable{
 
-    var libelle : String = ""
-    var id : Int = 0
-    var indicateurs : [KPILigne]! = [KPILigne]()
+    var RubriqueTitle : String = ""
+    var RubriqueId : Int = 0
+    var categories : [CategorieFamille]! = [CategorieFamille]()
+    
+    var kpisRassembles : [KPICategorieFamille]! = [KPICategorieFamille]()
+    
     //******
     //******
     //******
@@ -36,12 +39,31 @@ class Famille: NSObject ,Mappable{
     // Mappable
     func mapping(map: Map) {
         
-        libelle <- map["libelle"]
-        id <- map["id"]
-        indicateurs <- map["indicateurs"]
+        RubriqueTitle <- map["RubriqueTitle"]
+        RubriqueId <- map["RubriqueId"]
+        categories <- map["categories"]
         
     }
     
+    // *****************************************
+    // *****************************************
+    // ******
+    // *****************************************
+    // *****************************************
+    func rassemblerKPI()
+    {
+        self.kpisRassembles.removeAll()
+        for i in (0 ..< self.categories.count)
+        {
+            let categorie = self.categories[i]
+            for j in (0 ..< categorie.kpis.count)
+            {
+                let kpi = categorie.kpis[j]
+                self.kpisRassembles.append(kpi)
+            }
+            
+        }
+    }
     // *****************************************
     // *****************************************
     // ******
@@ -52,65 +74,102 @@ class Famille: NSObject ,Mappable{
         var arrayFamille = [Famille]()
         
         let famille1 = Famille()
-        famille1.libelle = NSLocalizedString("Vente", comment: "")
-        famille1.id = 1
-        for i in (1 ..< 5)
+        famille1.RubriqueTitle = NSLocalizedString("Vente", comment: "")
+        famille1.RubriqueId = 1
+        for i in (1 ..< 3)
         {
-           let indicateur = KPILigne()
-            indicateur.libelle = "Indicateur " + String(i)
-            if(i % 2 == 0)
+           let categorieF = CategorieFamille()
+            categorieF.CategorieTitle = "categorie " + String(i)
+            
+            for j in (1 ..< 5)
             {
-                indicateur.isCoched = true
+                let kpi = KPICategorieFamille()
+                kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
+                if(j % 2 == 0)
+                {
+                    kpi.isCible = true
+                }
+                categorieF.kpis.append(kpi)
             }
-            famille1.indicateurs.append(indicateur)
+            
+            famille1.categories.append(categorieF)
         }
+        
         arrayFamille.append(famille1)
         
         let famille2 = Famille()
-        famille2.libelle = NSLocalizedString("Après ventes", comment: "")
-        famille2.id = 2
-        for i in (1 ..< 6)
+        famille2.RubriqueTitle = NSLocalizedString("Après ventes", comment: "")
+        famille2.RubriqueId = 2
+        for i in (1 ..< 3)
         {
-            let indicateur = KPILigne()
-            indicateur.libelle = "Indicateur " + String(i)
-            if(i % 2 == 0)
-            {
-                indicateur.isCoched = true
-            }
-            famille2.indicateurs.append(indicateur)
+            let categorieF = CategorieFamille()
+            categorieF.CategorieTitle = "categorie " + String(i)
             
+            for j in (1 ..< 4)
+            {
+                let kpi = KPICategorieFamille()
+                kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
+                if(j % 2 == 0)
+                {
+                    kpi.isCible = true
+                }
+                categorieF.kpis.append(kpi)
+            }
+            
+            famille2.categories.append(categorieF)
         }
         arrayFamille.append(famille2)
         
         let famille3 = Famille()
-        famille3.libelle = NSLocalizedString("Clients", comment: "")
-        famille3.id = 3
-        for i in (1 ..< 3)
+        famille3.RubriqueTitle = NSLocalizedString("Clients", comment: "")
+        famille3.RubriqueId = 3
+        for i in (1 ..< 2)
         {
-            let indicateur = KPILigne()
-            indicateur.libelle = "Indicateur " + String(i)
-            if(i % 2 == 0)
+            let categorieF = CategorieFamille()
+            categorieF.CategorieTitle = "categorie " + String(i)
+            
+            for j in (1 ..< 3)
             {
-                indicateur.isCoched = true
+                let kpi = KPICategorieFamille()
+                kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
+                if(j % 2 == 0)
+                {
+                    kpi.isCible = true
+                }
+                categorieF.kpis.append(kpi)
             }
-            famille3.indicateurs.append(indicateur)
+            
+            famille3.categories.append(categorieF)
         }
         arrayFamille.append(famille3)
         
         let famille4 = Famille()
-        famille4.libelle = NSLocalizedString("Image de marque", comment: "")
-        famille4.id = 4
-        for i in (1 ..< 4)
+        famille4.RubriqueTitle = NSLocalizedString("Image de marque", comment: "")
+        famille4.RubriqueId = 4
+        for i in (1 ..< 2)
         {
-            let indicateur = KPILigne()
-            indicateur.libelle = "Indicateur " + String(i)
-            if(i % 2 == 0)
+            let categorieF = CategorieFamille()
+            categorieF.CategorieTitle = "categorie " + String(i)
+            
+            for j in (1 ..< 3)
             {
-                indicateur.isCoched = true
+                let kpi = KPICategorieFamille()
+                kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
+                if(j % 2 == 0)
+                {
+                    kpi.isCible = true
+                }
+                categorieF.kpis.append(kpi)
             }
-            famille4.indicateurs.append(indicateur)
+            
+            famille4.categories.append(categorieF)
         }
         arrayFamille.append(famille4)
+        
+        famille1.rassemblerKPI()
+        famille2.rassemblerKPI()
+        famille3.rassemblerKPI()
+        famille4.rassemblerKPI()
         
         return arrayFamille;
     }

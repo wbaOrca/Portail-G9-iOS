@@ -21,10 +21,10 @@ class ListeIndicateurTableViewCell: UITableViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupIndicateurCell(indictauer : KPILigne)
+    func setupIndicateurCell(indictauer : KPICategorieFamille)
     {
-        titleLabel.text = indictauer.libelle
-        if(indictauer.isCoched)
+        titleLabel.text = indictauer.title
+        if(indictauer.isCible)
         {
             iconImage.backgroundColor = #colorLiteral(red: 0.7919282317, green: 0.1277886331, blue: 0.07557370514, alpha: 1)
         }else
@@ -37,8 +37,8 @@ class ListeIndicateurTableViewCell: UITableViewCell {
     // ***********************************
     func setupIndicateurCellHeader(famille : Famille)
     {
-        titleLabel.text = famille.libelle
-        headerButton.tag = famille.id - 1
+        titleLabel.text = famille.RubriqueTitle
+        headerButton.tag = famille.RubriqueId - 1
     }
     
     // ***********************************

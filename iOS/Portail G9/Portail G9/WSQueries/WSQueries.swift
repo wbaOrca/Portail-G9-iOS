@@ -32,6 +32,12 @@ protocol WSGetDonneesRadarsDelegate {
 }
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetFamillesDelegate {
+    
+    func didFinishWSGetActionsPlan(error: Bool , data : GetActionPlansWSResponse!)
+}
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 protocol WSGetCategoriesDelegate {
     
     func didFinishWSGetCategories(error: Bool , data : DataCategoriesWSResponse!)
@@ -539,7 +545,77 @@ class WSQueries: NSObject {
     }
     
     
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getFamilleData(delegate : WSGetFamillesDelegate )
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre
+            
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/get-action-plan"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getFamilleData(delegate: delegate);
+                        }else
+                        {
+                            delegate.didFinishWSGetActionsPlan(error: false, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataFamilles =  Mapper<GetActionPlansWSResponse>().map(JSONObject:responseJson)
+                if(responseDataFamilles != nil)
+                {
+                    delegate.didFinishWSGetActionsPlan(error: false, data: responseDataFamilles)
+                    return
+                }
+                
+                delegate.didFinishWSGetActionsPlan(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetActionsPlan(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
     
     // ***********************************
     // ***********************************

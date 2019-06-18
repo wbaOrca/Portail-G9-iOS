@@ -37,12 +37,15 @@ class KPICollectionViewCell: UICollectionViewCell {
         self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         if(indicateur.isHeaderLigne)
         {
-            self.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            titleLabel.textColor = .white
         }else if(indicateur.isColonneLigne)
         {
-            self.backgroundColor = #colorLiteral(red: 0.8376570344, green: 0.8434004188, blue: 1, alpha: 1)
+            self.backgroundColor = #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)
+            titleLabel.textColor = .white
         }else
         {
+            titleLabel.textColor = .black
             titleLabel.backgroundColor = UIColor(hexString: indicateur.indicateurKPI.bg_color);
         }
        

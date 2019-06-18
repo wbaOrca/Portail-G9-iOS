@@ -31,6 +31,9 @@
 		FB0FA023225B845100B2B2A9 /* ListePiliersWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA022225B845100B2B2A9 /* ListePiliersWSResponse.swift */; };
 		FB0FA027225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */; };
 		FB0FA029225B915C00B2B2A9 /* QuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */; };
+		FB2F791922B921CC0039AF0B /* CategorieFamille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791822B921CC0039AF0B /* CategorieFamille.swift */; };
+		FB2F791B22B921E70039AF0B /* KPICategorieFamille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791A22B921E70039AF0B /* KPICategorieFamille.swift */; };
+		FB2F791D22B9300B0039AF0B /* GetActionPlansWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791C22B9300B0039AF0B /* GetActionPlansWSResponse.swift */; };
 		FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */; };
 		FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */; };
 		FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF92255FF5700C98638 /* Pilier.swift */; };
@@ -175,6 +178,9 @@
 		FB0FA022225B845100B2B2A9 /* ListePiliersWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListePiliersWSResponse.swift; sourceTree = "<group>"; };
 		FB0FA026225B8E4100B2B2A9 /* QuestionPiliersWSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPiliersWSResponse.swift; sourceTree = "<group>"; };
 		FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPilier.swift; sourceTree = "<group>"; };
+		FB2F791822B921CC0039AF0B /* CategorieFamille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieFamille.swift; sourceTree = "<group>"; };
+		FB2F791A22B921E70039AF0B /* KPICategorieFamille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPICategorieFamille.swift; sourceTree = "<group>"; };
+		FB2F791C22B9300B0039AF0B /* GetActionPlansWSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActionPlansWSResponse.swift; sourceTree = "<group>"; };
 		FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiliersProcessViewController.swift; sourceTree = "<group>"; };
 		FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeQuestionPilierViewController.swift; sourceTree = "<group>"; };
 		FB44EEF92255FF5700C98638 /* Pilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pilier.swift; sourceTree = "<group>"; };
@@ -485,7 +491,10 @@
 				FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */,
 				FB0FA028225B915C00B2B2A9 /* QuestionPilier.swift */,
 				FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */,
+				FB2F791C22B9300B0039AF0B /* GetActionPlansWSResponse.swift */,
 				FB0BC51922B39EF2002B6C0D /* Famille.swift */,
+				FB2F791822B921CC0039AF0B /* CategorieFamille.swift */,
+				FB2F791A22B921E70039AF0B /* KPICategorieFamille.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -856,6 +865,7 @@
 				FB02ACF22236993600843B66 /* ColorPickerView.swift in Sources */,
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FB70A4952292AC670041E090 /* AccueilViewController.swift in Sources */,
+				FB2F791B22B921E70039AF0B /* KPICategorieFamille.swift in Sources */,
 				FB02ACF72236993600843B66 /* HSB.swift in Sources */,
 				FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
@@ -898,6 +908,7 @@
 				FBF26C8922156EC600D271AC /* GroupeKPI.swift in Sources */,
 				FB44EF002256061100C98638 /* ListeQuestionPilierTableViewCell.swift in Sources */,
 				FBD2AFE9223150FE00D9D517 /* CheckList.swift in Sources */,
+				FB2F791922B921CC0039AF0B /* CategorieFamille.swift in Sources */,
 				FBE2EC692201EFD9004B44DF /* LeftMenuViewController.swift in Sources */,
 				FBF26C8522156E5800D271AC /* ListeGroupesViewController.swift in Sources */,
 				FBF26C8B2215713700D271AC /* ListeGroupesTableViewCell.swift in Sources */,
@@ -906,6 +917,7 @@
 				FBE63E102212AC790027F6E2 /* Zone.swift in Sources */,
 				FBF02014223BA3710076E9E6 /* AddCommentaireTacheViewController.swift in Sources */,
 				FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */,
+				FB2F791D22B9300B0039AF0B /* GetActionPlansWSResponse.swift in Sources */,
 				FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */,
 				FB7FFB3F2296B95800D2F3E0 /* StickyGridCollectionViewLayout.swift in Sources */,
 				FBF02012223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift in Sources */,
