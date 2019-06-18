@@ -87,7 +87,7 @@ class Famille: NSObject ,Mappable{
                 kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
                 if(j % 2 == 0)
                 {
-                    kpi.isCible = true
+                    kpi.isChecked = true
                 }
                 categorieF.kpis.append(kpi)
             }
@@ -111,7 +111,7 @@ class Famille: NSObject ,Mappable{
                 kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
                 if(j % 2 == 0)
                 {
-                    kpi.isCible = true
+                    kpi.isChecked = true
                 }
                 categorieF.kpis.append(kpi)
             }
@@ -134,7 +134,7 @@ class Famille: NSObject ,Mappable{
                 kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
                 if(j % 2 == 0)
                 {
-                    kpi.isCible = true
+                    kpi.isChecked = true
                 }
                 categorieF.kpis.append(kpi)
             }
@@ -157,7 +157,7 @@ class Famille: NSObject ,Mappable{
                 kpi.title = "kpi indicateur " + String(i) + " - " + String(j)
                 if(j % 2 == 0)
                 {
-                    kpi.isCible = true
+                    kpi.isChecked = true
                 }
                 categorieF.kpis.append(kpi)
             }
