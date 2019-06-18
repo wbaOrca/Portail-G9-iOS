@@ -10,42 +10,36 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var headerCellView: UIView!
-    @IBOutlet weak var backgroundCellView: UIView!
+    
+   
     @IBOutlet weak var labelTitre: UILabel!
     @IBOutlet weak var imageBackground: UIImageView!
+    @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var labelAlerteBadge: UILabel!
     
+    override var isHighlighted: Bool {
+        didSet {
+            self.contentView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1) : nil
+            imageBackground.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+        }
+        
+    }
+    override var isSelected: Bool {
+        didSet {
+            self.contentView.backgroundColor = isSelected ? #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1) : nil
+            imageBackground.backgroundColor = isSelected ? #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+        }
+        
+    }
     
     //**********
     //**********
     //**********
-    func setupCell(startColor: UIColor, endtColor: UIColor , isHeaderVisible : Bool)
+    func setupCell_2(icon_image: String, titre : String)
     {
-        
-        let colorTop =  startColor.cgColor
-        let colorBottom = endtColor.cgColor
-            
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.backgroundCellView.bounds
-       // print(self.contentView.frame)
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: screenWidth / 2.0, height: self.contentView.frame.height + 20)
-        self.backgroundCellView.layer.insertSublayer(gradientLayer, at: 0)
-        
-        if(isHeaderVisible){
-            self.headerCellView.isHidden = false
-        }else
-        {
-            self.headerCellView.isHidden = true
-        }
-    }
+        imageIcon.image = UIImage(named: icon_image)
+        labelTitre.text = titre
+     }
     
     
     

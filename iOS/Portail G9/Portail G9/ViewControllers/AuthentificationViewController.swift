@@ -21,6 +21,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
     @IBOutlet weak var textFieldPassword: UITextField?
     @IBOutlet var labelVersion: UILabel!
     @IBOutlet weak var buttonConnexion: UIButton!
+    @IBOutlet weak var labelWelcome: UILabel!
     
     var arraySelectedProfiles : [String] = [String]()
     // ***********************************
@@ -36,10 +37,18 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let applicationVersion = shortVersionString + "." + bundleVersion
         labelVersion.text =  Version.VERSION + " " + applicationVersion
         
+        let attributedText = NSMutableAttributedString(string: NSLocalizedString("Welcome_in", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 26)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
+        attributedText.append(NSAttributedString(string: (" Driver"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 30)!, NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        labelWelcome.attributedText = attributedText
+        
+        
         self.textFieldLogin?.placeholder = "Identifient"
         self.textFieldPassword?.placeholder = "Mot de passe"
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
+        buttonConnexion.layer.cornerRadius = 5
+        buttonConnexion.clipsToBounds = true
     }
     
     // ******************************

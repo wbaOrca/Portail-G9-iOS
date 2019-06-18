@@ -45,6 +45,7 @@ class FiltreMenuViewController: UIViewController {
         self.setupDataFiltre();
         okButton.layer.cornerRadius = 5.0;
         okButton.clipsToBounds = true;
+        
     }
     
     // ***********************************

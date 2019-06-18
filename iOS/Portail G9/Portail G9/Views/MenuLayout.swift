@@ -27,7 +27,7 @@ class MenuLayout: UICollectionViewLayout {
     weak var delegate: MenuLayoutDelegate!
     
     // 2
-    fileprivate var numberOfColumns = 2
+    fileprivate var numberOfColumns = 1
     fileprivate var cellPadding: CGFloat = 6
     
     // 3
