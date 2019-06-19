@@ -682,6 +682,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="eUs-rX-TC1" firstAttribute="leading" secondItem="3Em-fC-jWV" secondAttribute="trailing" constant="10" id="9M1-pE-fQs"/>
                                                 <constraint firstItem="3Em-fC-jWV" firstAttribute="leading" secondItem="Oc1-xa-M2w" secondAttribute="leading" constant="20" id="9b7-hv-crx"/>
@@ -692,6 +693,7 @@
                                                 <constraint firstItem="eUs-rX-TC1" firstAttribute="centerY" secondItem="Oc1-xa-M2w" secondAttribute="centerY" id="u6O-ap-coj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="iconImage" destination="3Em-fC-jWV" id="Nez-zH-AoS"/>
                                             <outlet property="titleLabel" destination="eUs-rX-TC1" id="asr-o9-cLM"/>
@@ -812,13 +814,13 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt2-tr-kST">
                                                     <rect key="frame" x="40" y="12" width="310" height="16.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Rt2-tr-kST" secondAttribute="trailing" constant="5" id="4MO-dr-QHf"/>
                                                 <constraint firstItem="Rt2-tr-kST" firstAttribute="centerY" secondItem="Eh0-8P-Ciz" secondAttribute="centerY" id="Hms-YV-PgZ"/>
@@ -827,6 +829,7 @@
                                                 <constraint firstItem="mLF-RX-9vy" firstAttribute="leading" secondItem="Eh0-8P-Ciz" secondAttribute="leading" constant="10" id="gyZ-12-oQh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="iconImage" destination="mLF-RX-9vy" id="hHK-fw-smD"/>
                                             <outlet property="titleLabel" destination="Rt2-tr-kST" id="zvU-jE-gV4"/>
@@ -908,7 +911,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Slp-46-ya9" secondAttribute="trailing" constant="20" id="Ln3-AK-CPH"/>
                                                 <constraint firstItem="Slp-46-ya9" firstAttribute="centerY" secondItem="9jA-ct-BXq" secondAttribute="centerY" id="VeN-TQ-V3V"/>
@@ -917,7 +920,7 @@
                                                 <constraint firstItem="bmz-AD-LSF" firstAttribute="centerY" secondItem="9jA-ct-BXq" secondAttribute="centerY" id="r44-1V-Q08"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="iconImage" destination="bmz-AD-LSF" id="gtR-af-zt0"/>
                                             <outlet property="titleLabel" destination="Slp-46-ya9" id="6Ly-hs-PSR"/>
@@ -952,6 +955,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="hlg-JJ-kfd" firstAttribute="centerY" secondItem="9nS-wW-wPH" secondAttribute="centerY" id="9oL-sf-RWd"/>
                                                 <constraint firstItem="Efo-Y4-HCw" firstAttribute="centerY" secondItem="9nS-wW-wPH" secondAttribute="centerY" id="Bsn-U7-3wV"/>
@@ -962,6 +966,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="mUq-xl-8A7" secondAttribute="trailing" constant="2" id="fmA-lC-vAB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="iconImage" destination="hlg-JJ-kfd" id="FUn-C5-jSC"/>
                                             <outlet property="titleLabel" destination="Efo-Y4-HCw" id="Sf5-je-S2j"/>
