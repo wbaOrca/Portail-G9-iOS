@@ -24,11 +24,13 @@ class ListeIndicateurTableViewCell: UITableViewCell {
     func setupIndicateurCell(indictauer : KPICategorieFamille)
     {
         titleLabel.text = indictauer.title
-        if(indictauer.isChecked)
+        if(indictauer.isAutoChecked)
         {
             iconImage.backgroundColor = #colorLiteral(red: 0.7919282317, green: 0.1277886331, blue: 0.07557370514, alpha: 1)
-        }else
+        }else if(indictauer.isChecked)
         {
+            iconImage.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        }else{
             iconImage.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         }
     }

@@ -21,6 +21,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelVersion: UILabel!
     @IBOutlet weak var menuCollectionView: UICollectionView!
+    @IBOutlet weak var buttonAccount: UIButton!
     
     // ***********************************
     // ***********************************
@@ -30,6 +31,9 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Home", comment: "-")
+        
+        buttonAccount.layer.cornerRadius = buttonAccount.frame.width / 2
+        buttonAccount.clipsToBounds = true
         
         // **
         let appInfo = Bundle.main.infoDictionary! as Dictionary<String,AnyObject>

@@ -13,6 +13,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var labelUserInfo: UILabel!
     @IBOutlet weak var labelVersion: UILabel!
     @IBOutlet weak var buttonDisconnect: UIButton!
+    @IBOutlet weak var buttonAccount: UIButton!
     
     // ***********************************
     // ***********************************
@@ -24,6 +25,8 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Home", comment: "-")
         
+        buttonAccount.layer.cornerRadius = buttonAccount.frame.width / 2
+        buttonAccount.clipsToBounds = true
         
         buttonDisconnect.layer.cornerRadius = 5
         buttonDisconnect.clipsToBounds = true

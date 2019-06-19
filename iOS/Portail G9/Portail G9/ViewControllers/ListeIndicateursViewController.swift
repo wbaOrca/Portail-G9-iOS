@@ -26,6 +26,7 @@ class ListeIndicateursViewController: UIViewController, NVActivityIndicatorViewa
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("Indicateurs", comment: "")
         // **
         self.setupIndicateurs()
         // **
@@ -88,12 +89,8 @@ class ListeIndicateursViewController: UIViewController, NVActivityIndicatorViewa
     // ***********************************
     // ***********************************
     func setupIndicateurs(){
-        
-        self.title = NSLocalizedString("Indicateurs", comment: "")
-        
-       arrayFamille = Famille.initStaticTable();
-        
-        tableViewIndicateurs.reloadData()
+        //arrayFamille = Famille.initStaticTable();
+        //tableViewIndicateurs.reloadData()
     }
 
     
@@ -236,6 +233,11 @@ extension ListeIndicateursViewController : WSGetFamillesDelegate {
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
                 arrayFamille = data.familles;
+                for i in (0 ..< arrayFamille.count)
+                {
+                    let famille = arrayFamille[i]
+                    famille.rassemblerKPI()
+                }
                 
                 DispatchQueue.main.async {
                     self.tableViewIndicateurs.reloadData()
