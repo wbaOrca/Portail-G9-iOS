@@ -16,6 +16,7 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class UpdateQuestionPilierViewController: UIViewController , NVActivityIndicatorViewable{
 
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var labelQuestion: UILabel?
     @IBOutlet weak var labelMAJ: UILabel?
     
@@ -33,6 +34,9 @@ class UpdateQuestionPilierViewController: UIViewController , NVActivityIndicator
         // Do any additional setup after loading the view.
         textViewCommentaire!.layer.borderWidth = 1.5
         textViewCommentaire!.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        
+        saveButton.layer.cornerRadius = 5
+        saveButton.clipsToBounds = true
         
         self.setupQuestionPilierData();
         

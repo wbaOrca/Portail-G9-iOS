@@ -20,6 +20,7 @@ class DateSelectionView : UIView  {
 
     weak var delegate: DateSelectionViewDelegate?
     
+    @IBOutlet weak var backgroundView: UIView?
     @IBOutlet weak var pickerView: UIDatePicker?
     @IBOutlet weak var labelTitre : UILabel?
     @IBOutlet weak var buttonValider: UIButton?
@@ -151,7 +152,13 @@ class DateSelectionView : UIView  {
     // *****************************************
     // *****************************************
     override func draw(_ rect: CGRect) {
+        
+        backgroundView!.layer.borderColor = #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1) ;
+        backgroundView!.layer.borderWidth = 2;
+        
+        
         switch typeSelection {
+            
         case DateSelectionView.PICKER_DATE_DAY :
             
             labelTitre?.text="Sélectionner une date";

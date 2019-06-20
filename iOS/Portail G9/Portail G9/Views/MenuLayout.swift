@@ -54,6 +54,10 @@ class MenuLayout: UICollectionViewLayout {
     // **************
     // **************
     override func prepare() {
+        
+        if UIDevice().userInterfaceIdiom == .pad {
+            numberOfColumns = 2
+        }
         // 1
         guard cache.isEmpty == true, let collectionView = collectionView else {
             return

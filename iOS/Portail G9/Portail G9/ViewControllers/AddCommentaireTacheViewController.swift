@@ -27,12 +27,16 @@ class AddCommentaireTacheViewController: UIViewController ,NVActivityIndicatorVi
     @IBOutlet weak var buttonFile: UIButton!
     @IBOutlet weak var destinataireTextField: UITextField!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     // **************************
     // **************************
     // **************************
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        saveButton.layer.cornerRadius = 5
+        saveButton.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
     

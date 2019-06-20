@@ -31,6 +31,8 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
     @IBOutlet weak var dateDebutButton: UIButton!
     @IBOutlet weak var dateFinButton: UIButton!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     @IBOutlet weak var statutButton: UIButton!
     @IBOutlet weak var compteRenduTextView: UITextView!
     
@@ -42,6 +44,8 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        saveButton.layer.cornerRadius = 5
+        saveButton.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
     // *******************************

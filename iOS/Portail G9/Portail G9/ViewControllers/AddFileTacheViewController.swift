@@ -26,6 +26,7 @@ class AddFileTacheViewController: UIViewController, CropViewControllerDelegate ,
     var tache : Tache = Tache();
     var mFile : File = File();
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var imageViewDocument: UIImageView!
     var imageDocumentToSend : UIImage! = nil;
     
@@ -35,7 +36,9 @@ class AddFileTacheViewController: UIViewController, CropViewControllerDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        saveButton.layer.cornerRadius = 5
+        saveButton.clipsToBounds = true
+        
         // Do any additional setup after loading the view.
         self.imageDocumentToSend = nil;
         self.imageViewDocument.image = UIImage(named: "image_file");

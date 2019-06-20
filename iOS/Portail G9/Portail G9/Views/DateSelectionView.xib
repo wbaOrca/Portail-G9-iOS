@@ -20,7 +20,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pH-KR-qHW">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
-                            <color key="backgroundColor" red="0.96532374620000005" green="0.70018678899999998" blue="0.1992127001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODh-hk-b9X">
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
-                                    <color key="backgroundColor" red="0.96532374620000005" green="0.70018678899999998" blue="0.1992127001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="139.99999999999991" id="dqn-Aj-5GX"/>
                                         <constraint firstAttribute="height" constant="34.999999999999943" id="eDj-eS-rOT"/>
@@ -54,7 +54,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cK-Jw-sW9">
                                     <rect key="frame" x="160" y="0.0" width="140" height="35"/>
-                                    <color key="backgroundColor" red="0.96532374620000005" green="0.70018678899999998" blue="0.1992127001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34.999999999999943" id="Cr6-DB-Hfb"/>
                                         <constraint firstAttribute="width" constant="139.99999999999991" id="NBX-eX-By4"/>
@@ -89,6 +89,7 @@
                 <constraint firstItem="IcV-7j-l2W" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gE8-pZ-r5h"/>
             </constraints>
             <connections>
+                <outlet property="backgroundView" destination="IcV-7j-l2W" id="bPr-c0-7Zm"/>
                 <outlet property="buttonAnnuler" destination="ODh-hk-b9X" id="g7c-OY-jbz"/>
                 <outlet property="buttonValider" destination="4cK-Jw-sW9" id="Dcu-tY-GiG"/>
                 <outlet property="labelTitre" destination="9pH-KR-qHW" id="WpY-06-Zdk"/>

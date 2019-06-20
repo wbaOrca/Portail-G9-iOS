@@ -364,9 +364,9 @@
 				FBE9EC47222E72F100D4F6A0 /* CommentaireTableViewCell.swift */,
 				FBF02011223B993B0076E9E6 /* HeaderDetailsTableViewCell.swift */,
 				FBF02017223BE1BF0076E9E6 /* DateSelectionView.swift */,
+				FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */,
 				FB70A4982292B54C0041E090 /* HomeCollectionViewCell.swift */,
 				FB70A4962292B5410041E090 /* MenuLayout.swift */,
-				FBF02018223BE1BF0076E9E6 /* DateSelectionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
