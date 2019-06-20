@@ -71,6 +71,8 @@ class KPI: NSObject ,Mappable{
                 {
                     section.titreSection = ligne_.libelle
                 }
+                section.codeCouleur = ligne_.code_couleur
+                
                 new_array.append(section);
             }
         }
@@ -88,6 +90,7 @@ class KPI: NSObject ,Mappable{
                 {
                     let ligne_ = kpi_.lignes[compteur]
                     ligne_.libelle = kpi_.colonne
+                    ligne_.code_couleur = kpi_.code_couleur
                     section.elementsSection.append(ligne_)
                 }
             }
@@ -156,6 +159,7 @@ class KPI: NSObject ,Mappable{
             let indicateurHeader = IndicateurKPIGrid()
             indicateurHeader.isHeaderLigne = true
             indicateurHeader.indicateurKPI.valeur = ""
+            indicateurHeader.indicateurKPI.code_couleur = "#000000"
             arrayHeader.append(indicateurHeader)
             for j in (0 ..< kpi.elementsSection.count)
             {
@@ -163,6 +167,7 @@ class KPI: NSObject ,Mappable{
                 let indicateurHeader = IndicateurKPIGrid()
                 indicateurHeader.isHeaderLigne = true
                 indicateurHeader.indicateurKPI.valeur = kpiColonne.libelle
+                indicateurHeader.indicateurKPI.code_couleur = kpiColonne.code_couleur
                 arrayHeader.append(indicateurHeader)
                 
             }

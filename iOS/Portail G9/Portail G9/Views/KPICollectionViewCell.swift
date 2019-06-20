@@ -39,6 +39,10 @@ class KPICollectionViewCell: UICollectionViewCell {
         {
             self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             titleLabel.textColor = .white
+            if(indicateur.indicateurKPI.code_couleur.contains("#ffcc33"))
+            {
+                titleLabel.textColor = UIColor.init(hex: "#ffcc33" )
+            }
         }else if(indicateur.isColonneLigne)
         {
             self.backgroundColor = #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)
