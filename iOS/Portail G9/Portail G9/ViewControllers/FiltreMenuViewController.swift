@@ -32,6 +32,7 @@ class FiltreMenuViewController: UIViewController {
     var arrayOfPays : [Pays] = [Pays]();
     var arrayOfSelectedPays : [Pays] = [Pays]();
     
+    var arrayOfSelectedDR : [Direction] = [Direction]();
     var arrayOfSelectedZone : [Zone] = [Zone]();
     var arrayOfSelectedGroupe : [Groupe] = [Groupe]();
     var arrayOfSelectedAffaire : [Dealer] = [Dealer]();
@@ -54,10 +55,14 @@ class FiltreMenuViewController: UIViewController {
     func setupDataFiltre()
     {
         
+        self.arrayFiltres  =  [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
+        self.arrayIcones = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
+        
         self.arrayOfLangues.removeAll()
         self.arrayOfSelectedLangue.removeAll()
         self.arrayOfPays.removeAll()
         self.arrayOfSelectedPays.removeAll()
+        arrayOfSelectedDR.removeAll()
         arrayOfSelectedZone.removeAll()
         arrayOfSelectedGroupe.removeAll()
         arrayOfSelectedAffaire.removeAll()
@@ -95,55 +100,109 @@ class FiltreMenuViewController: UIViewController {
                 
             }
         }
-        
+        var isPaysHasDR = false
         // Pays par défaut
         let paysData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS);
         if(paysData_ != nil){
             if let pays_ = NSKeyedUnarchiver.unarchiveObject(with: paysData_!)  {
                 
                 let pays = pays_ as! Pays
+                isPaysHasDR = pays.hasDr
                 arrayOfSelectedPays.append(pays)
                 arrayFiltres[1] = pays.countryLib
                 
             }
         }
         
-        // Zone par défaut
-        let zoneData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
-        if(zoneData_ != nil){
-            if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData_!)  {
-                
-                let zone = zone_ as! Zone
-                arrayOfSelectedZone.append(zone)
-                arrayFiltres[2] = zone.libelle
-                
+        // DR direction regionale par défaut
+        if(isPaysHasDR){
+            
+           arrayFiltres.insert(NSLocalizedString("DR", comment: "-"), at: 2);
+            arrayIcones.insert("ic_dr", at: 2);
+            
+            let drData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_DR);
+            if(drData_ != nil){
+                if let dr_ = NSKeyedUnarchiver.unarchiveObject(with: drData_!)  {
+                    
+                    let dr = dr_ as! Direction
+                    arrayOfSelectedDR.append(dr)
+                    arrayFiltres[2] = dr.libelle
+                    
+                }
+            }
+            // Zone par défaut
+            let zoneData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
+            if(zoneData_ != nil){
+                if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData_!)  {
+                    
+                    let zone = zone_ as! Zone
+                    arrayOfSelectedZone.append(zone)
+                    arrayFiltres[3] = zone.libelle
+                    
+                }
+            }
+            
+            // Groupe par défaut
+            let grpData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
+            if(grpData_ != nil){
+                if let grp_ = NSKeyedUnarchiver.unarchiveObject(with: grpData_!)  {
+                    
+                    let group = grp_ as! Groupe
+                    arrayOfSelectedGroupe.append(group)
+                    arrayFiltres[4] = group.libelle
+                    
+                }
+            }
+            
+            // Affaire par défaut
+            let dealerData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+            if(dealerData_ != nil){
+                if let affaire_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData_!)  {
+                    
+                    let dealer = affaire_ as! Dealer
+                    arrayOfSelectedAffaire.append(dealer)
+                    arrayFiltres[5] = dealer.libelle
+                    
+                }
+            }
+        }else // pas de DR
+        {
+            // Zone par défaut
+            let zoneData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE);
+            if(zoneData_ != nil){
+                if let zone_ = NSKeyedUnarchiver.unarchiveObject(with: zoneData_!)  {
+                    
+                    let zone = zone_ as! Zone
+                    arrayOfSelectedZone.append(zone)
+                    arrayFiltres[2] = zone.libelle
+                    
+                }
+            }
+            
+            // Groupe par défaut
+            let grpData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
+            if(grpData_ != nil){
+                if let grp_ = NSKeyedUnarchiver.unarchiveObject(with: grpData_!)  {
+                    
+                    let group = grp_ as! Groupe
+                    arrayOfSelectedGroupe.append(group)
+                    arrayFiltres[3] = group.libelle
+                    
+                }
+            }
+            
+            // Affaire par défaut
+            let dealerData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
+            if(dealerData_ != nil){
+                if let affaire_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData_!)  {
+                    
+                    let dealer = affaire_ as! Dealer
+                    arrayOfSelectedAffaire.append(dealer)
+                    arrayFiltres[4] = dealer.libelle
+                    
+                }
             }
         }
-        
-        // Groupe par défaut
-        let grpData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE);
-        if(grpData_ != nil){
-            if let grp_ = NSKeyedUnarchiver.unarchiveObject(with: grpData_!)  {
-                
-                let group = grp_ as! Groupe
-                arrayOfSelectedGroupe.append(group)
-                arrayFiltres[3] = group.libelle
-                
-            }
-        }
-        
-        // Affaire par défaut
-        let dealerData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
-        if(dealerData_ != nil){
-            if let affaire_ = NSKeyedUnarchiver.unarchiveObject(with: dealerData_!)  {
-                
-                let dealer = affaire_ as! Dealer
-                arrayOfSelectedAffaire.append(dealer)
-                arrayFiltres[4] = dealer.libelle
-                
-            }
-        }
-        
         self.filtreCollectionView.reloadData();
     }
     // ***********************************
@@ -171,6 +230,16 @@ class FiltreMenuViewController: UIViewController {
         }else
         {
              preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+        }
+        
+        if(arrayOfSelectedDR.count > 0)
+        {
+            let dr = arrayOfSelectedDR[0];
+            let dataDRParDefaut = NSKeyedArchiver.archivedData(withRootObject: dr)
+            preferences.set(dataDRParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_DR)
+        }else
+        {
+            preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_DR)
         }
         
         if(arrayOfSelectedZone.count > 0)
@@ -280,7 +349,15 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedAffaire.count > 0)
             {
                 let dealer_ = self.arrayOfSelectedAffaire[0]
-                self.arrayFiltres[4] = dealer_.libelle
+                
+                 let selectedPays = self.arrayOfSelectedPays[0];
+                if(selectedPays.hasDr == false)
+                {
+                    self.arrayFiltres[4] = dealer_.libelle
+                }else
+                {
+                    self.arrayFiltres[5] = dealer_.libelle
+                }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }
@@ -312,7 +389,7 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         let selectedPays = arrayOfSelectedPays[0];
-        if(selectedPays.groupes.count == 0)
+        if(selectedPays.hasDr == false && selectedPays.groupes.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -321,13 +398,49 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        
+        if(selectedPays.hasDr && arrayOfSelectedDR.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        var selectedDR = Direction()
+        if(selectedPays.hasDr  && arrayOfSelectedDR.count == 0){
+            
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+            
+            
+        }else
+        {
+            if(arrayOfSelectedDR.count > 0)
+            {
+                selectedDR = arrayOfSelectedDR[0]
+                if(selectedDR.groupes.count == 0)
+                {
+                    let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
+                    let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+                    }
+                    alertController.addAction(action1)
+                    self.present(alertController, animated: true, completion: nil)
+                    return
+                }
+            }
+        }
         // Show menu with datasource array - Default SelectionType = Single
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        let array = (selectedPays.hasDr == false) ? selectedPays.groupes :  selectedDR.groupes
         
-        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.groupes ) { (cell, object, indexPath) in
+        let selectionMenu =  RSSelectionMenu(dataSource: array ) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
             // Change tint color (if needed)
             cell.tintColor = .orange
@@ -346,15 +459,30 @@ class FiltreMenuViewController: UIViewController {
             // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
             self.arrayOfSelectedGroupe =  selectedItems
             //reset zone + affaire
-            self.arrayOfSelectedZone.removeAll()
-            self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
-            self.arrayOfSelectedAffaire.removeAll()
-            self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+            if(selectedPays.hasDr == false)
+            {
+                self.arrayOfSelectedZone.removeAll()
+                self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
+                self.arrayOfSelectedAffaire.removeAll()
+                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+            }else
+            {
+                self.arrayOfSelectedZone.removeAll()
+                self.arrayFiltres[3] = NSLocalizedString("Zone", comment: "-")
+                self.arrayOfSelectedAffaire.removeAll()
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+            }
             
             if(self.arrayOfSelectedGroupe.count > 0)
             {
                 let groupe_ = self.arrayOfSelectedGroupe[0]
-                self.arrayFiltres[3] = groupe_.libelle
+                if(selectedPays.hasDr == false)
+                {
+                    self.arrayFiltres[3] = groupe_.libelle
+                }else
+                {
+                    self.arrayFiltres[4] = groupe_.libelle
+                }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }
@@ -386,22 +514,59 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         let selectedPays = arrayOfSelectedPays[0];
-        if(selectedPays.zones.count == 0)
+        if(selectedPays.hasDr == false && selectedPays.zones.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun zone.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune zone.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
             return
         }
+        if(selectedPays.hasDr && selectedPays.directions.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+       var selectedDR = Direction()
+        if(selectedPays.hasDr  && arrayOfSelectedDR.count == 0){
+           
+                let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
+                let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+                }
+                alertController.addAction(action1)
+                self.present(alertController, animated: true, completion: nil)
+                return
+            
+            
+        }else
+        {
+            if(arrayOfSelectedDR.count > 0)
+            {
+                selectedDR = arrayOfSelectedDR[0]
+                if(selectedDR.zones.count == 0)
+                {
+                    let alertController = UIAlertController(title: "Erreur", message: "Aucune zone.", preferredStyle: .alert)
+                    let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+                    }
+                    alertController.addAction(action1)
+                    self.present(alertController, animated: true, completion: nil)
+                    return
+                }
+            }
+        }
         
         // Show menu with datasource array - Default SelectionType = Single
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        let array = (selectedPays.hasDr == false) ? selectedPays.zones :  selectedDR.zones
         
-        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.zones ) { (cell, object, indexPath) in
+        let selectionMenu =  RSSelectionMenu(dataSource: array) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
             // Change tint color (if needed)
             cell.tintColor = .orange
@@ -421,15 +586,29 @@ class FiltreMenuViewController: UIViewController {
             self.arrayOfSelectedZone =  selectedItems
             
             //reset groupe + affaire
-            self.arrayOfSelectedGroupe.removeAll()
-            self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
-            self.arrayOfSelectedAffaire.removeAll()
-            self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
-            
+            if(selectedPays.hasDr == false)
+            {
+                self.arrayOfSelectedGroupe.removeAll()
+                self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
+                self.arrayOfSelectedAffaire.removeAll()
+                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+            }else
+            {
+                self.arrayOfSelectedGroupe.removeAll()
+                self.arrayFiltres[4] = NSLocalizedString("Groupe", comment: "-")
+                self.arrayOfSelectedAffaire.removeAll()
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+            }
             if(self.arrayOfSelectedZone.count > 0)
             {
                 let zone_ = self.arrayOfSelectedZone[0]
-                self.arrayFiltres[2] = zone_.libelle
+                if(selectedPays.hasDr == false)
+                {
+                    self.arrayFiltres[2] = zone_.libelle
+                }else
+                {
+                    self.arrayFiltres[3] = zone_.libelle
+                }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }
@@ -445,6 +624,84 @@ class FiltreMenuViewController: UIViewController {
         selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func selectDR() {
+        
+        if(arrayOfSelectedPays.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        let selectedPays = arrayOfSelectedPays[0];
+        if(selectedPays.directions.count == 0)
+        {
+            let alertController = UIAlertController(title: "Erreur", message: "Aucune direction.", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        // Show menu with datasource array - Default SelectionType = Single
+        // Here you'll get cell configuration where you can set any text based on condition
+        // Cell configuration following parameters.
+        // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        
+        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.directions ) { (cell, object, indexPath) in
+            cell.textLabel?.text = object.libelle
+            // Change tint color (if needed)
+            cell.tintColor = .orange
+        }
+        
+        
+        // show searchbar with placeholder and tint color
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("DR", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Direction]) in
+            return selectedPays.directions.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+        }
+        // set default selected items when menu present on screen.
+        // Here you'll get onDidSelectRow
+        
+        selectionMenu.setSelectedItems(items: arrayOfSelectedDR) { (text, isSelected, selectedItems) in
+            
+            // update your existing array with updated selected items, so when menu presents second time updated items will be default selected.
+            self.arrayOfSelectedDR =  selectedItems
+            
+            //reset groupe + affaire
+            self.arrayOfSelectedZone.removeAll()
+            self.arrayFiltres[3] = NSLocalizedString("Zone", comment: "-")
+            self.arrayOfSelectedGroupe.removeAll()
+            self.arrayFiltres[4] = NSLocalizedString("Groupe", comment: "-")
+            self.arrayOfSelectedAffaire.removeAll()
+            if(self.arrayFiltres.count > 5)
+            {
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+            }
+            
+            if(self.arrayOfSelectedDR.count > 0)
+            {
+                let dr_ = self.arrayOfSelectedDR[0]
+                self.arrayFiltres[2] = dr_.libelle
+                DispatchQueue.main.async {
+                    self.filtreCollectionView.reloadData()
+                }
+            }
+            
+        }
+        
+        selectionMenu.uniquePropertyName = "id"
+        
+        // auto dismiss
+        selectionMenu.dismissAutomatically = true      // default is true
+        // show as PresentationStyle = Push
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("DR", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+    }
     // ***********************************
     // ***********************************
     // ***********************************
@@ -491,22 +748,26 @@ class FiltreMenuViewController: UIViewController {
                 let preferences = UserDefaults.standard
                 let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
                 preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
-                preferences.synchronize()
+                
                 
                 
                 
                 self.arrayFiltres[1] = pays_.countryLib
-                
+               
                 //reset zone + groupe + affaire
+                self.arrayOfSelectedDR.removeAll()
                 self.arrayOfSelectedZone.removeAll()
-                self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
                 self.arrayOfSelectedGroupe.removeAll()
-                self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
                 
+                preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_DR)
+                preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
+                preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
+                preferences.set(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE)
+                preferences.synchronize()
                 
                 DispatchQueue.main.async {
+                    self.setupDataFiltre()
                     self.filtreCollectionView.reloadData()
                 }
             }
@@ -749,7 +1010,7 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
     // ***********************************
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5 ;
+        return arrayIcones.count ;
     }
     // ***********************************
     // ***********************************
@@ -772,28 +1033,62 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
     // ***********************************
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
         
-        case 0:
-            selectLangue()
-            break;
-        case 1:
-            selectPays()
-            break;
-        case 2:
-            selectZone()
-            break;
-        case 3:
-            selectGroupe()
-            break;
-        case 4:
-            selectAffaire()
-            break;
-            
-        default:
-            
-            return;
-            
+        let pays = arrayOfSelectedPays[0];
+        if(!pays.hasDr)//has no dr
+        {
+            switch indexPath.row {
+                
+            case 0:
+                selectLangue()
+                break;
+            case 1:
+                selectPays()
+                break;
+            case 2:
+                selectZone()
+                break;
+            case 3:
+                selectGroupe()
+                break;
+            case 4:
+                selectAffaire()
+                break;
+                
+            default:
+                
+                return;
+                
+            }
+        }else //has DR
+        {
+            switch indexPath.row {
+                
+            case 0:
+                selectLangue()
+                break;
+            case 1:
+                selectPays()
+                break;
+                
+            case 2:
+                selectDR()
+                break;
+            case 3:
+                selectZone()
+                break;
+            case 4:
+                selectGroupe()
+                break;
+            case 5:
+                selectAffaire()
+                break;
+                
+            default:
+                
+                return;
+                
+            }
         }
     }
     

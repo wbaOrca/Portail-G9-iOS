@@ -1,8 +1,8 @@
 //
-//  Pays.swift
+//  Direction.swift
 //  Portail G9
 //
-//  Created by WBA_ORCA on 12/02/2019.
+//  Created by WBA_ORCA on 21/06/2019.
 //  Copyright © 2019 Orcaformation. All rights reserved.
 //
 
@@ -10,22 +10,21 @@ import UIKit
 import ObjectMapper
 import RSSelectionMenu
 
-class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
-
+class Direction: NSObject , Mappable , NSCoding , UniqueProperty {
     
-    var countryId   : Int64 = -1
-    var countryLib   : String = ""
-    var countryZoneCode   : String = ""
-    var hasDr   : Bool = false
+    
+    var id   : Int64 = -1
+    var libelle   : String = ""
+    var zoneIdClient   : String = ""
+    
     var zones   : [Zone] = [Zone]()
     var groupes   : [Groupe] = [Groupe]()
-    var directions   : [Direction] = [Direction]()
     
     //******
     //******
     //******
     func uniquePropertyName() -> String {
-        return "countryId"
+        return "id"
     }
     
     //******
@@ -50,13 +49,12 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     // Mappable
     func mapping(map: Map) {
         
-        countryId <- map["countryId"]
-        countryLib <- map["countryLib"]
-        countryZoneCode <- map["countryZoneCode"]
-        hasDr <- map["hasDr"]
+        id <- map["id"]
+        libelle <- map["libelle"]
+        zoneIdClient <- map["zoneIdClient"]
+        
         zones <- map["zones"]
         groupes <- map["groupes"]
-        directions <- map["directions"]
     }
     
     // *****************************************
@@ -66,13 +64,12 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     // *****************************************
     func encode(with aCoder: NSCoder)
     {
-        aCoder.encode(countryId, forKey: "countryId")
-        aCoder.encode(countryLib, forKey: "countryLib")
-        aCoder.encode(countryZoneCode, forKey: "countryZoneCode")
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(libelle, forKey: "libelle")
+        aCoder.encode(zoneIdClient, forKey: "zoneIdClient")
+        
         aCoder.encode(zones, forKey: "zones")
         aCoder.encode(groupes, forKey: "groupes")
-        aCoder.encode(hasDr, forKey: "hasDr")
-        aCoder.encode(directions, forKey: "directions")
     }
     
     // *****************************************
@@ -82,13 +79,12 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     // *****************************************
     required init(coder decoder: NSCoder) {
         
-        self.countryId = decoder.decodeInt64(forKey: "countryId")
-        self.hasDr = decoder.decodeBool(forKey: "hasDr")
-        self.countryLib = decoder.decodeObject(forKey: "countryLib") as? String ?? ""
-        self.countryZoneCode = decoder.decodeObject(forKey: "countryZoneCode") as? String ?? ""
+        self.id = decoder.decodeInt64(forKey: "id")
+        self.libelle = decoder.decodeObject(forKey: "libelle") as? String ?? ""
+        self.zoneIdClient = decoder.decodeObject(forKey: "zoneIdClient") as? String ?? ""
+        
         self.zones = decoder.decodeObject(forKey: "zones") as? [Zone] ?? [Zone] ()
         self.groupes = decoder.decodeObject(forKey: "groupes") as? [Groupe] ?? [Groupe]()
-        self.directions = decoder.decodeObject(forKey: "directions") as? [Direction] ?? [Direction]()
         
     }
 }
