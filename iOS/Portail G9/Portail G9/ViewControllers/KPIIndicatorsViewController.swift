@@ -20,6 +20,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     var categorie : Categorie = Categorie();
     var groupe : GroupeKPI = GroupeKPI();
     
+    
     @IBOutlet weak var collectioViewKPI: UICollectionView!
     @IBOutlet weak var gridLayout: StickyGridCollectionViewLayout! {
         didSet {
@@ -146,7 +147,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         
         let dateSelectionView = DateSelectionView.instanceFromNib();
         dateSelectionView.setupDateSelectionView(delegateS: self, type: DateSelectionView.PICKER_DATE_DAY);
-        dateSelectionView.setPickerDate(date: Date());
+        dateSelectionView.setPickerDate(date: mSelectedDate);
         self.view.addSubview(dateSelectionView);
         dateSelectionView.center = CGPoint(x:self.view.bounds.size.width/2, y:self.view.bounds.size.height/2);
         dateSelectionView.showView();

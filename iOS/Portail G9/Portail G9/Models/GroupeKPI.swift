@@ -14,7 +14,7 @@ class GroupeKPI: NSObject, Mappable {
     var groupId   : Int64 = -1
     var groupLibelle   : String = ""
     var groupIcon   : String = ""
-    var groupCodeCouleur   : String = "#FF00F0"
+    var groupCodeCouleur   : String = "#FFFFFF"
     //******
     //******
     //******
