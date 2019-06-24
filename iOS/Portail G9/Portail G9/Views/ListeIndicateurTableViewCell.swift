@@ -51,7 +51,7 @@ class ListeIndicateurTableViewCell: UITableViewCell {
         // Initialization code
         if(iconImage != nil)
         {
-            iconImage.layer.cornerRadius = 10
+            iconImage.layer.cornerRadius = iconImage.frame.width / 2.0
             iconImage.clipsToBounds = true
         }
     }

@@ -61,7 +61,7 @@ class AccountViewController: UIViewController {
                     attributedText.append(NSAttributedString(string: (user.user_roles[i]), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 15)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), NSAttributedString.Key.backgroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)]))
                 }else
                 {
-                    attributedText.append(NSAttributedString(string: (user.user_roles[i]), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 15)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)]))
+                    attributedText.append(NSAttributedString(string: (user.user_roles[i]), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 15)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]))
                 }
             }
             
