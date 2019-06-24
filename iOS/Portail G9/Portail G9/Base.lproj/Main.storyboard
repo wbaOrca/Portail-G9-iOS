@@ -959,8 +959,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noK-j5-orM">
+                                                    <rect key="frame" x="60" y="0.0" width="1.5" height="59.5"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1.5" id="PhJ-3S-hhl"/>
+                                                    </constraints>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIv-iN-Q7X">
-                                                    <rect key="frame" x="60" y="0.0" width="2" height="59.5"/>
+                                                    <rect key="frame" x="60" y="5" width="2" height="49.5"/>
                                                     <color key="backgroundColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="2" id="G23-5K-tcB"/>
@@ -990,21 +997,25 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="noK-j5-orM" secondAttribute="bottom" id="0rS-yN-86x"/>
+                                                <constraint firstItem="noK-j5-orM" firstAttribute="top" secondItem="9nS-wW-wPH" secondAttribute="top" id="25K-bL-PeS"/>
                                                 <constraint firstItem="hlg-JJ-kfd" firstAttribute="centerY" secondItem="9nS-wW-wPH" secondAttribute="centerY" id="9oL-sf-RWd"/>
                                                 <constraint firstItem="Efo-Y4-HCw" firstAttribute="centerY" secondItem="9nS-wW-wPH" secondAttribute="centerY" id="Bsn-U7-3wV"/>
                                                 <constraint firstItem="mUq-xl-8A7" firstAttribute="centerY" secondItem="9nS-wW-wPH" secondAttribute="centerY" id="F7r-CF-0N0"/>
                                                 <constraint firstItem="hlg-JJ-kfd" firstAttribute="leading" secondItem="NIv-iN-Q7X" secondAttribute="trailing" constant="5" id="RAb-a1-ZWC"/>
                                                 <constraint firstItem="Efo-Y4-HCw" firstAttribute="leading" secondItem="hlg-JJ-kfd" secondAttribute="trailing" constant="10" id="T7C-0w-5ac"/>
                                                 <constraint firstItem="mUq-xl-8A7" firstAttribute="leading" secondItem="Efo-Y4-HCw" secondAttribute="trailing" constant="2" id="dCR-9m-7nM"/>
-                                                <constraint firstItem="NIv-iN-Q7X" firstAttribute="top" secondItem="9nS-wW-wPH" secondAttribute="top" id="dsK-rz-9uX"/>
+                                                <constraint firstItem="NIv-iN-Q7X" firstAttribute="top" secondItem="9nS-wW-wPH" secondAttribute="top" constant="5" id="dsK-rz-9uX"/>
                                                 <constraint firstAttribute="trailing" secondItem="mUq-xl-8A7" secondAttribute="trailing" constant="2" id="fmA-lC-vAB"/>
                                                 <constraint firstItem="NIv-iN-Q7X" firstAttribute="leading" secondItem="9nS-wW-wPH" secondAttribute="leading" constant="60" id="uRh-hN-Sn1"/>
-                                                <constraint firstAttribute="bottom" secondItem="NIv-iN-Q7X" secondAttribute="bottom" id="uty-x5-Otx"/>
+                                                <constraint firstAttribute="bottom" secondItem="NIv-iN-Q7X" secondAttribute="bottom" constant="5" id="uty-x5-Otx"/>
+                                                <constraint firstItem="noK-j5-orM" firstAttribute="leading" secondItem="9nS-wW-wPH" secondAttribute="leading" constant="60" id="yd1-Ie-2Zu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="iconImage" destination="hlg-JJ-kfd" id="FUn-C5-jSC"/>
+                                            <outlet property="separatorView" destination="NIv-iN-Q7X" id="2bE-v2-VEF"/>
                                             <outlet property="titleLabel" destination="Efo-Y4-HCw" id="Sf5-je-S2j"/>
                                         </connections>
                                     </tableViewCell>

@@ -14,7 +14,7 @@ class GroupeKPI: NSObject, Mappable {
     var groupId   : Int64 = -1
     var groupLibelle   : String = ""
     var groupIcon   : String = ""
-    
+    var groupCodeCouleur   : String = "#FF00F0"
     //******
     //******
     //******
@@ -40,6 +40,6 @@ class GroupeKPI: NSObject, Mappable {
         groupId <- map["groupId"]
         groupLibelle <- map["groupLibelle"]
         groupIcon <- map["groupIcon"]
-        
+        groupCodeCouleur <- map["groupCodeCouleur"]
     }
 }

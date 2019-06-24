@@ -16,13 +16,14 @@ class ListeGroupesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var separatorView: UIView!
     // ***********************************
     // ***********************************
     // ***********************************
     func setupGroupeCell(groupe : GroupeKPI)
     {
         titleLabel.text = groupe.groupLibelle
+        separatorView.backgroundColor = UIColor.init(hex: groupe.groupCodeCouleur)
     }
     
     // ***********************************
