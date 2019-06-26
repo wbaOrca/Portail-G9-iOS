@@ -35,9 +35,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     //**********
     //**********
     //**********
-    func setupCell_2(icon_image: String, titre : String)
+    func setupCell_2(icon_image: String,icon_highlight: String, titre : String)
     {
         imageIcon.image = UIImage(named: icon_image)
+        imageIcon.highlightedImage =  UIImage(named: icon_highlight)
         labelTitre.text = titre
      }
     

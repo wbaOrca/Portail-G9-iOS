@@ -398,33 +398,34 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     
     var titre = ""
     var imageName = ""
-   
+   var imageHighlight = ""
+        
     cell.setupBadge(badge: 0)
     
     switch indexPath.row {
     case 0:
     titre = "Mes indicateurs"
     imageName = "ic_indicators"
-    
+    imageHighlight = "ic_indicators_highlighted"
     break;
         
     case 1:
     titre = "Mes Piliers"
     imageName = "ic_piliers"
-   
+   imageHighlight = "ic_piliers_hilighted"
     
     break;
         
     case 2:
     titre = "To Do List"
     imageName = "ic_to_do_list"
-   
+   imageHighlight = "ic_to_do_list_highlighted"
     break;
         
     case 3:
     titre = "Agenda"
     imageName = "ic_agenda"
-   
+   imageHighlight = "ic_agenda_highlighted"
     
     
     
@@ -434,7 +435,7 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     }
    
     
-    cell.setupCell_2(icon_image: imageName,titre: titre)
+    cell.setupCell_2(icon_image: imageName,icon_highlight: imageHighlight,titre: titre)
     cell.backgroundColor = .clear
     
     return cell
