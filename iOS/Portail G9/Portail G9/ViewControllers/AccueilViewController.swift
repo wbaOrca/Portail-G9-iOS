@@ -102,7 +102,11 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         if(!isSynchronisedData)
         {
             self.syncroniseData()
+        }else
+        {
+            menuCollectionView.reloadData()
         }
+        
     }
 
     
@@ -418,8 +422,8 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     break;
         
     case 3:
-    titre = "A venir"
-    imageName = "ic_params"
+    titre = "Agenda"
+    imageName = "ic_agenda"
    
     
     

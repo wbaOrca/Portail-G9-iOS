@@ -45,7 +45,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         
         self.textFieldLogin?.placeholder = "Identifient"
         self.textFieldPassword?.placeholder = "Mot de passe"
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         
         buttonConnexion.layer.cornerRadius = 5
         buttonConnexion.clipsToBounds = true
