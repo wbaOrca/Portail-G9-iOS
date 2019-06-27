@@ -554,4 +554,25 @@ extension UIColor {
 // ++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++
-
+struct CustomLanguage {
+    
+    func createBundlePath () -> Bundle {
+        
+        //recover the language chosen by the user (in my case, from UserDefaults)
+        var lang = "en-GB"
+        let preferences = UserDefaults.standard
+        let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
+        if(langueData_ != nil){
+            if let langue_ = NSKeyedUnarchiver.unarchiveObject(with: langueData_!)  {
+                
+                let langue = langue_ as! Langue
+                lang = langue.languageCode;
+                
+            }
+        }
+        lang = lang.replacingOccurrences(of: "_", with: "-")
+        let selectedLanguage = lang
+        let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
+        return Bundle(path: path!)!
+    }
+}

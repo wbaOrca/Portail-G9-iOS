@@ -23,6 +23,14 @@ class ListeCategoriesTableViewCell: UITableViewCell {
     func setupCategorieCell(categorie : Categorie)
     {
         titleLabel.text = categorie.categoryLibelle
+        if(categorie.categoryIcone.count > 0)
+        {
+            let urlImageAsString = Version.URL_PREFIX_IMAGES_PORTAIL_G9 + categorie.categoryIcone 
+            iconImage.sd_setImage(with: URL(string: urlImageAsString), placeholderImage: UIImage(named: "ic_menu"))
+        }else
+        {
+            iconImage.image = nil
+        }
     }
     
     

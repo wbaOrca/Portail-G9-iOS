@@ -37,7 +37,7 @@
 "Actions commerciales" = "Akcje komercyjne";
 "Forces Terrains" = "Siły lądowe";
 "Agenda" = "Agenda";
-"Todo list" = "Lista rzeczy do zrobienia";
+"Todo_list" = "Lista rzeczy do zrobienia";
 "Relevé de décisions" = "Zapis decyzji";
 "Escalation Process" = "Proces eskalacji";
 "Reporting" = "Raportowanie";
@@ -46,3 +46,4 @@
 "Se déconnecter" = "Rozłącz";
 
 "Piliers" = "Piliers";
+"Mes_Piliers" = "Mes Piliers";

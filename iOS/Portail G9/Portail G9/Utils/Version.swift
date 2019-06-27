@@ -18,6 +18,7 @@ class Version: NSObject {
     
     public static let URL_PORTAIL_G9 = "https://dpmw-r7-skin.orcaformation.com" //"https://driverg9.dcs2.renault.com" // //
     public static let URL_WS_PORTAIL_G9 = "https://dpmw-r7-skin.orcaformation.com/api" //"https://driverg9.dcs2.renault.com/api" // //
+    public static let URL_PREFIX_IMAGES_PORTAIL_G9 = "https://dpmw-r7-skin.orcaformation.com/assets/icons/"
     
     public static let URL_INSTALL_PORTAIL_G9 = "https://app.orcaformation.com/Renault/G9/r7/driver_g9_install.html"
     

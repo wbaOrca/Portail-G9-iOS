@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "582815804.738223"
+            filePath = "Portail G9/ViewControllers/ListeCategoriesViewController.swift"
+            timestampString = "583331429.561251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2100"
-            endingLineNumber = "2100"
-            landmarkName = "targetQuestionsPilier(delegate:idQuestionPilier:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Portail G9/Models/KPI.swift"
-            timestampString = "582733512.515703"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "translateIndicateurKPISectionToArrayString(arrayKPI:)"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,44 +25,60 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "582815804.738749"
+            filePath = "Portail G9/ViewControllers/ListeGroupesViewController.swift"
+            timestampString = "583337986.331864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
-            landmarkName = "getIndicateurKPIsData(delegate:groupe_id:date:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "583338321.735302"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
+            landmarkName = "getGroupesKPIData(delegate:categorie_id:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static Portail_G9.WSQueries.getIndicateurKPIsData(delegate: Portail_G9.WSGetIndicateursKPIsDelegate, groupe_id: Swift.Int64, date: Foundation.Date) -&gt; ()"
+                  symbolName = "static Portail_G9.WSQueries.getGroupesKPIData(delegate: Portail_G9.WSGetGroupesKPIDelegate, categorie_id: Swift.Int64) -&gt; ()"
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "582731553.847452"
+                  timestampString = "583338322.109103"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "799"
-                  endingLineNumber = "799"
-                  offsetFromSymbolStart = "3364">
+                  startingLineNumber = "720"
+                  endingLineNumber = "720"
+                  offsetFromSymbolStart = "2953">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static Portail_G9.WSQueries.getIndicateurKPIsData(delegate: Portail_G9.WSGetIndicateursKPIsDelegate, groupe_id: Swift.Int64, date: Foundation.Date) -&gt; ()"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static Portail_G9.WSQueries.getGroupesKPIData(delegate: Portail_G9.WSGetGroupesKPIDelegate, categorie_id: Swift.Int64) -&gt; ()"
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "582731553.8493201"
+                  timestampString = "583338322.111432"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "770"
-                  endingLineNumber = "770"
-                  offsetFromSymbolStart = "53">
+                  startingLineNumber = "696"
+                  endingLineNumber = "696"
+                  offsetFromSymbolStart = "45">
                </Location>
             </Locations>
          </BreakpointContent>

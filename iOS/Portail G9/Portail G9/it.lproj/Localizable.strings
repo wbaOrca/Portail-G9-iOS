@@ -22,8 +22,8 @@
 "Groupe" = "Group" ;
 "Affaire" = "Dealer";
 
-"Indicateurs" = "Indicators";
-"Vente" = "Sales";
+"Indicateurs" = "Indicatori";
+"Vente" = "VENDITE";
 "Après ventes" = "After sales";
 "Clients" = "Customers";
 "Image de marque" = "Branding";
@@ -36,7 +36,7 @@
 "Actions commerciales" = "Commercial Actions";
 "Forces Terrains" = "Land Forces";
 "Agenda" = "Agenda";
-"Todo_list" = "Todo list";
+"Todo_list" = "LISTA DI COSE DA FARE";
 "Relevé de décisions" = "Record of decisions";
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
@@ -45,5 +45,4 @@
 "Se déconnecter" = "Disconnect";
 
 "Piliers" = "Piliers";
-"Mes_Piliers" = "Mes Piliers";
-
+"Mes_Piliers" = "RAGNATELA";

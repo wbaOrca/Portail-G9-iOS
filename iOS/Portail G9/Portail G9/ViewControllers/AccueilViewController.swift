@@ -16,6 +16,7 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
 
+    
     var isSynchronisedData = false;
     
     @IBOutlet weak var labelWelcome: UILabel!
@@ -66,7 +67,9 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         if let layout = menuCollectionView?.collectionViewLayout as? MenuLayout {
             layout.delegate = self
         }
+       
         
+
     }
     
     // ***********************************
@@ -393,52 +396,56 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     // ***********************************
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
-    
-    var titre = ""
-    var imageName = ""
-   var imageHighlight = ""
         
-    cell.setupBadge(badge: 0)
-    
-    switch indexPath.row {
-    case 0:
-    titre = "Mes indicateurs"
-    imageName = "ic_indicators"
-    imageHighlight = "ic_indicators_highlighted"
-    break;
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         
-    case 1:
-    titre = "Mes Piliers"
-    imageName = "ic_piliers"
-   imageHighlight = "ic_piliers_hilighted"
-    
-    break;
+        var titre = ""
+        var imageName = ""
+        var imageHighlight = ""
         
-    case 2:
-    titre = "To Do List"
-    imageName = "ic_to_do_list"
-   imageHighlight = "ic_to_do_list_highlighted"
-    break;
+        cell.setupBadge(badge: 0)
         
-    case 3:
-    titre = "Agenda"
-    imageName = "ic_agenda"
-   imageHighlight = "ic_agenda_highlighted"
-    
-    
-    
-    break;
-    default:
-    break;
-    }
-   
-    
-    cell.setupCell_2(icon_image: imageName,icon_highlight: imageHighlight,titre: titre)
-    cell.backgroundColor = .clear
-    
-    return cell
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        
+        
+        switch indexPath.row {
+        case 0:
+            titre = NSLocalizedString("Indicateurs", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") //"Mes indicateurs"
+            imageName = "ic_indicators"
+            imageHighlight = "ic_indicators_highlighted"
+            break;
+            
+        case 1:
+            titre = NSLocalizedString("Mes_Piliers", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")//"Mes Piliers"
+            imageName = "ic_piliers"
+            imageHighlight = "ic_piliers_hilighted"
+            
+            break;
+            
+        case 2:
+            titre = NSLocalizedString("Todo_list", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")//"To Do List"
+            imageName = "ic_to_do_list"
+            imageHighlight = "ic_to_do_list_highlighted"
+            break;
+            
+        case 3:
+            titre = NSLocalizedString("Agenda", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") //"Agenda"
+            imageName = "ic_agenda"
+            imageHighlight = "ic_agenda_highlighted"
+            
+            
+            
+            break;
+        default:
+            break;
+        }
+        
+        
+        cell.setupCell_2(icon_image: imageName,icon_highlight: imageHighlight,titre: titre)
+        cell.backgroundColor = .clear
+        
+        return cell
     }
     // ***********************************
     // ***********************************

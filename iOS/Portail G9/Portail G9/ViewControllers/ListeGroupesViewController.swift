@@ -181,7 +181,7 @@ extension ListeGroupesViewController : UITableViewDelegate , UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderListeGroupesTableViewCell") as! ListeGroupesTableViewCell
         
-        cell.setupHeaderCell(title: self.categorie.categoryLibelle)
+        cell.setupHeaderCell(categ: self.categorie)
         return cell
     }
     

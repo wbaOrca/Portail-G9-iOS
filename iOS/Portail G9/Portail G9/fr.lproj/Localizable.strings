@@ -23,7 +23,7 @@
 "Affaire" = "Affaire";
 
 
-"Indicateurs" = "Indicateurs";
+"Indicateurs" = "Mes indicateurs";
 "Vente" = "Vente";
 "Après ventes" = "Après ventes";
 "Clients" = "Clients";
@@ -37,7 +37,7 @@
 "Actions commerciales" = "Actions commerciales";
 "Forces Terrains" = "Forces Terrains";
 "Agenda" = "Agenda";
-"Todo list" = "Todo list";
+"Todo_list" = "Todo list";
 "Relevé de décisions" = "Relevé de décisions";
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
@@ -46,4 +46,4 @@
 "Se déconnecter" = "Se déconnecter";
 
 "Piliers" = "Piliers";
-
+"Mes_Piliers" = "Mes Piliers";

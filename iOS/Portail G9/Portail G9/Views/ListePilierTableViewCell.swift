@@ -26,7 +26,7 @@ class ListePilierTableViewCell: UITableViewCell {
         
         //let color = UIColor.init(name: pilier.pilierStatut)
         let color = UIColor.init(hex: pilier.pilierStatutCodeCouleur)
-        iconImage.layer.borderWidth = 3
+        iconImage.layer.borderWidth = 2
         iconImage.layer.borderColor = color!.cgColor
         
     }

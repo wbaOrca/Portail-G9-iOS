@@ -45,8 +45,8 @@ class KPICollectionViewCell: UICollectionViewCell {
             }
         }else if(indicateur.isColonneLigne)
         {
-            self.backgroundColor = #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)
-            titleLabel.textColor = .white
+            self.backgroundColor = #colorLiteral(red: 1, green: 0.8298398852, blue: 0.2543682456, alpha: 1)
+            titleLabel.textColor = .black
         }else
         {
             self.backgroundColor = .clear

@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     let gcmMessageIDKey = "body"
     let subscriptionTopic = "global"
 
+    var customApplicationLang = CustomLanguage()
+    
     // ***********************************
     // ***********************************
     // ***********************************

@@ -77,7 +77,24 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     {
         labelIndicateur.text = familleLibelle
         labelcategorie.text = categorie.categoryLibelle
+        if(categorie.categoryIcone.count > 0)
+        {
+            let urlImageAsString = Version.URL_PREFIX_IMAGES_PORTAIL_G9 + categorie.categoryIcone
+            iconCategorie.sd_setImage(with: URL(string: urlImageAsString), placeholderImage: UIImage(named: "ic_menu"))
+        }else
+        {
+            iconCategorie.image = nil
+        }
+        
         labelGroupe.text = groupe.groupLibelle
+        if(groupe.groupIcon.count > 0)
+        {
+            let urlImageAsString = Version.URL_PREFIX_IMAGES_PORTAIL_G9 + groupe.groupIcon
+            iconGroupe.sd_setImage(with: URL(string: urlImageAsString), placeholderImage: UIImage(named: "ic_groupe"))
+        }else
+        {
+            iconGroupe.image = nil
+        }
     }
     
     // ***********************************

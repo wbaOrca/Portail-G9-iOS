@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  Portail G9
-
-  Created by WBA_ORCA on 29/01/2019.
-  Copyright © 2019 Orcaformation. All rights reserved.
-*/
+/*
+ Localizable.strings
+ Portail G9
+ 
+ Created by WBA_ORCA on 29/01/2019.
+ Copyright © 2019 Orcaformation. All rights reserved.
+ */
 
 "Welcome_in" = "Welcome\nin";
 "Hello" = "Hello";
@@ -46,4 +46,5 @@
 
 "Piliers" = "Piliers";
 "Mes_Piliers" = "Mes Piliers";
+
 
