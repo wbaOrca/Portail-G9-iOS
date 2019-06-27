@@ -564,7 +564,12 @@ class FiltreMenuViewController: UIViewController {
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
-        let array = (selectedPays.hasDr == false) ? selectedPays.zones :  selectedDR.zones
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var array = (selectedPays.hasDr == false) ? selectedPays.zones :  selectedDR.zones
+        let zone = Zone()
+        zone.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        zone.id = -1 ;
+        array.insert(zone, at: 0);
         
         let selectionMenu =  RSSelectionMenu(dataSource: array) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
@@ -602,12 +607,25 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedZone.count > 0)
             {
                 let zone_ = self.arrayOfSelectedZone[0]
-                if(selectedPays.hasDr == false)
+                if(zone_.id != -1)
                 {
-                    self.arrayFiltres[2] = zone_.libelle
-                }else
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[2] = zone_.libelle
+                    }else
+                    {
+                        self.arrayFiltres[3] = zone_.libelle
+                    }
+                }else // toutes les zones
                 {
-                    self.arrayFiltres[3] = zone_.libelle
+                    self.arrayOfSelectedZone.removeAll()
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[2] =  NSLocalizedString("Zone", comment: "-")
+                    }else
+                    {
+                        self.arrayFiltres[3] =  NSLocalizedString("Zone", comment: "-")
+                    }
                 }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
