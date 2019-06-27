@@ -28,6 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // ***********************************
     // ***********************************
     // ***********************************
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    // ***********************************
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         

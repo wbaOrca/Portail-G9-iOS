@@ -22,21 +22,21 @@
 "Groupe" = "Group" ;
 "Affaire" = "Dealer";
 
-"Indicateurs" = "Indicators";
+"Indicateurs" = "Indikatoren";
 "Vente" = "Sales";
 "Après ventes" = "After sales";
 "Clients" = "Customers";
 "Image de marque" = "Branding";
 "Process" = "Process";
 "Radars" = "Radars";
-"Piliers" = "Pillars";
+"Piliers" = "BASICS";
 "Plan d'action" = "Action Plan";
 "Plan d'action zone" = "Zone Action Plan";
 "Synthèse plan d'actions" = "Plan summary of actions";
 "Actions commerciales" = "Commercial Actions";
 "Forces Terrains" = "Land Forces";
 "Agenda" = "Agenda";
-"Todo_list" = "Todo list";
+"Todo_list" = "AUFGABENLISTE";
 "Relevé de décisions" = "Record of decisions";
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
@@ -44,5 +44,5 @@
 "Déconnexion" = "Disconnect";
 "Se déconnecter" = "Disconnect";
 
-"Piliers" = "Piliers";
-"Mes_Piliers" = "Mes Piliers";
+"Piliers" = "BASICS";
+"Mes_Piliers" = "BASICS";
