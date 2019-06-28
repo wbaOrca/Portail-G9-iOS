@@ -206,6 +206,18 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
                 arrayKPIs = array_;
                 self.arrayValuesOfCollection = KPI.translateIndicateurKPISectionToArrayGrid(arrayKPI: array_)
                 
+                if(data.lastDate.count > 0 && data.requstedDate.count > 0)
+                {
+                     if(data.requstedDate == data.lastDate)
+                    {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd-MM-yyyy"
+                        
+                        mSelectedDate = dateFormatter.date(from: data.lastDate)!
+                        dateButton.setTitle(data.lastDate, for: .normal)
+                    }
+                }
+                
                 DispatchQueue.main.async {
                     self.collectioViewKPI.reloadData()
                 }

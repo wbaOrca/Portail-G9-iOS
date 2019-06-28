@@ -124,6 +124,7 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(board!.tasks[indexPath.row].taskTitle)"
+        cell.textLabel?.backgroundColor = .clear
         
         let couleur_string = board!.boardColor
         cell.backgroundColor =  UIColor.init(hexString: couleur_string)

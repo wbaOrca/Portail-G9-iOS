@@ -26,12 +26,12 @@ class ListeIndicateurTableViewCell: UITableViewCell {
         titleLabel.text = indictauer.title
         if(indictauer.isAutoChecked)
         {
-            iconImage.backgroundColor = #colorLiteral(red: 0.7919282317, green: 0.1277886331, blue: 0.07557370514, alpha: 1)
+            iconImage.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         }else if(indictauer.isChecked)
         {
-            iconImage.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            iconImage.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.5098039216, blue: 0.07450980392, alpha: 1)
         }else{
-            iconImage.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            iconImage.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.9725490196, blue: 0.2509803922, alpha: 1)
         }
     }
     // ***********************************

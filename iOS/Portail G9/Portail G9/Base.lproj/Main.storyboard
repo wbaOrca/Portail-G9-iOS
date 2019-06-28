@@ -832,14 +832,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mLF-RX-9vy">
-                                                    <rect key="frame" x="10" y="13" width="14" height="14"/>
+                                                    <rect key="frame" x="10" y="14" width="12" height="12"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="A04-yM-rqs"/>
-                                                        <constraint firstAttribute="width" constant="14" id="tOG-pt-aaE"/>
+                                                        <constraint firstAttribute="height" constant="12" id="A04-yM-rqs"/>
+                                                        <constraint firstAttribute="width" constant="12" id="tOG-pt-aaE"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt2-tr-kST">
-                                                    <rect key="frame" x="39" y="11.5" width="311" height="16.5"/>
+                                                    <rect key="frame" x="37" y="11.5" width="313" height="16.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

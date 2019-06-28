@@ -16,7 +16,8 @@ class DataKPIsWSResponse: NSObject ,Mappable {
     var description_ : String = ""
     
     var kpiArray : [KPI]! = nil
-    
+    var lastDate : String = ""
+    var requstedDate : String = ""
     //******
     //******
     //******
@@ -43,7 +44,8 @@ class DataKPIsWSResponse: NSObject ,Mappable {
         code <- map["code"]
         description_ <- map["description"]
         kpiArray <- map["data"]
-        
+        lastDate <- map["lastDate"]
+        requstedDate <- map["requstedDate"]
     }
     
 }
