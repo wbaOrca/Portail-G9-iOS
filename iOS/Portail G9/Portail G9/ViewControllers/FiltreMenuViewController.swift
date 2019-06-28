@@ -312,6 +312,7 @@ class FiltreMenuViewController: UIViewController {
             arrayAffaire = groupe_selected.dealers
         }
         
+       
         
         if(arrayAffaire.count == 0 )
         {
@@ -322,6 +323,13 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let dealer = Dealer()
+        dealer.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        dealer.id = -1 ;
+        arrayAffaire.insert(dealer, at: 0);
+        
         // Show menu with datasource array - Default SelectionType = Single
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
@@ -349,14 +357,27 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedAffaire.count > 0)
             {
                 let dealer_ = self.arrayOfSelectedAffaire[0]
+                let selectedPays = self.arrayOfSelectedPays[0];
                 
-                 let selectedPays = self.arrayOfSelectedPays[0];
-                if(selectedPays.hasDr == false)
-                {
-                    self.arrayFiltres[4] = dealer_.libelle
+                if(dealer_.id != -1) {
+                    
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[4] = dealer_.libelle
+                    }else
+                    {
+                        self.arrayFiltres[5] = dealer_.libelle
+                    }
                 }else
                 {
-                    self.arrayFiltres[5] = dealer_.libelle
+                    self.arrayOfSelectedAffaire.removeAll()
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+                    }else
+                    {
+                        self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+                    }
                 }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
@@ -438,7 +459,12 @@ class FiltreMenuViewController: UIViewController {
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
-        let array = (selectedPays.hasDr == false) ? selectedPays.groupes :  selectedDR.groupes
+        var array = (selectedPays.hasDr == false) ? selectedPays.groupes :  selectedDR.groupes
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let grp = Groupe()
+        grp.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        grp.id = -1 ;
+        array.insert(grp, at: 0);
         
         let selectionMenu =  RSSelectionMenu(dataSource: array ) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
@@ -476,13 +502,27 @@ class FiltreMenuViewController: UIViewController {
             if(self.arrayOfSelectedGroupe.count > 0)
             {
                 let groupe_ = self.arrayOfSelectedGroupe[0]
-                if(selectedPays.hasDr == false)
+                if(groupe_.id != -1)
                 {
-                    self.arrayFiltres[3] = groupe_.libelle
-                }else
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[3] = groupe_.libelle
+                    }else
+                    {
+                        self.arrayFiltres[4] = groupe_.libelle
+                    }
+                }else // tous les groupes
                 {
-                    self.arrayFiltres[4] = groupe_.libelle
+                    self.arrayOfSelectedGroupe.removeAll()
+                    if(selectedPays.hasDr == false)
+                    {
+                        self.arrayFiltres[3] =  NSLocalizedString("Groupe", comment: "-")
+                    }else
+                    {
+                        self.arrayFiltres[4] =  NSLocalizedString("Groupe", comment: "-")
+                    }
                 }
+                
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }
@@ -564,8 +604,9 @@ class FiltreMenuViewController: UIViewController {
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         var array = (selectedPays.hasDr == false) ? selectedPays.zones :  selectedDR.zones
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let zone = Zone()
         zone.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
         zone.id = -1 ;
@@ -671,8 +712,14 @@ class FiltreMenuViewController: UIViewController {
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
+        var array = selectedPays.directions
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let dr = Direction()
+        dr.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        dr.id = -1 ;
+        array.insert(dr, at: 0);
         
-        let selectionMenu =  RSSelectionMenu(dataSource: selectedPays.directions ) { (cell, object, indexPath) in
+        let selectionMenu =  RSSelectionMenu(dataSource: array ) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
             // Change tint color (if needed)
             cell.tintColor = .orange
@@ -706,6 +753,12 @@ class FiltreMenuViewController: UIViewController {
             {
                 let dr_ = self.arrayOfSelectedDR[0]
                 self.arrayFiltres[2] = dr_.libelle
+                
+                if(dr_.id == -1)//tout
+                {
+                    self.arrayOfSelectedDR.removeAll()
+                    self.arrayFiltres[2] = NSLocalizedString("DR", comment: "-")
+                }
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                 }

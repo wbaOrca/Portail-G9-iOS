@@ -46,7 +46,7 @@ class Board: NSObject , Mappable  {
         boardType <- map["boardType"]
         boardTitle <- map["boardTitle"]
         boardColor <- map["boardColor"]
-        boardColor = boardColor + "FF"
+        boardColor = boardColor + "80"
         
         order <- map["order"]
         

@@ -20,7 +20,7 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
     var newBoard : Board = Board();
     var selectedcolor = UIColor.white {
         didSet {
-            newBoard.boardColor = "#" + selectedcolor.toHex()! + "FF"
+            newBoard.boardColor = "#" + selectedcolor.toHex()! + "80"
             }
     }
     
@@ -336,7 +336,7 @@ extension BoardCollectionViewController: ColorEditorViewControllerDelegate {
     func viewController(didEdit color: UIColor) {
         selectedcolor = color
         
-        let bgColor = "#" + selectedcolor.toHex()! + "FF"
+        let bgColor = "#" + selectedcolor.toHex()! + "80"
         self.newBoard.boardColor =  bgColor
         
         DispatchQueue.main.async {
