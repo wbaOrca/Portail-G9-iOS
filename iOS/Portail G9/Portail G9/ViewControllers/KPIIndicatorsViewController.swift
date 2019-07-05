@@ -62,12 +62,12 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         dateButton.setTitle(formatter.string(from: mSelectedDate), for: .normal)
-        
+        /*
         dateButton.layer.borderColor = #colorLiteral(red: 0.9653237462, green: 0.700186789, blue: 0.1992127001, alpha: 1) ;
         dateButton.layer.borderWidth = 1.5;
         dateButton.layer.cornerRadius = 5.0;
         dateButton.clipsToBounds = true;
-        
+        */
         setupData()
     }
     // ***********************************

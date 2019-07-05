@@ -1113,7 +1113,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.64000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="d1u-c3-BEd" firstAttribute="leading" secondItem="znS-9a-dnj" secondAttribute="leading" constant="5" id="RfW-O7-4UD"/>
                                             <constraint firstAttribute="bottom" secondItem="YXt-xQ-HPA" secondAttribute="bottom" constant="5" id="TAj-av-s0b"/>
@@ -1142,7 +1142,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BXr-Md-vSU" secondAttribute="trailing" constant="5" id="0ca-UQ-syf"/>
                                             <constraint firstItem="BXr-Md-vSU" firstAttribute="top" secondItem="T9Y-Ji-ngJ" secondAttribute="top" constant="2" id="Cpg-PQ-xyU"/>
@@ -1162,12 +1162,27 @@
                                     <constraint firstAttribute="height" constant="34" id="bDN-qf-zkh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="190" maxY="0.0"/>
-                                <state key="normal" title="Date" image="ic_calendar">
+                                <state key="normal" title="Date">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ubB-yy-mlq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-vN-4Ia">
+                                <rect key="frame" x="327.5" y="215" width="34" height="34"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="EuP-em-y9l"/>
+                                    <constraint firstAttribute="width" constant="34" id="qhU-Dk-qDa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" backgroundImage="agenda_btn">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ydh-Oz-d2z"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oqO-Ym-jgv">
@@ -1239,18 +1254,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="fru-Z5-x39" secondAttribute="trailing" id="04Z-LP-o7P"/>
+                            <constraint firstItem="ktb-vN-4Ia" firstAttribute="centerY" secondItem="Mat-UV-FLc" secondAttribute="centerY" id="1Rj-zc-ENu"/>
                             <constraint firstItem="Mat-UV-FLc" firstAttribute="top" secondItem="55M-cf-Nkr" secondAttribute="bottom" constant="3" id="CR1-X3-g5H"/>
-                            <constraint firstItem="Mat-UV-FLc" firstAttribute="centerX" secondItem="9Lz-X8-QGC" secondAttribute="centerX" id="Nyr-Lx-nB1"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="bottom" secondItem="fru-Z5-x39" secondAttribute="bottom" id="QhI-pk-tP8"/>
                             <constraint firstItem="55M-cf-Nkr" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" constant="10" id="R7D-Oc-mR8"/>
                             <constraint firstItem="oqO-Ym-jgv" firstAttribute="top" secondItem="Mat-UV-FLc" secondAttribute="bottom" constant="1" id="U36-bA-n1A"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="bottom" secondItem="oqO-Ym-jgv" secondAttribute="bottom" id="a6p-ew-NYb"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="oqO-Ym-jgv" secondAttribute="trailing" id="aDy-pe-IHd"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="55M-cf-Nkr" secondAttribute="trailing" constant="10" id="ht7-0x-ldc"/>
+                            <constraint firstItem="Mat-UV-FLc" firstAttribute="centerX" secondItem="9Lz-X8-QGC" secondAttribute="centerX" id="nOk-Ui-icd"/>
                             <constraint firstItem="fru-Z5-x39" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" id="tbT-He-Ufd"/>
                             <constraint firstItem="55M-cf-Nkr" firstAttribute="top" secondItem="9Lz-X8-QGC" secondAttribute="top" constant="6" id="vqE-hb-zYV"/>
                             <constraint firstItem="oqO-Ym-jgv" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" id="xcq-xi-j8A"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="top" secondItem="fru-Z5-x39" secondAttribute="top" id="zM7-S7-gFo"/>
+                            <constraint firstItem="ktb-vN-4Ia" firstAttribute="leading" secondItem="Mat-UV-FLc" secondAttribute="trailing" id="zT5-zo-ju8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Lz-X8-QGC"/>
                     </view>
@@ -2962,11 +2979,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="agenda_btn" width="45" height="43"/>
         <image name="arrow_famille" width="144" height="144"/>
         <image name="bg_g9" width="623" height="779"/>
         <image name="ic_account" width="128" height="128"/>
         <image name="ic_arrow_filter" width="144" height="144"/>
-        <image name="ic_calendar" width="45" height="34"/>
         <image name="image_file" width="512" height="512"/>
     </resources>
 </document>
