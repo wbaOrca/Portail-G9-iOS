@@ -16,6 +16,7 @@ class ListePilierTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
     
     // ***********************************
     // ***********************************
@@ -26,8 +27,7 @@ class ListePilierTableViewCell: UITableViewCell {
         
         //let color = UIColor.init(name: pilier.pilierStatut)
         let color = UIColor.init(hex: pilier.pilierStatutCodeCouleur)
-        iconImage.layer.borderWidth = 2
-        iconImage.layer.borderColor = color!.cgColor
+        separatorView.backgroundColor = color
         
     }
     

@@ -40,6 +40,8 @@
 		FB44EEFC225601FC00C98638 /* ListePilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */; };
 		FB44EEFE225602FB00C98638 /* ItemQuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */; };
 		FB44EF002256061100C98638 /* ListeQuestionPilierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */; };
+		FB4891A522D36D2B003B79E2 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4891A422D36D2B003B79E2 /* AgendaViewController.swift */; };
+		FB4891A822D36FBA003B79E2 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4891A722D36FBA003B79E2 /* Style.swift */; };
 		FB4A6A3622267731001AC448 /* BoardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */; };
 		FB4A6A3822267746001AC448 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3722267746001AC448 /* Board.swift */; };
 		FB4A6A3A22267758001AC448 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */; };
@@ -194,6 +196,8 @@
 		FB44EEFB225601FC00C98638 /* ListePilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListePilierTableViewCell.swift; sourceTree = "<group>"; };
 		FB44EEFD225602FB00C98638 /* ItemQuestionPilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuestionPilier.swift; sourceTree = "<group>"; };
 		FB44EEFF2256061100C98638 /* ListeQuestionPilierTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeQuestionPilierTableViewCell.swift; sourceTree = "<group>"; };
+		FB4891A422D36D2B003B79E2 /* AgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
+		FB4891A722D36FBA003B79E2 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewController.swift; sourceTree = "<group>"; };
 		FB4A6A3722267746001AC448 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		FB4A6A3922267758001AC448 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 		FB0E0F772200477B0043E345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FB4891A622D36FBA003B79E2 /* YMCalendar */,
 				FB02ACE82236993600843B66 /* ColorPicker */,
 				FB4A6A3B22267DCB001AC448 /* AAInfographics */,
 				FBE2EC652201EFD9004B44DF /* LeftMenu */,
@@ -420,6 +425,7 @@
 				FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */,
 				FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */,
 				FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */,
+				FB4891A422D36D2B003B79E2 /* AgendaViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -437,6 +443,14 @@
 				FB646A00221189A100084D7F /* WSQueries.swift */,
 			);
 			path = WSQueries;
+			sourceTree = "<group>";
+		};
+		FB4891A622D36FBA003B79E2 /* YMCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				FB4891A722D36FBA003B79E2 /* Style.swift */,
+			);
+			path = YMCalendar;
 			sourceTree = "<group>";
 		};
 		FB4A6A3B22267DCB001AC448 /* AAInfographics */ = {
@@ -767,6 +781,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/WeScan/WeScan.framework",
+				"${BUILT_PRODUCTS_DIR}/YMCalendar/YMCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -787,6 +802,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WeScan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YMCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -890,12 +906,14 @@
 				FBCDF9DC22086FE200BDA0F8 /* FiltreMenuViewController.swift in Sources */,
 				FB70A4952292AC670041E090 /* AccueilViewController.swift in Sources */,
 				FB2F791B22B921E70039AF0B /* KPICategorieFamille.swift in Sources */,
+				FB4891A822D36FBA003B79E2 /* Style.swift in Sources */,
 				FB02ACF72236993600843B66 /* HSB.swift in Sources */,
 				FBE9EC3E222E5BB900D4F6A0 /* Tache.swift in Sources */,
 				FBF15B3921DFA8AB006A7341 /* Portail_G9.xcdatamodeld in Sources */,
 				FBE63E162212B3740027F6E2 /* DataUtilesWSResponse.swift in Sources */,
 				FB682DBD2211ADF3001DE572 /* DataUserResponseWSAuth.swift in Sources */,
 				FBE9EC48222E72F100D4F6A0 /* CommentaireTableViewCell.swift in Sources */,
+				FB4891A522D36D2B003B79E2 /* AgendaViewController.swift in Sources */,
 				FBD2AFEB2231513900D9D517 /* Comment.swift in Sources */,
 				FBE63E0C2212AA390027F6E2 /* Langue.swift in Sources */,
 				FB70A49B2292CFEF0041E090 /* AccountViewController.swift in Sources */,

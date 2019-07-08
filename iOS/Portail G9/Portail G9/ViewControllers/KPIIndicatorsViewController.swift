@@ -69,6 +69,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         dateButton.clipsToBounds = true;
         */
         setupData()
+        
     }
     // ***********************************
     // ***********************************

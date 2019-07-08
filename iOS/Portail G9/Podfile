@@ -29,6 +29,8 @@ target 'Portail G9' do
   pod 'WeScan'
   pod 'CropViewController'
   
+  pod 'YMCalendar'
+   
   
   target 'Portail G9Tests' do
     inherit! :search_paths

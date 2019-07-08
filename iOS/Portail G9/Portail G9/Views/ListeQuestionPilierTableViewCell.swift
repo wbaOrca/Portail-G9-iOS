@@ -26,8 +26,7 @@ class ListeQuestionPilierTableViewCell: UITableViewCell {
     {
         titleLabel.text = question_pilier.category
         mItem = question_pilier
-        
-        
+         
     }
     
     // ***********************************

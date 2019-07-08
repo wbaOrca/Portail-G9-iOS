@@ -204,7 +204,8 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
        
             if(planAActionId == 1)//Agenda
             {
-                
+                let agendaVC = self.storyboard?.instantiateViewController(withIdentifier: "AgendaViewController") as? AgendaViewController
+                self.navigationController?.pushViewController(agendaVC!, animated: true);
             }
             else if(planAActionId == 2) //ToDO List
             {
@@ -465,7 +466,8 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
         break;
     
     case 3:
-    
+        self.voirForceTerrainAction(planAActionId: 1)
+        break;
     break;
     
     default:

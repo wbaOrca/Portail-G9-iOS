@@ -77,6 +77,7 @@ PODS:
   - SDWebImage/Core (4.4.2)
   - SideMenu (4.0.0)
   - WeScan (0.9.1)
+  - YMCalendar (1.0)
 
 DEPENDENCIES:
   - AAInfographics
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - SDWebImage
   - SideMenu
   - WeScan
+  - YMCalendar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -123,6 +125,7 @@ SPEC REPOS:
     - SDWebImage
     - SideMenu
     - WeScan
+    - YMCalendar
 
 SPEC CHECKSUMS:
   AAInfographics: 10f87e06fc007a0adbb05de020e4a2fe3119f8de
@@ -150,7 +153,8 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   WeScan: 85518097ab11d38be3b3a6e0ae244d59bc8071b4
+  YMCalendar: 8be58de9b1363443db25a3e39bd3d38b91447e04
 
-PODFILE CHECKSUM: c7e40b178c7bfd261cde5599a01d65c5380a5379
+PODFILE CHECKSUM: f8c4f734cad4109e0981e84dae1b88984a64e1d3
 
 COCOAPODS: 1.5.3
