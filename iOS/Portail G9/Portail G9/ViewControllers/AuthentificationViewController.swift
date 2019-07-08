@@ -35,7 +35,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
         let bundleVersion      = appInfo["CFBundleVersion"] as! String
         let applicationVersion = shortVersionString + "." + bundleVersion
-        labelVersion.text =  Version.VERSION + " " + applicationVersion
+        labelVersion.text =  "        " + Version.VERSION + " " + applicationVersion 
         
         let attributedText = NSMutableAttributedString(string: NSLocalizedString("Welcome_in", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 26)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
         attributedText.append(NSAttributedString(string: (" Driver"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 30)!, NSAttributedString.Key.foregroundColor: UIColor.white]))

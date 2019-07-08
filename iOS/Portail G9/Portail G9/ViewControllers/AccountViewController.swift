@@ -36,7 +36,7 @@ class AccountViewController: UIViewController {
         let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
         let bundleVersion      = appInfo["CFBundleVersion"] as! String
         let applicationVersion = shortVersionString + "." + bundleVersion
-        labelVersion.text =  Version.VERSION + " " + applicationVersion
+        labelVersion.text =  "        " + Version.VERSION + " " + applicationVersion 
         
          let preferences = UserDefaults.standard
         let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
