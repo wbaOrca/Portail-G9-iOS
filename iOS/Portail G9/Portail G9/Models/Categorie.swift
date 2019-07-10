@@ -41,5 +41,6 @@ class Categorie: NSObject, Mappable {
         categoryLibelle <- map["categoryLibelle"]
         categoryIcone <- map["categoryIcone"]
         
+        categoryLibelle = categoryLibelle.uppercased()
     }
 }

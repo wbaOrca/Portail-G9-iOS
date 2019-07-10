@@ -29,7 +29,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         }
     }
     
-    @IBOutlet weak var labelIndicateur: UILabel!
+    @IBOutlet weak var buttonIndicateur: UIButton!
     
     @IBOutlet weak var labelcategorie: UILabel!
     @IBOutlet weak var iconCategorie: UIImageView!
@@ -62,21 +62,53 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         dateButton.setTitle(formatter.string(from: mSelectedDate), for: .normal)
-        /*
-        dateButton.layer.borderColor = #colorLiteral(red: 0.9653237462, green: 0.700186789, blue: 0.1992127001, alpha: 1) ;
-        dateButton.layer.borderWidth = 1.5;
-        dateButton.layer.cornerRadius = 5.0;
-        dateButton.clipsToBounds = true;
-        */
+        
         setupData()
         
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        self.getIndicateursKpisData()
+        
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func returnToIndicator(_ sender: Any) {
+        
+        let vcCategorie = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 4];
+        self.navigationController?.popToViewController(vcCategorie!, animated: true);
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func returnToGroupe(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func returnToCategorie(_ sender: Any) {
+        
+        let vcCategorie = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 3];
+        self.navigationController?.popToViewController(vcCategorie!, animated: true);
     }
     // ***********************************
     // ***********************************
     // ***********************************
     func setupData()
     {
-        labelIndicateur.text = familleLibelle
+        buttonIndicateur.setTitle(familleLibelle, for: .normal)
+        
         labelcategorie.text = categorie.categoryLibelle
         if(categorie.categoryIcone.count > 0)
         {
@@ -109,16 +141,6 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         
     }
     
-    // ***********************************
-    // ***********************************
-    // ***********************************
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-       
-       self.getIndicateursKpisData()
-       
-    }
     
     // ***********************************
     // ***********************************
@@ -293,7 +315,23 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
         return UICollectionReusableView()
     }
     
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(indexPath.section == 0 || indexPath.row == 0)
+        {
+            let indicateur = self.arrayValuesOfCollection[indexPath.section][indexPath.row]
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: NSLocalizedString("KPI", comment: "-"), message: indicateur.indicateurKPI.valeur, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return;
+            }
+        }
+    }
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++

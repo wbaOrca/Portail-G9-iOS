@@ -44,5 +44,7 @@ class GroupeKPI: NSObject, Mappable {
         groupIcon <- map["groupIcon"]
         status <- map["status"]
         marque <- map["marque"]
+        
+        groupLibelle = groupLibelle.uppercased()
     }
 }

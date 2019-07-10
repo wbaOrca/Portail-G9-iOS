@@ -52,13 +52,13 @@ class UpdateQuestionPilierViewController: UIViewController , NVActivityIndicator
         
         
         textViewCommentaire?.text = mQuestionPilier.commentaire
-        segmentValue?.selectedSegmentIndex = 0
+        segmentValue?.selectedSegmentIndex = 1
         if(mQuestionPilier.values.count > 0)
         {
             let monthQP = mQuestionPilier.values.last
             if(monthQP?.value == true)
             {
-                segmentValue?.selectedSegmentIndex = 1
+                segmentValue?.selectedSegmentIndex = 0
             }
         }
     }
@@ -155,7 +155,7 @@ extension UpdateQuestionPilierViewController : WSUpdateQuestionDelegate {
         
         DispatchQueue.main.async{
             var isOk = false
-            if(self.segmentValue?.selectedSegmentIndex == 1)
+            if(self.segmentValue?.selectedSegmentIndex == 0)
             {
                 isOk = true
             }

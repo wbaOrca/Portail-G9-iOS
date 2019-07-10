@@ -8,6 +8,15 @@
 
 import UIKit
 
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol EditQuestionPilierDelegate {
+    
+    func okNokQuestionPilier(qp : QuestionPilier , isOk : Bool)
+    func addCommentaireQuestionPilier(qp : QuestionPilier)
+    func planActionQuestionPilier(qp : QuestionPilier)
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -15,22 +24,29 @@ import UIKit
 class QuestionPilierTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var buttonPlanAction: UIButton!
+    @IBOutlet weak var buttonCommentaire: UIButton!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentaireLabel: UILabel!
     @IBOutlet weak var majLabel: UILabel!
     @IBOutlet weak var frequenceLabel: UILabel!
     @IBOutlet weak var cibleLabel: UILabel!
     
-    @IBOutlet weak var stackViewMonth: UIStackView!
+    @IBOutlet weak var segmentValue: UISegmentedControl?
+    
+    
     
     var qp : QuestionPilier = QuestionPilier()
+    var delegate : EditQuestionPilierDelegate! = nil
     
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupQuestionPilierCell(question_pilier : QuestionPilier)
+    func setupQuestionPilierCell(delegate : EditQuestionPilierDelegate ,question_pilier : QuestionPilier)
     {
         
+        self.delegate = delegate;
         self.qp = question_pilier ;
         
         titleLabel.text = question_pilier.libelle
@@ -40,10 +56,7 @@ class QuestionPilierTableViewCell: UITableViewCell {
         commentaireLabel.text = question_pilier.commentaire
         
         
-        //setup month
-        stackViewMonth.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        buttonPlanAction.isHidden = true
         cibleLabel.isHidden = true
         if(question_pilier.values.count > 0)
         {
@@ -52,36 +65,62 @@ class QuestionPilierTableViewCell: UITableViewCell {
             {
                 cibleLabel.isHidden = false
             }
-        }
-        for monthQP in question_pilier.values
-        {
             
-        
-            let labelMonth = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
-            labelMonth.layer.cornerRadius = 5
-            labelMonth.clipsToBounds = true
-            labelMonth.textColor = .white
-            labelMonth.font = UIFont(name: "Helvetica", size: 10)
-            labelMonth.textAlignment = .center
-            labelMonth.text = String(monthQP.month.prefix(3))
-            
-            if(monthQP.value == nil)
+            if(monthQP!.value == nil)
             {
-                labelMonth.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
-            }else if(monthQP.value == true)
+                segmentValue?.selectedSegmentIndex = -1
+            }else if(monthQP!.value == true)
             {
-                labelMonth.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                segmentValue?.selectedSegmentIndex = 0
             }else
             {
-                labelMonth.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+                segmentValue?.selectedSegmentIndex = 1
+                
+                var isLastTargeted : Bool! = nil
+                isLastTargeted = monthQP!.isTargeted
+                if(isLastTargeted != true )
+                {
+                    buttonPlanAction.isHidden = false
+                }
             }
-            
-            stackViewMonth.addArrangedSubview(labelMonth)
         }
+        
+        
+        
+        
         
     }
     
+    // *******************************
+    // **** updateQuestionAction
+    // *******************************
+    @IBAction func changeOkNok (_ sender: UISegmentedControl!) {
+        
+        var isOk = false
+        if(self.segmentValue?.selectedSegmentIndex == 0)
+        {
+            isOk = true
+        }
+        if(self.qp.values.count > 0)
+        {
+           self.delegate.okNokQuestionPilier(qp: self.qp, isOk : isOk)
+        }
+    }
     
+    // *******************************
+    // **** planActionQuestionPilier
+    // *******************************
+    @IBAction func planActionQuestionPilier (_ sender: UIButton!) {
+    
+        self.delegate.planActionQuestionPilier(qp: self.qp)
+    }
+    
+    // *******************************
+    // **** commentaireQuestionPilier
+    // *******************************
+    @IBAction func commentaireQuestionPilier (_ sender: UIButton!) {
+        self.delegate.addCommentaireQuestionPilier(qp: self.qp)
+    }
     // ***********************************
     // ***********************************
     // ***********************************
@@ -93,6 +132,11 @@ class QuestionPilierTableViewCell: UITableViewCell {
             cibleLabel.layer.cornerRadius = 5
             cibleLabel.clipsToBounds = true
         }
+        
+        buttonPlanAction.layer.cornerRadius = 5
+        buttonPlanAction.clipsToBounds = true
+        buttonCommentaire.layer.cornerRadius = 5
+        buttonCommentaire.clipsToBounds = true
     }
 
     

@@ -2065,8 +2065,8 @@ class WSQueries: NSObject {
             switch(response.result) {
             case .success(_):
                 
-                let responseJson = response.result.value as? NSDictionary ?? nil
-                let code = responseJson!["code"] as? Int ?? -1
+                let responseJson = response.result.value as? NSDictionary ?? NSDictionary()
+                let code = responseJson["code"] as? Int ?? -1
                 if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
                 {
                     WSQueries.refreshToken(completion: { (code) in
@@ -2083,8 +2083,8 @@ class WSQueries: NSObject {
                     return;
                 }
                 
-                let code_erreur = responseJson!["code_erreur"] as? Int ?? -1
-                let desc_erreur = responseJson!["description"] as? String ?? "NA"
+                let code_erreur = responseJson["code_erreur"] as? Int ?? -1
+                let desc_erreur = responseJson["description"] as? String ?? "NA"
                 if(code_erreur == 0)
                 {
                     delegate.didFinishWSTargetQuestion(error: false, code_erreur: code_erreur, description: "")
