@@ -43,7 +43,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         labelWelcome.attributedText = attributedText
         
         
-        self.textFieldLogin?.placeholder = "Identifient"
+        self.textFieldLogin?.placeholder = "Identifiant"
         self.textFieldPassword?.placeholder = "Mot de passe"
         self.navigationController?.navigationBar.tintColor = UIColor.black
         

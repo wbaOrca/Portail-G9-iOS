@@ -1184,39 +1184,53 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mat-UV-FLc">
-                                <rect key="frame" x="47.666666666666657" y="257" width="280" height="34"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-M5-pDn">
+                                <rect key="frame" x="30.666666666666657" y="259" width="314" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mat-UV-FLc">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="ZJx-wk-aCT"/>
+                                            <constraint firstAttribute="height" constant="34" id="bDN-qf-zkh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Date">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ubB-yy-mlq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-vN-4Ia">
+                                        <rect key="frame" x="280" y="0.0" width="34" height="34"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="EuP-em-y9l"/>
+                                            <constraint firstAttribute="width" constant="34" id="qhU-Dk-qDa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="agenda_btn">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ydh-Oz-d2z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="ZJx-wk-aCT"/>
-                                    <constraint firstAttribute="height" constant="34" id="bDN-qf-zkh"/>
+                                    <constraint firstItem="Mat-UV-FLc" firstAttribute="leading" secondItem="HAb-M5-pDn" secondAttribute="leading" id="KWP-59-D4g"/>
+                                    <constraint firstItem="Mat-UV-FLc" firstAttribute="top" secondItem="HAb-M5-pDn" secondAttribute="top" id="SMn-AA-vuj"/>
+                                    <constraint firstAttribute="width" constant="314" id="YL3-Jq-Yhz"/>
+                                    <constraint firstAttribute="height" constant="34" id="d5C-NW-ePX"/>
+                                    <constraint firstAttribute="trailing" secondItem="ktb-vN-4Ia" secondAttribute="trailing" id="n10-xf-WcB"/>
+                                    <constraint firstItem="ktb-vN-4Ia" firstAttribute="top" secondItem="HAb-M5-pDn" secondAttribute="top" id="wv8-3k-1jA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Date">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ubB-yy-mlq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-vN-4Ia">
-                                <rect key="frame" x="327.66666666666669" y="257" width="34" height="34"/>
-                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="EuP-em-y9l"/>
-                                    <constraint firstAttribute="width" constant="34" id="qhU-Dk-qDa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <inset key="imageEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" backgroundImage="agenda_btn">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectDate:" destination="eei-Ee-H2T" eventType="touchUpInside" id="ydh-Oz-d2z"/>
-                                </connections>
-                            </button>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oqO-Ym-jgv">
-                                <rect key="frame" x="0.0" y="292" width="375" height="486"/>
+                                <rect key="frame" x="0.0" y="298" width="375" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="geI-h0-6mu" customClass="StickyGridCollectionViewLayout" customModule="Portail_G9" customModuleProvider="target">
                                     <size key="itemSize" width="110" height="80"/>
@@ -1284,20 +1298,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="fru-Z5-x39" secondAttribute="trailing" id="04Z-LP-o7P"/>
-                            <constraint firstItem="ktb-vN-4Ia" firstAttribute="centerY" secondItem="Mat-UV-FLc" secondAttribute="centerY" id="1Rj-zc-ENu"/>
-                            <constraint firstItem="Mat-UV-FLc" firstAttribute="top" secondItem="55M-cf-Nkr" secondAttribute="bottom" constant="3" id="CR1-X3-g5H"/>
                             <constraint firstAttribute="bottom" secondItem="fru-Z5-x39" secondAttribute="bottom" id="QhI-pk-tP8"/>
                             <constraint firstItem="55M-cf-Nkr" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" constant="10" id="R7D-Oc-mR8"/>
-                            <constraint firstItem="oqO-Ym-jgv" firstAttribute="top" secondItem="Mat-UV-FLc" secondAttribute="bottom" constant="1" id="U36-bA-n1A"/>
+                            <constraint firstItem="HAb-M5-pDn" firstAttribute="centerX" secondItem="9Lz-X8-QGC" secondAttribute="centerX" id="XEf-K4-dDh"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="bottom" secondItem="oqO-Ym-jgv" secondAttribute="bottom" id="a6p-ew-NYb"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="oqO-Ym-jgv" secondAttribute="trailing" id="aDy-pe-IHd"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="trailing" secondItem="55M-cf-Nkr" secondAttribute="trailing" constant="10" id="ht7-0x-ldc"/>
-                            <constraint firstItem="Mat-UV-FLc" firstAttribute="centerX" secondItem="9Lz-X8-QGC" secondAttribute="centerX" id="nOk-Ui-icd"/>
+                            <constraint firstItem="HAb-M5-pDn" firstAttribute="top" secondItem="55M-cf-Nkr" secondAttribute="bottom" constant="5" id="iJ8-TC-ARF"/>
+                            <constraint firstItem="oqO-Ym-jgv" firstAttribute="top" secondItem="HAb-M5-pDn" secondAttribute="bottom" constant="5" id="oqm-tu-YjN"/>
                             <constraint firstItem="fru-Z5-x39" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" id="tbT-He-Ufd"/>
                             <constraint firstItem="55M-cf-Nkr" firstAttribute="top" secondItem="9Lz-X8-QGC" secondAttribute="top" constant="6" id="vqE-hb-zYV"/>
                             <constraint firstItem="oqO-Ym-jgv" firstAttribute="leading" secondItem="9Lz-X8-QGC" secondAttribute="leading" id="xcq-xi-j8A"/>
                             <constraint firstItem="9Lz-X8-QGC" firstAttribute="top" secondItem="fru-Z5-x39" secondAttribute="top" id="zM7-S7-gFo"/>
-                            <constraint firstItem="ktb-vN-4Ia" firstAttribute="leading" secondItem="Mat-UV-FLc" secondAttribute="trailing" id="zT5-zo-ju8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Lz-X8-QGC"/>
                     </view>
@@ -1315,7 +1327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYK-Ng-njx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3448.8000000000002" y="80.50974512743629"/>
+            <point key="canvasLocation" x="3448.8000000000002" y="79.802955665024641"/>
         </scene>
         <!--Board Collection View Controller-->
         <scene sceneID="RPs-Sx-1Bu">
@@ -2416,7 +2428,7 @@
                                                                 <constraint firstAttribute="height" constant="30" id="1YS-Y6-ZH7"/>
                                                                 <constraint firstAttribute="width" constant="46" id="zEm-CV-fG5"/>
                                                             </constraints>
-                                                            <state key="normal" title="Cmt"/>
+                                                            <state key="normal" backgroundImage="ic_comments"/>
                                                             <connections>
                                                                 <action selector="commentaireQuestionPilier:" destination="y26-jD-ILA" eventType="touchUpInside" id="Ov3-VY-UFS"/>
                                                             </connections>
@@ -2428,6 +2440,7 @@
                                                                 <constraint firstAttribute="height" constant="30" id="JVG-JR-GRW"/>
                                                                 <constraint firstAttribute="width" constant="46" id="yZm-dg-wRG"/>
                                                             </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                             <state key="normal" title="PA"/>
                                                             <connections>
                                                                 <action selector="planActionQuestionPilier:" destination="y26-jD-ILA" eventType="touchUpInside" id="FI8-Q6-KCy"/>
@@ -3171,6 +3184,7 @@
         <image name="bg_g9" width="623" height="779"/>
         <image name="ic_account" width="128" height="128"/>
         <image name="ic_arrow_filter" width="144" height="144"/>
+        <image name="ic_comments" width="48" height="48"/>
         <image name="ic_left" width="200" height="200"/>
         <image name="ic_right" width="200" height="200"/>
         <image name="image_file" width="512" height="512"/>
