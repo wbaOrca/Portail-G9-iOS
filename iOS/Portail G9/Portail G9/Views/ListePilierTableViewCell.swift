@@ -29,6 +29,14 @@ class ListePilierTableViewCell: UITableViewCell {
         let color = UIColor.init(hex: pilier.pilierStatutCodeCouleur)
         separatorView.backgroundColor = color
         
+        if(pilier.pilierIcone.count > 0)
+        {
+            let urlImageAsString = Version.URL_PREFIX_IMAGES_PORTAIL_G9 + pilier.pilierIcone
+            iconImage.sd_setImage(with: URL(string: urlImageAsString), placeholderImage: UIImage(named: "ic_groupe"))
+        }else
+        {
+            iconImage.image = nil
+        }
     }
     
     

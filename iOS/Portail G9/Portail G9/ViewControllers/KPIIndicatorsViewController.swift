@@ -73,9 +73,10 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        self.getIndicateursKpisData()
-        
+        if(animated)
+        {
+            self.getIndicateursKpisData()
+        }
     }
     
     // ***********************************
@@ -384,10 +385,17 @@ extension KPIIndicatorsViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
-    func dismissFiltreMenuViewController() {
+    func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getIndicateursKpisData()
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getIndicateursKpisData()
+        }else
+        {
+            self.dismiss(animated: false, completion: nil)
+            self.returnToIndicator(buttonIndicateur)
+        }
     }
     
     

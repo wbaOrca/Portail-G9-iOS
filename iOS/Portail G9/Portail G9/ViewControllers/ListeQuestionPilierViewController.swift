@@ -310,7 +310,7 @@ extension ListeQuestionPilierViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
-    func dismissFiltreMenuViewController() {
+    func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
         self.dismiss(animated: true, completion: nil)
         self.getListeQuestionPiliers()

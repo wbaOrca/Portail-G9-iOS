@@ -12,6 +12,7 @@ class IndicateurKPISection: NSObject {
 
     var titreSection : String = ""
     var codeCouleur : String = ""
+    var style : StyleKPILigne! = StyleKPILigne()
     
     var elementsSection : [KPILigne] = [KPILigne]()
     

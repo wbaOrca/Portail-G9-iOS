@@ -179,7 +179,7 @@ extension ListeIndicateursViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
-    func dismissFiltreMenuViewController() {
+    func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
         self.dismiss(animated: true, completion: nil)
         self.getListeFamillesData()

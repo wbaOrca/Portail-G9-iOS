@@ -21,7 +21,7 @@ class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewa
     
     var familleLibelle = "";
     var familleId = 0;
-    var isSynchronisedData = false;
+    
     var arrayCategories : [Categorie] = [Categorie]();
     
     // ***********************************
@@ -57,7 +57,7 @@ class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-         if(!isSynchronisedData)
+         if(animated)
         {
             self.getListeCatagoriesData()
         }
@@ -208,10 +208,18 @@ extension ListeCategoriesViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
-    func dismissFiltreMenuViewController() {
+    func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getListeCatagoriesData()
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getListeCatagoriesData()
+        }else
+        {
+            self.dismiss(animated: false, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
+       
     }
     
     

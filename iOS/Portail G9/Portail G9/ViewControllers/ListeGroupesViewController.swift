@@ -16,13 +16,12 @@ import NVActivityIndicatorView
 // ++++++++++++++++++++++++++++++++++++++++++++++
 class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable{
 
-    @IBOutlet weak var labelIndicateur: UILabel!
+    @IBOutlet weak var buttonIndicateur: UIButton!
     var familleLibelle = "";
     
     @IBOutlet weak var tableViewGroupes: UITableView!
     
     var categorie : Categorie = Categorie();
-    var isSynchronisedData = false;
     var arrayGroupes : [GroupeKPI] = [GroupeKPI]();
     
     // ***********************************
@@ -34,7 +33,7 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("Groupes", comment: "-")
-        labelIndicateur.text = familleLibelle
+        buttonIndicateur.setTitle(familleLibelle, for: .normal) 
         
         // **
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
@@ -60,12 +59,27 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         super.viewDidAppear(animated)
         
        
-        if(!isSynchronisedData)
+        if(animated)
         {
             self.getListeGroupeData()
         }
     }
 
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func returnToIndicateurs(_ sender: Any) {
+        
+        let vcCategorie = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 3];
+        self.navigationController?.popToViewController(vcCategorie!, animated: true);
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func returnToCategorie(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     // ***********************************
     // ***********************************
     // ***********************************
@@ -221,10 +235,18 @@ extension ListeGroupesViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     // ***********************************
     // ***********************************
-    func dismissFiltreMenuViewController() {
+    func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getListeGroupeData()
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getListeGroupeData()
+        }else
+        {
+            self.dismiss(animated: false, completion: nil)
+            self.returnToIndicateurs(buttonIndicateur)
+        }
+        
     }
     
     

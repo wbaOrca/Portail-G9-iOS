@@ -37,6 +37,8 @@ class FiltreMenuViewController: UIViewController {
     var arrayOfSelectedGroupe : [Groupe] = [Groupe]();
     var arrayOfSelectedAffaire : [Dealer] = [Dealer]();
     
+    var isLangueChanged : Bool = false
+    
     // ***********************************
     // ***********************************
     // ***********************************
@@ -283,7 +285,7 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func dismissFiltre() {
         
-        self.delegate.dismissFiltreMenuViewController()
+        self.delegate.dismissFiltreMenuViewController(isLangueChanged : isLangueChanged)
     }
     
     // ***********************************
@@ -899,7 +901,9 @@ class FiltreMenuViewController: UIViewController {
                 preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
                 preferences.synchronize()
                 
+                self.isLangueChanged = true;
                 self.arrayFiltres[0] = langue_.libelle
+                
                 DispatchQueue.main.async {
                     self.filtreCollectionView.reloadData()
                     self.syncroniseData(langue: langue_.languageCode)
@@ -1171,5 +1175,6 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 protocol FiltreMenuViewControllerDelegate {
-    func dismissFiltreMenuViewController()
+    
+    func dismissFiltreMenuViewController(isLangueChanged : Bool)
 }

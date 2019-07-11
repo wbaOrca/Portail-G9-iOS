@@ -50,6 +50,8 @@ class KPICollectionViewCell: UICollectionViewCell {
             
             if(indicateur.indicateurKPI.style.underline)
             {
+                titleLabel.attributedText = NSAttributedString(string: indicateur.indicateurKPI.valeur, attributes:
+                    [.underlineStyle: NSUnderlineStyle.single.rawValue])
                 self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
         }else
