@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     let gcmMessageIDKey = "body"
-    let subscriptionTopic = "global"
+    
 
     var customApplicationLang = CustomLanguage()
     
@@ -348,7 +348,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate , MessagingDelegate
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         
-        Messaging.messaging().subscribe(toTopic: self.subscriptionTopic);
+        Messaging.messaging().subscribe(toTopic: Version.subscriptionTopic);
     }
     
     // ****************************
@@ -359,7 +359,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate , MessagingDelegate
         
         Messaging.messaging().apnsToken = deviceToken as Data
         
-        Messaging.messaging().subscribe(toTopic: self.subscriptionTopic);
+        Messaging.messaging().subscribe(toTopic: Version.subscriptionTopic);
     }
     
     
@@ -375,7 +375,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate , MessagingDelegate
         //Messaging.messaging().shouldEstablishDirectChannel = false
         Messaging.messaging().shouldEstablishDirectChannel = true
         
-        Messaging.messaging().subscribe(toTopic: self.subscriptionTopic);
+        Messaging.messaging().subscribe(toTopic: Version.subscriptionTopic);
         
     }
     // [END connect_to_fcm]
