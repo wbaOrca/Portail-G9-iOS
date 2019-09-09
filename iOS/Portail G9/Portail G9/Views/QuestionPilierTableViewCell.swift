@@ -30,7 +30,6 @@ class QuestionPilierTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentaireLabel: UILabel!
     @IBOutlet weak var majLabel: UILabel!
-    @IBOutlet weak var frequenceLabel: UILabel!
     @IBOutlet weak var cibleIcon: UIImageView!
     
     @IBOutlet weak var segmentValue: UISegmentedControl?
@@ -51,7 +50,6 @@ class QuestionPilierTableViewCell: UITableViewCell {
         
         titleLabel.text = question_pilier.libelle
         
-        frequenceLabel.text = question_pilier.frequence
         majLabel.text = question_pilier.derniereMAJ
         commentaireLabel.text = question_pilier.commentaire
         
