@@ -452,6 +452,8 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
        
         let updateQuestionPilierVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdateQuestionPilierViewController") as? UpdateQuestionPilierViewController
         updateQuestionPilierVC?.mQuestionPilier = qp
+        
+        
         self.navigationController?.pushViewController(updateQuestionPilierVC!, animated: true);
     }
     
