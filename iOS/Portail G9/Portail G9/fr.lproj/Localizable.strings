@@ -49,3 +49,11 @@
 "Mes_Piliers" = "Mes Piliers";
 
 "TOUT" = "-- Tout --";
+
+"MAJ_Application" = "Mise à jour de l'application";
+"MAJ_Question" = "Voulez-vous mettre à jour l'application maintenant?" ;
+"need_update" = "Veuillez mettre à jour cette application svp. Cliquez sur le bouton upgrade en bas à gauche de cet écran.";
+"Erreur" = "Erreur";
+"Ok" = "Ok";
+"OUI" = "Oui";
+"NON" = "Non" ;

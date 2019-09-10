@@ -21,6 +21,9 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelVersion: UILabel!
+    @IBOutlet weak var btnUpgradeVersion: UIButton?
+    var url_upgrade = Version.URL_INSTALL_PORTAIL_G9
+    
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var buttonAccount: UIButton!
     
@@ -102,6 +105,14 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Version
+        let reachability = Reachability()!
+        if (reachability.connection != .none )
+        {
+            WSQueries.getVersionApplication(delegate: self);
+        }
+        
+        // Data
         if(!isSynchronisedData)
         {
             self.syncroniseData()
@@ -109,6 +120,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         {
             menuCollectionView.reloadData()
         }
+        
         
     }
 
@@ -233,6 +245,87 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
 
 }
 
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension AccueilViewController: WSGetVersionDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didFinishWSGetVersion(error: Bool, version: String!, url_download: String!) {
+        
+        if(!error)
+        {
+            
+            if(url_download != nil)
+            {
+                self.url_upgrade = url_download
+            }
+            
+            DispatchQueue.main.async {
+                let gAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "0"
+                let gAppBuild = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") ?? "0"
+                let currentVersion = (gAppVersion as! String) + "." + (gAppBuild as! String) ;
+                
+                if(currentVersion == version)
+                {
+                    self.btnUpgradeVersion?.isHidden = true;
+                }else
+                {
+                    self.btnUpgradeVersion?.isHidden = false;
+                }
+            }
+        }else
+        {
+            self.btnUpgradeVersion?.isHidden = true;
+        }
+        
+    }
+    
+    
+    // *******************************
+    // *******************************
+    // **** upgradeVersion
+    // *******************************
+    // *******************************
+    @IBAction func upgradeVersion (_ sender: UIButton!) {
+        
+        
+        let maj_text = NSLocalizedString("MAJ_Application", comment: "");
+        let maj_question = NSLocalizedString("MAJ_Question", comment: "");
+        let ouiText = NSLocalizedString("OUI", comment: "");
+        let nonText = NSLocalizedString("NON", comment: "");
+        
+        let alert = UIAlertController(title: maj_text, message: maj_question, preferredStyle: UIAlertController.Style.alert);
+        //show it
+        alert.addAction(UIAlertAction(title: ouiText, style: UIAlertAction.Style.default, handler: {(action:UIAlertAction) in
+            if let url = URL(string: self.url_upgrade) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                    let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        //exit(0)
+                        UIControl().sendAction(#selector(NSXPCConnection.suspend),
+                                               to: UIApplication.shared, for: nil)
+                    }
+                    
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }));
+        alert.addAction(UIAlertAction(title: nonText , style: UIAlertAction.Style.default, handler: {(action:UIAlertAction) in
+            
+        }));
+        
+        self.present(alert, animated: false, completion: nil);
+        
+        
+    }
+    
+}
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -452,6 +545,25 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     // ***********************************
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if(self.btnUpgradeVersion?.isHidden == false)//need update application
+        {
+            let okText = NSLocalizedString("Ok", comment: "")
+            let erreurText = NSLocalizedString("Erreur", comment: "")
+            let alertText = NSLocalizedString("need_update", comment: "")
+            
+            let alert = UIAlertController(title: erreurText, message: alertText, preferredStyle: UIAlertController.Style.alert);
+            //show it
+            alert.addAction(UIAlertAction(title: okText, style: UIAlertAction.Style.default, handler: {(action:UIAlertAction) in
+                
+            }));
+            
+            self.present(alert, animated: false, completion: nil);
+            return
+        }
+        
+        
     switch indexPath.row {
     case 0:
         self.voirCategorieFamille(familleId: 1)

@@ -48,3 +48,11 @@
 "Mes_Piliers" = "RAGNATELA";
 
 "TOUT" = "-- Tutto --";
+
+"MAJ_Application" = "Update the application";
+"MAJ_Question" = "Do you want to update the app now?" ;
+"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
+"OUI" = "Yes";
+"NON" = "No" ;
+"Erreur" = "Error" ;
+"Ok" = "Ok" ;
