@@ -20,7 +20,7 @@ class Version: NSObject {
     public static let URL_WS_PORTAIL_G9 = "https://dpmw-r7-skin.orcaformation.com/api" //"https://driverg9.dcs2.renault.com/api" // //
     public static let URL_PREFIX_IMAGES_PORTAIL_G9 = "https://dpmw-r7-skin.orcaformation.com/assets/icons/"
     
-    public static let URL_INSTALL_PORTAIL_G9 = "https://app.orcaformation.com/Renault/portailG9/r7/ios/portail_g9_r7.plist"
+    public static let URL_INSTALL_PORTAIL_G9 = "itms-services://?action=download-manifest&url=https://app.orcaformation.com/Renault/portailG9/r7/ios/portail_g9_r7.plist"
     
     public static let subscriptionTopic = "global_R7" //"global"
     public static let KEY_FCM = "AIzaSyAkGHPHvqJZAzpmBw-ge4b8jH1DyWsPVc4"

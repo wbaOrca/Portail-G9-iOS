@@ -80,6 +80,23 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     @objc func filtreTapped()
     {
+        
+        if(self.btnUpgradeVersion?.isHidden == false)//need update application
+        {
+            let okText = NSLocalizedString("Ok", comment: "")
+            let erreurText = NSLocalizedString("Erreur", comment: "")
+            let alertText = NSLocalizedString("need_update", comment: "")
+            
+            let alert = UIAlertController(title: erreurText, message: alertText, preferredStyle: UIAlertController.Style.alert);
+            //show it
+            alert.addAction(UIAlertAction(title: okText, style: UIAlertAction.Style.default, handler: {(action:UIAlertAction) in
+                
+            }));
+            
+            self.present(alert, animated: false, completion: nil);
+            return
+        }
+
         let filtreVC = self.storyboard?.instantiateViewController(withIdentifier: "FiltreMenuViewController") as? FiltreMenuViewController
         filtreVC?.delegate = self
         self.present(filtreVC!, animated: true, completion: nil)

@@ -314,7 +314,7 @@ class WSQueries: NSObject {
         
         let post_params: Parameters = ["":""]
         
-        let url_ = Version.URL_WS_PORTAIL_G9 + "/getVersion"
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/get-version-action"
         
         Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: nil).responseJSON {  response  in
             
@@ -323,7 +323,7 @@ class WSQueries: NSObject {
             case .success(_):
                 
                 let responseJson = response.result.value as? NSDictionary ?? NSDictionary();
-                let code = responseJson["code"] as? Int ?? -1
+                let code = responseJson["code_erreur"] as? Int ?? -1
                 
                 if(code != 0)
                 {
@@ -336,7 +336,7 @@ class WSQueries: NSObject {
                 let versioniOSServeur = versioniOSDisctionary["value"] as? String ?? "";
                 let urliOSServeur = versioniOSDisctionary["url"] as? String ?? "";
                 
-                delegate.didFinishWSGetVersion(error: true, version: versioniOSServeur, url_download: urliOSServeur)
+                delegate.didFinishWSGetVersion(error: false, version: versioniOSServeur, url_download: urliOSServeur)
                 
                 
                 break

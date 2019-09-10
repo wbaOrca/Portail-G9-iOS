@@ -3046,7 +3046,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-bG-Xi8">
-                                <rect key="frame" x="5" y="605" width="40" height="40"/>
+                                <rect key="frame" x="5" y="607" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3ZQ-2V-dZg"/>
                                     <constraint firstAttribute="width" constant="40" id="np1-r8-I8H"/>
@@ -3170,7 +3170,7 @@
                             <constraint firstItem="VvD-bG-Xi8" firstAttribute="leading" secondItem="nJO-6Q-2Z0" secondAttribute="leading" constant="5" id="8Bk-tI-3EL"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="trailing" secondItem="1vA-k0-Nuo" secondAttribute="trailing" id="Bki-vI-0Kl"/>
                             <constraint firstItem="V7W-Cq-3fd" firstAttribute="top" secondItem="IKy-5P-R37" secondAttribute="bottom" constant="10" id="E0c-lX-fpo"/>
-                            <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="VvD-bG-Xi8" secondAttribute="bottom" constant="22" id="Gj7-Ao-Ae6"/>
+                            <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="VvD-bG-Xi8" secondAttribute="bottom" constant="20" id="Gj7-Ao-Ae6"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="V7W-Cq-3fd" secondAttribute="bottom" constant="15" id="KC4-EW-igf"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="nex-Vj-9Jz" secondAttribute="bottom" constant="2" id="PO1-db-g7s"/>
                             <constraint firstItem="1vA-k0-Nuo" firstAttribute="leading" secondItem="nJO-6Q-2Z0" secondAttribute="leading" id="SuX-Qv-F4M"/>
