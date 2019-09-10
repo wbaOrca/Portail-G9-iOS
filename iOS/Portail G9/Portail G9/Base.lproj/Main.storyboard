@@ -2621,11 +2621,8 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dsZ-BX-dTe">
-                                <rect key="frame" x="10" y="309" width="355" height="250"/>
+                                <rect key="frame" x="10" y="309" width="355" height="248"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="hlW-d3-OLJ"/>
-                                </constraints>
                                 <color key="textColor" red="0.098799489439999999" green="0.28562927249999998" blue="0.39956784249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2662,6 +2659,7 @@
                             <constraint firstItem="euL-b2-Mdm" firstAttribute="top" secondItem="4jB-bl-ltL" secondAttribute="top" constant="5" id="eK4-lT-CU4"/>
                             <constraint firstItem="RxY-FF-8Zy" firstAttribute="top" secondItem="euL-b2-Mdm" secondAttribute="bottom" constant="10" id="fSw-CQ-5r2"/>
                             <constraint firstItem="4jB-bl-ltL" firstAttribute="trailing" secondItem="dvN-4s-P2b" secondAttribute="trailing" constant="10" id="lBh-JX-brq"/>
+                            <constraint firstItem="Lt5-og-eOD" firstAttribute="top" secondItem="dsZ-BX-dTe" secondAttribute="bottom" constant="50" id="n2v-8O-YIu"/>
                             <constraint firstItem="4jB-bl-ltL" firstAttribute="trailing" secondItem="dsZ-BX-dTe" secondAttribute="trailing" constant="10" id="ok7-IG-2Aa"/>
                             <constraint firstItem="dsZ-BX-dTe" firstAttribute="leading" secondItem="4jB-bl-ltL" secondAttribute="leading" constant="10" id="sCK-UP-iWa"/>
                         </constraints>
@@ -3066,7 +3064,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V7W-Cq-3fd">
-                                <rect key="frame" x="77.5" y="129" width="220" height="523"/>
+                                <rect key="frame" x="77.5" y="129" width="220" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="s1D-iN-Wvw">
@@ -3171,7 +3169,7 @@
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="trailing" secondItem="1vA-k0-Nuo" secondAttribute="trailing" id="Bki-vI-0Kl"/>
                             <constraint firstItem="V7W-Cq-3fd" firstAttribute="top" secondItem="IKy-5P-R37" secondAttribute="bottom" constant="10" id="E0c-lX-fpo"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="VvD-bG-Xi8" secondAttribute="bottom" constant="20" id="Gj7-Ao-Ae6"/>
-                            <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="V7W-Cq-3fd" secondAttribute="bottom" constant="15" id="KC4-EW-igf"/>
+                            <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="V7W-Cq-3fd" secondAttribute="bottom" constant="20" id="KC4-EW-igf"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="bottom" secondItem="nex-Vj-9Jz" secondAttribute="bottom" constant="2" id="PO1-db-g7s"/>
                             <constraint firstItem="1vA-k0-Nuo" firstAttribute="leading" secondItem="nJO-6Q-2Z0" secondAttribute="leading" id="SuX-Qv-F4M"/>
                             <constraint firstItem="nJO-6Q-2Z0" firstAttribute="top" secondItem="VEs-S8-mlH" secondAttribute="top" id="XvA-MJ-Hsc"/>
