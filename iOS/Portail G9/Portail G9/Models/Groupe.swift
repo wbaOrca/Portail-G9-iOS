@@ -15,7 +15,7 @@ class Groupe: NSObject, Mappable , NSCoding, UniqueProperty  {
     var id   : Int64 = -1
     var libelle   : String = ""
     var zoneIdClient   : String = ""
-    var dealers   : [Dealer] = [Dealer]()
+    var parentId   : [Int64] = [Int64]()
     
     //******
     //******
@@ -49,7 +49,7 @@ class Groupe: NSObject, Mappable , NSCoding, UniqueProperty  {
         id <- map["id"]
         libelle <- map["libelle"]
         zoneIdClient <- map["zoneIdClient"]
-        dealers <- map["dealers"]
+        parentId <- map["ParentId"]
         
     }
     
@@ -63,7 +63,8 @@ class Groupe: NSObject, Mappable , NSCoding, UniqueProperty  {
         aCoder.encode(id, forKey: "id")
         aCoder.encode(libelle, forKey: "libelle")
         aCoder.encode(zoneIdClient, forKey: "zoneIdClient")
-        aCoder.encode(dealers, forKey: "dealers")
+        
+        aCoder.encode(parentId, forKey: "parentId")
     }
     
     // *****************************************
@@ -76,7 +77,7 @@ class Groupe: NSObject, Mappable , NSCoding, UniqueProperty  {
         self.id = decoder.decodeInt64(forKey: "id")
         self.libelle = decoder.decodeObject(forKey: "libelle") as? String ?? ""
         self.zoneIdClient = decoder.decodeObject(forKey: "zoneIdClient") as? String ?? ""
-        self.dealers = decoder.decodeObject(forKey: "dealers") as? [Dealer] ?? [Dealer] ()
+        self.parentId = decoder.decodeObject(forKey: "parentId") as? [Int64] ?? [Int64] ()
         
         
     }

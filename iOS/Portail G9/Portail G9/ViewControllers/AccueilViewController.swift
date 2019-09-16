@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 import NVActivityIndicatorView
-
+import SDWebImage
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
@@ -422,9 +422,9 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
                 //mettre le 1er pays par défaut dans le perimetre/filtre
                 if(preferences.object(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS) == nil)
                 {
-                    if(data.dataUtiles.perimetre.count > 0)
+                    if(data.dataUtiles.perimetre.pays.count > 0)
                     {
-                        let pays_ = data.dataUtiles.perimetre[0];
+                        let pays_ = data.dataUtiles.perimetre.pays[0];
                         let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
                         preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
                     }

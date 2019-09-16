@@ -15,11 +15,9 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     
     var countryId   : Int64 = -1
     var countryLib   : String = ""
-    var countryZoneCode   : String = ""
+    var zoneIdClient   : String = ""
     var hasDr   : Bool = false
-    var zones   : [Zone] = [Zone]()
-    var groupes   : [Groupe] = [Groupe]()
-    var directions   : [Direction] = [Direction]()
+    var parentId   : [Int64] = [Int64]()
     
     //******
     //******
@@ -50,13 +48,12 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     // Mappable
     func mapping(map: Map) {
         
-        countryId <- map["countryId"]
-        countryLib <- map["countryLib"]
-        countryZoneCode <- map["countryZoneCode"]
+        countryId <- map["id"]
+        countryLib <- map["libelle"]
+        zoneIdClient <- map["zoneIdClient"]
         hasDr <- map["hasDr"]
-        zones <- map["zones"]
-        groupes <- map["groupes"]
-        directions <- map["directions"]
+        parentId <- map["ParentId"]
+        
     }
     
     // *****************************************
@@ -68,11 +65,9 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
     {
         aCoder.encode(countryId, forKey: "countryId")
         aCoder.encode(countryLib, forKey: "countryLib")
-        aCoder.encode(countryZoneCode, forKey: "countryZoneCode")
-        aCoder.encode(zones, forKey: "zones")
-        aCoder.encode(groupes, forKey: "groupes")
+        aCoder.encode(zoneIdClient, forKey: "zoneIdClient")
         aCoder.encode(hasDr, forKey: "hasDr")
-        aCoder.encode(directions, forKey: "directions")
+        aCoder.encode(parentId, forKey: "parentId")
     }
     
     // *****************************************
@@ -85,10 +80,8 @@ class Pays: NSObject , Mappable , NSCoding , UniqueProperty {
         self.countryId = decoder.decodeInt64(forKey: "countryId")
         self.hasDr = decoder.decodeBool(forKey: "hasDr")
         self.countryLib = decoder.decodeObject(forKey: "countryLib") as? String ?? ""
-        self.countryZoneCode = decoder.decodeObject(forKey: "countryZoneCode") as? String ?? ""
-        self.zones = decoder.decodeObject(forKey: "zones") as? [Zone] ?? [Zone] ()
-        self.groupes = decoder.decodeObject(forKey: "groupes") as? [Groupe] ?? [Groupe]()
-        self.directions = decoder.decodeObject(forKey: "directions") as? [Direction] ?? [Direction]()
+        self.zoneIdClient = decoder.decodeObject(forKey: "zoneIdClient") as? String ?? ""
+        self.parentId = decoder.decodeObject(forKey: "parentId") as? [Int64] ?? [Int64] ()
         
     }
 }

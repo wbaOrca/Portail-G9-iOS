@@ -15,6 +15,7 @@ class Dealer: NSObject, Mappable , NSCoding, UniqueProperty {
     var id   : Int64 = -1
     var libelle   : String = ""
     var zoneIdClient   : String = ""
+    var parentId   : [Int64] = [Int64]()
     
     //******
     //******
@@ -49,6 +50,7 @@ class Dealer: NSObject, Mappable , NSCoding, UniqueProperty {
         libelle <- map["libelle"]
         zoneIdClient <- map["zoneIdClient"]
         
+        parentId <- map["ParentId"]
         
     }
     
@@ -63,6 +65,7 @@ class Dealer: NSObject, Mappable , NSCoding, UniqueProperty {
         aCoder.encode(libelle, forKey: "libelle")
         aCoder.encode(zoneIdClient, forKey: "zoneIdClient")
        
+        aCoder.encode(parentId, forKey: "parentId")
     }
     
     // *****************************************
@@ -76,5 +79,6 @@ class Dealer: NSObject, Mappable , NSCoding, UniqueProperty {
         self.libelle = decoder.decodeObject(forKey: "libelle") as? String ?? ""
         self.zoneIdClient = decoder.decodeObject(forKey: "zoneIdClient") as? String ?? ""
         
+        self.parentId = decoder.decodeObject(forKey: "parentId") as? [Int64] ?? [Int64] ()
     }
 }

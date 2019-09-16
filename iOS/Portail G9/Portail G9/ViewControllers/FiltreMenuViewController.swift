@@ -32,9 +32,16 @@ class FiltreMenuViewController: UIViewController {
     var arrayOfPays : [Pays] = [Pays]();
     var arrayOfSelectedPays : [Pays] = [Pays]();
     
+    var arrayOfDR : [Direction] = [Direction]();
     var arrayOfSelectedDR : [Direction] = [Direction]();
+    
+    var arrayOfZone : [Zone] = [Zone]();
     var arrayOfSelectedZone : [Zone] = [Zone]();
+    
+    var arrayOfGroupe : [Groupe] = [Groupe]();
     var arrayOfSelectedGroupe : [Groupe] = [Groupe]();
+    
+    var arrayOfAffaire : [Dealer] = [Dealer]();
     var arrayOfSelectedAffaire : [Dealer] = [Dealer]();
     
     var isLangueChanged : Bool = false
@@ -105,8 +112,13 @@ class FiltreMenuViewController: UIViewController {
         if(dataPerimetre != nil){
             if let dataPerimetre_ = NSKeyedUnarchiver.unarchiveObject(with: dataPerimetre!)  {
                 
-                let pays_array = dataPerimetre_ as! [Pays]
-                self.arrayOfPays = pays_array
+                let perimetre_ = dataPerimetre_ as! Perimetre
+                
+                self.arrayOfPays = perimetre_.pays
+                self.arrayOfDR = perimetre_.directions
+                self.arrayOfZone = perimetre_.zones
+                self.arrayOfGroupe = perimetre_.groupes
+                self.arrayOfAffaire = perimetre_.dealers
                 
             }
         }
@@ -118,8 +130,13 @@ class FiltreMenuViewController: UIViewController {
                 
                 let pays = pays_ as! Pays
                 isPaysHasDR = pays.hasDr
+                
                 arrayOfSelectedPays.append(pays)
                 arrayFiltres[1] = pays.countryLib
+                
+               arrayOfDR =  arrayOfDR.filter({ $0.parentId.contains(pays.countryId) })
+               arrayOfGroupe =  arrayOfGroupe.filter({ $0.parentId.contains(pays.countryId) })
+               arrayOfZone =  arrayOfZone.filter({ $0.parentId.contains(pays.countryId) })
                 
             }
         }
@@ -138,6 +155,8 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedDR.append(dr)
                     arrayFiltres[2] = dr.libelle
                     
+                    arrayOfGroupe =  arrayOfGroupe.filter({ $0.parentId.contains(dr.id) })
+                    arrayOfZone =  arrayOfZone.filter({ $0.parentId.contains(dr.id) })
                 }
             }
             // Zone par défaut
@@ -149,6 +168,8 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedZone.append(zone)
                     arrayFiltres[3] = zone.libelle
                     
+                    
+                    arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(zone.id) })
                 }
             }
             
@@ -160,6 +181,8 @@ class FiltreMenuViewController: UIViewController {
                     let group = grp_ as! Groupe
                     arrayOfSelectedGroupe.append(group)
                     arrayFiltres[4] = group.libelle
+                    
+                    arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(group.id) })
                     
                 }
             }
@@ -186,6 +209,7 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedZone.append(zone)
                     arrayFiltres[2] = zone.libelle
                     
+                    arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(zone.id) })
                 }
             }
             
@@ -198,6 +222,7 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedGroupe.append(group)
                     arrayFiltres[3] = group.libelle
                     
+                    arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(group.id) })
                 }
             }
             
@@ -314,18 +339,8 @@ class FiltreMenuViewController: UIViewController {
         }
         
         var arrayAffaire : [Dealer] = [Dealer]()
-        if(self.arrayOfSelectedZone.count > 0 && self.arrayOfSelectedGroupe.count == 0 )
-        {
-            let zone_selected = self.arrayOfSelectedZone[0]
-            arrayAffaire = zone_selected.dealers
-        }else  if(self.arrayOfSelectedZone.count == 0 && self.arrayOfSelectedGroupe.count > 0 )
-        {
-            let groupe_selected = self.arrayOfSelectedGroupe[0]
-            arrayAffaire = groupe_selected.dealers
-        }
-        
+        arrayAffaire = self.arrayOfAffaire
        
-        
         if(arrayAffaire.count == 0 )
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucune affaire.", preferredStyle: .alert)
@@ -422,7 +437,7 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         let selectedPays = arrayOfSelectedPays[0];
-        if(selectedPays.hasDr == false && selectedPays.groupes.count == 0)
+        if(selectedPays.hasDr == false && arrayOfGroupe.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -431,7 +446,7 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        if(selectedPays.hasDr && arrayOfSelectedDR.count == 0)
+        if(selectedPays.hasDr && arrayOfDR.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -440,38 +455,12 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        var selectedDR = Direction()
-        if(selectedPays.hasDr  && arrayOfSelectedDR.count == 0){
-            
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
-            }
-            alertController.addAction(action1)
-            self.present(alertController, animated: true, completion: nil)
-            return
-            
-            
-        }else
-        {
-            if(arrayOfSelectedDR.count > 0)
-            {
-                selectedDR = arrayOfSelectedDR[0]
-                if(selectedDR.groupes.count == 0)
-                {
-                    let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
-                    let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
-                    }
-                    alertController.addAction(action1)
-                    self.present(alertController, animated: true, completion: nil)
-                    return
-                }
-            }
-        }
+        
         // Show menu with datasource array - Default SelectionType = Single
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
-        var array = (selectedPays.hasDr == false) ? selectedPays.groupes :  selectedDR.groupes
+        var array = self.arrayOfGroupe
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let grp = Groupe()
         grp.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
@@ -487,7 +476,7 @@ class FiltreMenuViewController: UIViewController {
         
         // show searchbar with placeholder and tint color
         selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Groupe", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Groupe]) in
-            return selectedPays.groupes.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+            return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
@@ -566,7 +555,7 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         let selectedPays = arrayOfSelectedPays[0];
-        if(selectedPays.hasDr == false && selectedPays.zones.count == 0)
+        if(selectedPays.hasDr == false && arrayOfZone.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucune zone.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -575,7 +564,7 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        if(selectedPays.hasDr && selectedPays.directions.count == 0)
+        if(selectedPays.hasDr && arrayOfDR.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -584,40 +573,14 @@ class FiltreMenuViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-       var selectedDR = Direction()
-        if(selectedPays.hasDr  && arrayOfSelectedDR.count == 0){
-           
-                let alertController = UIAlertController(title: "Erreur", message: "Aucune DR.", preferredStyle: .alert)
-                let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
-                }
-                alertController.addAction(action1)
-                self.present(alertController, animated: true, completion: nil)
-                return
-            
-            
-        }else
-        {
-            if(arrayOfSelectedDR.count > 0)
-            {
-                selectedDR = arrayOfSelectedDR[0]
-                if(selectedDR.zones.count == 0)
-                {
-                    let alertController = UIAlertController(title: "Erreur", message: "Aucune zone.", preferredStyle: .alert)
-                    let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
-                    }
-                    alertController.addAction(action1)
-                    self.present(alertController, animated: true, completion: nil)
-                    return
-                }
-            }
-        }
+       
         
         // Show menu with datasource array - Default SelectionType = Single
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
         
-        var array = (selectedPays.hasDr == false) ? selectedPays.zones :  selectedDR.zones
+        var array = self.arrayOfZone
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let zone = Zone()
         zone.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
@@ -633,7 +596,7 @@ class FiltreMenuViewController: UIViewController {
         
         // show searchbar with placeholder and tint color
         selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Zone", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Zone]) in
-            return selectedPays.zones.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+            return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
@@ -710,7 +673,7 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         let selectedPays = arrayOfSelectedPays[0];
-        if(selectedPays.directions.count == 0)
+        if(arrayOfDR.count == 0)
         {
             let alertController = UIAlertController(title: "Erreur", message: "Aucune direction.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
@@ -724,7 +687,7 @@ class FiltreMenuViewController: UIViewController {
         // Here you'll get cell configuration where you can set any text based on condition
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
-        var array = selectedPays.directions
+        var array = arrayOfDR
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dr = Direction()
         dr.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
@@ -740,7 +703,7 @@ class FiltreMenuViewController: UIViewController {
         
         // show searchbar with placeholder and tint color
         selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("DR", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Direction]) in
-            return selectedPays.directions.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
+            return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
         // Here you'll get onDidSelectRow
@@ -1034,9 +997,9 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
                 
                 //mettre à jour pays par défaut dans le perimetre/filtre
                 if(pays_par_defaut != nil){
-                        for i in (0 ..< data.dataUtiles.perimetre.count)
+                        for i in (0 ..< data.dataUtiles.perimetre.pays.count)
                         {
-                            let pays_ = data.dataUtiles.perimetre[i];
+                            let pays_ = data.dataUtiles.perimetre.pays[i];
                             if(pays_.countryId == pays_par_defaut.countryId)
                             {
                                 let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
