@@ -32,7 +32,9 @@ class PiliersProcessViewController: UIViewController , NVActivityIndicatorViewab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Piliers", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.title = NSLocalizedString("Piliers", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         
         //**

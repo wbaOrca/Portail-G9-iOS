@@ -22,8 +22,8 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Home", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("Account", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         buttonAccount.layer.cornerRadius = buttonAccount.frame.width / 2
         buttonAccount.clipsToBounds = true
@@ -48,7 +48,7 @@ class AccountViewController: UIViewController {
             let user = user_ as! Utilisateur
             let userAsString = user.user_prenom + " " + user.user_nom
             
-            let attributedText = NSMutableAttributedString(string: NSLocalizedString("Hello", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 17)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
+            let attributedText = NSMutableAttributedString(string: NSLocalizedString("Hello", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 17)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
             
             attributedText.append(NSAttributedString(string: ("\n" + userAsString + "\n"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 22)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]))
             

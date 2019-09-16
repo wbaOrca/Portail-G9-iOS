@@ -22,7 +22,7 @@ class FiltreMenuViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var filtreCollectionView: UICollectionView!
     
-    var arrayFiltres : [String] =  [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
+    var arrayFiltres : [String] = [String]() ;
     var arrayIcones : [String] = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
     
     
@@ -57,7 +57,15 @@ class FiltreMenuViewController: UIViewController {
     func setupDataFiltre()
     {
         
-        self.arrayFiltres  =  [NSLocalizedString("Langue", comment: "-"), NSLocalizedString("Pays", comment: "-"),NSLocalizedString("Zone", comment: "-"), NSLocalizedString("Groupe", comment: "-"), NSLocalizedString("Affaire", comment: "-")];
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.arrayFiltres  =  [
+            NSLocalizedString("Langue", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"),
+            NSLocalizedString("Pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"),
+            NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"),
+            NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"),
+            NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        ];
+        
         self.arrayIcones = ["ic_langue","ic_pays","ic_zone","ic_groupe","ic_affaire"];
         
         self.arrayOfLangues.removeAll()
@@ -293,6 +301,8 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func selectAffaire() {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         if(self.arrayOfSelectedZone.count == 0 && self.arrayOfSelectedGroupe.count == 0 )
         {
             let alertController = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une zone ou un groupe", preferredStyle: .alert)
@@ -326,7 +336,7 @@ class FiltreMenuViewController: UIViewController {
             return
         }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let dealer = Dealer()
         dealer.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
         dealer.id = -1 ;
@@ -345,7 +355,7 @@ class FiltreMenuViewController: UIViewController {
         
         
         // show searchbar with placeholder and tint color
-        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Affaire", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Dealer]) in
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Dealer]) in
             return arrayAffaire.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
@@ -375,10 +385,10 @@ class FiltreMenuViewController: UIViewController {
                     self.arrayOfSelectedAffaire.removeAll()
                     if(selectedPays.hasDr == false)
                     {
-                        self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+                        self.arrayFiltres[4] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }else
                     {
-                        self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+                        self.arrayFiltres[5] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }
                 }
                 DispatchQueue.main.async {
@@ -393,7 +403,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Affaire", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
     }
     
     
@@ -518,10 +528,10 @@ class FiltreMenuViewController: UIViewController {
                     self.arrayOfSelectedGroupe.removeAll()
                     if(selectedPays.hasDr == false)
                     {
-                        self.arrayFiltres[3] =  NSLocalizedString("Groupe", comment: "-")
+                        self.arrayFiltres[3] =  NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }else
                     {
-                        self.arrayFiltres[4] =  NSLocalizedString("Groupe", comment: "-")
+                        self.arrayFiltres[4] =  NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }
                 }
                 
@@ -537,7 +547,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Groupe", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
     }
     
     
@@ -637,13 +647,13 @@ class FiltreMenuViewController: UIViewController {
             if(selectedPays.hasDr == false)
             {
                 self.arrayOfSelectedGroupe.removeAll()
-                self.arrayFiltres[3] = NSLocalizedString("Groupe", comment: "-")
+                self.arrayFiltres[3] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
                 self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
             }else
             {
                 self.arrayOfSelectedGroupe.removeAll()
-                self.arrayFiltres[4] = NSLocalizedString("Groupe", comment: "-")
+                self.arrayFiltres[4] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
                 self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
             }
@@ -744,7 +754,7 @@ class FiltreMenuViewController: UIViewController {
             self.arrayOfSelectedZone.removeAll()
             self.arrayFiltres[3] = NSLocalizedString("Zone", comment: "-")
             self.arrayOfSelectedGroupe.removeAll()
-            self.arrayFiltres[4] = NSLocalizedString("Groupe", comment: "-")
+            self.arrayFiltres[4] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             self.arrayOfSelectedAffaire.removeAll()
             if(self.arrayFiltres.count > 5)
             {

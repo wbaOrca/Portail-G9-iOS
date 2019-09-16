@@ -31,8 +31,8 @@ class ListeGroupesViewController: UIViewController , NVActivityIndicatorViewable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Groupes", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("Groupes", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         buttonIndicateur.setTitle(familleLibelle, for: .normal) 
         
         // **

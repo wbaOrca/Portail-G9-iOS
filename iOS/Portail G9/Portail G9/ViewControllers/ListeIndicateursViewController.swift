@@ -26,7 +26,9 @@ class ListeIndicateursViewController: UIViewController, NVActivityIndicatorViewa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Indicateurs", comment: "")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.title = NSLocalizedString("Indicateurs", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         // **
         self.setupIndicateurs()
         // **
@@ -89,8 +91,8 @@ class ListeIndicateursViewController: UIViewController, NVActivityIndicatorViewa
     // ***********************************
     // ***********************************
     func setupIndicateurs(){
-        //arrayFamille = Famille.initStaticTable();
-        //tableViewIndicateurs.reloadData()
+       
+        
     }
 
     

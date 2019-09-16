@@ -6,6 +6,8 @@
   Copyright © 2019 Orcaformation. All rights reserved.
 */
 
+"Account" = "Mon compte";
+
 "Welcome_in" = "Bienvenue \ndans";
 "Hello" = "Bonjour";
 "Home" = "Accueil";

@@ -26,7 +26,8 @@ class ProcessRadarViewController: UIViewController,UIWebViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.title = NSLocalizedString("Performance", comment: "Performance");
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         self.title = NSLocalizedString("Performance", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-");
         
         
         

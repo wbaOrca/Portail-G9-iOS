@@ -33,8 +33,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Home", comment: "-")
+        setupScreenData()
         
         buttonAccount.layer.cornerRadius = buttonAccount.frame.width / 2
         buttonAccount.clipsToBounds = true
@@ -46,20 +45,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         let applicationVersion = shortVersionString + "." + bundleVersion
         labelVersion.text =  "        " + Version.VERSION + " " + applicationVersion 
         
-        //**
-        let preferences = UserDefaults.standard
-        let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
-        if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
-            
-            let user = user_ as! Utilisateur
-            let userAsString = user.user_prenom + " " + user.user_nom
-            
-            let attributedText = NSMutableAttributedString(string: NSLocalizedString("Hello", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 19)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
-            attributedText.append(NSAttributedString(string: ("\n" + userAsString), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]))
-            
-            labelWelcome.attributedText = attributedText
-            //labelWelcome.text = NSLocalizedString("Hello", comment: "-") + " " + userAsString
-        }
+        
         
         //**
          let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
@@ -83,9 +69,13 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         
         if(self.btnUpgradeVersion?.isHidden == false)//need update application
         {
-            let okText = NSLocalizedString("Ok", comment: "")
-            let erreurText = NSLocalizedString("Erreur", comment: "")
-            let alertText = NSLocalizedString("need_update", comment: "")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let okText = NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+            
+            let erreurText = NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+            
+            let alertText = NSLocalizedString("need_update", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             
             let alert = UIAlertController(title: erreurText, message: alertText, preferredStyle: UIAlertController.Style.alert);
             //show it
@@ -103,7 +93,32 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         
         
     }
-    
+    // *******************************************************************************
+    // ******
+    // ****** setupScreenData
+    // ******
+    // *******************************************************************************
+    func setupScreenData()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("Home", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        
+        //**
+        let preferences = UserDefaults.standard
+        let userData = preferences.data(forKey: Utils.SHARED_PREFERENCE_USER);
+        if let user_ = NSKeyedUnarchiver.unarchiveObject(with: userData!)  {
+            
+            let user = user_ as! Utilisateur
+            let userAsString = user.user_prenom + " " + user.user_nom
+            
+            let attributedText = NSMutableAttributedString(string: NSLocalizedString("Hello", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 19)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
+            attributedText.append(NSAttributedString(string: ("\n" + userAsString), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]))
+            
+            labelWelcome.attributedText = attributedText
+            //labelWelcome.text = NSLocalizedString("Hello", comment: "-") + " " + userAsString
+        }
+    }
     // *******************************************************************************
     // ******
     // ****** viewWillAppear
@@ -121,6 +136,8 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        setupScreenData()
         
         // Version
         let reachability = Reachability()!
@@ -309,11 +326,12 @@ extension AccueilViewController: WSGetVersionDelegate {
     // *******************************
     @IBAction func upgradeVersion (_ sender: UIButton!) {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let maj_text = NSLocalizedString("MAJ_Application", comment: "");
-        let maj_question = NSLocalizedString("MAJ_Question", comment: "");
-        let ouiText = NSLocalizedString("OUI", comment: "");
-        let nonText = NSLocalizedString("NON", comment: "");
+        let maj_text = NSLocalizedString("MAJ_Application", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        let maj_question = NSLocalizedString("MAJ_Question", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        let ouiText = NSLocalizedString("OUI", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        let nonText = NSLocalizedString("NON", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         let alert = UIAlertController(title: maj_text, message: maj_question, preferredStyle: UIAlertController.Style.alert);
         //show it
@@ -566,9 +584,11 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
         
         if(self.btnUpgradeVersion?.isHidden == false)//need update application
         {
-            let okText = NSLocalizedString("Ok", comment: "")
-            let erreurText = NSLocalizedString("Erreur", comment: "")
-            let alertText = NSLocalizedString("need_update", comment: "")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let okText = NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+            let erreurText = NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+            let alertText = NSLocalizedString("need_update", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
             
             let alert = UIAlertController(title: erreurText, message: alertText, preferredStyle: UIAlertController.Style.alert);
             //show it

@@ -51,8 +51,8 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("KPI", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("KPI", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         // **
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
@@ -325,7 +325,9 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
         {
             let indicateur = self.arrayValuesOfCollection[indexPath.section][indexPath.row]
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("KPI", comment: "-"), message: indicateur.indicateurKPI.valeur, preferredStyle: UIAlertController.Style.alert)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                
+                let alert = UIAlertController(title: NSLocalizedString("KPI", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), message: indicateur.indicateurKPI.valeur, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 

@@ -30,6 +30,8 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         // Do any additional setup after loading the view.
         let appInfo = Bundle.main.infoDictionary! as Dictionary<String,AnyObject>
         let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
@@ -37,7 +39,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let applicationVersion = shortVersionString + "." + bundleVersion
         labelVersion.text =  "        " + Version.VERSION + " " + applicationVersion 
         
-        let attributedText = NSMutableAttributedString(string: NSLocalizedString("Welcome_in", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 26)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
+        let attributedText = NSMutableAttributedString(string: NSLocalizedString("Welcome_in", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 26)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
         attributedText.append(NSAttributedString(string: (" Driver"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 30)!, NSAttributedString.Key.foregroundColor: UIColor.white]))
         
         labelWelcome.attributedText = attributedText
@@ -249,12 +251,12 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         }
         
         
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: "Profils", action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: "Profils", action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
         
     }
     

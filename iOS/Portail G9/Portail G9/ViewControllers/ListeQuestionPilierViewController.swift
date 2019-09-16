@@ -32,7 +32,9 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Piliers", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.title = NSLocalizedString("Piliers", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         //**
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
         navigationItem.rightBarButtonItems = [filtreButton]

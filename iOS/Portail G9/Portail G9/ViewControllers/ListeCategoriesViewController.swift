@@ -31,7 +31,8 @@ class ListeCategoriesViewController: UIViewController , NVActivityIndicatorViewa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Categories", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("Categories", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         labelIndicateur.text = familleLibelle
         
         // **
