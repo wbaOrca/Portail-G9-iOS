@@ -57,3 +57,7 @@
 "NON" = "No" ;
 "Erreur" = "Error" ;
 "Ok" = "Ok" ;
+
+"Identifiant" = "Accesso" ;
+"Mot de passe" = "Parola d'ordine";
+"Aucun Profil." = "Nessun profilo.";

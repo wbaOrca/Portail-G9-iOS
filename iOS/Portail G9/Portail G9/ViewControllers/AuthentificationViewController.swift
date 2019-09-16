@@ -45,8 +45,9 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         labelWelcome.attributedText = attributedText
         
         
-        self.textFieldLogin?.placeholder = "Identifiant"
-        self.textFieldPassword?.placeholder = "Mot de passe"
+        self.textFieldLogin?.placeholder = NSLocalizedString("Identifiant", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        self.textFieldPassword?.placeholder = NSLocalizedString("Mot de passe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        
         self.navigationController?.navigationBar.tintColor = UIColor.black
         
         buttonConnexion.layer.cornerRadius = 5
@@ -105,10 +106,12 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let loginAsString = textFieldLogin?.text;
         let password = textFieldPassword?.text;
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         if(loginAsString!.count == 0 || password!.count == 0 )
         {
             
-            let alert = UIAlertController(title: "Erreur", message: "Veuillez saisir tous les champs", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Veuillez saisir tous les champs", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -117,7 +120,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         if(password!.count < 4)
         {
             
-            let alert = UIAlertController(title: "Erreur", message: "Le mot de passe doit contenir au moins 4 caractères", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Le mot de passe doit contenir au moins 4 caractères", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -127,7 +130,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -157,7 +160,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         DispatchQueue.main.async {
             self.stopAnimating()
         }
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(!error && utilisateurResponse != nil)
         {
             if(utilisateurResponse.code == WSQueries.CODE_RETOUR_200 && utilisateurResponse.code_erreur == WSQueries.CODE_ERREUR_0)
@@ -185,7 +188,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
             {
                 DispatchQueue.main.async {
                     let msgErreur = utilisateurResponse.description_ + "\n code = " + String(utilisateurResponse.code_erreur)
-                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msgErreur , preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
@@ -195,7 +198,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         }else
         {
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de l'authentification", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Une erreur est survenue lors de l'authentification", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -210,10 +213,12 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
     // ***********************************
     func selectUserProfileRole(arrayRole : [String]!)
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         if(arrayRole.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun Profil.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucun Profil.", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -251,7 +256,6 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         }
         
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true

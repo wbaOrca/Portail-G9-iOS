@@ -8,7 +8,7 @@
 
 "Account" = "Mon compte";
 
-"Welcome_in" = "Bienvenue \ndans";
+"Welcome_in" = "Bienvenue\ndans";
 "Hello" = "Bonjour";
 "Home" = "Accueil";
 "Categories" = "Catégories";
@@ -59,3 +59,8 @@
 "Ok" = "Ok";
 "OUI" = "Oui";
 "NON" = "Non" ;
+
+
+"Identifiant" = "Identifiant" ;
+"Mot de passe" = "Mot de passe";
+"Aucun Profil." = "Aucun Profil.";

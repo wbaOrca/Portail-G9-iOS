@@ -41,7 +41,7 @@ class Perimetre: NSObject , Mappable , NSCoding {
     func mapping(map: Map) {
         
         
-        pays <- map["langues"]
+        pays <- map["pays"]
         directions <- map["directions"]
         zones <- map["zones"]
         groupes <- map["groupes"]

@@ -6,55 +6,59 @@
   Copyright © 2019 Orcaformation. All rights reserved.
 */
 
-"Account" = "Account";
+"Account" = "Mein Konto";
 
-"Welcome_in" = "Welcome\nin";
-"Hello" = "Hello";
-"Home" = "Home";
-"Categories" = "Categories";
-"Groupes" = "Groups" ;
+"Welcome_in" = "Willkommen\nin";
+"Hello" = "Hallo";
+"Home" = "Zuhause";
+"Categories" = "Kategorien";
+"Groupes" = "Gruppen" ;
 "KPI" = "KPI";
 
-"Select" = "Select";
+"Select" = "Wählen";
 
-"Langue" = "Language" ;
-"Pays" = "Country";
+"Langue" = "Sprache" ;
+"Pays" = "Land";
 "DR" = "DR";
 "Zone" = "Zone" ;
-"Groupe" = "Group" ;
-"Affaire" = "Dealer";
+"Groupe" = "Gruppe" ;
+"Affaire" = "Händler";
 
 "Indicateurs" = "Indikatoren";
-"Vente" = "Sales";
-"Après ventes" = "After sales";
-"Clients" = "Customers";
+"Vente" = "Verkauf";
+"Après ventes" = "Nach dem Verkauf";
+"Clients" = "Kunden";
 "Image de marque" = "Branding";
-"Process" = "Process";
-"Radars" = "Radars";
-"Piliers" = "BASICS";
-"Plan d'action" = "Action Plan";
-"Plan d'action zone" = "Zone Action Plan";
-"Synthèse plan d'actions" = "Plan summary of actions";
-"Actions commerciales" = "Commercial Actions";
-"Forces Terrains" = "Land Forces";
-"Agenda" = "Agenda";
+"Process" = "Prozess";
+"Radars" = "Radare";
+"Piliers" = "GRUNDLAGEN";
+"Plan d'action" = "Aktionsplan";
+"Plan d'action zone" = "Zonenaktionsplan";
+"Synthèse plan d'actions" = "Planen Sie eine Zusammenfassung der Aktionen";
+"Actions commerciales" = "Kommerzielle Aktionen";
+"Forces Terrains" = "Landstreitkräfte";
+"Agenda" = "Tagebuch";
 "Todo_list" = "AUFGABENLISTE";
-"Relevé de décisions" = "Record of decisions";
-"Escalation Process" = "Escalation Process";
-"Reporting" = "Reporting";
-"Connexions Stats." = "Stats connections";
-"Déconnexion" = "Disconnect";
-"Se déconnecter" = "Disconnect";
+"Relevé de décisions" = "Aufzeichnung von Entscheidungen";
+"Escalation Process" = "Eskalationsprozess";
+"Reporting" = "Berichterstattung";
+"Connexions Stats." = "Stats Verbindungen";
+"Déconnexion" = "Trennen";
+"Se déconnecter" = "Trennen";
 
-"Piliers" = "BASICS";
-"Mes_Piliers" = "BASICS";
+"Piliers" = "GRUNDLAGEN";
+"Mes_Piliers" = "GRUNDLAGEN";
 
 "TOUT" = "-- Alle --";
 
-"MAJ_Application" = "Update the application";
-"MAJ_Question" = "Do you want to update the app now?" ;
-"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
-"OUI" = "Yes";
-"NON" = "No" ;
+"MAJ_Application" = "Aktualisieren Sie die Anwendung";
+"MAJ_Question" = "Möchten Sie die App jetzt aktualisieren?" ;
+"need_update" = "Aktualisiere diese App bitte. Klicken Sie unten links auf diesem Bildschirm auf die Schaltfläche zum Aktualisieren.";
+"OUI" = "Ja";
+"NON" = "Nein" ;
 "Erreur" = "Error" ;
-"Ok" = "Ok" ;
+"Ok" = "Okay" ;
+
+"Identifiant" = "Einloggen" ;
+"Mot de passe" = "Passwort";
+"Aucun Profil." = "Kein Profil";

@@ -59,3 +59,7 @@
 "NON" = "No" ;
 "Erreur" = "Error" ;
 "Ok" = "Ok" ;
+
+"Identifiant" = "Login" ;
+"Mot de passe" = "Password";
+"Aucun Profil." = "No Profile";
