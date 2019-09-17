@@ -70,7 +70,9 @@
 "Authentification_Query" = "Autenticazione in corso ... Attendere ...";
 "Profils"="profili";
 "erreur_survenue_request" = "Si è verificato un errore durante la richiesta";
+
 "DataUtils_Query" = "Ripristino dati in corso ... Attendere ...";
+"DataSend_Query" = "Invio dati in corso ... Attendere ..";
 
 "Aucune_affaire" = "Nessun affare.";
 "Aucun_pays" = "Nessun paese";
@@ -78,3 +80,6 @@
 "Aucune_zone" = "Nessuna zona";
 "Aucune_direction" = "Nessuna direzione.";
 "Aucune_langue" = "Nessuna lingua";
+
+"empty_commentaire" = "Per favore, inserisci un commento";
+"slect_affaire" = "Seleziona un caso";

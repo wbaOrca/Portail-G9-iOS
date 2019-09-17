@@ -72,7 +72,9 @@
 "Authentification_Query" = "Authentication in progress ... Please wait ...";
 "Profils"="profiles";
 "erreur_survenue_request" = "An error occurred during the request";
+
 "DataUtils_Query" = "Data recovery in progress ... Please wait ...";
+"DataSend_Query" = "Sending data ... Please wait ...";
 
 "Aucune_affaire" = "No dealers.";
 "Aucun_pays" = "No country.";
@@ -80,3 +82,6 @@
 "Aucune_zone" = "No zone.";
 "Aucune_direction" = "No direction.";
 "Aucune_langue" = "No language.";
+
+"empty_commentaire" = "Please enter a comment.";
+"slect_affaire" = "Please select a deal";

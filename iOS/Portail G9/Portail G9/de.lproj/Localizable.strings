@@ -71,7 +71,9 @@
 "Authentification_Query" = "Authentifizierung läuft ... Bitte warten ...";
 "Profils"="Profile";
 "erreur_survenue_request" = "Während der Anforderung ist ein Fehler aufgetreten";
+
 "DataUtils_Query" = "Datenwiederherstellung läuft ... Bitte warten ...";
+"DataSend_Query" = "Daten werden gesendet ... Bitte warten ...";
 
 "Aucune_affaire" = "Kein Geschäft.";
 "Aucun_pays" = "Kein Land.";
@@ -79,3 +81,6 @@
 "Aucune_zone" = "Keine Zone.";
 "Aucune_direction" = "Keine Richtung.";
 "Aucune_langue" = "Keine sprache";
+
+"empty_commentaire" = "Bitte geben Sie einen Kommentar ein.";
+"slect_affaire" = "Bitte wählen Sie einen Fall aus";

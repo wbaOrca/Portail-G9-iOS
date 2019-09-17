@@ -72,7 +72,7 @@ class UpdateQuestionPilierViewController: UIViewController , NVActivityIndicator
         if(textViewCommentaire?.text.count == 0)
         {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Veuillez laisser un commentaire.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("empty_commentaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -155,7 +155,7 @@ extension UpdateQuestionPilierViewController : WSUpdateQuestionDelegate {
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Mise à jour de la question en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataSend_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{

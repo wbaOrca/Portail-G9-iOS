@@ -85,7 +85,7 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des questions en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -113,7 +113,7 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Plan d'action en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataSend_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -316,8 +316,17 @@ extension ListeQuestionPilierViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getListeQuestionPiliers()
+        
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getListeQuestionPiliers()
+        }else
+        {
+            self.dismiss(animated: true, completion: nil)
+            let vcHome = self.navigationController?.viewControllers[1];
+            self.navigationController?.popToViewController(vcHome!, animated: true);
+        }
     }
     
     
@@ -453,7 +462,7 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
-            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -479,7 +488,7 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
-            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -525,7 +534,7 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
         if(affaireData_ == nil){
             
-            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -549,7 +558,7 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Mise à jour de la question en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataSend_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{

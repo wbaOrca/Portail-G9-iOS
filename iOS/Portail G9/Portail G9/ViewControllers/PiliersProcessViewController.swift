@@ -85,7 +85,7 @@ class PiliersProcessViewController: UIViewController , NVActivityIndicatorViewab
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des piliers en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -180,8 +180,16 @@ extension PiliersProcessViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getListePiliersData()
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getListePiliersData()
+        }else
+        {
+            self.dismiss(animated: true, completion: nil)
+            let vcHome = self.navigationController?.viewControllers[1];
+            self.navigationController?.popToViewController(vcHome!, animated: true);
+        }
     }
     
     

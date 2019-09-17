@@ -72,7 +72,9 @@
 "Authentification_Query" = "Authentification en cours... Veuillez patienter svp...";
 "Profils"="Profils";
 "erreur_survenue_request" = "Une erreur est survenue lors de la requête";
+
 "DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";
+"DataSend_Query" = "Envoi de données en cours... Veuillez patienter svp...";
 
 "Aucune_affaire" = "Aucune affaire.";
 "Aucun_pays" = "Aucun pays.";
@@ -80,3 +82,6 @@
 "Aucune_zone" = "Aucune zone.";
 "Aucune_direction" = "Aucune direction.";
 "Aucune_langue" = "Aucune langue.";
+
+"empty_commentaire" = "Veuillez laisser un commentaire.";
+"slect_affaire" = "Veuillez sélectionner une affaire";
