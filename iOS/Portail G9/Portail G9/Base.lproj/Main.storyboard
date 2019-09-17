@@ -210,7 +210,7 @@
                                 <rect key="frame" x="35" y="445.5" width="305" height="34"/>
                                 <color key="backgroundColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Connexion">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2371,7 +2371,7 @@
                                         </segments>
                                         <color key="tintColor" red="0.99915176630000002" green="0.80077916380000003" blue="0.19888043399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commentaire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="3h5-3a-43D">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="3h5-3a-43D">
                                         <rect key="frame" x="0.0" y="79.5" width="355" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2396,7 +2396,7 @@
                                     <constraint firstAttribute="height" constant="40" id="JGV-gk-VBM"/>
                                     <constraint firstAttribute="width" constant="150" id="Xir-Xk-PQS"/>
                                 </constraints>
-                                <state key="normal" title="Sauvegarder"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="updateQuestionAction:" destination="1cv-EL-HYw" eventType="touchUpInside" id="K1H-Fh-0ym"/>
                                 </connections>
