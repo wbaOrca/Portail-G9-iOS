@@ -164,10 +164,12 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     func syncroniseData()
     {
+     
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -177,7 +179,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des données en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -247,21 +249,23 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     func voirForceTerrainAction(planAActionId: Int) {
         
-       
-            if(planAActionId == 1)//Agenda
-            {
-                let agendaVC = self.storyboard?.instantiateViewController(withIdentifier: "AgendaViewController") as? AgendaViewController
-                self.navigationController?.pushViewController(agendaVC!, animated: true);
-            }
-            else if(planAActionId == 2) //ToDO List
-            {
-                let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
-                self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
-            }
-            else if(planAActionId == 3) //Relevé de décisions
-            {
-                
-            }
+        self.fonctionnaliteNonDisponible()
+        return
+        
+        if(planAActionId == 1)//Agenda
+        {
+            let agendaVC = self.storyboard?.instantiateViewController(withIdentifier: "AgendaViewController") as? AgendaViewController
+            self.navigationController?.pushViewController(agendaVC!, animated: true);
+        }
+        else if(planAActionId == 2) //ToDO List
+        {
+            let boardCollectionVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardCollectionViewController") as? BoardCollectionViewController
+            self.navigationController?.pushViewController(boardCollectionVC!, animated: true);
+        }
+        else if(planAActionId == 3) //Relevé de décisions
+        {
+            
+        }
         
         
     }
@@ -439,9 +443,10 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
                 
             }else
             {
+                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 DispatchQueue.main.async {
                     let msgErreur = data.description_ + "\n code = " + String(data.code_erreur)
-                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: msgErreur , preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
@@ -451,9 +456,10 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
             
         }else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
                 
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -601,28 +607,50 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
         }
         
         
-    switch indexPath.row {
-    case 0:
-        self.voirCategorieFamille(familleId: 1)
-        break;
-    
-    case 1:
-        self.voirProcess(processId: 2)
-        break;
-    
-    case 2:
-        self.voirForceTerrainAction(planAActionId: 2)
-        break;
-    
-    case 3:
-        self.voirForceTerrainAction(planAActionId: 1)
-        break;
-    break;
-    
-    default:
-    break;
+        switch indexPath.row {
+        case 0:
+            self.voirCategorieFamille(familleId: 1)
+            break;
+            
+        case 1:
+            self.voirProcess(processId: 2)
+            break;
+            
+        case 2:
+            self.voirForceTerrainAction(planAActionId: 2)
+            break;
+            
+        case 3:
+            self.voirForceTerrainAction(planAActionId: 1)
+            break;
+            break;
+            
+        default:
+            break;
+        }
     }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func fonctionnaliteNonDisponible()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let okText = NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        let erreurText = NSLocalizedString("G9", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "G9", comment: "G9")
+        let alertText = NSLocalizedString("fonctionnalite_non_disponible", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
+        
+        let alert = UIAlertController(title: erreurText, message: alertText, preferredStyle: UIAlertController.Style.alert);
+        //show it
+        alert.addAction(UIAlertAction(title: okText, style: UIAlertAction.Style.default, handler: {(action:UIAlertAction) in
+            
+        }));
+        
+        self.present(alert, animated: false, completion: nil);
+        return
     }
+    
 }
 
 // ++++++++++++++++++++++++++++++++

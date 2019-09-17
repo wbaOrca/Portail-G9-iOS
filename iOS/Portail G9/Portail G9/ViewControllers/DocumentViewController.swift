@@ -63,11 +63,13 @@ class DocumentViewController: UIViewController , URLSessionDownloadDelegate , UI
         {
             self.backgroundSession.finishTasksAndInvalidate()
         }
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
             //simple alert dialog
-            let alertLoadingData = UIAlertController(title: "Pas de connexion internet.", message: "Veuillez vérifier votre connexion internet.", preferredStyle: UIAlertController.Style.alert);
+            let alertLoadingData = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert);
             
             self.present(alertLoadingData, animated: true, completion: nil);
             

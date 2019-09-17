@@ -64,3 +64,13 @@
 "Identifiant" = "Identifiant" ;
 "Mot de passe" = "Mot de passe";
 "Aucun Profil." = "Aucun Profil.";
+
+"fonctionnalite_non_disponible" = "cette fontionnalité sera disponible bientôt";
+
+"Veuillez_saisir_tous_les_champs" = "Veuillez saisir tous les champs";
+"mot_passe_4_caractères" = "Le mot de passe doit contenir au moins 4 caractères";
+"no_internet_connexion" = "Pas de connexion internet.\nVeuillez vous connecter svp." ;
+"Authentification_Query" = "Authentification en cours... Veuillez patienter svp...";
+"Profils"="Profils";
+"erreur_survenue_request" = "Une erreur est survenue lors de la requête";
+"DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";

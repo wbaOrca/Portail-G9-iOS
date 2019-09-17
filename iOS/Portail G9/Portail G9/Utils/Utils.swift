@@ -560,7 +560,7 @@ struct CustomLanguage {
     func createBundlePath () -> Bundle {
         
         //recover the language chosen by the user (in my case, from UserDefaults)
-        var lang = "fr"//"en-GB"
+        var lang = "en-GB" //"fr"
         let preferences = UserDefaults.standard
         let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
         if(langueData_ != nil){

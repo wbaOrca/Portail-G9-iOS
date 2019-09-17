@@ -143,6 +143,7 @@ class FiltreMenuViewController: UIViewController {
                arrayOfDR =  arrayOfDR.filter({ $0.parentId.contains(pays.countryId) })
                arrayOfGroupe =  arrayOfGroupe.filter({ $0.parentId.contains(pays.countryId) })
                arrayOfZone =  arrayOfZone.filter({ $0.parentId.contains(pays.countryId) })
+               arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(pays.countryId) })
                 
             }
         }
@@ -150,7 +151,7 @@ class FiltreMenuViewController: UIViewController {
         // DR direction regionale par défaut
         if(isPaysHasDR){
             
-           arrayFiltres.insert(NSLocalizedString("DR", comment: "-"), at: 2);
+           arrayFiltres.insert(NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), at: 2);
             arrayIcones.insert("ic_dr", at: 2);
             
             let drData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_DR);
@@ -174,6 +175,7 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedZone.append(zone)
                     arrayFiltres[3] = zone.libelle
                     
+                    arrayOfGroupe =  arrayOfGroupe.filter({ $0.parentId.contains(zone.id) })
                     arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(zone.id) })
                 }
             }
@@ -214,6 +216,7 @@ class FiltreMenuViewController: UIViewController {
                     arrayOfSelectedZone.append(zone)
                     arrayFiltres[2] = zone.libelle
                     
+                    arrayOfGroupe =  arrayOfGroupe.filter({ $0.parentId.contains(zone.id) })
                     arrayOfAffaire =  arrayOfAffaire.filter({ $0.parentId.contains(zone.id) })
                 }
             }
@@ -400,7 +403,7 @@ class FiltreMenuViewController: UIViewController {
        
         if(arrayAffaire.count == 0 )
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune affaire.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucune affaire.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -484,9 +487,10 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func selectGroupe() {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -496,7 +500,7 @@ class FiltreMenuViewController: UIViewController {
         let selectedPays = arrayOfSelectedPays[0];
         if(arrayOfGroupe.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun groupe.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun groupe.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -510,7 +514,7 @@ class FiltreMenuViewController: UIViewController {
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
         var array = self.arrayOfGroupe
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let grp = Groupe()
         grp.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
         grp.id = -1 ;
@@ -524,7 +528,7 @@ class FiltreMenuViewController: UIViewController {
         
         
         // show searchbar with placeholder and tint color
-        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Groupe", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Groupe]) in
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Groupe]) in
             return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
@@ -540,13 +544,13 @@ class FiltreMenuViewController: UIViewController {
                 //self.arrayOfSelectedZone.removeAll()
                 //self.arrayFiltres[2] = NSLocalizedString("Zone", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+                self.arrayFiltres[4] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             }else
             {
                 //self.arrayOfSelectedZone.removeAll()
                 //self.arrayFiltres[3] = NSLocalizedString("Zone", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             }
             
             if(self.arrayOfSelectedGroupe.count > 0)
@@ -596,9 +600,10 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func selectZone() {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -608,7 +613,7 @@ class FiltreMenuViewController: UIViewController {
         let selectedPays = arrayOfSelectedPays[0];
         if(arrayOfZone.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune zone.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucune zone.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -624,7 +629,7 @@ class FiltreMenuViewController: UIViewController {
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
         
         var array = self.arrayOfZone
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let zone = Zone()
         zone.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
         zone.id = -1 ;
@@ -638,7 +643,7 @@ class FiltreMenuViewController: UIViewController {
         
         
         // show searchbar with placeholder and tint color
-        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Zone", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Zone]) in
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Zone]) in
             return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
@@ -655,13 +660,13 @@ class FiltreMenuViewController: UIViewController {
                 self.arrayOfSelectedGroupe.removeAll()
                 self.arrayFiltres[3] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[4] = NSLocalizedString("Affaire", comment: "-")
+                self.arrayFiltres[4] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             }else
             {
                 self.arrayOfSelectedGroupe.removeAll()
                 self.arrayFiltres[4] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                 self.arrayOfSelectedAffaire.removeAll()
-                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             }
             if(self.arrayOfSelectedZone.count > 0)
             {
@@ -680,10 +685,10 @@ class FiltreMenuViewController: UIViewController {
                     self.arrayOfSelectedZone.removeAll()
                     if(selectedPays.hasDr == false)
                     {
-                        self.arrayFiltres[2] =  NSLocalizedString("Zone", comment: "-")
+                        self.arrayFiltres[2] =  NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }else
                     {
-                        self.arrayFiltres[3] =  NSLocalizedString("Zone", comment: "-")
+                        self.arrayFiltres[3] =  NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                     }
                 }
                 DispatchQueue.main.async {
@@ -699,7 +704,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     // ***********************************
@@ -707,9 +712,10 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func selectDR() {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -719,7 +725,7 @@ class FiltreMenuViewController: UIViewController {
         
         if(arrayOfDR.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune direction.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucune direction.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -732,7 +738,7 @@ class FiltreMenuViewController: UIViewController {
         // Cell configuration following parameters.
         // 1. UITableViewCell   2. Object of type T   3. IndexPath
         var array = arrayOfDR
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let dr = Direction()
         dr.libelle = NSLocalizedString("TOUT", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "")
         dr.id = -1 ;
@@ -746,7 +752,7 @@ class FiltreMenuViewController: UIViewController {
         
         
         // show searchbar with placeholder and tint color
-        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("DR", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Direction]) in
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Direction]) in
             return array.filter({ $0.libelle.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
@@ -759,13 +765,13 @@ class FiltreMenuViewController: UIViewController {
             
             //reset groupe + affaire
             self.arrayOfSelectedZone.removeAll()
-            self.arrayFiltres[3] = NSLocalizedString("Zone", comment: "-")
+            self.arrayFiltres[3] = NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             self.arrayOfSelectedGroupe.removeAll()
             self.arrayFiltres[4] = NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             self.arrayOfSelectedAffaire.removeAll()
             if(self.arrayFiltres.count > 5)
             {
-                self.arrayFiltres[5] = NSLocalizedString("Affaire", comment: "-")
+                self.arrayFiltres[5] = NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
             }
             
             if(self.arrayOfSelectedDR.count > 0)
@@ -776,7 +782,7 @@ class FiltreMenuViewController: UIViewController {
                 if(dr_.id == -1)//tout
                 {
                     self.arrayOfSelectedDR.removeAll()
-                    self.arrayFiltres[2] = NSLocalizedString("DR", comment: "-")
+                    self.arrayFiltres[2] = NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
                 }
                 
                 
@@ -794,16 +800,17 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("DR", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     // ***********************************
     // ***********************************
     // ***********************************
     func selectPays() {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfPays.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucun pays.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucun pays.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -824,7 +831,7 @@ class FiltreMenuViewController: UIViewController {
         
         
         // show searchbar with placeholder and tint color
-        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Pays", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Pays]) in
+        selectionMenu.showSearchBar(withPlaceHolder: NSLocalizedString("Pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), tintColor: UIColor.lightGray.withAlphaComponent(0.6)) { (searchtext) -> ([Pays]) in
             return self.arrayOfPays.filter({ $0.countryLib.lowercased().contains(searchtext.lowercased()) })
         }
         // set default selected items when menu present on screen.
@@ -873,7 +880,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Pays", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
     }
     
     // ***********************************
@@ -881,10 +888,10 @@ class FiltreMenuViewController: UIViewController {
     // ***********************************
     func selectLangue() {
         
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfLangues.count == 0)
         {
-            let alertController = UIAlertController(title: "Erreur", message: "Aucune langue.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucune langue.", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
@@ -938,7 +945,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Langue", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Langue", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
         
     }
 
@@ -955,10 +962,11 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
     // ***********************************
     func syncroniseData(langue : String)
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -968,7 +976,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des données en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -981,6 +989,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
     // ***********************************
     func didFinishWSGetDataUtiles(error: Bool, data: DataUtilesWSResponse!) {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         DispatchQueue.main.async {
             self.stopAnimating()
@@ -1068,7 +1077,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
             {
                 DispatchQueue.main.async {
                     let msgErreur = data.description_ + "\n code = " + String(data.code_erreur)
-                    let alert = UIAlertController(title: "Erreur", message: msgErreur , preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msgErreur , preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
@@ -1078,8 +1087,9 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
             
         }else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 

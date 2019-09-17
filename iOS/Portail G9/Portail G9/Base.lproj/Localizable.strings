@@ -63,3 +63,13 @@
 "Identifiant" = "Login" ;
 "Mot de passe" = "Password";
 "Aucun Profil." = "No Profile";
+
+"fonctionnalite_non_disponible" = "this feature will be available soon";
+
+"Veuillez_saisir_tous_les_champs" = "Please enter all fields";
+"mot_passe_4_caractères" = "Password must contain at least 4 characters";
+"no_internet_connexion" = "No internet connection. Please log in." ;
+"Authentification_Query" = "Authentication in progress ... Please wait ...";
+"Profils"="profiles";
+"erreur_survenue_request" = "An error occurred during the request";
+"DataUtils_Query" = "Data recovery in progress ... Please wait ...";

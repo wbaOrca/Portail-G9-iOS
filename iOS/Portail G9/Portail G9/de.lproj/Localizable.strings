@@ -62,3 +62,13 @@
 "Identifiant" = "Einloggen" ;
 "Mot de passe" = "Passwort";
 "Aucun Profil." = "Kein Profil";
+
+"fonctionnalite_non_disponible" = "Diese Funktion wird in Kürze verfügbar sein";
+
+"Veuillez_saisir_tous_les_champs" = "Bitte füllen Sie alle Felder aus";
+"mot_passe_4_caractères" = "Das Passwort muss mindestens 4 Zeichen enthalten";
+"no_internet_connexion" = "Keine Internetverbindung.\nBitte melden Sie sich an." ;
+"Authentification_Query" = "Authentifizierung läuft ... Bitte warten ...";
+"Profils"="Profile";
+"erreur_survenue_request" = "Während der Anforderung ist ein Fehler aufgetreten";
+"DataUtils_Query" = "Datenwiederherstellung läuft ... Bitte warten ...";

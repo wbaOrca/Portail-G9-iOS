@@ -61,3 +61,13 @@
 "Identifiant" = "Accesso" ;
 "Mot de passe" = "Parola d'ordine";
 "Aucun Profil." = "Nessun profilo.";
+
+"fonctionnalite_non_disponible" = "questa funzione sarà presto disponibile";
+
+"Veuillez_saisir_tous_les_champs" = "Per favore inserisci tutti i campi";
+"mot_passe_4_caractères" = "La password deve contenere almeno 4 caratteri";
+"no_internet_connexion" = "Nessuna connessione Internet\nPer favore accedi." ;
+"Authentification_Query" = "Autenticazione in corso ... Attendere ...";
+"Profils"="profili";
+"erreur_survenue_request" = "Si è verificato un errore durante la richiesta";
+"DataUtils_Query" = "Ripristino dati in corso ... Attendere ...";
