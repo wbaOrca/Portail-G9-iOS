@@ -72,3 +72,10 @@
 "Profils"="Profile";
 "erreur_survenue_request" = "Während der Anforderung ist ein Fehler aufgetreten";
 "DataUtils_Query" = "Datenwiederherstellung läuft ... Bitte warten ...";
+
+"Aucune_affaire" = "Kein Geschäft.";
+"Aucun_pays" = "Kein Land.";
+"Aucun_groupe" ="Keine Gruppe.";
+"Aucune_zone" = "Keine Zone.";
+"Aucune_direction" = "Keine Richtung.";
+"Aucune_langue" = "Keine sprache";

@@ -403,8 +403,8 @@ class FiltreMenuViewController: UIViewController {
        
         if(arrayAffaire.count == 0 )
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucune affaire.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucune_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -490,8 +490,8 @@ class FiltreMenuViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucun_pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -500,8 +500,8 @@ class FiltreMenuViewController: UIViewController {
         let selectedPays = arrayOfSelectedPays[0];
         if(arrayOfGroupe.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun groupe.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucun_groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -603,8 +603,8 @@ class FiltreMenuViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucun_pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -613,8 +613,8 @@ class FiltreMenuViewController: UIViewController {
         let selectedPays = arrayOfSelectedPays[0];
         if(arrayOfZone.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucune zone.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucune_zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -715,8 +715,8 @@ class FiltreMenuViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfSelectedPays.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Aucun pays.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("Aucun_pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -725,8 +725,8 @@ class FiltreMenuViewController: UIViewController {
         
         if(arrayOfDR.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucune direction.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("Aucune_direction", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -810,8 +810,8 @@ class FiltreMenuViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfPays.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucun pays.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("Aucun_pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -891,8 +891,8 @@ class FiltreMenuViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(arrayOfLangues.count == 0)
         {
-            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: "Aucune langue.", preferredStyle: .alert)
-            let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            let alertController = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("Aucune_langue", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: .alert)
+            let action1 = UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: .default) { (action:UIAlertAction) in
             }
             alertController.addAction(action1)
             self.present(alertController, animated: true, completion: nil)
@@ -967,7 +967,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
         if (reachability.connection == .none ) //si pas de connexion internet
         {
             let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -1078,7 +1078,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
                 DispatchQueue.main.async {
                     let msgErreur = data.description_ + "\n code = " + String(data.code_erreur)
                     let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msgErreur , preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
                     return;
@@ -1090,7 +1090,7 @@ extension FiltreMenuViewController : WSGetDataUtilesDelegate , NVActivityIndicat
              let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;

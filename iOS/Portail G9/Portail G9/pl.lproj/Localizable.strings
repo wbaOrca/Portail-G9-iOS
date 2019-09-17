@@ -73,3 +73,10 @@
 "Profils"="Profils";
 "erreur_survenue_request" = "Une erreur est survenue lors de la requête";
 "DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";
+
+"Aucune_affaire" = "Aucune affaire.";
+"Aucun_pays" = "Aucun pays.";
+"Aucun_groupe" ="Aucun groupe.";
+"Aucune_zone" = "Aucune zone.";
+"Aucune_direction" = "Aucune direction.";
+"Aucune_langue" = "Aucune langue.";

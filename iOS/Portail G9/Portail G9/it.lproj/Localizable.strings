@@ -71,3 +71,10 @@
 "Profils"="profili";
 "erreur_survenue_request" = "Si è verificato un errore durante la richiesta";
 "DataUtils_Query" = "Ripristino dati in corso ... Attendere ...";
+
+"Aucune_affaire" = "Nessun affare.";
+"Aucun_pays" = "Nessun paese";
+"Aucun_groupe" ="Nessun gruppo.";
+"Aucune_zone" = "Nessuna zona";
+"Aucune_direction" = "Nessuna direzione.";
+"Aucune_langue" = "Nessuna lingua";
