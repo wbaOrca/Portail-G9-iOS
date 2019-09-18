@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  Portail G9
+
+  Created by WBA_ORCA on 29/01/2019.
+  Copyright © 2019 Orcaformation. All rights reserved.
+*/
+
+"Account" = "Account";
+
+"Welcome_in" = "Welcome\nin";
+"Hello" = "Hello";
+"Home" = "Home";
+"Categories" = "Categories";
+"Groupes" = "Groups" ;
+"KPI" = "KPI";
+
+"Select" = "Select";
+
+"Langue" = "Language" ;
+"Pays" = "Country";
+"DR" = "DR";
+"Zone" = "Zone" ;
+"Groupe" = "Group" ;
+"Affaire" = "Dealer";
+
+"Indicateurs" = "Indicators";
+"Vente" = "Sales";
+"Après ventes" = "After sales";
+"Clients" = "Customers";
+"Image de marque" = "Branding";
+"Process" = "Process";
+"Radars" = "Radars";
+"Piliers" = "Pillars";
+"Plan d'action" = "Action Plan";
+"Plan d'action zone" = "Zone Action Plan";
+"Synthèse plan d'actions" = "Plan summary of actions";
+"Actions commerciales" = "Commercial Actions";
+"Forces Terrains" = "Land Forces";
+"Agenda" = "Agenda";
+"Todo_list" = "Todo list";
+"Relevé de décisions" = "Record of decisions";
+"Escalation Process" = "Escalation Process";
+"Reporting" = "Reporting";
+"Connexions Stats." = "Stats connections";
+"Déconnexion" = "Disconnect";
+"Se déconnecter" = "Disconnect";
+
+"Piliers" = "PILLARS";
+"Mes_Piliers" = "PILLARS";
+
+"TOUT" = "-- All --";
+
+
+"MAJ_Application" = "Update the application";
+"MAJ_Question" = "Do you want to update the app now?" ;
+"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
+"OUI" = "Yes";
+"NON" = "No" ;
+"Erreur" = "Error" ;
+"Ok" = "Ok" ;
+
+"Identifiant" = "Login" ;
+"Mot de passe" = "Password";
+"Aucun Profil." = "No Profile";
+
+"fonctionnalite_non_disponible" = "this feature will be available soon";
+
+"Veuillez_saisir_tous_les_champs" = "Please enter all fields";
+"mot_passe_4_caractères" = "Password must contain at least 4 characters";
+"no_internet_connexion" = "No internet connection. Please log in." ;
+"Authentification_Query" = "Authentication in progress ... Please wait ...";
+"Profils"="profiles";
+"erreur_survenue_request" = "An error occurred during the request";
+
+"DataUtils_Query" = "Data recovery in progress ... Please wait ...";
+"DataSend_Query" = "Sending data ... Please wait ...";
+
+"Aucune_affaire" = "No dealers.";
+"Aucun_pays" = "No country.";
+"Aucun_groupe" ="No group.";
+"Aucune_zone" = "No zone.";
+"Aucune_direction" = "No direction.";
+"Aucune_langue" = "No language.";
+
+"empty_commentaire" = "Please enter a comment.";
+"slect_affaire" = "Please select a dealer";

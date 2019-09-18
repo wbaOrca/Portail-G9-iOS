@@ -478,7 +478,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: Utils.heightSelectionMenu()), from: self)
     }
     
     
@@ -591,7 +591,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Groupe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: Utils.heightSelectionMenu()), from: self)
     }
     
     
@@ -704,7 +704,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Zone", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: Utils.heightSelectionMenu()), from: self)
     }
     
     // ***********************************
@@ -800,7 +800,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("DR", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: Utils.heightSelectionMenu()), from: self)
     }
     // ***********************************
     // ***********************************
@@ -880,7 +880,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Pays", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: Utils.heightSelectionMenu()), from: self)
     }
     
     // ***********************************
@@ -906,8 +906,49 @@ class FiltreMenuViewController: UIViewController {
         
         let selectionMenu =  RSSelectionMenu(dataSource: arrayOfLangues ) { (cell, object, indexPath) in
             cell.textLabel?.text = object.libelle
+            
+            if(object.languageCode.contains("-"))
+            {
+                let array = object.languageCode.components(separatedBy: "-")
+                let code = array[1]
+                
+                cell.textLabel?.text = object.libelle + " (" + code + ")"
+            }else if(object.languageCode.contains("_"))
+            {
+                let array = object.languageCode.components(separatedBy: "_")
+                let code = array[1]
+                
+                cell.textLabel?.text = object.libelle + " (" + code + ")"
+            }
             // Change tint color (if needed)
             cell.tintColor = .orange
+            
+            if(object.languageIcone.count > 0)
+            {
+                cell.contentView.translatesAutoresizingMaskIntoConstraints = true
+                let heightConstraint2 = NSLayoutConstraint(item: cell.contentView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 50)
+                NSLayoutConstraint.activate([ heightConstraint2])
+                
+                let urlImageAsString = Version.URL_PREFIX_IMAGES_PORTAIL_G9 + object.languageIcone
+                cell.imageView!.sd_setImage(with: URL(string: urlImageAsString), placeholderImage: UIImage(named: "flag-icon-default"))
+                cell.imageView!.contentMode = .scaleToFill
+                cell.imageView!.clipsToBounds = true
+                
+                cell.imageView!.translatesAutoresizingMaskIntoConstraints = true
+                let widthConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 35)
+                let heightConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 35)
+                NSLayoutConstraint.activate([ widthConstraint, heightConstraint])
+                
+                
+                
+               
+            
+            
+            }else
+            {
+                cell.imageView!.image = nil
+            }
+            
         }
         
         
@@ -945,7 +986,7 @@ class FiltreMenuViewController: UIViewController {
         // auto dismiss
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
-        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Langue", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: NSLocalizedString("Langue", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), action: NSLocalizedString("Select", comment: ""), height: Utils.heightSelectionMenu()), from: self)
         
     }
 

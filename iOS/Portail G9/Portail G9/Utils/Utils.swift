@@ -282,6 +282,22 @@ class Utils: NSObject {
         
         return randomString
     }
+    
+    // *****************************************
+    // *****************************************
+    // ****** heightSelectionMenu
+    // *****************************************
+    // *****************************************
+    public static func heightSelectionMenu() -> Double {
+        var height = 400.0;
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+        {
+            // Ipad
+            height = 650.0;
+        }
+        
+        return height;
+    }
 }
 
 
@@ -570,6 +586,10 @@ struct CustomLanguage {
                 lang = langue.languageCode;
                 
             }
+        }
+        if(lang == "SWE") //suedois
+        {
+            lang = "sv";
         }
         lang = lang.replacingOccurrences(of: "_", with: "-")
         let selectedLanguage = lang

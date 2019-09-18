@@ -353,7 +353,10 @@ extension ListeQuestionPilierViewController: WSGetQuestionPiliersDelegate {
             
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
+                
+                
                 arrayQuestionPiliers = data.questionPiliers;
+                arrayQuestionPiliers =  arrayQuestionPiliers.filter({ $0.questions.count > 0 })
                 
                 DispatchQueue.main.async {
                     self.tableViewQuestionsPilier.reloadData()

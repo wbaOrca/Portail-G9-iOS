@@ -117,7 +117,7 @@ class AddCheckListTacheViewController: UIViewController, DateSelectionViewDelega
         selectionMenu.dismissAutomatically = true      // default is true
         // show as PresentationStyle = Push
         
-        selectionMenu.show(style: .Actionsheet(title: "Select", action: NSLocalizedString("Vente", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: 400), from: self)
+        selectionMenu.show(style: .Actionsheet(title: "Select", action: NSLocalizedString("Vente", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), height: Utils.heightSelectionMenu()), from: self)
         
     }
     // *******************************
