@@ -30,8 +30,7 @@ class QuestionPilierTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentaireLabel: UILabel!
     @IBOutlet weak var majLabel: UILabel!
-    @IBOutlet weak var frequenceLabel: UILabel!
-    @IBOutlet weak var cibleLabel: UILabel!
+    @IBOutlet weak var cibleIcon: UIImageView!
     
     @IBOutlet weak var segmentValue: UISegmentedControl?
     
@@ -51,19 +50,18 @@ class QuestionPilierTableViewCell: UITableViewCell {
         
         titleLabel.text = question_pilier.libelle
         
-        frequenceLabel.text = question_pilier.frequence
         majLabel.text = question_pilier.derniereMAJ
         commentaireLabel.text = question_pilier.commentaire
         
         
         buttonPlanAction.isHidden = true
-        cibleLabel.isHidden = true
+        cibleIcon.isHidden = true
         if(question_pilier.values.count > 0)
         {
             let monthQP = question_pilier.values.last
             if(monthQP?.isTargeted == true && monthQP!.value != true)
             {
-                cibleLabel.isHidden = false
+                cibleIcon.isHidden = false
             }
             
             if(monthQP!.value == nil)
@@ -128,10 +126,7 @@ class QuestionPilierTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        if(cibleLabel != nil){
-            cibleLabel.layer.cornerRadius = 5
-            cibleLabel.clipsToBounds = true
-        }
+        
         
         buttonPlanAction.layer.cornerRadius = 5
         buttonPlanAction.clipsToBounds = true

@@ -32,7 +32,9 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Piliers", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.title = NSLocalizedString("Piliers", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         //**
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
         navigationItem.rightBarButtonItems = [filtreButton]
@@ -69,11 +71,12 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
     // ***********************************
     func getListeQuestionPiliers()
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -82,7 +85,7 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des questions en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -96,11 +99,12 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
     // ***********************************
     func planActionQuestionPilier (idQuestion : Int64)
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -109,7 +113,7 @@ class ListeQuestionPilierViewController: UIViewController, NVActivityIndicatorVi
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Plan d'action en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataSend_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -312,8 +316,17 @@ extension ListeQuestionPilierViewController: FiltreMenuViewControllerDelegate {
     // ***********************************
     func dismissFiltreMenuViewController(isLangueChanged : Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        self.getListeQuestionPiliers()
+        
+        if(!isLangueChanged)
+        {
+            self.dismiss(animated: true, completion: nil)
+            self.getListeQuestionPiliers()
+        }else
+        {
+            self.dismiss(animated: true, completion: nil)
+            let vcHome = self.navigationController?.viewControllers[1];
+            self.navigationController?.popToViewController(vcHome!, animated: true);
+        }
     }
     
     
@@ -340,7 +353,10 @@ extension ListeQuestionPilierViewController: WSGetQuestionPiliersDelegate {
             
             if(data.code == WSQueries.CODE_RETOUR_200 && data.code_erreur == WSQueries.CODE_ERREUR_0)
             {
+                
+                
                 arrayQuestionPiliers = data.questionPiliers;
+                arrayQuestionPiliers =  arrayQuestionPiliers.filter({ $0.questions.count > 0 })
                 
                 DispatchQueue.main.async {
                     self.tableViewQuestionsPilier.reloadData()
@@ -349,11 +365,12 @@ extension ListeQuestionPilierViewController: WSGetQuestionPiliersDelegate {
         }
         else if(error && data != nil)
         {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
                 
                 let msg = data.description_ + "\nCode erreur = " + String(data.code_erreur)
-                let alert = UIAlertController(title: "Erreur", message: msg, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msg, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -362,9 +379,10 @@ extension ListeQuestionPilierViewController: WSGetQuestionPiliersDelegate {
         }
         else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des groupes.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -397,11 +415,12 @@ extension ListeQuestionPilierViewController: WSTargetQuestionDelegate {
         }
         else if(error)
         {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
                 
                 let msg = description + "\nCode erreur = " + String(code_erreur)
-                let alert = UIAlertController(title: "Erreur", message: msg, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msg, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -410,9 +429,10 @@ extension ListeQuestionPilierViewController: WSTargetQuestionDelegate {
         }
         else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de PA", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -443,8 +463,10 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
         if(affaireData_ == nil){
             
-            let alert = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -452,6 +474,8 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
        
         let updateQuestionPilierVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdateQuestionPilierViewController") as? UpdateQuestionPilierViewController
         updateQuestionPilierVC?.mQuestionPilier = qp
+        
+        
         self.navigationController?.pushViewController(updateQuestionPilierVC!, animated: true);
     }
     
@@ -465,8 +489,10 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
         if(affaireData_ == nil){
             
-            let alert = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -484,8 +510,10 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         }
         if(isLastMonthOk == true || isLastTargeted == true)
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas nécessaire de mettre un plan d'action", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: "Pas nécessaire de mettre un plan d'action", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             
@@ -502,13 +530,15 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
     // ***********************************
     func okNokQuestionPilier(qp: QuestionPilier, isOk: Bool) {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         // Affaire par défaut
         let preferences = UserDefaults.standard
         let affaireData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_AFFAIRE);
         if(affaireData_ == nil){
             
-            let alert = UIAlertController(title: "Erreur", message: "Veuillez sélectionner une affaire", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("slect_affaire", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             self.tableViewQuestionsPilier.reloadData();
@@ -520,8 +550,9 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -530,7 +561,7 @@ extension ListeQuestionPilierViewController: EditQuestionPilierDelegate {
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Mise à jour de la question en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataSend_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -564,11 +595,12 @@ extension ListeQuestionPilierViewController : WSUpdateQuestionDelegate {
         }
         else if(error)
         {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
                 
                 let msg = description + "\nCode erreur = " + String(code_erreur)
-                let alert = UIAlertController(title: "Erreur", message: msg, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: msg, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -577,9 +609,10 @@ extension ListeQuestionPilierViewController : WSUpdateQuestionDelegate {
         }
         else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la mise à jour de cette question", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;

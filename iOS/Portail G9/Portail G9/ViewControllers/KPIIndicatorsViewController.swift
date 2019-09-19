@@ -51,8 +51,8 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("KPI", comment: "-")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("KPI", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         // **
         let filtreButton = UIBarButtonItem(image: UIImage(named: "ic_filter_"), style: .plain, target: self, action: #selector(filtreTapped))
@@ -148,11 +148,13 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
     // ***********************************
     func getIndicateursKpisData()
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return;
@@ -161,7 +163,7 @@ class KPIIndicatorsViewController: UIViewController  , NVActivityIndicatorViewab
         // All Correct OK
         DispatchQueue.main.async {
             let size = CGSize(width: 150, height: 50)
-            self.startAnimating(size, message: "Récupération des indicateurs KPI en cours... Veuillez patienter svp...", type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
+            self.startAnimating(size, message: NSLocalizedString("DataUtils_Query", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), type: NVActivityIndicatorType(rawValue: 5)!, fadeInAnimation: nil)
         }
         
         DispatchQueue.main.async{
@@ -248,9 +250,10 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
             }
         }else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des indicateurs KPI.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;
@@ -325,8 +328,10 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
         {
             let indicateur = self.arrayValuesOfCollection[indexPath.section][indexPath.row]
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("KPI", comment: "-"), message: indicateur.indicateurKPI.valeur, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                
+                let alert = UIAlertController(title: NSLocalizedString("KPI", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), message: indicateur.indicateurKPI.valeur, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
                 return;

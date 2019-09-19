@@ -17,8 +17,7 @@ class Direction: NSObject , Mappable , NSCoding , UniqueProperty {
     var libelle   : String = ""
     var zoneIdClient   : String = ""
     
-    var zones   : [Zone] = [Zone]()
-    var groupes   : [Groupe] = [Groupe]()
+    var parentId   : [Int64] = [Int64]()
     
     //******
     //******
@@ -53,8 +52,7 @@ class Direction: NSObject , Mappable , NSCoding , UniqueProperty {
         libelle <- map["libelle"]
         zoneIdClient <- map["zoneIdClient"]
         
-        zones <- map["zones"]
-        groupes <- map["groupes"]
+        parentId <- map["ParentId"]
     }
     
     // *****************************************
@@ -68,8 +66,7 @@ class Direction: NSObject , Mappable , NSCoding , UniqueProperty {
         aCoder.encode(libelle, forKey: "libelle")
         aCoder.encode(zoneIdClient, forKey: "zoneIdClient")
         
-        aCoder.encode(zones, forKey: "zones")
-        aCoder.encode(groupes, forKey: "groupes")
+        aCoder.encode(parentId, forKey: "parentId")
     }
     
     // *****************************************
@@ -83,8 +80,7 @@ class Direction: NSObject , Mappable , NSCoding , UniqueProperty {
         self.libelle = decoder.decodeObject(forKey: "libelle") as? String ?? ""
         self.zoneIdClient = decoder.decodeObject(forKey: "zoneIdClient") as? String ?? ""
         
-        self.zones = decoder.decodeObject(forKey: "zones") as? [Zone] ?? [Zone] ()
-        self.groupes = decoder.decodeObject(forKey: "groupes") as? [Groupe] ?? [Groupe]()
+        self.parentId = decoder.decodeObject(forKey: "parentId") as? [Int64] ?? [Int64] ()
         
     }
 }

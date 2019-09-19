@@ -49,10 +49,13 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
     // ***********************************
     func getBoardsData()
     {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Erreur", message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -75,10 +78,11 @@ class BoardCollectionViewController: UICollectionViewController, UICollectionVie
     // *******************
     func addBoardQuery()
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Erreur", message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -221,8 +225,9 @@ extension BoardCollectionViewController : WSGetBoardsForcesTerrainsDelegate
             }
         }else
         {
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des tableaux.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Erreur", message: NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -252,7 +257,8 @@ extension BoardCollectionViewController : WSAddBoardForcesTerrainsDelegate
             self.getBoardsData();
         }else
         {
-            let msg = "Une erreur est survenue lors de l'ajout de votre nouveau tableau.\n" + description + "\ncode = " + String(code_erreur)
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let msg = NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") + ".\n" + description + "\ncode = " + String(code_erreur)
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
@@ -287,7 +293,8 @@ extension BoardCollectionViewController : WSDragTaskForcesTerrainsDelegate
             self.getBoardsData();
         }else
         {
-            let msg = "Une erreur est survenue lors du déplacment de la tache.\n" + description + "\ncode = " + String(code_erreur)
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let msg = NSLocalizedString("erreur_survenue_request", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") + ".\n" + description + "\ncode = " + String(code_erreur)
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Erreur", message: msg , preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
@@ -303,10 +310,12 @@ extension BoardCollectionViewController : WSDragTaskForcesTerrainsDelegate
     // ***********************************
     func dragAndDropTask(board : Board , task : Tache) {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let reachability = Reachability()!
         if (reachability.connection == .none ) //si pas de connexion internet
         {
-            let alert = UIAlertController(title: "Erreur", message: "Pas de connexion internet.\nVeuillez vous connecter svp.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Erreur", message: NSLocalizedString("no_internet_connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             

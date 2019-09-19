@@ -31,6 +31,7 @@ class Utils: NSObject {
     public static let SHARED_PREFERENCE_DATA_PERIMETRE = "SHARED_PREFERENCE_DATA_PERIMETRE"
     public static let SHARED_PREFERENCE_LANGUAGES = "SHARED_PREFERENCE_LANGUAGES"
     
+    
     public static let SHARED_PREFERENCE_PERIMETRE_LANGUE = "SHARED_PREFERENCE_PERIMETRE_LANGUE"
     public static let SHARED_PREFERENCE_PERIMETRE_PAYS = "SHARED_PREFERENCE_PERIMETRE_PAYS"
     public static let SHARED_PREFERENCE_PERIMETRE_DR = "SHARED_PREFERENCE_PERIMETRE_DR"
@@ -280,6 +281,22 @@ class Utils: NSObject {
         }
         
         return randomString
+    }
+    
+    // *****************************************
+    // *****************************************
+    // ****** heightSelectionMenu
+    // *****************************************
+    // *****************************************
+    public static func heightSelectionMenu() -> Double {
+        var height = 400.0;
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+        {
+            // Ipad
+            height = 650.0;
+        }
+        
+        return height;
     }
 }
 
@@ -559,7 +576,7 @@ struct CustomLanguage {
     func createBundlePath () -> Bundle {
         
         //recover the language chosen by the user (in my case, from UserDefaults)
-        var lang = "en-GB"
+        var lang = "fr" //"en-GB" //
         let preferences = UserDefaults.standard
         let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
         if(langueData_ != nil){
@@ -569,6 +586,10 @@ struct CustomLanguage {
                 lang = langue.languageCode;
                 
             }
+        }
+        if(lang == "SWE") //suedois
+        {
+            lang = "sv";
         }
         lang = lang.replacingOccurrences(of: "_", with: "-")
         let selectedLanguage = lang

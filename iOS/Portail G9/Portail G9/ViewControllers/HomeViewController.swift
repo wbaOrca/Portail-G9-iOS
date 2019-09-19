@@ -45,8 +45,10 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Home", comment: "-")
+        self.title = NSLocalizedString("Home", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
         filtreView.delegate = self
         
@@ -58,7 +60,7 @@ class HomeViewController: UIViewController , NVActivityIndicatorViewable{
             
             let userAsString = user.user_prenom + " " + user.user_nom
             
-            labelWelcome.text = NSLocalizedString("Hello", comment: "-") + " " + userAsString
+            labelWelcome.text = NSLocalizedString("Hello", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-") + " " + userAsString
         }
         
         let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu_"), style: .plain, target: self, action: #selector(menuTapped))

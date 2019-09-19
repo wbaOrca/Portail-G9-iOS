@@ -6,45 +6,81 @@
   Copyright © 2019 Orcaformation. All rights reserved.
 */
 
-"Welcome_in" = "Welcome\nin";
-"Hello" = "Hello";
-"Home" = "Home";
-"Categories" = "Categories";
-"Groupes" = "Groups" ;
+"Account" = "Mein Konto";
+
+"Welcome_in" = "Willkommen\nin";
+"Hello" = "Hallo";
+"Home" = "Zuhause";
+"Categories" = "Kategorien";
+"Groupes" = "Gruppen" ;
 "KPI" = "KPI";
 
-"Select" = "Select";
+"Select" = "Wählen";
 
-"Langue" = "Language" ;
-"Pays" = "Country";
+"Langue" = "Sprache" ;
+"Pays" = "Land";
 "DR" = "DR";
 "Zone" = "Zone" ;
-"Groupe" = "Group" ;
-"Affaire" = "Dealer";
+"Groupe" = "Gruppe" ;
+"Affaire" = "Händler";
 
 "Indicateurs" = "Indikatoren";
-"Vente" = "Sales";
-"Après ventes" = "After sales";
-"Clients" = "Customers";
+"Vente" = "Verkauf";
+"Après ventes" = "Nach dem Verkauf";
+"Clients" = "Kunden";
 "Image de marque" = "Branding";
-"Process" = "Process";
-"Radars" = "Radars";
-"Piliers" = "BASICS";
-"Plan d'action" = "Action Plan";
-"Plan d'action zone" = "Zone Action Plan";
-"Synthèse plan d'actions" = "Plan summary of actions";
-"Actions commerciales" = "Commercial Actions";
-"Forces Terrains" = "Land Forces";
-"Agenda" = "Agenda";
+"Process" = "Prozess";
+"Radars" = "Radare";
+"Piliers" = "GRUNDLAGEN";
+"Plan d'action" = "Aktionsplan";
+"Plan d'action zone" = "Zonenaktionsplan";
+"Synthèse plan d'actions" = "Planen Sie eine Zusammenfassung der Aktionen";
+"Actions commerciales" = "Kommerzielle Aktionen";
+"Forces Terrains" = "Landstreitkräfte";
+"Agenda" = "Tagebuch";
 "Todo_list" = "AUFGABENLISTE";
-"Relevé de décisions" = "Record of decisions";
-"Escalation Process" = "Escalation Process";
-"Reporting" = "Reporting";
-"Connexions Stats." = "Stats connections";
-"Déconnexion" = "Disconnect";
-"Se déconnecter" = "Disconnect";
+"Relevé de décisions" = "Aufzeichnung von Entscheidungen";
+"Escalation Process" = "Eskalationsprozess";
+"Reporting" = "Berichterstattung";
+"Connexions Stats." = "Stats Verbindungen";
+"Déconnexion" = "Trennen";
+"Se déconnecter" = "Trennen";
 
-"Piliers" = "BASICS";
-"Mes_Piliers" = "BASICS";
+"Piliers" = "GRUNDLAGEN";
+"Mes_Piliers" = "GRUNDLAGEN";
 
 "TOUT" = "-- Alle --";
+
+"MAJ_Application" = "Aktualisieren Sie die Anwendung";
+"MAJ_Question" = "Möchten Sie die App jetzt aktualisieren?" ;
+"need_update" = "Aktualisiere diese App bitte. Klicken Sie unten links auf diesem Bildschirm auf die Schaltfläche zum Aktualisieren.";
+"OUI" = "Ja";
+"NON" = "Nein" ;
+"Erreur" = "Error" ;
+"Ok" = "Okay" ;
+
+"Identifiant" = "Einloggen" ;
+"Mot de passe" = "Passwort";
+"Aucun Profil." = "Kein Profil";
+
+"fonctionnalite_non_disponible" = "Diese Funktion wird in Kürze verfügbar sein";
+
+"Veuillez_saisir_tous_les_champs" = "Bitte füllen Sie alle Felder aus";
+"mot_passe_4_caractères" = "Das Passwort muss mindestens 4 Zeichen enthalten";
+"no_internet_connexion" = "Keine Internetverbindung.\nBitte melden Sie sich an." ;
+"Authentification_Query" = "Authentifizierung läuft ... Bitte warten ...";
+"Profils"="Profile";
+"erreur_survenue_request" = "Während der Anforderung ist ein Fehler aufgetreten";
+
+"DataUtils_Query" = "Datenwiederherstellung läuft ... Bitte warten ...";
+"DataSend_Query" = "Daten werden gesendet ... Bitte warten ...";
+
+"Aucune_affaire" = "Kein Geschäft.";
+"Aucun_pays" = "Kein Land.";
+"Aucun_groupe" ="Keine Gruppe.";
+"Aucune_zone" = "Keine Zone.";
+"Aucune_direction" = "Keine Richtung.";
+"Aucune_langue" = "Keine sprache";
+
+"empty_commentaire" = "Bitte geben Sie einen Kommentar ein.";
+"slect_affaire" = "Bitte wählen Sie einen Fall aus";

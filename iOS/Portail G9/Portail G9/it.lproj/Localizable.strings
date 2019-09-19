@@ -5,6 +5,7 @@
   Created by WBA_ORCA on 29/01/2019.
   Copyright © 2019 Orcaformation. All rights reserved.
 */
+"Account" = "Account";
 
 "Welcome_in" = "Welcome\nin";
 "Hello" = "Hello";
@@ -48,3 +49,37 @@
 "Mes_Piliers" = "RAGNATELA";
 
 "TOUT" = "-- Tutto --";
+
+"MAJ_Application" = "Update the application";
+"MAJ_Question" = "Do you want to update the app now?" ;
+"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
+"OUI" = "Yes";
+"NON" = "No" ;
+"Erreur" = "Error" ;
+"Ok" = "Ok" ;
+
+"Identifiant" = "Accesso" ;
+"Mot de passe" = "Parola d'ordine";
+"Aucun Profil." = "Nessun profilo.";
+
+"fonctionnalite_non_disponible" = "questa funzione sarà presto disponibile";
+
+"Veuillez_saisir_tous_les_champs" = "Per favore inserisci tutti i campi";
+"mot_passe_4_caractères" = "La password deve contenere almeno 4 caratteri";
+"no_internet_connexion" = "Nessuna connessione Internet\nPer favore accedi." ;
+"Authentification_Query" = "Autenticazione in corso ... Attendere ...";
+"Profils"="profili";
+"erreur_survenue_request" = "Si è verificato un errore durante la richiesta";
+
+"DataUtils_Query" = "Ripristino dati in corso ... Attendere ...";
+"DataSend_Query" = "Invio dati in corso ... Attendere ..";
+
+"Aucune_affaire" = "Nessun affare.";
+"Aucun_pays" = "Nessun paese";
+"Aucun_groupe" ="Nessun gruppo.";
+"Aucune_zone" = "Nessuna zona";
+"Aucune_direction" = "Nessuna direzione.";
+"Aucune_langue" = "Nessuna lingua";
+
+"empty_commentaire" = "Per favore, inserisci un commento";
+"slect_affaire" = "Seleziona un caso";

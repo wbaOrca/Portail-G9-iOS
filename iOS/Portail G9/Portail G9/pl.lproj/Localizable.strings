@@ -5,6 +5,8 @@
   Created by WBA_ORCA on 29/01/2019.
   Copyright © 2019 Orcaformation. All rights reserved.
 */
+"Account" = "Account";
+
 "Welcome_in" = "Bienvenue \ndans";
 
 "Hello" = "dzień dobry";
@@ -49,3 +51,37 @@
 "Mes_Piliers" = "Mes Piliers";
 
 "TOUT" = "-- Alle --";
+
+"MAJ_Application" = "Update the application";
+"MAJ_Question" = "Do you want to update the app now?" ;
+"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
+"OUI" = "Yes";
+"NON" = "No" ;
+"Erreur" = "Error" ;
+"Ok" = "Ok" ;
+
+"Identifiant" = "Login" ;
+"Mot de passe" = "Password";
+"Aucun Profil." = "Aucun Profil.";
+
+"fonctionnalite_non_disponible" = "this feature will be available soon";
+
+"Veuillez_saisir_tous_les_champs" = "Veuillez saisir tous les champs";
+"mot_passe_4_caractères" = "Le mot de passe doit contenir au moins 4 caractères";
+"no_internet_connexion" = "Pas de connexion internet.\nVeuillez vous connecter svp." ;
+"Authentification_Query" = "Authentification en cours... Veuillez patienter svp...";
+"Profils"="Profils";
+"erreur_survenue_request" = "Une erreur est survenue lors de la requête";
+
+"DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";
+"DataSend_Query" = "Envoi de données en cours... Veuillez patienter svp...";
+
+"Aucune_affaire" = "Aucune affaire.";
+"Aucun_pays" = "Aucun pays.";
+"Aucun_groupe" ="Aucun groupe.";
+"Aucune_zone" = "Aucune zone.";
+"Aucune_direction" = "Aucune direction.";
+"Aucune_langue" = "Aucune langue.";
+
+"empty_commentaire" = "Veuillez laisser un commentaire.";
+"slect_affaire" = "Veuillez sélectionner une affaire";

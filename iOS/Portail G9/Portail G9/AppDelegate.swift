@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     let gcmMessageIDKey = "body"
-    
-
     var customApplicationLang = CustomLanguage()
     
     // ***********************************
@@ -220,6 +218,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate , MessagingDelegate
         // Change this to your preferred presentation option
         completionHandler([])
     }
+    
     //*****
     //******
     //*******

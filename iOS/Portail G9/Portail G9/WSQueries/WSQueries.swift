@@ -11,6 +11,14 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetVersionDelegate {
+    
+    func didFinishWSGetVersion(error: Bool,version : String!,url_download : String!)
+}
+
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 protocol WSAuthentificationDelegate {
@@ -297,6 +305,51 @@ class WSQueries: NSObject {
     }
     
 
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    static func getVersionApplication( delegate : WSGetVersionDelegate)
+    {
+        
+        let post_params: Parameters = ["":""]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/get-version-action"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: nil).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? NSDictionary();
+                let code = responseJson["code_erreur"] as? Int ?? -1
+                
+                if(code != 0)
+                {
+                    delegate.didFinishWSGetVersion(error: true, version: nil, url_download: nil)
+                    return
+                }
+                
+                let versionDisctionary = responseJson["versions"] as? NSDictionary ?? NSDictionary();
+                let versioniOSDisctionary = versionDisctionary["ios"] as? NSDictionary ?? NSDictionary();
+                let versioniOSServeur = versioniOSDisctionary["value"] as? String ?? "";
+                let urliOSServeur = versioniOSDisctionary["url"] as? String ?? "";
+                
+                delegate.didFinishWSGetVersion(error: false, version: versioniOSServeur, url_download: urliOSServeur)
+                
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetVersion(error: true, version: nil, url_download: nil)
+                break
+                
+            }
+            
+        }
+    }
     
     // ***********************************
     // ***********************************

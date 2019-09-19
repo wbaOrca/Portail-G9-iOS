@@ -12,7 +12,7 @@ import ObjectMapper
 class DataUtiles: NSObject , Mappable{
 
     var langues : [Langue] = [Langue]()
-    var perimetre : [Pays] = [Pays]()
+    var perimetre : Perimetre = Perimetre()
     
     //******
     //******

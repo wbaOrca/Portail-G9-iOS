@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "1vA-k0-Nuo"; */
 "1vA-k0-Nuo.text" = "Label";
 
-/* Class = "UILabel"; text = "Commentaire"; ObjectID = "3h5-3a-43D"; */
-"3h5-3a-43D.text" = "Commentaire";
+/* Class = "UILabel"; text = "Comment"; ObjectID = "3h5-3a-43D"; */
+"3h5-3a-43D.text" = "Comment";
 
 /* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "6WO-kE-zwW"; */
 "6WO-kE-zwW.normalTitle" = "Sauvegarder";
@@ -50,9 +50,6 @@
 /* Class = "UIButton"; normalTitle = "Statut"; ObjectID = "FxE-7y-Tt6"; */
 "FxE-7y-Tt6.normalTitle" = "Statut";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "G5O-Qe-TB8"; */
-"G5O-Qe-TB8.text" = "Label";
-
 /* Class = "UIViewController"; title = "Editor"; ObjectID = "GDO-VW-wA7"; */
 "GDO-VW-wA7.title" = "Editor";
 
@@ -74,8 +71,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "KdY-Zj-qlh"; */
 "KdY-Zj-qlh.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "Lt5-og-eOD"; */
-"Lt5-og-eOD.normalTitle" = "Sauvegarder";
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Lt5-og-eOD"; */
+"Lt5-og-eOD.normalTitle" = "Save";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "M1Y-nL-gbW"; */
 "M1Y-nL-gbW.text" = "Label";
@@ -101,23 +98,20 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "QWS-SS-dEa"; */
 "QWS-SS-dEa.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "Rma-Jm-nGD"; */
-"Rma-Jm-nGD.text" = "Label";
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "QcH-QJ-uWl"; */
+"QcH-QJ-uWl.normalTitle" = "-";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Rt2-tr-kST"; */
 "Rt2-tr-kST.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "SO6-be-8Nl"; */
-"SO6-be-8Nl.text" = "Label";
-
 /* Class = "UILabel"; text = "Label"; ObjectID = "Slp-46-ya9"; */
 "Slp-46-ya9.text" = "Label";
 
-/* Class = "UISegmentedControl"; TF3-ja-6Oy.segmentTitles[0] = "NOK"; ObjectID = "TF3-ja-6Oy"; */
-"TF3-ja-6Oy.segmentTitles[0]" = "NOK";
+/* Class = "UISegmentedControl"; TF3-ja-6Oy.segmentTitles[0] = "OK"; ObjectID = "TF3-ja-6Oy"; */
+"TF3-ja-6Oy.segmentTitles[0]" = "OK";
 
-/* Class = "UISegmentedControl"; TF3-ja-6Oy.segmentTitles[1] = "OK"; ObjectID = "TF3-ja-6Oy"; */
-"TF3-ja-6Oy.segmentTitles[1]" = "OK";
+/* Class = "UISegmentedControl"; TF3-ja-6Oy.segmentTitles[1] = "NOK"; ObjectID = "TF3-ja-6Oy"; */
+"TF3-ja-6Oy.segmentTitles[1]" = "NOK";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "VCs-D9-QDx"; */
 "VCs-D9-QDx.text" = "Label";
@@ -140,6 +134,12 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "YXt-xQ-HPA"; */
 "YXt-xQ-HPA.text" = "Label";
 
+/* Class = "UISegmentedControl"; ZCp-8e-mtE.segmentTitles[0] = "OK"; ObjectID = "ZCp-8e-mtE"; */
+"ZCp-8e-mtE.segmentTitles[0]" = "OK";
+
+/* Class = "UISegmentedControl"; ZCp-8e-mtE.segmentTitles[1] = "NOK"; ObjectID = "ZCp-8e-mtE"; */
+"ZCp-8e-mtE.segmentTitles[1]" = "NOK";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "ZXD-9r-XHY"; */
 "ZXD-9r-XHY.text" = "Label";
 
@@ -161,14 +161,20 @@
 /* Class = "UILabel"; text = "Message"; ObjectID = "aTl-F3-bUC"; */
 "aTl-F3-bUC.text" = "Message";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "b6H-eo-tE5"; */
+"b6H-eo-tE5.text" = "Label";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "eUs-rX-TC1"; */
 "eUs-rX-TC1.text" = "Label";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "euL-b2-Mdm"; */
 "euL-b2-Mdm.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Connexion"; ObjectID = "fVd-OB-8MI"; */
-"fVd-OB-8MI.normalTitle" = "Connexion";
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "eyf-jY-SQt"; */
+"eyf-jY-SQt.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "fVd-OB-8MI"; */
+"fVd-OB-8MI.normalTitle" = "Login";
 
 /* Class = "UILabel"; text = "Statut"; ObjectID = "goe-NS-xMH"; */
 "goe-NS-xMH.text" = "Statut";
@@ -212,9 +218,6 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "qln-06-aeK"; */
 "qln-06-aeK.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "qpX-oC-Wyx"; */
-"qpX-oC-Wyx.text" = "Label";
-
 /* Class = "UILabel"; text = "Date"; ObjectID = "rLi-6n-ufH"; */
 "rLi-6n-ufH.text" = "Date";
 
@@ -227,17 +230,14 @@
 /* Class = "UIButton"; normalTitle = "Supprimer"; ObjectID = "sou-Ld-Y9x"; */
 "sou-Ld-Y9x.normalTitle" = "Supprimer";
 
-/* Class = "UILabel"; text = "ciblé"; ObjectID = "tNS-hq-c7Y"; */
-"tNS-hq-c7Y.text" = "ciblé";
-
 /* Class = "UIButton"; normalTitle = "Scan"; ObjectID = "tqU-My-Yax"; */
 "tqU-My-Yax.normalTitle" = "Scan";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "uHk-Nr-jAM"; */
-"uHk-Nr-jAM.text" = "Label";
-
 /* Class = "UILabel"; text = "Label"; ObjectID = "ucU-fJ-9JN"; */
 "ucU-fJ-9JN.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "PA"; ObjectID = "uue-9v-9IO"; */
+"uue-9v-9IO.normalTitle" = "PA";
 
 /* Class = "UILabel"; text = "SCAN"; ObjectID = "v87-90-zy7"; */
 "v87-90-zy7.text" = "SCAN";
@@ -259,4 +259,3 @@
 
 /* Class = "UILabel"; text = "Cible"; ObjectID = "zmv-JE-sQW"; */
 "zmv-JE-sQW.text" = "Cible";
-
