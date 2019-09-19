@@ -395,15 +395,21 @@ didReceiveResponse:(NSURLResponse *)response
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
 
+    completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
+    
+    /*
     // Identify the operation that runs this task and pass it the delegate method
     SDWebImageDownloaderOperation *dataOperation = [self operationWithTask:task];
     if ([dataOperation respondsToSelector:@selector(URLSession:task:didReceiveChallenge:completionHandler:)]) {
         [dataOperation URLSession:session task:task didReceiveChallenge:challenge completionHandler:completionHandler];
     } else {
         if (completionHandler) {
-            completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+            
+           completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
         }
-    }
+    
+     */
 }
+
 
 @end

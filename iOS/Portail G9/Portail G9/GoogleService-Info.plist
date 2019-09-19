@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>112820312467-h6r686b3b34sf98le833q5fvvt3q4lom.apps.googleusercontent.com</string>
+	<string>112820312467-pusp2vig4vfvfrj6gaq51kv84f8q58dm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.112820312467-h6r686b3b34sf98le833q5fvvt3q4lom</string>
+	<string>com.googleusercontent.apps.112820312467-pusp2vig4vfvfrj6gaq51kv84f8q58dm</string>
 	<key>API_KEY</key>
 	<string>AIzaSyABESLm-xqf-eySP9vZQCPvbM6fZ0A2yYo</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.orcaformation.ios.pp.Portail-G9</string>
+	<string>com.orcaformation.ios.prod.Portail-G9</string>
 	<key>PROJECT_ID</key>
 	<string>portail-g9</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<false/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:112820312467:ios:bfe78d804c9fbc14feb066</string>
+	<string>1:112820312467:ios:4a6eabdfc54fc5c9feb066</string>
 	<key>DATABASE_URL</key>
 	<string>https://portail-g9.firebaseio.com</string>
 </dict>
