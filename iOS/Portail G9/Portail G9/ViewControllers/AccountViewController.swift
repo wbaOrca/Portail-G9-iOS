@@ -22,8 +22,7 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.title = NSLocalizedString("Account", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        setupScreenLanguage()
         
         buttonAccount.layer.cornerRadius = buttonAccount.frame.width / 2
         buttonAccount.clipsToBounds = true
@@ -32,6 +31,7 @@ class AccountViewController: UIViewController {
         buttonDisconnect.clipsToBounds = true
         
         // **
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let appInfo = Bundle.main.infoDictionary! as Dictionary<String,AnyObject>
         let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
         let bundleVersion      = appInfo["CFBundleVersion"] as! String
@@ -70,7 +70,16 @@ class AccountViewController: UIViewController {
         }
     }
     
-
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupScreenLanguage()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("Account", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+        
+        buttonDisconnect.setTitle(NSLocalizedString("Déconnexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), for: .normal)
+    }
     
     // ***********************************
     // ***********************************

@@ -20,7 +20,6 @@
 		FB02ACF72236993600843B66 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACF02236993600843B66 /* HSB.swift */; };
 		FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */; };
 		FB05221622084B27000556E1 /* FiltreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */; };
-		FB05221822084CAE000556E1 /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05221722084CAE000556E1 /* FiltreView.swift */; };
 		FB0BC51A22B39EF2002B6C0D /* Famille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BC51922B39EF2002B6C0D /* Famille.swift */; };
 		FB0E0F7422003E3F0043E345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB0E0F7322003E3F0043E345 /* GoogleService-Info.plist */; };
 		FB0E0F7D220047990043E345 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E0F7C220047990043E345 /* Utils.swift */; };
@@ -34,6 +33,7 @@
 		FB2F791922B921CC0039AF0B /* CategorieFamille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791822B921CC0039AF0B /* CategorieFamille.swift */; };
 		FB2F791B22B921E70039AF0B /* KPICategorieFamille.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791A22B921E70039AF0B /* KPICategorieFamille.swift */; };
 		FB2F791D22B9300B0039AF0B /* GetActionPlansWSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2F791C22B9300B0039AF0B /* GetActionPlansWSResponse.swift */; };
+		FB4406F32333BB150026706D /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4406F22333BB150026706D /* FiltreView.swift */; };
 		FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */; };
 		FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */; };
 		FB44EEFA2255FF5700C98638 /* Pilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB44EEF92255FF5700C98638 /* Pilier.swift */; };
@@ -163,7 +163,6 @@
 		FB02ACF02236993600843B66 /* HSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 		FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
 		FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreCollectionViewCell.swift; sourceTree = "<group>"; };
-		FB05221722084CAE000556E1 /* FiltreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
 		FB0BC51922B39EF2002B6C0D /* Famille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Famille.swift; sourceTree = "<group>"; };
 		FB0C96C123322364004166DA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		FB0C96C223322364004166DA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -196,6 +195,7 @@
 		FB378F9D22C3CA0C008FE14F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		FB378F9E22C3CA0D008FE14F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FB378F9F22C3CA0D008FE14F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB4406F22333BB150026706D /* FiltreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
 		FB44EEF52255FD4700C98638 /* PiliersProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiliersProcessViewController.swift; sourceTree = "<group>"; };
 		FB44EEF72255FD6E00C98638 /* ListeQuestionPilierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeQuestionPilierViewController.swift; sourceTree = "<group>"; };
 		FB44EEF92255FF5700C98638 /* Pilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pilier.swift; sourceTree = "<group>"; };
@@ -376,8 +376,8 @@
 				FB02ACE82236993600843B66 /* ColorPicker */,
 				FB4A6A3B22267DCB001AC448 /* AAInfographics */,
 				FBE2EC652201EFD9004B44DF /* LeftMenu */,
-				FB05221722084CAE000556E1 /* FiltreView.swift */,
 				FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */,
+				FB4406F22333BB150026706D /* FiltreView.swift */,
 				FB74033E2293D7A000438F7B /* ListeIndicateurTableViewCell.swift */,
 				FBF26C822215604300D271AC /* ListeCategoriesTableViewCell.swift */,
 				FBF26C8A2215713700D271AC /* ListeGroupesTableViewCell.swift */,
@@ -947,9 +947,9 @@
 				FB720EE82223F2A100D0920F /* IndicateurKPISection.swift in Sources */,
 				FBF26C7F221556C000D271AC /* DataCategoriesWSResponse.swift in Sources */,
 				FB0E0F7F220047A90043E345 /* Version.swift in Sources */,
-				FB05221822084CAE000556E1 /* FiltreView.swift in Sources */,
 				FB0FA023225B845100B2B2A9 /* ListePiliersWSResponse.swift in Sources */,
 				FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */,
+				FB4406F32333BB150026706D /* FiltreView.swift in Sources */,
 				FBE63E0E2212AC0D0027F6E2 /* Pays.swift in Sources */,
 				FB6469FF221188C200084D7F /* UtilisateurResponseWSAuth.swift in Sources */,
 				FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */,

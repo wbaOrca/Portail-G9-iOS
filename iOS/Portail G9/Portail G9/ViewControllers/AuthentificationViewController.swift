@@ -30,7 +30,12 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        buttonConnexion.layer.cornerRadius = 5
+        buttonConnexion.clipsToBounds = true
+        
+        setupScreenLanguage()
         
         // Do any additional setup after loading the view.
         let appInfo = Bundle.main.infoDictionary! as Dictionary<String,AnyObject>
@@ -39,6 +44,22 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         let applicationVersion = shortVersionString + "." + bundleVersion
         labelVersion.text =  "        " + Version.VERSION + " " + applicationVersion 
         
+       
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    override func viewDidAppear(_ animated: Bool) {
+        setupScreenLanguage()
+    }
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupScreenLanguage()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.title = NSLocalizedString("Account", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         let attributedText = NSMutableAttributedString(string: NSLocalizedString("Welcome_in", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "ArialMT", size: 26)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9991517663, green: 0.8007791638, blue: 0.198880434, alpha: 1)])
         attributedText.append(NSAttributedString(string: (" Driver"), attributes: [NSAttributedString.Key.font: UIFont.init(name: "Arial-BoldMT", size: 30)!, NSAttributedString.Key.foregroundColor: UIColor.white]))
         
@@ -48,10 +69,7 @@ class AuthentificationViewController: UIViewController, UITextFieldDelegate, NVA
         self.textFieldLogin?.placeholder = NSLocalizedString("Identifiant", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         self.textFieldPassword?.placeholder = NSLocalizedString("Mot de passe", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
         
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        
-        buttonConnexion.layer.cornerRadius = 5
-        buttonConnexion.clipsToBounds = true
+        buttonConnexion.setTitle(NSLocalizedString("Connexion", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-"), for: .normal)
     }
     
     // ******************************

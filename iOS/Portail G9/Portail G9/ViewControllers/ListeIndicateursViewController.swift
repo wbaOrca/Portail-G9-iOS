@@ -36,12 +36,21 @@ class ListeIndicateursViewController: UIViewController, NVActivityIndicatorViewa
         navigationItem.rightBarButtonItems = [filtreButton]
         //**
     }
-    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func setupScreenLanguage()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.title = NSLocalizedString("Indicateurs", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "-")
+    }
     // ***********************************
     // ***********************************
     // ***********************************
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.setupScreenLanguage()
         
         if(!isSynchronisedData)
         {

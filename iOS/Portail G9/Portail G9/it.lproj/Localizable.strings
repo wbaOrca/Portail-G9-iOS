@@ -44,6 +44,7 @@
 "Connexions Stats." = "Stats connections";
 "Déconnexion" = "Disconnect";
 "Se déconnecter" = "Disconnect";
+"Connexion" = "Accesso";
 
 "Piliers" = "RAGNATELA";
 "Mes_Piliers" = "RAGNATELA";
@@ -83,3 +84,5 @@
 
 "empty_commentaire" = "Per favore, inserisci un commento";
 "slect_affaire" = "Seleziona un caso";
+
+"Save" = "salvare";

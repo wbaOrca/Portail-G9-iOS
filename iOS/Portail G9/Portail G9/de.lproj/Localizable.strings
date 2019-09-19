@@ -45,6 +45,7 @@
 "Connexions Stats." = "Stats Verbindungen";
 "Déconnexion" = "Trennen";
 "Se déconnecter" = "Trennen";
+"Connexion" = "Einloggen";
 
 "Piliers" = "GRUNDLAGEN";
 "Mes_Piliers" = "GRUNDLAGEN";
@@ -84,3 +85,5 @@
 
 "empty_commentaire" = "Bitte geben Sie einen Kommentar ein.";
 "slect_affaire" = "Bitte wählen Sie einen Fall aus";
+
+"Save" = "speichern";

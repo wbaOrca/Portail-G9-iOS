@@ -218,6 +218,11 @@ class WSQueries: NSObject {
                 let responseAuthUser =  Mapper<UtilisateurResponseWSAuth>().map(JSONObject:responseJson)
                 if(responseAuthUser != nil)
                 {
+                    //reset language
+                    let preferences = UserDefaults.standard
+                    preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                    preferences.synchronize()
+                    
                     delegate.didFinishWSAuthentification(error: false, utilisateurResponse: responseAuthUser!)
                     return
                 }

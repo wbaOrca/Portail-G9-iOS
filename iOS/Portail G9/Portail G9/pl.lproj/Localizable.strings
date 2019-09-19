@@ -46,6 +46,7 @@
 "Connexions Stats." = "Połączenia statystyczne";
 "Déconnexion" = "Rozłącz";
 "Se déconnecter" = "Rozłącz";
+"Connexion" = "Login";
 
 "Piliers" = "Piliers";
 "Mes_Piliers" = "Mes Piliers";
@@ -85,3 +86,5 @@
 
 "empty_commentaire" = "Veuillez laisser un commentaire.";
 "slect_affaire" = "Veuillez sélectionner une affaire";
+
+"Save" = "Save";

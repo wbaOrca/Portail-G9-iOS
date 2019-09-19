@@ -35,8 +35,11 @@ class UpdateQuestionPilierViewController: UIViewController , NVActivityIndicator
         textViewCommentaire!.layer.borderWidth = 1.5
         textViewCommentaire!.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        saveButton.setTitle(NSLocalizedString("Save", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), for: .normal)
         saveButton.layer.cornerRadius = 5
         saveButton.clipsToBounds = true
+        
         
         self.setupQuestionPilierData();
         

@@ -66,7 +66,7 @@ class Utils: NSObject {
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
         
-        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+        // preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
@@ -76,6 +76,7 @@ class Utils: NSObject {
         
         print("disconnectUserAction")
         DispatchQueue.main.async {
+            
             let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
             navigationController.popToRootViewController(animated: goBackAnimated);
         }
