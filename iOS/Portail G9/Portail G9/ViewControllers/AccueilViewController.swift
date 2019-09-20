@@ -249,8 +249,8 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     func voirForceTerrainAction(planAActionId: Int) {
         
-        self.fonctionnaliteNonDisponible()
-        return
+        //self.fonctionnaliteNonDisponible()
+        //return
         
         if(planAActionId == 1)//Agenda
         {

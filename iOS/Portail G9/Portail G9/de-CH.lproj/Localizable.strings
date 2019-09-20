@@ -38,13 +38,13 @@
 "Actions commerciales" = "Kommerzielle Aktionen";
 "Forces Terrains" = "Landstreitkräfte";
 "Agenda" = "Tagebuch";
-"Todo_list" = "AUFGABENLISTE";
+"Todo_list" = "Aufgabenliste";
 "Relevé de décisions" = "Aufzeichnung von Entscheidungen";
 "Escalation Process" = "Eskalationsprozess";
 "Reporting" = "Berichterstattung";
 "Connexions Stats." = "Stats Verbindungen";
-"Déconnexion" = "Trennen";
-"Se déconnecter" = "Trennen";
+"Déconnexion" = "Ausloggen";
+"Se déconnecter" = "Ausloggen";
 "Connexion" = "Einloggen";
 
 "Piliers" = "GRUNDLAGEN";
@@ -86,4 +86,4 @@
 "empty_commentaire" = "Bitte geben Sie einen Kommentar ein.";
 "slect_affaire" = "Bitte wählen Sie einen Fall aus";
 
-"Save" = "speichern";
+"Save" = "Speichern";

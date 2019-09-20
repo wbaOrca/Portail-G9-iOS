@@ -21,8 +21,8 @@
 "Pays" = "Kraj";
 "DR" = "DR";
 "Zone" = "Strefa" ;
-"Groupe" = "Grupa" ;
-"Affaire" = "Point of Sale";
+"Groupe" = "Groupe" ;
+"Affaire" = "Przypadek";
 
 
 "Indicateurs" = "Wskaźniki";
@@ -44,14 +44,14 @@
 "Escalation Process" = "Proces eskalacji";
 "Reporting" = "Raportowanie";
 "Connexions Stats." = "Połączenia statystyczne";
-"Déconnexion" = "Rozłącz";
-"Se déconnecter" = "Rozłącz";
-"Connexion" = "Login";
+"Déconnexion" = "Wyloguj się";
+"Se déconnecter" = "Wyloguj się";
+"Connexion" = "Działanie Logowania";
 
 "Piliers" = "Piliers";
 "Mes_Piliers" = "Mes Piliers";
 
-"TOUT" = "-- Alle --";
+"TOUT" = "-- Wszystko --";
 
 "MAJ_Application" = "Update the application";
 "MAJ_Question" = "Do you want to update the app now?" ;
@@ -63,7 +63,7 @@
 
 "Identifiant" = "Login" ;
 "Mot de passe" = "Password";
-"Aucun Profil." = "Aucun Profil.";
+"Aucun Profil." = "Aucun Profil";
 
 "fonctionnalite_non_disponible" = "this feature will be available soon";
 
@@ -71,7 +71,7 @@
 "mot_passe_4_caractères" = "Le mot de passe doit contenir au moins 4 caractères";
 "no_internet_connexion" = "Pas de connexion internet.\nVeuillez vous connecter svp." ;
 "Authentification_Query" = "Authentification en cours... Veuillez patienter svp...";
-"Profils"="Profils";
+"Profils"="Profil";
 "erreur_survenue_request" = "Une erreur est survenue lors de la requête";
 
 "DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";
@@ -87,4 +87,4 @@
 "empty_commentaire" = "Veuillez laisser un commentaire.";
 "slect_affaire" = "Veuillez sélectionner une affaire";
 
-"Save" = "Save";
+"Save" = "Uratować";
