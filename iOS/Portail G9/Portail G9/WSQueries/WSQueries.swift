@@ -1222,7 +1222,7 @@ class WSQueries: NSObject {
                 
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
-               delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1,description: "NA Unknown")
+               delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1 ,description: "NA Unknown")
                 break
                 
             }

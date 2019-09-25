@@ -75,9 +75,18 @@ class Utils: NSObject {
         preferences.synchronize()
         
         print("disconnectUserAction")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
-            navigationController.popToRootViewController(animated: goBackAnimated);
+        if(goBackAnimated)
+        {
+            DispatchQueue.main.async{
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
+        }else
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
         }
             
         
