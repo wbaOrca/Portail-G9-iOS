@@ -55,6 +55,7 @@
 		FB4A6A4D22267DF8001AC448 /* ProcessRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */; };
 		FB4A6A4F22267FC3001AC448 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */; };
 		FB503B14223666EF006C4D90 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB503B13223666EF006C4D90 /* DocumentViewController.swift */; };
+		FB54626F23966B8400873EC3 /* KPIIndicatorsViewControllerS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB54626E23966B8400873EC3 /* KPIIndicatorsViewControllerS2.swift */; };
 		FB569661226478F0002B61A9 /* MonthQuestionPilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */; };
 		FB5B331722686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */; };
 		FB629390224A749500FFEA10 /* AddFileTacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */; };
@@ -217,6 +218,7 @@
 		FB4A6A4C22267DF8001AC448 /* ProcessRadarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessRadarViewController.swift; sourceTree = "<group>"; };
 		FB4A6A4E22267FC3001AC448 /* ReportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
 		FB503B13223666EF006C4D90 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		FB54626E23966B8400873EC3 /* KPIIndicatorsViewControllerS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIIndicatorsViewControllerS2.swift; sourceTree = "<group>"; };
 		FB569660226478F0002B61A9 /* MonthQuestionPilier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthQuestionPilier.swift; sourceTree = "<group>"; };
 		FB5B331622686ADC00CD9F80 /* UpdateQuestionPilierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateQuestionPilierViewController.swift; sourceTree = "<group>"; };
 		FB62938F224A749500FFEA10 /* AddFileTacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFileTacheViewController.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				FBF26C8022155D2B00D271AC /* ListeCategoriesViewController.swift */,
 				FBF26C8422156E5700D271AC /* ListeGroupesViewController.swift */,
 				FBFDC0F72216A8C000A67042 /* KPIIndicatorsViewController.swift */,
+				FB54626E23966B8400873EC3 /* KPIIndicatorsViewControllerS2.swift */,
 				FB4A6A3522267731001AC448 /* BoardCollectionViewController.swift */,
 				FBE9EC3F222E5C4D00D4F6A0 /* DetailsTacheViewController.swift */,
 				FBF02015223BA9A30076E9E6 /* AddCheckListTacheViewController.swift */,
@@ -932,6 +935,7 @@
 				FBB9318D224E34E700E28751 /* DataTask.swift in Sources */,
 				FB44EEF82255FD6E00C98638 /* ListeQuestionPilierViewController.swift in Sources */,
 				FB0268C62297C9B90065DB0F /* IndicateurKPIGrid.swift in Sources */,
+				FB54626F23966B8400873EC3 /* KPIIndicatorsViewControllerS2.swift in Sources */,
 				FB02ACFD2236A6C100843B66 /* ColorEditorViewController.swift in Sources */,
 				FBE9EC46222E72E200D4F6A0 /* FichierTableViewCell.swift in Sources */,
 				FB44EEF62255FD4700C98638 /* PiliersProcessViewController.swift in Sources */,

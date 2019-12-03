@@ -11,6 +11,7 @@ import ObjectMapper
 
 class KPILigne: NSObject ,Mappable{
 
+    var id : Int64 = -1
     var libelle : String = ""
     var code_couleur : String = ""
     var bg_color : String = ""
@@ -39,7 +40,8 @@ class KPILigne: NSObject ,Mappable{
     // *****************************************
     // Mappable
     func mapping(map: Map) {
-        
+
+        id <- map["id"]
         libelle <- map["libelle"]
         code_couleur <- map["code_couleur"]
         bg_color <- map["bg_color"]
