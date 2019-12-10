@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Prénom"; ObjectID = "1Lu-oV-zRO"; */
-"1Lu-oV-zRO.text" = "Prénom";
+"1Lu-oV-zRO.text" = "First name";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "1vA-k0-Nuo"; */
 "1vA-k0-Nuo.text" = "Label";
@@ -48,7 +48,7 @@
 "FAL-P2-DNM.text" = "Nom";
 
 /* Class = "UIButton"; normalTitle = "Statut"; ObjectID = "FxE-7y-Tt6"; */
-"FxE-7y-Tt6.normalTitle" = "Statut";
+"FxE-7y-Tt6.normalTitle" = "Status";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "G5O-Qe-TB8"; */
 "G5O-Qe-TB8.text" = "Label";
@@ -75,7 +75,7 @@
 "KdY-Zj-qlh.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "Lt5-og-eOD"; */
-"Lt5-og-eOD.normalTitle" = "Sauvegarder";
+"Lt5-og-eOD.normalTitle" = "Save";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "M1Y-nL-gbW"; */
 "M1Y-nL-gbW.text" = "Label";

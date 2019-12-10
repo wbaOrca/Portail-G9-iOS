@@ -249,6 +249,7 @@ class AccueilViewController: UIViewController  , NVActivityIndicatorViewable{
     // ***********************************
     func voirForceTerrainAction(planAActionId: Int) {
         
+        //feature in the soon future
         self.fonctionnaliteNonDisponible()
         return
         
@@ -525,7 +526,7 @@ extension AccueilViewController : UICollectionViewDelegate,UICollectionViewDataS
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    return 4 ;
+    return 2 ; //4
     }
     // ***********************************
     // ***********************************

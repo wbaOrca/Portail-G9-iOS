@@ -1,0 +1,90 @@
+/* 
+  Localizable.strings
+  Portail G9
+
+  Created by WBA_ORCA on 29/01/2019.
+  Copyright © 2019 Orcaformation. All rights reserved.
+*/
+
+"Account" = "Account";
+
+"Welcome_in" = "Bienvenido";
+"Hello" = "Hola";
+"Home" = "Casa";
+"Categories" = "Categorías";
+"Groupes" = "Grupos" ;
+"KPI" = "Indicadores";
+
+"Select" = "Seleccionar";
+
+"Langue" = "Idioma" ;
+"Pays" = "País";
+"DR" = "Dirección regional";
+"Zone" = "Zona" ;
+"Groupe" = "Grupo" ;
+"Affaire" = "Comerciante";
+
+"Indicateurs" = "Indicadores";
+"Vente" = "Ventas";
+"Après ventes" = "Después de las ventas";
+"Clients" = "Clientes";
+"Image de marque" = "Marca";
+"Process" = "Proceso";
+"Radars" = "Radares";
+"Piliers" = "Pilares";
+"Plan d'action" = "Plan de ACCION";
+"Plan d'action zone" = "Plan de acción de zona";
+"Synthèse plan d'actions" = "Plan de resumen de acciones";
+"Actions commerciales" = "Acciones comerciales";
+"Forces Terrains" = "Fuerzas de tierra";
+"Agenda" = "Diario";
+"Todo_list" = "Lista de quehaceres";
+"Relevé de décisions" = "Registro de decisiones";
+"Escalation Process" = "Proceso de escalación";
+"Reporting" = "Informes";
+"Connexions Stats." = "Conexiones estadísticas";
+"Déconnexion" = "cerrar sesión";
+"Se déconnecter" = "cerrar sesión";
+"Connexion" = "iniciar sesión";
+
+"Piliers" = "PILARES";
+"Mes_Piliers" = "PILARES";
+
+"TOUT" = "-- Todos --";
+
+
+"MAJ_Application" = "Actualiza la aplicación";
+"MAJ_Question" = "Quieres actualizar la aplicación ahora?" ;
+"need_update" = "Actualiza esta aplicación por favor. Haga clic en el botón de actualización en la parte inferior izquierda de esta pantalla.";
+"OUI" = "Sí";
+"NON" = "No" ;
+"Erreur" = "Error" ;
+"Ok" = "Okay" ;
+
+"Identifiant" = "Login" ;
+"Mot de passe" = "Contraseña";
+"Aucun Profil." = "Sin perfil";
+
+"fonctionnalite_non_disponible" = "esta función estará disponible pronto";
+
+"Veuillez_saisir_tous_les_champs" = "Por favor ingrese todos los campos";
+"mot_passe_4_caractères" = "La contraseña debe contener al menos 4 caracteres";
+"no_internet_connexion" = "Sin conexión a Internet. Por favor Iniciar sesión." ;
+"Authentification_Query" = "Autenticación en progreso ... Por favor espere ...";
+"Profils"="perfiles";
+"erreur_survenue_request" = "Se produjo un error durante la solicitud.";
+
+"DataUtils_Query" = "Recuperación de datos en progreso ... Por favor espere ...";
+"DataSend_Query" = "Enviando datos ... Espere ...";
+
+"Aucune_affaire" = "No hay distribuidores.";
+"Aucun_pays" = "Ningún país.";
+"Aucun_groupe" ="No grupo";
+"Aucune_zone" = "Sin zona";
+"Aucune_direction" = "Sin dirección.";
+"Aucune_langue" = "Sin lenguaje";
+
+"empty_commentaire" = "Por favor ingrese un comentario.";
+"slect_affaire" = "Por favor seleccione un distribuidor";
+
+"Save" = "salvar";

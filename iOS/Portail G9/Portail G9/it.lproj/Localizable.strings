@@ -42,8 +42,9 @@
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
 "Connexions Stats." = "Stats connections";
-"Déconnexion" = "Disconnect";
-"Se déconnecter" = "Disconnect";
+"Déconnexion" = "disconnettersi";
+"Se déconnecter" = "disconnettersi";
+"Connexion" = "Accesso";
 
 "Piliers" = "RAGNATELA";
 "Mes_Piliers" = "RAGNATELA";
@@ -83,3 +84,5 @@
 
 "empty_commentaire" = "Per favore, inserisci un commento";
 "slect_affaire" = "Seleziona un caso";
+
+"Save" = "salvare";

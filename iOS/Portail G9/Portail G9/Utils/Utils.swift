@@ -66,7 +66,7 @@ class Utils: NSObject {
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
         
-        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+        // preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
@@ -75,10 +75,21 @@ class Utils: NSObject {
         preferences.synchronize()
         
         print("disconnectUserAction")
-        DispatchQueue.main.async {
-            let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
-            navigationController.popToRootViewController(animated: goBackAnimated);
+        if(goBackAnimated)
+        {
+            DispatchQueue.main.async{
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
+        }else
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
         }
+            
+        
     }
     
     
@@ -587,13 +598,24 @@ struct CustomLanguage {
                 
             }
         }
-        if(lang == "SWE") //suedois
+        
+        if(lang == "SWE" || lang == "se") //suedois
         {
             lang = "sv";
         }
+        else if(lang == "cz") //Czech
+        {
+            lang = "cs";
+        }
+        
         lang = lang.replacingOccurrences(of: "_", with: "-")
         let selectedLanguage = lang
-        let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
+        var path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
+        
+        if (path == nil){//langue non supprotée FR par défaut
+            lang = "fr"
+            path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        }
         return Bundle(path: path!)!
     }
 }

@@ -6,26 +6,26 @@
   Copyright © 2019 Orcaformation. All rights reserved.
 */
 
-"Account" = "Account";
+"Account" = "konto";
 
-"Welcome_in" = "Welcome\nin";
-"Hello" = "Hello";
-"Home" = "Home";
-"Categories" = "Categories";
-"Groupes" = "Groups" ;
+"Welcome_in" = "Välkommen\n";
+"Hello" = "Hallå";
+"Home" = "Hem";
+"Categories" = "kategorier";
+"Groupes" = "grupper" ;
 "KPI" = "KPI";
 
-"Select" = "Select";
+"Select" = "Välj";
 
-"Langue" = "Language" ;
-"Pays" = "Country";
+"Langue" = "Språk" ;
+"Pays" = "Land";
 "DR" = "DR";
-"Zone" = "Zone" ;
-"Groupe" = "Group" ;
-"Affaire" = "Dealer";
+"Zone" = "Zon" ;
+"Groupe" = "Grupp" ;
+"Affaire" = "Handlare";
 
-"Indicateurs" = "Indicators";
-"Vente" = "Sales";
+"Indicateurs" = "indikatorer";
+"Vente" = "försäljning";
 "Après ventes" = "After sales";
 "Clients" = "Customers";
 "Image de marque" = "Branding";
@@ -43,45 +43,48 @@
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
 "Connexions Stats." = "Stats connections";
-"Déconnexion" = "Disconnect";
-"Se déconnecter" = "Disconnect";
+"Déconnexion" = "Logga ut";
+"Se déconnecter" = "Logga ut";
+"Connexion" = "Logga in";
 
-"Piliers" = "PILLARS";
-"Mes_Piliers" = "PILLARS";
+"Piliers" = "PELARE";
+"Mes_Piliers" = "PELARE";
 
-"TOUT" = "-- All --";
+"TOUT" = "-- Allt --";
 
 
-"MAJ_Application" = "Update the application";
-"MAJ_Question" = "Do you want to update the app now?" ;
-"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
-"OUI" = "Yes";
-"NON" = "No" ;
-"Erreur" = "Error" ;
+"MAJ_Application" = "Uppdatera applikationen";
+"MAJ_Question" = "Vill du uppdatera appen nu?" ;
+"need_update" = "Uppdatera denna app snälla. Klicka på uppgraderingsknappen längst ner till vänster på skärmen.";
+"OUI" = "Ja";
+"NON" = "Nej" ;
+"Erreur" = "Fel" ;
 "Ok" = "Ok" ;
 
-"Identifiant" = "Login" ;
-"Mot de passe" = "Password";
-"Aucun Profil." = "No Profile";
+"Identifiant" = "Identifierare" ;
+"Mot de passe" = "Lösenord";
+"Aucun Profil." = "Ingen profil";
 
-"fonctionnalite_non_disponible" = "this feature will be available soon";
+"fonctionnalite_non_disponible" = "den här funktionen kommer snart att finnas tillgänglig";
 
-"Veuillez_saisir_tous_les_champs" = "Please enter all fields";
-"mot_passe_4_caractères" = "Password must contain at least 4 characters";
-"no_internet_connexion" = "No internet connection. Please log in." ;
-"Authentification_Query" = "Authentication in progress ... Please wait ...";
-"Profils"="profiles";
-"erreur_survenue_request" = "An error occurred during the request";
+"Veuillez_saisir_tous_les_champs" = "Ange alla fält";
+"mot_passe_4_caractères" = "Lösenordet måste innehålla minst fyra tecken";
+"no_internet_connexion" = "Ingen internetanslutning. Vänligen logga in." ;
+"Authentification_Query" = "Autentisering pågår ... vänta ...";
+"Profils"="profiler";
+"erreur_survenue_request" = "Ett fel inträffade under begäran";
 
-"DataUtils_Query" = "Data recovery in progress ... Please wait ...";
-"DataSend_Query" = "Sending data ... Please wait ...";
+"DataUtils_Query" = "Dataåterställning pågår ... Vänta ...";
+"DataSend_Query" = "Skickar data ... vänta ...";
 
-"Aucune_affaire" = "No dealers.";
-"Aucun_pays" = "No country.";
-"Aucun_groupe" ="No group.";
-"Aucune_zone" = "No zone.";
-"Aucune_direction" = "No direction.";
-"Aucune_langue" = "No language.";
+"Aucune_affaire" = "Inga återförsäljare.";
+"Aucun_pays" = "Inget land.";
+"Aucun_groupe" ="Ingen grupp.";
+"Aucune_zone" = "Ingen zon";
+"Aucune_direction" = "Ingen riktning.";
+"Aucune_langue" = "Inget språk.";
 
-"empty_commentaire" = "Please enter a comment.";
-"slect_affaire" = "Please select a dealer";
+"empty_commentaire" = "Ange en kommentar.";
+"slect_affaire" = "Välj en återförsäljare";
+
+"Save" = "Spara";

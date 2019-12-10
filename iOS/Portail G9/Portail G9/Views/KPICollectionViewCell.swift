@@ -8,10 +8,38 @@
 
 import UIKit
 
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+protocol KPICollectionViewCellDelegate {
+    
+    func didSelectPlusInfo(indicateur : IndicateurKPIGrid)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 class KPICollectionViewCell: UICollectionViewCell {
     
+    var delegate: KPICollectionViewCellDelegate? = nil
+    var indicateur : IndicateurKPIGrid? = nil
+    
     @IBOutlet weak var titleLabel: UILabel!
-   // @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var buttonPlus: UIButton!
+    
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    @IBAction func selectPlusInfo(_ sender: Any) {
+        
+        if(delegate != nil && self.indicateur != nil)
+        {
+            delegate?.didSelectPlusInfo(indicateur: self.indicateur!)
+        }
+    }
     
     // ***********************************
     // ***********************************
@@ -29,14 +57,28 @@ class KPICollectionViewCell: UICollectionViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupKPICollectionViewCellGrid(indicateur : IndicateurKPIGrid)
+    func setupKPICollectionViewCellGrid(indicateur : IndicateurKPIGrid, isButtonPlusHidden: Bool? = nil)
     {
+        self.indicateur = indicateur;
+        
+        do {
+            let attrStr = try NSAttributedString(
+                data: "".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
+                documentAttributes: nil)
+            
+            titleLabel.attributedText = attrStr
+        } catch {
+            
+            
+        }
         
         titleLabel.text = indicateur.indicateurKPI.valeur
         titleLabel.backgroundColor = .clear
         self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         if(indicateur.isHeaderLigne)
         {
+            buttonPlus.isHidden = true
             self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             titleLabel.textColor = .white
             if(indicateur.indicateurKPI.code_couleur.contains("#ffcc33"))
@@ -45,6 +87,7 @@ class KPICollectionViewCell: UICollectionViewCell {
             }
         }else if(indicateur.isColonneLigne)
         {
+            buttonPlus.isHidden = true
             self.backgroundColor = #colorLiteral(red: 1, green: 0.8298398852, blue: 0.2543682456, alpha: 1)
             titleLabel.textColor = .black
             
@@ -54,8 +97,27 @@ class KPICollectionViewCell: UICollectionViewCell {
                     [.underlineStyle: NSUnderlineStyle.single.rawValue])
                 self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
+            if(isButtonPlusHidden == true)//2eme ecran colonne KPI
+            {
+                do {
+                    let attrStr = try NSAttributedString(
+                        data: indicateur.indicateurKPI.valeur.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                        options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
+                        documentAttributes: nil)
+                    
+                    titleLabel.attributedText = attrStr
+                } catch {
+                    
+                    
+                }
+            }
         }else
         {
+            buttonPlus.isHidden = false
+            if(isButtonPlusHidden != nil)
+            {
+                buttonPlus.isHidden = isButtonPlusHidden!
+            }
             self.backgroundColor = .clear
             titleLabel.textColor = .black
             titleLabel.backgroundColor = UIColor(hexString: indicateur.indicateurKPI.bg_color);
@@ -67,6 +129,8 @@ class KPICollectionViewCell: UICollectionViewCell {
     // ***********************************
     // ***********************************
     override func awakeFromNib() {
+        
+        buttonPlus.isHidden = true
         
         titleLabel.layer.cornerRadius = 5
         titleLabel.clipsToBounds = true

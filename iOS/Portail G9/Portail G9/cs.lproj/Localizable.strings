@@ -1,0 +1,90 @@
+/* 
+  Localizable.strings
+  Portail G9
+
+  Created by WBA_ORCA on 29/01/2019.
+  Copyright © 2019 Orcaformation. All rights reserved.
+*/
+
+"Account" = "Účet";
+
+"Welcome_in" = "Vítejte\nv";
+"Hello" = "Ahoj";
+"Home" = "vítejte";
+"Categories" = "Kategorie";
+"Groupes" = "Skupina" ;
+"KPI" = "KPI";
+
+"Select" = "Vybrat";
+
+"Langue" = "Jazyk" ;
+"Pays" = "Země";
+"DR" = "Regionální ředitelství";
+"Zone" = "Zóna" ;
+"Groupe" = "Skupina" ;
+"Affaire" = "Dealer";
+
+"Indicateurs" = "Indikátory";
+"Vente" = "Odbyt";
+"Après ventes" = "Po prodeji";
+"Clients" = "Zákazníci";
+"Image de marque" = "Branding";
+"Process" = "Proces";
+"Radars" = "Radary";
+"Piliers" = "Pilíře";
+"Plan d'action" = "Akční plán";
+"Plan d'action zone" = "Akční plán zóny";
+"Synthèse plan d'actions" = "Shrnutí akcí";
+"Actions commerciales" = "Obchodní akce";
+"Forces Terrains" = "Pozemní síly";
+"Agenda" = "Denní program";
+"Todo_list" = "Seznam úkolů";
+"Relevé de décisions" = "Záznam rozhodnutí";
+"Escalation Process" = "Proces eskalace";
+"Reporting" = "Podávání zpráv";
+"Connexions Stats." = "Statistiky připojení";
+"Déconnexion" = "Odhlásit";
+"Se déconnecter" = "Odhlásit";
+"Connexion" = "Přihlásit se";
+
+"Piliers" = "Pilíře";
+"Mes_Piliers" = "Pilíře";
+
+"TOUT" = "-- VŠE --";
+
+
+"MAJ_Application" = "Aktualizujte aplikaci";
+"MAJ_Question" = "Chcete aplikaci nyní aktualizovat?" ;
+"need_update" = "Aktualizujte prosím tuto aplikaci. Klikněte na tlačítko upgradu v levé dolní části této obrazovky.";
+"OUI" = "Ano";
+"NON" = "Ne" ;
+"Erreur" = "Chyba" ;
+"Ok" = "Ok" ;
+
+"Identifiant" = "Identifikátor" ;
+"Mot de passe" = "Heslo";
+"Aucun Profil." = "Žádný profil";
+
+"fonctionnalite_non_disponible" = "tato funkce bude brzy k dispozici";
+
+"Veuillez_saisir_tous_les_champs" = "Zadejte prosím všechna pole";
+"mot_passe_4_caractères" = "Heslo musí obsahovat alespoň 4 znaky";
+"no_internet_connexion" = "Žádné internetové připojení. Prosím přihlašte se." ;
+"Authentification_Query" = "Probíhá ověřování ... Čekejte prosím ...";
+"Profils"="Profil";
+"erreur_survenue_request" = "Během požadavku došlo k chybě";
+
+"DataUtils_Query" = "Probíhá obnova dat ... Čekejte prosím ...";
+"DataSend_Query" = "Odesílání dat ... Čekejte prosím ..";
+
+"Aucune_affaire" = "Žádní Dealer";
+"Aucun_pays" = "Žádná země";
+"Aucun_groupe" ="Žádná skupina.";
+"Aucune_zone" = "Žádná zóna.";
+"Aucune_direction" = "Žádný směr.";
+"Aucune_langue" = "Žádný jazyk.";
+
+"empty_commentaire" = "Zadejte prosím komentář.";
+"slect_affaire" = "Vyberte prodejce";
+
+"Save" = "Uložit";
