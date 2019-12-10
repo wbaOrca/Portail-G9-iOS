@@ -163,6 +163,12 @@
 		FB02ACEF2236993600843B66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB02ACF02236993600843B66 /* HSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 		FB02ACFC2236A6C100843B66 /* ColorEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
+		FB03E8A9239FC6BB007708D1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		FB03E8AA239FC6BB007708D1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FB03E8AB239FC6BB007708D1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB03E8AC239FC6D9007708D1 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
+		FB03E8AD239FC6D9007708D1 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FB03E8AE239FC6D9007708D1 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FB05221522084B27000556E1 /* FiltreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB0BC51922B39EF2002B6C0D /* Famille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Famille.swift; sourceTree = "<group>"; };
 		FB0C96C123322364004166DA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
@@ -721,6 +727,8 @@
 				"en-GB",
 				sv,
 				nl,
+				es,
+				cs,
 			);
 			mainGroup = FBF15B2921DFA8AB006A7341;
 			productRefGroup = FBF15B3321DFA8AB006A7341 /* Products */;
@@ -1045,6 +1053,8 @@
 				FB74E31422C4A3A1003DDF92 /* en-GB */,
 				FB0C96C323322364004166DA /* sv */,
 				FB0C96C623322396004166DA /* nl */,
+				FB03E8AB239FC6BB007708D1 /* es */,
+				FB03E8AE239FC6D9007708D1 /* cs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1062,6 +1072,8 @@
 				FB74E31222C4A3A1003DDF92 /* en-GB */,
 				FB0C96C123322364004166DA /* sv */,
 				FB0C96C423322396004166DA /* nl */,
+				FB03E8A9239FC6BB007708D1 /* es */,
+				FB03E8AC239FC6D9007708D1 /* cs */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1079,6 +1091,8 @@
 				FB74E31322C4A3A1003DDF92 /* en-GB */,
 				FB0C96C223322364004166DA /* sv */,
 				FB0C96C523322396004166DA /* nl */,
+				FB03E8AA239FC6BB007708D1 /* es */,
+				FB03E8AD239FC6D9007708D1 /* cs */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

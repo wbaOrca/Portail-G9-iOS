@@ -603,6 +603,11 @@ struct CustomLanguage {
         {
             lang = "sv";
         }
+        else if(lang == "cz") //Czech
+        {
+            lang = "cs";
+        }
+        
         lang = lang.replacingOccurrences(of: "_", with: "-")
         let selectedLanguage = lang
         var path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
