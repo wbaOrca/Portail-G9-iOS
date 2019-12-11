@@ -8,24 +8,24 @@
 
 "Account" = "Account";
 
-"Welcome_in" = "Welcome\nin";
-"Hello" = "Hello";
-"Home" = "Home";
-"Categories" = "Categories";
-"Groupes" = "Groups" ;
-"KPI" = "KPI";
+"Welcome_in" = "Welkom";
+"Hello" = "Hallo";
+"Home" = "Huis";
+"Categories" = "Categorieën";
+"Groupes" = "groepen" ;
+"KPI" = "indicatoren";
 
-"Select" = "Select";
+"Select" = "kiezen";
 
-"Langue" = "Language" ;
-"Pays" = "Country";
-"DR" = "DR";
+"Langue" = "Taal" ;
+"Pays" = "Land";
+"DR" = "Regionale richting";
 "Zone" = "Zone" ;
-"Groupe" = "Group" ;
-"Affaire" = "Dealer";
+"Groupe" = "Groep" ;
+"Affaire" = "Handelaar";
 
-"Indicateurs" = "Indicators";
-"Vente" = "Sales";
+"Indicateurs" = "indicatoren";
+"Vente" = "verkoop";
 "Après ventes" = "After sales";
 "Clients" = "Customers";
 "Image de marque" = "Branding";
@@ -43,48 +43,48 @@
 "Escalation Process" = "Escalation Process";
 "Reporting" = "Reporting";
 "Connexions Stats." = "Stats connections";
-"Déconnexion" = "Disconnect";
-"Se déconnecter" = "Disconnect";
-"Connexion" = "Login";
+"Déconnexion" = "Uitloggen";
+"Se déconnecter" = "Uitloggen";
+"Connexion" = "Log in";
 
-"Piliers" = "PILLARS";
-"Mes_Piliers" = "PILLARS";
+"Piliers" = "PIJLERS";
+"Mes_Piliers" = "PIJLERS";
 
-"TOUT" = "-- All --";
+"TOUT" = "-- ALLE --";
 
 
-"MAJ_Application" = "Update the application";
-"MAJ_Question" = "Do you want to update the app now?" ;
-"need_update" = "Update this app please. Click on the upgrade button at the bottom left of this screen.";
-"OUI" = "Yes";
-"NON" = "No" ;
-"Erreur" = "Error" ;
+"MAJ_Application" = "Update de applicatie";
+"MAJ_Question" = "Wilt u de app nu bijwerken?" ;
+"need_update" = "Werk deze app bij. Klik links onderaan dit scherm op de upgrade-knop.";
+"OUI" = "Ja";
+"NON" = "Nee" ;
+"Erreur" = "Fout" ;
 "Ok" = "Ok" ;
 
-"Identifiant" = "Login" ;
-"Mot de passe" = "Password";
-"Aucun Profil." = "No Profile";
+"Identifiant" = "Identifier" ;
+"Mot de passe" = "Wachtwoord";
+"Aucun Profil." = "Geen profielen";
 
-"fonctionnalite_non_disponible" = "this feature will be available soon";
+"fonctionnalite_non_disponible" = "deze functie is binnenkort beschikbaar";
 
-"Veuillez_saisir_tous_les_champs" = "Please enter all fields";
-"mot_passe_4_caractères" = "Password must contain at least 4 characters";
-"no_internet_connexion" = "No internet connection. Please log in." ;
-"Authentification_Query" = "Authentication in progress ... Please wait ...";
-"Profils"="profiles";
-"erreur_survenue_request" = "An error occurred during the request";
+"Veuillez_saisir_tous_les_champs" = "Vul alstublieft alle velden in";
+"mot_passe_4_caractères" = "Wachtwoord moet minimaal 4 tekens bevatten";
+"no_internet_connexion" = "Geen internet verbinding. Log alstublieft in." ;
+"Authentification_Query" = "Verificatie wordt uitgevoerd ... Een ogenblik geduld ...";
+"Profils"="profielen";
+"erreur_survenue_request" = "Er is een fout opgetreden tijdens het verzoek";
 
-"DataUtils_Query" = "Data recovery in progress ... Please wait ...";
-"DataSend_Query" = "Sending data ... Please wait ...";
+"DataUtils_Query" = "Gegevensherstel wordt uitgevoerd ... Een ogenblik geduld ...";
+"DataSend_Query" = "Gegevens worden verzonden ... Een ogenblik geduld ...";
 
-"Aucune_affaire" = "No dealers.";
-"Aucun_pays" = "No country.";
-"Aucun_groupe" ="No group.";
-"Aucune_zone" = "No zone.";
-"Aucune_direction" = "No direction.";
-"Aucune_langue" = "No language.";
+"Aucune_affaire" = "Geen dealers.";
+"Aucun_pays" = "Geen land.";
+"Aucun_groupe" ="Geen groep";
+"Aucune_zone" = "Geen zone.";
+"Aucune_direction" = "Geen richting.";
+"Aucune_langue" = "Geen taal";
 
-"empty_commentaire" = "Please enter a comment.";
-"slect_affaire" = "Please select a dealer";
+"empty_commentaire" = "Voer alstublieft een reactie in.";
+"slect_affaire" = "Selecteer een dealer";
 
-"Save" = "Save";
+"Save" = "Opslaan";
