@@ -1,0 +1,5 @@
+*.plist merge=ours
+Info.plist merge=ours
+GoogleService-Info.plist merge=ours
+Version.swift merge=ours
+AppIcon.appiconset merge=ours
