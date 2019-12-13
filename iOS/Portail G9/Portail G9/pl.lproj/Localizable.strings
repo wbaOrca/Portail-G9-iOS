@@ -25,7 +25,7 @@
 "Affaire" = "Przypadek";
 
 
-"Indicateurs" = "Wskaźniki";
+"Indicateurs" = "WYNIKI";
 "Vente" = "Sprzedaż";
 "Après ventes" = "Sprzedaż po";
 "Clients" = "Klienci";
@@ -48,8 +48,8 @@
 "Se déconnecter" = "Wyloguj się";
 "Connexion" = "Działanie Logowania";
 
-"Piliers" = "Piliers";
-"Mes_Piliers" = "Mes Piliers";
+"Piliers" = "OCENA ZOBOWIĄZAŃ";
+"Mes_Piliers" = "OCENA ZOBOWIĄZAŃ";
 
 "TOUT" = "-- Wszystko --";
 

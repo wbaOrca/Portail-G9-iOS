@@ -47,8 +47,8 @@
 "Se déconnecter" = "Logga ut";
 "Connexion" = "Logga in";
 
-"Piliers" = "PELARE";
-"Mes_Piliers" = "PELARE";
+"Piliers" = "Pelare";
+"Mes_Piliers" = "Pelare"; // PELARE
 
 "TOUT" = "-- Allt --";
 
