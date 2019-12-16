@@ -41,6 +41,7 @@ class KPI: NSObject ,Mappable{
         code_couleur <- map["code_couleur"]
         lignes <- map["lignes"]
         
+        colonne = colonne.replacingOccurrences(of: "&#8209;", with: "-", options: .caseInsensitive, range: nil)
         
     }
     

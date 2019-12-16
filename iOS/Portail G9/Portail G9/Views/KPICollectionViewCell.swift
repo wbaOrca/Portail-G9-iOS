@@ -61,17 +61,7 @@ class KPICollectionViewCell: UICollectionViewCell {
     {
         self.indicateur = indicateur;
         
-        do {
-            let attrStr = try NSAttributedString(
-                data: "".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
-                documentAttributes: nil)
-            
-            titleLabel.attributedText = attrStr
-        } catch {
-            
-            
-        }
+       //titleLabel.attributedText = "".convertToAttributedString()
         
         titleLabel.text = indicateur.indicateurKPI.valeur
         titleLabel.backgroundColor = .clear
@@ -97,20 +87,12 @@ class KPICollectionViewCell: UICollectionViewCell {
                     [.underlineStyle: NSUnderlineStyle.single.rawValue])
                 self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
+            /*
             if(isButtonPlusHidden == true)//2eme ecran colonne KPI
             {
-                do {
-                    let attrStr = try NSAttributedString(
-                        data: indicateur.indicateurKPI.valeur.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                        options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
-                        documentAttributes: nil)
-                    
-                    titleLabel.attributedText = attrStr
-                } catch {
-                    
-                    
-                }
-            }
+                titleLabel.attributedText = indicateur.indicateurKPI.valeur.convertToAttributedString()
+               
+            }*/
         }else
         {
             buttonPlus.isHidden = false
