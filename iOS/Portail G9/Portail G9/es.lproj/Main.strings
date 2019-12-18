@@ -1,27 +1,36 @@
 
 /* Class = "UILabel"; text = "Prénom"; ObjectID = "1Lu-oV-zRO"; */
-"1Lu-oV-zRO.text" = "Prénom";
+"1Lu-oV-zRO.text" = "primer nombre";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "1vA-k0-Nuo"; */
 "1vA-k0-Nuo.text" = "Label";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "2Ev-Cw-CcS"; */
+"2Ev-Cw-CcS.text" = "Label";
+
 /* Class = "UILabel"; text = "Comment"; ObjectID = "3h5-3a-43D"; */
 "3h5-3a-43D.text" = "Comment";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "4v3-Sq-QYR"; */
+"4v3-Sq-QYR.text" = "Label";
+
 /* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "6WO-kE-zwW"; */
-"6WO-kE-zwW.normalTitle" = "Spara";
+"6WO-kE-zwW.normalTitle" = "salvar";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "79S-Z7-J31"; */
 "79S-Z7-J31.text" = "Label";
 
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "8C3-Jo-glw"; */
+"8C3-Jo-glw.normalTitle" = "-";
+
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "8QV-9v-iZG"; */
-"8QV-9v-iZG.normalTitle" = "Close";
+"8QV-9v-iZG.normalTitle" = "cerca";
 
 /* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "8To-HN-Ahf"; */
-"8To-HN-Ahf.normalTitle" = "Spara";
+"8To-HN-Ahf.normalTitle" = "salvar";
 
 /* Class = "UILabel"; text = "Fichier"; ObjectID = "9w6-BQ-M9R"; */
-"9w6-BQ-M9R.text" = "Fichier";
+"9w6-BQ-M9R.text" = "archivo";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "AhN-OE-6iE"; */
 "AhN-OE-6iE.text" = "Label";
@@ -45,16 +54,16 @@
 "Efo-Y4-HCw.text" = "Label";
 
 /* Class = "UILabel"; text = "Nom"; ObjectID = "FAL-P2-DNM"; */
-"FAL-P2-DNM.text" = "Nom";
+"FAL-P2-DNM.text" = "apellido";
 
 /* Class = "UIButton"; normalTitle = "Statut"; ObjectID = "FxE-7y-Tt6"; */
-"FxE-7y-Tt6.normalTitle" = "Statut";
+"FxE-7y-Tt6.normalTitle" = "estatus";
 
 /* Class = "UIViewController"; title = "Editor"; ObjectID = "GDO-VW-wA7"; */
 "GDO-VW-wA7.title" = "Editor";
 
 /* Class = "UILabel"; text = "Fin"; ObjectID = "GzW-Sc-sqr"; */
-"GzW-Sc-sqr.text" = "Fin";
+"GzW-Sc-sqr.text" = "final";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Hap-Q9-Z2Y"; */
 "Hap-Q9-Z2Y.text" = "Label";
@@ -72,13 +81,13 @@
 "KdY-Zj-qlh.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Lt5-og-eOD"; */
-"Lt5-og-eOD.normalTitle" = "Spara";
+"Lt5-og-eOD.normalTitle" = "salvar";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "M1Y-nL-gbW"; */
 "M1Y-nL-gbW.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Date"; ObjectID = "Mat-UV-FLc"; */
-"Mat-UV-FLc.normalTitle" = "Date";
+"Mat-UV-FLc.normalTitle" = "fecha";
 
 /* Class = "UILabel"; text = "Fichier"; ObjectID = "P82-Df-V37"; */
 "P82-Df-V37.text" = "Fichier";
@@ -120,10 +129,10 @@
 "Vpz-l6-Vwh.normalTitle" = "Scan";
 
 /* Class = "UILabel"; text = "Compte rendu"; ObjectID = "Wmd-og-ixC"; */
-"Wmd-og-ixC.text" = "Compte rendu";
+"Wmd-og-ixC.text" = "Minutos";
 
 /* Class = "UIButton"; normalTitle = "Retour"; ObjectID = "XBn-bd-aYb"; */
-"XBn-bd-aYb.normalTitle" = "Retour";
+"XBn-bd-aYb.normalTitle" = "regreso";
 
 /* Class = "UIButton"; normalTitle = "Profil"; ObjectID = "Xcf-zv-yXU"; */
 "Xcf-zv-yXU.normalTitle" = "Profil";
@@ -159,10 +168,13 @@
 "aT0-m8-Vti.title" = "Left Menu";
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "aTl-F3-bUC"; */
-"aTl-F3-bUC.text" = "Message";
+"aTl-F3-bUC.text" = "mensaje";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "b6H-eo-tE5"; */
 "b6H-eo-tE5.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bb8-s2-40U"; */
+"bb8-s2-40U.text" = "Label";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "eUs-rX-TC1"; */
 "eUs-rX-TC1.text" = "Label";
@@ -197,6 +209,9 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "lre-t5-kJ5"; */
 "lre-t5-kJ5.text" = "Label";
 
+/* Class = "UIButton"; normalTitle = "Date"; ObjectID = "n4t-PS-a5m"; */
+"n4t-PS-a5m.normalTitle" = "Date";
+
 /* Class = "UIButton"; normalTitle = "Profil"; ObjectID = "nex-Vj-9Jz"; */
 "nex-Vj-9Jz.normalTitle" = "Profil";
 
@@ -206,14 +221,17 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "nss-oh-hfQ"; */
 "nss-oh-hfQ.text" = "Label";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "owR-zX-vzL"; */
+"owR-zX-vzL.text" = "Label";
+
 /* Class = "UIButton"; normalTitle = "Sauvegarder"; ObjectID = "p4E-Tt-3Sh"; */
-"p4E-Tt-3Sh.normalTitle" = "Spara";
+"p4E-Tt-3Sh.normalTitle" = "Sauvegarder";
 
 /* Class = "UILabel"; text = "6"; ObjectID = "plv-8U-8f9"; */
 "plv-8U-8f9.text" = "6";
 
 /* Class = "UILabel"; text = "Téléchargement du fichier en cours. Veuillez patienter svp .."; ObjectID = "qSI-eF-zfE"; */
-"qSI-eF-zfE.text" = "Nedladdning av den aktuella filen. Vänta ..";
+"qSI-eF-zfE.text" = "Descargando el archivo actual. Por favor espera ...";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "qln-06-aeK"; */
 "qln-06-aeK.text" = "Label";
@@ -255,7 +273,7 @@
 "ydx-t9-mha.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Déconnexion"; ObjectID = "yjW-g6-VSN"; */
-"yjW-g6-VSN.normalTitle" = "logga ut";
+"yjW-g6-VSN.normalTitle" = "Salir";
 
 /* Class = "UILabel"; text = "Cible"; ObjectID = "zmv-JE-sQW"; */
 "zmv-JE-sQW.text" = "Cible";

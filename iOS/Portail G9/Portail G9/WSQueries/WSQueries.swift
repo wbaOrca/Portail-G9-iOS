@@ -66,6 +66,13 @@ protocol WSGetIndicateursKPIsDelegate {
 
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
+protocol WSGetIndicateursKPIDetailsDelegate {
+    
+    func didFinishWSGetIndicateursDetailsKPIs(error: Bool , data : DataKPIsWSResponse!)
+}
+
+// ++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++
 protocol WSGetBoardsForcesTerrainsDelegate {
     
     func didFinishWSGetBoardsForcesTerrains(error: Bool , data : DataForceTerrainToDoListWSResponse!)
@@ -218,6 +225,11 @@ class WSQueries: NSObject {
                 let responseAuthUser =  Mapper<UtilisateurResponseWSAuth>().map(JSONObject:responseJson)
                 if(responseAuthUser != nil)
                 {
+                    //reset language
+                    let preferences = UserDefaults.standard
+                    preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+                    preferences.synchronize()
+                    
                     delegate.didFinishWSAuthentification(error: false, utilisateurResponse: responseAuthUser!)
                     return
                 }
@@ -897,6 +909,84 @@ class WSQueries: NSObject {
     // ***********************************
     // ***********************************
     // ***********************************
+    static func getIndicateurKPIsDetailsByZone(delegate : WSGetIndicateursKPIDetailsDelegate , groupe_id : Int64 , selected_zone : Int64 , date : Date)
+    {
+        
+        // headers autorization
+        var authorization_ = "Bearer "
+        let preferences = UserDefaults.standard
+        let token = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_TOKEN) as? String ?? "";
+        authorization_ = authorization_ + token
+        
+        let headers_params = [
+            "Authorization": authorization_
+        ]
+        
+        //post params
+        let perimetre = WSQueries.preparePerimetre();
+        let profil = preferences.object(forKey: Utils.SHARED_PREFERENCE_USER_PROFIL) as? String ?? "";
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateAsString = dateFormatter.string(from: date)
+        
+        let post_params: Parameters = [
+            "profil": profil,
+            "perimetre" : perimetre,
+            "id_groupe" : groupe_id,
+            "selected_zone" : selected_zone,
+            "date" : dateAsString
+        ]
+        
+        let url_ = Version.URL_WS_PORTAIL_G9 + "/get-kpi-detail-by-zone"
+        
+        Alamofire.request(url_, method: .post, parameters: post_params, encoding:  URLEncoding.default, headers: headers_params).responseJSON {  response  in
+            
+            
+            switch(response.result) {
+            case .success(_):
+                
+                let responseJson = response.result.value as? NSDictionary ?? nil
+                let code = responseJson!["code"] as? Int ?? -1
+                if(code == WSQueries.CODE_BAD_CREDENTIAL) // bad credential need to refresh token
+                {
+                    WSQueries.refreshToken(completion: { (code) in
+                        if(code == WSQueries.CODE_RETOUR_200)
+                        {
+                            WSQueries.getIndicateurKPIsDetailsByZone(delegate: delegate, groupe_id: groupe_id, selected_zone: selected_zone, date: date);
+                        }else
+                        {
+                            delegate.didFinishWSGetIndicateursDetailsKPIs(error: true, data: nil)
+                            return
+                        }
+                    })
+                    
+                    return;
+                }
+                
+                let responseDataKpis =  Mapper<DataKPIsWSResponse>().map(JSONObject:responseJson)
+                if(responseDataKpis != nil)
+                {
+                    delegate.didFinishWSGetIndicateursDetailsKPIs(error: false, data: responseDataKpis)
+                    return
+                }
+                
+                delegate.didFinishWSGetIndicateursDetailsKPIs(error: true, data: nil)
+                
+                break
+                
+            case .failure(_):
+                // print(response.result.error?.localizedDescription)
+                delegate.didFinishWSGetIndicateursDetailsKPIs(error: true, data: nil)
+                break
+                
+            }
+            
+        }
+    }
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
     static func getBoardForcesTerrains(delegate : WSGetBoardsForcesTerrainsDelegate )
     {
         
@@ -1217,7 +1307,7 @@ class WSQueries: NSObject {
                 
             case .failure(_):
                 // print(response.result.error?.localizedDescription)
-               delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1,description: "NA Unknown")
+               delegate.didFinishWSAddTaskToBoard(error: true, code_erreur: -1 ,description: "NA Unknown")
                 break
                 
             }

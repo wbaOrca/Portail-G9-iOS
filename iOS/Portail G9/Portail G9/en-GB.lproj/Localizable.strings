@@ -45,9 +45,10 @@
 "Connexions Stats." = "Stats connections";
 "Déconnexion" = "Disconnect";
 "Se déconnecter" = "Disconnect";
+"Connexion" = "Login";
 
-"Piliers" = "PILLARS";
-"Mes_Piliers" = "PILLARS";
+"Piliers" = "Pillars";
+"Mes_Piliers" = "Pillars";
 
 "TOUT" = "-- All --";
 
@@ -86,3 +87,6 @@
 
 "empty_commentaire" = "Please enter a comment.";
 "slect_affaire" = "Please select a dealer";
+
+
+"Save" = "Save";

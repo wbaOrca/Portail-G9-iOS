@@ -21,11 +21,11 @@
 "Pays" = "Kraj";
 "DR" = "DR";
 "Zone" = "Strefa" ;
-"Groupe" = "Grupa" ;
-"Affaire" = "Point of Sale";
+"Groupe" = "Groupe" ;
+"Affaire" = "Przypadek";
 
 
-"Indicateurs" = "Wskaźniki";
+"Indicateurs" = "WYNIKI";
 "Vente" = "Sprzedaż";
 "Après ventes" = "Sprzedaż po";
 "Clients" = "Klienci";
@@ -44,13 +44,14 @@
 "Escalation Process" = "Proces eskalacji";
 "Reporting" = "Raportowanie";
 "Connexions Stats." = "Połączenia statystyczne";
-"Déconnexion" = "Rozłącz";
-"Se déconnecter" = "Rozłącz";
+"Déconnexion" = "Wyloguj się";
+"Se déconnecter" = "Wyloguj się";
+"Connexion" = "Działanie Logowania";
 
-"Piliers" = "Piliers";
-"Mes_Piliers" = "Mes Piliers";
+"Piliers" = "OCENA ZOBOWIĄZAŃ";
+"Mes_Piliers" = "OCENA ZOBOWIĄZAŃ";
 
-"TOUT" = "-- Alle --";
+"TOUT" = "-- Wszystko --";
 
 "MAJ_Application" = "Update the application";
 "MAJ_Question" = "Do you want to update the app now?" ;
@@ -61,27 +62,29 @@
 "Ok" = "Ok" ;
 
 "Identifiant" = "Login" ;
-"Mot de passe" = "Password";
-"Aucun Profil." = "Aucun Profil.";
+"Mot de passe" = "hasło";
+"Aucun Profil." = "Brak profilu";
 
-"fonctionnalite_non_disponible" = "this feature will be available soon";
+"fonctionnalite_non_disponible" = "ta funkcja będzie dostępna wkrótce";
 
-"Veuillez_saisir_tous_les_champs" = "Veuillez saisir tous les champs";
-"mot_passe_4_caractères" = "Le mot de passe doit contenir au moins 4 caractères";
-"no_internet_connexion" = "Pas de connexion internet.\nVeuillez vous connecter svp." ;
-"Authentification_Query" = "Authentification en cours... Veuillez patienter svp...";
-"Profils"="Profils";
-"erreur_survenue_request" = "Une erreur est survenue lors de la requête";
+"Veuillez_saisir_tous_les_champs" = "Proszę wpisać wszystkie pola";
+"mot_passe_4_caractères" = "Hasło musi zawierać co najmniej 4 znaki";
+"no_internet_connexion" = "Brak połączenia z Internetem. Proszę się zalogować." ;
+"Authentification_Query" = "Uwierzytelnianie w toku ... Proszę czekać ...";
+"Profils"="Profile";
+"erreur_survenue_request" = "Wystąpił błąd podczas żądania";
 
-"DataUtils_Query" = "Récupération des données en cours... Veuillez patienter svp...";
-"DataSend_Query" = "Envoi de données en cours... Veuillez patienter svp...";
+"DataUtils_Query" = "Trwa odzyskiwanie danych ... Proszę czekać ...";
+"DataSend_Query" = "Wysyłanie danych ... Proszę czekać ...";
 
-"Aucune_affaire" = "Aucune affaire.";
-"Aucun_pays" = "Aucun pays.";
-"Aucun_groupe" ="Aucun groupe.";
-"Aucune_zone" = "Aucune zone.";
-"Aucune_direction" = "Aucune direction.";
-"Aucune_langue" = "Aucune langue.";
+"Aucune_affaire" = "Brak dealerów";
+"Aucun_pays" = "Brak kraju";
+"Aucun_groupe" ="Brak grupy.";
+"Aucune_zone" = "Bez strefy.";
+"Aucune_direction" = "Bez kierunku.";
+"Aucune_langue" = "Brak języka";
 
-"empty_commentaire" = "Veuillez laisser un commentaire.";
-"slect_affaire" = "Veuillez sélectionner une affaire";
+"empty_commentaire" = "Proszę zostawić komentarz.";
+"slect_affaire" = "Wybierz sprzedawcę";
+
+"Save" = "Uratować";

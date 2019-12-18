@@ -934,18 +934,7 @@ class FiltreMenuViewController: UIViewController {
                 cell.imageView!.contentMode = .scaleAspectFit
                 cell.imageView!.clipsToBounds = true
                 
-                /*
-                cell.imageView!.translatesAutoresizingMaskIntoConstraints = true
-                let widthConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 35)
-                let heightConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 35)
-                
-                let topConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal
-                    , toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 10)
-                let bottonConstraint = NSLayoutConstraint(item: cell.imageView!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal
-                    , toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 10)
-                
-                NSLayoutConstraint.activate([ widthConstraint, heightConstraint,topConstraint,bottonConstraint])
-                */
+               
                 
                 
                

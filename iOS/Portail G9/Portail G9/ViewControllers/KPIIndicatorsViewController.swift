@@ -234,7 +234,7 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
                 
                 if(data.lastDate.count > 0 && data.requstedDate.count > 0)
                 {
-                     if(data.requstedDate == data.lastDate)
+                     if(data.requstedDate != data.lastDate)
                     {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -295,6 +295,7 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
         //let kpiColonne = kpi.elementsSection[indexPath.row];
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KPICollectionViewCell", for: indexPath) as! KPICollectionViewCell
+        cell.delegate = self;
         //cell.setupKPICollectionViewCell(kpi: kpiColonne);
         
         cell.setupKPICollectionViewCellGrid(indicateur: self.arrayValuesOfCollection[indexPath.section][indexPath.row])
@@ -346,6 +347,10 @@ extension KPIIndicatorsViewController : UICollectionViewDelegate , UICollectionV
 extension KPIIndicatorsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if(indexPath.row == 1)
+        {
+            return CGSize(width: (collectionView.frame.width - 110), height: 80)
+        }
         return CGSize(width: 110, height: 80)
     }
 }
@@ -404,4 +409,31 @@ extension KPIIndicatorsViewController: FiltreMenuViewControllerDelegate {
     }
     
     
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+extension KPIIndicatorsViewController: KPICollectionViewCellDelegate {
+    
+    // ***********************************
+    // ***********************************
+    // ***********************************
+    func didSelectPlusInfo(indicateur: IndicateurKPIGrid) {
+        print("didSelectPlusInfo id = " + String(indicateur.indicateurKPI.id))
+        
+        let kpiS2VC = self.storyboard?.instantiateViewController(withIdentifier: "KPIIndicatorsViewControllerS2") as? KPIIndicatorsViewControllerS2
+        kpiS2VC?.selectedId = indicateur.indicateurKPI.id
+        kpiS2VC?.selectedTitle = indicateur.indicateurKPI.libelle
+        kpiS2VC?.mSelectedDate = self.mSelectedDate;
+        kpiS2VC?.groupe = self.groupe
+        kpiS2VC?.categorie = self.categorie
+        kpiS2VC?.familleLibelle = self.familleLibelle
+        self.navigationController?.pushViewController(kpiS2VC!, animated: true);
+        
+    }
+    
+
+
 }

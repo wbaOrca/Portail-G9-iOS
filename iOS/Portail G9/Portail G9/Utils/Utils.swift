@@ -66,7 +66,7 @@ class Utils: NSObject {
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_DATA_PERIMETRE)
         preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_LANGUAGES)
         
-        preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
+        // preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_ZONE)
          preferences.setValue(nil, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_GROUPE)
@@ -75,10 +75,21 @@ class Utils: NSObject {
         preferences.synchronize()
         
         print("disconnectUserAction")
-        DispatchQueue.main.async {
-            let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
-            navigationController.popToRootViewController(animated: goBackAnimated);
+        if(goBackAnimated)
+        {
+            DispatchQueue.main.async{
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
+        }else
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController ;
+                navigationController.popToRootViewController(animated: goBackAnimated);
+            }
         }
+            
+        
     }
     
     
@@ -576,7 +587,7 @@ struct CustomLanguage {
     func createBundlePath () -> Bundle {
         
         //recover the language chosen by the user (in my case, from UserDefaults)
-        var lang = "fr" //"en-GB" //
+        var lang = "en-GB" //"fr" //
         let preferences = UserDefaults.standard
         let langueData_ = preferences.data(forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE);
         if(langueData_ != nil){
@@ -587,13 +598,50 @@ struct CustomLanguage {
                 
             }
         }
-        if(lang == "SWE") //suedois
+        
+        if(lang == "SWE" || lang == "se") //suedois
         {
             lang = "sv";
         }
+        else if(lang == "cz") //Czech
+        {
+            lang = "cs";
+        }
+        
         lang = lang.replacingOccurrences(of: "_", with: "-")
         let selectedLanguage = lang
-        let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
+        var path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj")
+        
+        if (path == nil){//langue non supprotée EN par défaut
+            lang = "en-GB"  //"fr"
+            path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        }
         return Bundle(path: path!)!
+    }
+}
+
+
+// *****************************
+// *****************************
+// *****************************
+// *****************************
+extension String {
+    
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+    
+    func convertToAttributedString() -> NSAttributedString? {
+        let modifiedFontString = "<div style=\"text-align: center;\"><span style=\"font-family: Helvetica; font-size: 14; color: rgb(0, 0, 0); margin:auto; \">" + self + "</span></div>"
+        return modifiedFontString.htmlToAttributedString
     }
 }
