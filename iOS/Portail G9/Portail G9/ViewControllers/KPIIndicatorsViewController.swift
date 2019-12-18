@@ -234,7 +234,7 @@ extension KPIIndicatorsViewController : WSGetIndicateursKPIsDelegate {
                 
                 if(data.lastDate.count > 0 && data.requstedDate.count > 0)
                 {
-                     if(data.requstedDate == data.lastDate)
+                     if(data.requstedDate != data.lastDate)
                     {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "dd-MM-yyyy"
