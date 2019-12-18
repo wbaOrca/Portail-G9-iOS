@@ -50,5 +50,8 @@ class KPILigne: NSObject ,Mappable{
         style <- map["style"]
         
         bg_color = bg_color + "FF"
+        
+        libelle = libelle.replacingOccurrences(of: "&#8209;", with: "-", options: .caseInsensitive, range: nil)
+        valeur = valeur.replacingOccurrences(of: "&#8209;", with: "-", options: .caseInsensitive, range: nil)
     }
 }

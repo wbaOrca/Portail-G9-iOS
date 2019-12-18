@@ -619,3 +619,29 @@ struct CustomLanguage {
         return Bundle(path: path!)!
     }
 }
+
+
+// *****************************
+// *****************************
+// *****************************
+// *****************************
+extension String {
+    
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+    
+    func convertToAttributedString() -> NSAttributedString? {
+        let modifiedFontString = "<div style=\"text-align: center;\"><span style=\"font-family: Helvetica; font-size: 14; color: rgb(0, 0, 0); margin:auto; \">" + self + "</span></div>"
+        return modifiedFontString.htmlToAttributedString
+    }
+}
