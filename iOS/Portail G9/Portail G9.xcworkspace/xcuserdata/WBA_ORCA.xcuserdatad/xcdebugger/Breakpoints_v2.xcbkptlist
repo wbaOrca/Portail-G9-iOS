@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portail G9/WSQueries/WSQueries.swift"
-            timestampString = "597753296.09583"
+            timestampString = "598278213.551124"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1273"
@@ -42,12 +42,12 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "598180493.304677"
+                  timestampString = "598355040.628788"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1273"
                   endingLineNumber = "1273"
-                  offsetFromSymbolStart = "4472">
+                  offsetFromSymbolStart = "5900">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,12 +57,12 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "598180493.306338"
+                  timestampString = "598355040.630298"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1229"
                   endingLineNumber = "1229"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "53">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -84,8 +84,9 @@ class KPICollectionViewCell: UICollectionViewCell {
             if(indicateur.indicateurKPI.style.underline)
             {
                 titleLabel.attributedText = NSAttributedString(string: indicateur.indicateurKPI.valeur, attributes:
-                    [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                    [.underlineStyle: NSUnderlineStyle.single.rawValue ])
                 self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+               
             }
             /*
             if(isButtonPlusHidden == true)//2eme ecran colonne KPI
