@@ -37,10 +37,10 @@ class ListeIndicateurTableViewCell: UITableViewCell {
     // ***********************************
     // ***********************************
     // ***********************************
-    func setupIndicateurCellHeader(famille : Famille)
+    func setupIndicateurCellHeader(famille : Famille , index : Int)
     {
         titleLabel.text = famille.RubriqueTitle
-        headerButton.tag = famille.RubriqueId - 1
+        headerButton.tag = index //famille.RubriqueId - 1
     }
     
     // ***********************************
