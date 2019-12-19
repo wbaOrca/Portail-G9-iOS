@@ -163,7 +163,7 @@ extension ListeIndicateursViewController : UITableViewDelegate , UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListeIndicateurTableViewCellHeader") as! ListeIndicateurTableViewCell
         
         let famille = arrayFamille[section] ;
-        cell.setupIndicateurCellHeader(famille: famille)
+        cell.setupIndicateurCellHeader(famille: famille , index: section)
         
         return cell
     }
