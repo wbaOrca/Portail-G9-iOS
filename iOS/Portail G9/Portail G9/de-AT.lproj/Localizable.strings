@@ -87,3 +87,5 @@
 "slect_affaire" = "Bitte wählen Sie einen Fall aus";
 
 "Save" = "speichern";
+
+"error_user_country" = "Ihr Konto ist keinem Land zugeordnet" ;

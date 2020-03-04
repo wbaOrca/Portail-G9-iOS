@@ -58,7 +58,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "598461249.010277"
+                  timestampString = "605023850.23914"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1273"
@@ -73,7 +73,7 @@
                   moduleName = "Portail G9"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
-                  timestampString = "598461249.011723"
+                  timestampString = "605023850.240646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1229"
@@ -129,6 +129,54 @@
             endingLineNumber = "255"
             landmarkName = "translateIndicateurKPISectionToArrayGrid2(arrayKPI:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Portail G9/WSQueries/WSQueries.swift"
+            timestampString = "605023451.510846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "authenticateUser(login:password:delegate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Portail_G9.WSQueries.authenticateUser(login: Swift.String, password: Swift.String, delegate: Portail_G9.WSAuthentificationDelegate) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "605023850.247701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "704">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static Portail_G9.WSQueries.authenticateUser(login: Swift.String, password: Swift.String, delegate: Portail_G9.WSAuthentificationDelegate) -&gt; ()"
+                  moduleName = "Portail G9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wba/Programmation/iOS/ORCA/Portail%20G9/R7/Portail-G9-iOS/iOS/Portail%20G9/Portail%20G9/WSQueries/WSQueries.swift"
+                  timestampString = "605023850.249184"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

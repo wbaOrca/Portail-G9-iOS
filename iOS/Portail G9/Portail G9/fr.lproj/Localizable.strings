@@ -89,3 +89,5 @@
 "slect_affaire" = "Veuillez sélectionner une affaire";
 
 "Save" = "Sauvegarder";
+
+"error_user_country" = "Votre compte n'est attribué à aucun pays" ;

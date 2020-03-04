@@ -88,3 +88,5 @@
 "slect_affaire" = "Wybierz sprzedawcę";
 
 "Save" = "Uratować";
+
+"error_user_country" = "Twoje konto nie jest przypisane do żadnego kraju" ;
