@@ -20,10 +20,10 @@ class Version: NSObject {
 
     public static let VERSION = "PP" //"R7"
     
-    public static let URL_PORTAIL_G9 = "https://driverg9-pp.orcaformation.com" //"https://dpmw-r7-skin.orcaformation.com" //"https://driverg9.dcs2.renault.com" // //
-    public static let URL_WS_PORTAIL_G9 = "https://driverg9-pp.orcaformation.com/api" //"https://dpmw-r7-skin.orcaformation.com/api" //"https://driverg9.dcs2.renault.com/api" // //
+    public static let URL_PORTAIL_G9 = "https://driverg9-integration.orcaformation.com" //"https://driverg9-pp.orcaformation.com" //"https://dpmw-r7-skin.orcaformation.com" //"https://driverg9.dcs2.renault.com" // //
+    public static let URL_WS_PORTAIL_G9 = "https://driverg9-integration.orcaformation.com/api"//"https://driverg9-pp.orcaformation.com/api" //"https://dpmw-r7-skin.orcaformation.com/api" //"https://driverg9.dcs2.renault.com/api" // //
     
-    public static let URL_PREFIX_IMAGES_PORTAIL_G9 = "https://driverg9-pp.orcaformation.com/assets/icons/" //"https://dpmw-r7-skin.orcaformation.com/assets/icons/"
+    public static let URL_PREFIX_IMAGES_PORTAIL_G9 = "https://driverg9-integration.orcaformation.com/assets/icons/" //"https://driverg9-pp.orcaformation.com/assets/icons/" //"https://dpmw-r7-skin.orcaformation.com/assets/icons/"
     
     public static let URL_INSTALL_PORTAIL_G9 = "https://app.orcaformation.com/Renault/G9/pp/driver_g9_install.html" //"https://app.orcaformation.com/Renault/G9/r7/driver_g9_install.html"
     
