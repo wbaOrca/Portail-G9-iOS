@@ -88,3 +88,5 @@
 "slect_affaire" = "Selecteer een dealer";
 
 "Save" = "Opslaan";
+
+"error_user_country" = "Uw account is aan geen enkel land toegewezen" ;

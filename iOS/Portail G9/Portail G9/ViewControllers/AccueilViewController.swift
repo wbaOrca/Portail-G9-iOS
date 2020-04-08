@@ -432,6 +432,17 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
                         let pays_ = data.dataUtiles.perimetre.pays[0];
                         let dataPaysParDefaut = NSKeyedArchiver.archivedData(withRootObject: pays_)
                         preferences.set(dataPaysParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_PAYS)
+                    }else
+                    {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        DispatchQueue.main.async {
+                            
+                            let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("error_user_country", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
+                            return;
+                        }
                     }
                 }
                 //  Save to disk

@@ -86,3 +86,5 @@
 "slect_affaire" = "Seleziona un caso";
 
 "Save" = "salvare";
+
+"error_user_country" = "Il tuo account non è assegnato a nessun Paese" ;

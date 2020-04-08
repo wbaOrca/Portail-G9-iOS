@@ -1177,6 +1177,19 @@ extension FiltreMenuViewController: UICollectionViewDelegate , UICollectionViewD
     // ***********************************
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if(self.arrayOfPays.count < 1)
+        {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            DispatchQueue.main.async {
+                
+                let alert = UIAlertController(title: NSLocalizedString("Erreur", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: "") , message: NSLocalizedString("error_user_country", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", tableName: nil, bundle: appDelegate.customApplicationLang.createBundlePath(), value: "", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+            return;
+        }
         let pays = arrayOfSelectedPays[0];
         if(!pays.hasDr)//has no dr
         {

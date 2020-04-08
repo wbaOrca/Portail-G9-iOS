@@ -88,3 +88,5 @@
 "slect_affaire" = "Välj en återförsäljare";
 
 "Save" = "Spara";
+
+"error_user_country" = "Ditt konto har inte tilldelats något land" ;

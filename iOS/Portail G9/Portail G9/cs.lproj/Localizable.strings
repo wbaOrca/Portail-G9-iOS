@@ -88,3 +88,5 @@
 "slect_affaire" = "Vyberte prodejce";
 
 "Save" = "Uložit";
+
+"error_user_country" = "Váš účet není přiřazen k žádné zemi" ;
