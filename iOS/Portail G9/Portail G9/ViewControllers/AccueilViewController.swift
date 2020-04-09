@@ -418,6 +418,9 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
                         }
                         
                     }
+                    DispatchQueue.main.async {
+                        self.menuCollectionView.reloadData()
+                    }
                 }
                 
                 //liste des pays perimetre
