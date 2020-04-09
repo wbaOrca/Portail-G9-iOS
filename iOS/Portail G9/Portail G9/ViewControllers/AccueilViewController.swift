@@ -413,6 +413,10 @@ extension AccueilViewController: WSGetDataUtilesDelegate {
                                 let dataLangueParDefaut = NSKeyedArchiver.archivedData(withRootObject: langue)
                                 preferences.set(dataLangueParDefaut, forKey: Utils.SHARED_PREFERENCE_PERIMETRE_LANGUE)
                                 
+                                DispatchQueue.main.async {
+                                    self.menuCollectionView.reloadData()
+                                    
+                                }
                                 break;
                             }
                         }
